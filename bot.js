@@ -7,6 +7,7 @@ const { MessageActionRow, MessageButton } = require('discord.js');
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
+    client.user.setActivity('Microsoft Flight Simulator' , {type: "PLAYING"})
   });
 
   client.on("messageCreate", (message) => {
@@ -39,7 +40,7 @@ client.on('ready', () => {
     }
   })
 
- // client.user.setActivity("Microsoft Flight Simulator"); {
+ // bot.user.setActivity("Microsoft Flight Simulator"); {
  // }
 
   client.login(process.env.BOT_TOKEN)
