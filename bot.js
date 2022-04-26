@@ -23,7 +23,19 @@ client.on('ready', () => {
             .setLabel('The Pilot Club Website')
             .setStyle('LINK')
             .setURL('https://www.thepilotclub.org'));
-    message.reply({ content: 'The button below will take you to our website. Thank you for being a vauled member of The Pilot Club', components: [row]})
+    message.reply({ content: 'The button below will take you to our website. Thank you for being a vauled member of The Pilot Club!!', components: [row]})
+        }
+  })
+
+  client.on("messageCreate", (message) => {
+    if (message.content.toLowerCase() === `support`) {
+      const row = new MessageActionRow()
+        .addComponents(
+          new MessageButton()
+            .setLabel('The Pilot Club Support')
+            .setStyle('LINK')
+            .setURL('https://support.thepilotclub.org/open.php'));
+    message.reply({ content: 'The button below will take you to our support page where you can get support or submit feedback. Thank you for being a vauled member of The Pilot Club!!', components: [row]})
         }
   })
 
