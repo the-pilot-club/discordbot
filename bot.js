@@ -23,9 +23,9 @@ client.on('ready', () => {
             .setLabel('The Pilot Club Website')
             .setStyle('LINK')
             .setURL('https://www.thepilotclub.org'));
-    message.reply({ content: 'This is the website of The Pilot Club. They Are Great People', components: [row]})
+    message.reply({ content: 'The button below will take you to our website. Thank you for being a vauled member of The Pilot Club', components: [row]})
         }
   })
 
-  
+
   client.login(process.env.BOT_TOKEN)
