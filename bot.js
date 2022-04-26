@@ -10,8 +10,8 @@ client.on('ready', () => {
   });
 
   client.on("messageCreate", (message) => {
-    if (message.content.toUpperCase() === `TPC`) {
-      message.reply("The Pilot Club Welcome's You!")
+    if (message.content.toUpperCase() === `TPC WELCOME`) {
+      message.reply("Welcome to The Pilot Club!")
     }
   })
 
