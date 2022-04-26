@@ -7,7 +7,7 @@ const { MessageActionRow, MessageButton } = require('discord.js');
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
-    client.user.setActivity('Microsoft Flight Simulator' , {type: "PLAYING"})
+    client.user.setActivity('XPlane 11' , {type: "PLAYING"})
   });
 
   client.on("messageCreate", (message) => {
