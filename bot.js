@@ -15,4 +15,17 @@ client.on('ready', () => {
     }
   })
 
+  client.on("messageCreate", (message) => {
+    if (message.content.toLowerCase() === `tpc website`) {
+      const row = new MessageActionRow()
+        .addComponents(
+          new MessageButton()
+            .setLabel('The Pilot Club Website')
+            .setStyle('LINK')
+            .setURL('https://www.thepilotclub.org'));
+    message.reply({ content: 'This is the website of The Pilot Club. They Are Great People', components: [row]})
+        }
+  })
+
+  
   client.login(process.env.BOT_TOKEN)
