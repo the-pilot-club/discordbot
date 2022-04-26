@@ -29,13 +29,7 @@ client.on('ready', () => {
 
   client.on("messageCreate", (message) => {
     if (message.content.toLowerCase() === `support`) {
-      const row = new MessageActionRow()
-        .addComponents(
-          new MessageButton()
-            .setLabel('The Pilot Club Support')
-            .setStyle('LINK')
-            .setURL('https://support.thepilotclub.org/open.php'));
-    message.reply({ content: 'The button below will take you to our support page where you can get support or submit feedback. Thank you for being a vauled member of The Pilot Club!!', components: [row]})
+    message.reply({ content: 'To get support or submit feedback, click here: https://support.thepilotclub.org/open.php  Thank you for being a vauled member of The Pilot Club!!', components: [row]})
         }
   })
 
