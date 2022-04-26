@@ -29,7 +29,7 @@ client.on('ready', () => {
 
   client.on("messageCreate", (message) => {
     if (message.content.toLowerCase() === "support") {
-    message.reply({ content: "To get support or submit feedback, click here: https://support.thepilotclub.org/open.php  Thank you for being a vauled member of The Pilot Club!!")
+    message.reply("To get support or submit feedback, click here: https://support.thepilotclub.org/open.php  Thank you for being a vauled member of The Pilot Club!!")
         }
   })
 
