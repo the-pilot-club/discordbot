@@ -60,7 +60,7 @@ let questions = file.questions;
 //Getting random question
 console.log(questions[randomNum(0,14)][0])
 
- client.channels.cache.get('864834861603487754') 
+ client.channels.get('864834861603487754') 
  channel.send('Test!')
 //Getting random question every day at 8am
 cron.schedule('0 0 * * *', function() {
