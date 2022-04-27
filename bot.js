@@ -5,29 +5,21 @@ const client = new Client({ intents: 32767 });
 const prefix = "$"
 const { MessageActionRow, MessageButton } = require('discord.js');
 const fs = require('fs');
-const commandFiles = fs.readdirSync('./responders').filter(file => file.endsWith('.js'));
-
-for (const file of commandFiles) {
-	const command = require(`./responders/${file}`);
-	// Set a new item in the Collection
-	// With the key as the command name and the value as the exported module
-	client.commands.set(command.data.name, command);
-}
 
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
     client.user.setActivity('XPlane 11' , {type: "PLAYING"})
   });
-/*
+
   client.on("messageCreate", (message) => {
     if (message.content.toUpperCase() === `TPC WELCOME`) {
       message.reply("Welcome to The Pilot Club!")
     }
   })
-*/
 
-/*  client.on("messageCreate", (message) => {
+
+  client.on("messageCreate", (message) => {
     if (message.content.toLowerCase() === `tpc website`) {
       const row = new MessageActionRow()
         .addComponents(
@@ -38,20 +30,20 @@ client.on('ready', () => {
     message.reply({ content: 'The button below will take you to our website. Thank you for being a vauled member of The Pilot Club!!', components: [row]})
         }
   })
-*/
-/*  client.on("messageCreate", (message) => {
+
+  client.on("messageCreate", (message) => {
     if (message.content.toLowerCase() === "support") {
     message.reply("To get support or submit feedback, click here: https://support.thepilotclub.org/open.php  Thank you for being a vauled member of The Pilot Club!!")
         }
   })
-*/
 
-/*  client.on("messageCreate", (message) => {
+
+  client.on("messageCreate", (message) => {
     if (message.content.toLowerCase() === "eric") {
       message.reply("<@398557782623649794> That one guy who knew enough coding to make me a thing (with help from <@875527822611992577>). If you are seeing this message, DM him and tell him the code word || Green Horn ||")
     }
   })
-*/
+
 
 // q and a funtion
 //const fs = require('fs'); //ability to read files
