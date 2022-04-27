@@ -4,7 +4,6 @@ const { Client, Collection, Intents } = require('discord.js');
 const client = new Client({ intents: 32767 });
 const prefix = "$"
 const { MessageActionRow, MessageButton } = require('discord.js');
-const {Client, Collection, Intents} = require('./qanda.js')
 
 
 client.on('ready', () => {
