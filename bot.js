@@ -1,7 +1,7 @@
 require('dotenv').config()
 
 const { Client, Collection, Intents } = require('discord.js');
-const client = new Client({ intents: 32767 });
+const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 const prefix = "$"
 const { MessageActionRow, MessageButton } = require('discord.js');
 const fs = require('fs');
@@ -63,7 +63,7 @@ console.log(questions[randomNum(0,14)][0])
 
 //sends message to a specific channel
 client.on('ready', async function() {
-  const channel = await client.channels.fetch('864834861603487754');
+  const channel = await client.channels.fetch(process.env.CHANNEL_ID);
   channel.send('The Bot has Restarted or has been 24 hours. Who knows? I dont.');
 //Getting random question every day at 8am
 cron.schedule('0 8 * * *', function() {
