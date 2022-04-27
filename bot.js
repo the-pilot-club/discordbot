@@ -58,13 +58,13 @@ function randomNum(min, max) {
 //Parsing questions
 let questions = file.questions;
 //Getting random question
-console.log(questions[randomNum(0,14)][0])
+//console.log(questions[randomNum(0,14)][0])
 
  client.channels.cache.get('864834861603487754').send('Test!')
 //Getting random question every day at 8am
 cron.schedule('0 0 * * *', function() {
   let generatedNum = randomNum(0,14)
-  console.log(questions[generatedNum][0])
+  console.log(questions[generatedNum])//[0])
    setTimeout(() => {
         console.log(questions[generatedNum][1]);
        newArr = questions.splice(generatedNum, 1)
