@@ -47,7 +47,7 @@ client.on('ready', () => {
 */
 
 // q and a funtion
-const fs = require('fs'); //ability to read files
+//const fs = require('fs'); //ability to read files
 const file = require("./questions.json")
 const cron = require('node-cron'); //ability to repeat code   
 
