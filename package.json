@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "start": "node bot.js && qanda.js",
-    "devStart": "concurrently --kill-others \"nodemon bot.js\" \"nodemon qanda.js\""
+    "devStart": "concurrently \"nodemon bot.js\" \"nodemon qanda.js\""
   },
   "dependencies": {
     "@discordjs/builders": "^0.13.0",
