@@ -7,6 +7,13 @@ const { MessageActionRow, MessageButton } = require('discord.js');
 const fs = require('fs');
 const commandFiles = fs.readdirSync('./responders').filter(file => file.endsWith('.js'));
 
+for (const file of commandFiles) {
+	const command = require(`./commands/${file}`);
+	// Set a new item in the Collection
+	// With the key as the command name and the value as the exported module
+	client.commands.set(command.data.name, command);
+}
+
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
