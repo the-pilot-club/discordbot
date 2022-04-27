@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "node bot.js && qanda.js",
-    "devStart": "nodemon bot.js && qanda.js watch-less"
+    "start": "node bot.js",
+    "devStart": "nodemon bot.js"
   },
   "dependencies": {
     "@discordjs/builders": "^0.13.0",
