@@ -5,7 +5,7 @@
   "main": "bot.js",
   "scripts": {
     "start": "node bot.js && qanda.js",
-    "devStart": "nodemon bot.js --p nodemon qanda.js"
+    "devStart": "nodemon --exec 'bot.js && nodemom qanda.js'"
   },
   "dependencies": {
     "@discordjs/builders": "^0.13.0",
