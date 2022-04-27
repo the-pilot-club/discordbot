@@ -40,7 +40,5 @@ client.on('ready', () => {
     }
   })
 
- // bot.user.setActivity("Microsoft Flight Simulator"); {
- // }
 
   client.login(process.env.BOT_TOKEN)
