@@ -69,7 +69,7 @@ client.on('ready', async function() {
 cron.schedule('0 8 * * *', function() {
   let generatedNum = randomNum(0,14)
   console.log(questions[generatedNum])//[0])
-    channel.send(questions[generatedNum][0)
+    channel.send(questions[generatedNum][0])
    setTimeout(() => {
         channel.send(questions[generatedNum][1]);
        
