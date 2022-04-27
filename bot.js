@@ -58,9 +58,10 @@ function randomNum(min, max) {
 //Parsing questions
 let questions = file.questions;
 //Getting random question
-//console.log(questions[randomNum(0,14)][0])
+console.log(questions[randomNum(0,14)][0])
 
- client.channels.cache.get('864834861603487754').send("Test!")
+client.on('ready', async function() {
+  const channel = await client.channels.fetch('864834861603487754');channel.send('Test');
 //Getting random question every day at 8am
 cron.schedule('0 0 * * *', function() {
   let generatedNum = randomNum(0,14)
@@ -71,9 +72,8 @@ cron.schedule('0 0 * * *', function() {
        fs.writeFileSync("questions.json", JSON.stringify(file));
        //TODO: DELETE ITEM FROM ARRAY
    }, 1000)//Wait 12 hours: 1000 * 60 * 60 * 12
-});
-
+  });
+});  
+module.exports = client;
 
 client.login(process.env.BOT_TOKEN)
-
-module.exports = client;
