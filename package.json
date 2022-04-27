@@ -2,7 +2,6 @@
   "name": "discord-bot",
   "version": "1.0.0",
   "description": "",
-  "main": "bot.js",
   "scripts": {
     "start": "node bot.js && qanda.js",
     "devStart": "concurrently --kill-others \"nodemon bot.js\" \"nodemon qanda.js\""
