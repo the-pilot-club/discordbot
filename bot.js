@@ -4,6 +4,7 @@ const { Client, Collection, Intents } = require('discord.js');
 const client = new Client({ intents: 32767 });
 const prefix = "$"
 const { MessageActionRow, MessageButton } = require('discord.js');
+const commandFiles = fs.readdirSync('./responders').filter(file => file.endsWith('.js'));
 
 
 client.on('ready', () => {
