@@ -3,6 +3,10 @@ const file = require("./questions.json")
 const cron = require('node-cron'); //ability to repeat code
 const client = require('./bot.js')
 
+client.on('ready', () => {
+    console.log("Logged in as QandA!")
+})    
+
 function randomNum(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
