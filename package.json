@@ -5,7 +5,7 @@
   "main": "bot.js",
   "scripts": {
     "start": "node bot.js && qanda.js",
-    "devStart": "concurrently --kill-others \"npm run start-watch\" \"npm run wp-server\""
+    "devStart": "concurrently --kill-others \"nodemon bot.js\" \"nodemon qanda.js\""
   },
   "dependencies": {
     "@discordjs/builders": "^0.13.0",
