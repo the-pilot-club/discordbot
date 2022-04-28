@@ -77,14 +77,9 @@ function randomNum(min, max) {
 
 //Parsing questions
 let questions = file.questions;
-console.log("file", file);
-console.log("questions", questions);
 //Getting random question
 let index=randomNum(0,questions.length-1);
 let question=questions[index];
-console.log("index", index);
-console.log("question", question);
-console.log("question[0]", question[0]);
 
 
 //sends message to a specific channel
@@ -92,7 +87,7 @@ client.on('ready', async function() {
   const channel = await client.channels.fetch(process.env.CHANNEL_ID);
   channel.send('The Bot has Restarted or has been 24 hours. Who knows? I dont.');
 //Getting random question every day at 8am
-cron.schedule('1000 * 60 * 60 * 24 ', function() {
+cron.schedule('0  0  21 * * ', function() {
   let generatedNum = randomNum(0,questions.length)
   console.log(questions[generatedNum])//[0])
     channel.send(questions[generatedNum][0])
