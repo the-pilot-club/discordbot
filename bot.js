@@ -5,7 +5,6 @@ const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_
 const prefix = "$"
 const { MessageActionRow, MessageButton } = require('discord.js');
 const fs = require('fs');
-const fs = require('node:fs');
 
 /*const commandFolders = fs.readdirSync('./commands');
 client.commands = new Collection();
