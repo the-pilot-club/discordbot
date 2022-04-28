@@ -66,7 +66,7 @@ client.on('ready', () => {
 
 // q and a funtion
 //const fs = require('fs'); //ability to read files
-/*const file = require("./questions.json")
+const file = require("./questions.json")
 const cron = require('node-cron'); //ability to repeat code   
 
 function randomNum(min, max) {
@@ -77,8 +77,13 @@ function randomNum(min, max) {
 
 //Parsing questions
 let questions = file.questions;
+console.log(questions);
 //Getting random question
-console.log(questions[randomNum(0,questions.length-1)][0])
+let index=randomNum(0,questions.length-1);
+let question=questions[index];
+console.log(index);
+console.log(question);
+console.log(question[0]);
 
 //sends message to a specific channel
 client.on('ready', async function() {
@@ -97,7 +102,7 @@ cron.schedule('1000 * 60 * 60 * 24 ', function() {
        //TODO: DELETE ITEM FROM ARRAY
    }, 1000)//Wait 12 hours: 1000 * 60 * 60 * 12
   });
-});*/
+});
 module.exports = client;
 
 client.login(process.env.BOT_TOKEN)
