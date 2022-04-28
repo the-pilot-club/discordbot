@@ -6,6 +6,21 @@ const prefix = "$"
 const { MessageActionRow, MessageButton } = require('discord.js');
 const fs = require('fs');
 
+const Client = new Discord.Client();
+client.commands = new Discord.Collection();
+
+const commandFolders = fs.readdirSync('./commands');
+
+for (const folder of commandFolders) {
+  const commandFiles = fs
+    .readdirSync(`./commands/${folder}`)
+    .filter((file) => file.endsWith('.js'));
+
+  for (const file of commandFiles) {
+    const command = require(`./commands/${folder}/${file}`);
+    client.commands.set(command.name, command);
+  }
+}
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
