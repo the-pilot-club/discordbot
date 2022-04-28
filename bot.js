@@ -11,11 +11,10 @@ client.commands = new Collection();
 
 for (const folder of commandFolders) {
   const commandFiles = fs
-    .readdirSync(`./commands/${folder}`)
-    .filter((file) => file.endsWith('.js'));
+    .readdirSync(`./commands/${folder}`).filter((file) => file.endsWith('.js'));
 
   for (const file of commandFiles) {
-    const command = require(`./commands/${folder}/${file}`);
+    const command = require(`./commands/${file}`);
     client.commands.set(command.name, command);
   }
 }
