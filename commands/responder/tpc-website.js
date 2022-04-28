@@ -1,4 +1,3 @@
-const client = require('./bot.js')
 client.on("messageCreate", (message) => {
     if (message.content.toLowerCase() === `tpc website`) {
       const row = new MessageActionRow()
