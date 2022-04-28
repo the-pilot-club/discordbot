@@ -7,7 +7,7 @@ const { MessageActionRow, MessageButton } = require('discord.js');
 const fs = require('fs');
 
 const commandFolders = fs.readdirSync('./commands');
-client.commands = new discord.Collection();
+client.commands = new Collection();
 
 for (const folder of commandFolders) {
   const commandFiles = fs
