@@ -6,7 +6,6 @@ const prefix = "$"
 const { MessageActionRow, MessageButton } = require('discord.js');
 const fs = require('fs');
 
-const Client = new Discord.Client();
 client.commands = new Discord.Collection();
 
 const commandFolders = fs.readdirSync('./commands');
@@ -27,7 +26,8 @@ client.on('ready', () => {
     client.user.setActivity('XPlane 11' , {type: "PLAYING"})
   });
 
-  client.on("messageCreate", (message) => {
+ /* 
+ client.on("messageCreate", (message) => {
     if (message.content.toUpperCase() === `TPC WELCOME`) {
       message.reply("Welcome to The Pilot Club!")
     }
@@ -64,7 +64,7 @@ client.on('ready', () => {
       message.reply("is better than you...")
     }
   })
-
+*/
 
 // q and a funtion
 //const fs = require('fs'); //ability to read files
