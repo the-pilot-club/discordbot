@@ -65,7 +65,7 @@ function randomNum(min, max) {
 //Parsing questions
 let questions = file.questions;
 //Getting random question
-console.log(questions[randomNum(0,questions.length)][0])
+//console.log(questions[randomNum(0,questions.length)][0])
 
 //sends message to a specific channel
 client.on('ready', async function() {
