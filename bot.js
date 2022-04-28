@@ -53,7 +53,7 @@ client.on('ready', () => {
 
 // q and a funtion
 //const fs = require('fs'); //ability to read files
-const file = require("./questions.json")
+/*const file = require("./questions.json")
 const cron = require('node-cron'); //ability to repeat code   
 
 function randomNum(min, max) {
@@ -72,7 +72,7 @@ client.on('ready', async function() {
   const channel = await client.channels.fetch(process.env.CHANNEL_ID);
   channel.send('The Bot has Restarted or has been 24 hours. Who knows? I dont.');
 //Getting random question every day at 8am
-cron.schedule('*/1000 * 60 * 60 * 24 ', function() {
+cron.schedule('1000 * 60 * 60 * 24 ', function() {
   let generatedNum = randomNum(0,questions.length)
   console.log(questions[generatedNum])//[0])
     channel.send(questions[generatedNum][0])
@@ -84,7 +84,7 @@ cron.schedule('*/1000 * 60 * 60 * 24 ', function() {
        //TODO: DELETE ITEM FROM ARRAY
    }, 1000)//Wait 12 hours: 1000 * 60 * 60 * 12
   });
-});  
+});  */
 module.exports = client;
 
 client.login(process.env.BOT_TOKEN)
