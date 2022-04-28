@@ -53,7 +53,7 @@ client.on('ready', () => {
 
 // q and a funtion
 //const fs = require('fs'); //ability to read files
-/*const file = require("./questions.json")
+const file = require("./questions.json")
 const cron = require('node-cron'); //ability to repeat code   
 
 function randomNum(min, max) {
@@ -84,7 +84,7 @@ cron.schedule('1000 * 60 * 60 * 24 ', function() {
        //TODO: DELETE ITEM FROM ARRAY
    }, 1000)//Wait 12 hours: 1000 * 60 * 60 * 12
   });
-});  */
+});
 module.exports = client;
 
 client.login(process.env.BOT_TOKEN)
