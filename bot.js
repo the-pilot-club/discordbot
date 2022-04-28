@@ -66,7 +66,7 @@ client.on('ready', async function() {
   const channel = await client.channels.fetch(process.env.CHANNEL_ID);
   channel.send('The Bot has Restarted or has been 24 hours. Who knows? I dont.');
 //Getting random question every day at 8am
-cron.schedule('0 8 * * *', function() {
+cron.schedule('*/1 * * * *', function() {
   let generatedNum = randomNum(0,14)
   console.log(questions[generatedNum])//[0])
     channel.send(questions[generatedNum][0])
