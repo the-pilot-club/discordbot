@@ -77,13 +77,15 @@ function randomNum(min, max) {
 
 //Parsing questions
 let questions = file.questions;
-console.log(questions);
+console.log("file", file);
+console.log("questions", questions);
 //Getting random question
 let index=randomNum(0,questions.length-1);
 let question=questions[index];
-console.log(index);
-console.log(question);
-console.log(question[0]);
+console.log("index", index);
+console.log("question", question);
+console.log("question[0]", question[0]);
+
 
 //sends message to a specific channel
 client.on('ready', async function() {
