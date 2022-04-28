@@ -6,8 +6,6 @@ const prefix = "$"
 const { MessageActionRow, MessageButton } = require('discord.js');
 const fs = require('fs');
 
-client.commands = new Collection();
-
 const commandFolders = fs.readdirSync('./commands');
 
 for (const folder of commandFolders) {
