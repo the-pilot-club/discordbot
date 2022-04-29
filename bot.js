@@ -73,7 +73,7 @@ let question=questions[index];
 client.on('ready', async function() {
   const channel = await client.channels.fetch(process.env.CHANNEL_ID);
 //Getting random question every day at 8am
-cron.schedule(' 0 11 22 * * * ', function() {
+cron.schedule(' 0 0 20 * * * ', function() {
   let generatedNum = randomNum(0,questions.length)
     channel.send(questions[generatedNum][0])
    setTimeout(() => {
