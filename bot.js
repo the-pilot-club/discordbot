@@ -97,7 +97,7 @@ let question=questions[index];
 client.on('ready', async function() {
   const channel = await client.channels.fetch(process.env.CHANNEL_ID);
   channel.send('The Bot has Restarted');
-    message.react (':one:')
+    channel.message.react (':one:')
       .then (() => message.react(':two:'))
       .then (() => message.react(':three:'))
       .then (() => message.react(':four:'))
