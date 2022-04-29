@@ -73,17 +73,13 @@ let question=questions[index];
 client.on('ready', async function() {
   const channel = await client.channels.fetch(process.env.CHANNEL_ID);
 //Getting random question every day at 8am
-cron.schedule(' 0 42 21 * * * ', function() {
+cron.schedule(' 0 47 21 * * * ', function() {
   let generatedNum = randomNum(0,questions.length)
   console.log(questions[generatedNum])//[0])
     channel.send(questions[generatedNum][0])
-      message.react('😄');
+      message.react(':one:');
    setTimeout(() => {
         channel.send(questions[generatedNum][1]);
-       
-       //newArr = questions.splice(generatedNum, 1)
-       //fs.writeFileSync("questions.json", JSON.stringify(file));
-       //TODO: DELETE ITEM FROM ARRAY
    }, 1000 * 60 * 60 * 24)//Wait 12 hours: 1000 * 60 * 60 * 12
   });
 });
