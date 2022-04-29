@@ -7,16 +7,7 @@ const { MessageActionRow, MessageButton } = require('discord.js');
 const fs = require('fs');
 const { clientId, guildId, token } = require('./config.json');
 
-/*for (const folder of commandFolders) {
-  const commandFiles = fs
-    .readdirSync(`./commands/${folder}`).filter((file) => file.endsWith('.js'));
 
-  for (const file of commandFiles) {
-    const command = require(`./commands/${file}`);
-    client.commands.set(command.data.name, command);
-  }
-}
-*/
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
     client.user.setActivity('XPlane 11' , {type: "PLAYING"})
@@ -60,23 +51,9 @@ client.on('ready', () => {
       message.reply("is better than you...")
     }
   })
-/*
-  client.on('interactionCreate', async interaction => {
-    if (!interaction.isCommand()) return;
-  
-    const { commandName } = interaction;
-  
-    if (commandName === 'ping') {
-      await interaction.reply('Pong!');
-    } else if (commandName === 'server') {
-      await interaction.reply('Server info.');
-    } else if (commandName === 'user') {
-      await interaction.reply('User info.');
-    }
-  });
-*/
+
 // q and a funtion
-//const fs = require('fs'); //ability to read files
+
 const file = require("./questions.json")
 const cron = require('node-cron'); //ability to repeat code   
 
@@ -92,16 +69,15 @@ let questions = file.questions;
 let index=randomNum(0,questions.length-1);
 let question=questions[index];
 
-
 //sends message to a specific channel
 client.on('ready', async function() {
   const channel = await client.channels.fetch(process.env.CHANNEL_ID);
-  //channel.send('The Bot has Restarted');
 //Getting random question every day at 8am
-cron.schedule('0 0 20 * * * ', function() {
+cron.schedule(' 0 36 21 * * * ', function() {
   let generatedNum = randomNum(0,questions.length)
   console.log(questions[generatedNum])//[0])
     channel.send(questions[generatedNum][0])
+      message.react(':smile:')
    setTimeout(() => {
         channel.send(questions[generatedNum][1]);
        
