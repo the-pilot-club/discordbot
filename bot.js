@@ -105,8 +105,8 @@ cron.schedule('0  0  20 * * * ', function() {
    setTimeout(() => {
         channel.send(questions[generatedNum][1]);
        
-       newArr = questions.splice(generatedNum, 1)
-       fs.writeFileSync("questions.json", JSON.stringify(file));
+       //newArr = questions.splice(generatedNum, 1)
+       //fs.writeFileSync("questions.json", JSON.stringify(file));
        //TODO: DELETE ITEM FROM ARRAY
    }, 1000)//Wait 12 hours: 1000 * 60 * 60 * 12
   });
