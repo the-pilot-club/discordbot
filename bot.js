@@ -1,7 +1,7 @@
 require('dotenv').config()
 
 const { Client, Collection, Intents } = require('discord.js');
-const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MESSAGE_REACTIONS] });
 const prefix = "$"
 const { MessageActionRow, MessageButton } = require('discord.js');
 const fs = require('fs');
@@ -76,6 +76,7 @@ client.on('ready', async function() {
 cron.schedule(' 0 0 20 * * * ', function() {
   let generatedNum = randomNum(0,questions.length)
     channel.send(questions[generatedNum][0])
+    message.reaction(':one:')
    setTimeout(() => {
         channel.send(questions[generatedNum][1]);
    }, 1000 * 60 * 60 * 24)//Wait 12 hours: 1000 * 60 * 60 * 12
