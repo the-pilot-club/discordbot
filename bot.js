@@ -5,11 +5,9 @@ const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_
 const prefix = "$"
 const { MessageActionRow, MessageButton } = require('discord.js');
 const fs = require('fs');
+const { clientId, guildId, token } = require('./config.json');
 
-/*const commandFolders = fs.readdirSync('./commands');
-client.commands = new Collection();
-
-for (const folder of commandFolders) {
+/*for (const folder of commandFolders) {
   const commandFiles = fs
     .readdirSync(`./commands/${folder}`).filter((file) => file.endsWith('.js'));
 
@@ -62,8 +60,21 @@ client.on('ready', () => {
       message.reply("is better than you...")
     }
   })
-
-
+/*
+  client.on('interactionCreate', async interaction => {
+    if (!interaction.isCommand()) return;
+  
+    const { commandName } = interaction;
+  
+    if (commandName === 'ping') {
+      await interaction.reply('Pong!');
+    } else if (commandName === 'server') {
+      await interaction.reply('Server info.');
+    } else if (commandName === 'user') {
+      await interaction.reply('User info.');
+    }
+  });
+*/
 // q and a funtion
 //const fs = require('fs'); //ability to read files
 const file = require("./questions.json")
