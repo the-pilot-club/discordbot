@@ -63,6 +63,16 @@ function randomNum(min, max) {
   return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
 }
 
+function sendNewQuestion(channel) {
+  let generatedNum = randomNum(0,questions.length)
+  channel.send(questions[generatedNum][0]).then (message => {
+    message.react('969443181605318698');
+  });
+  setTimeout(() => {
+    channel.send(questions[generatedNum][1]);
+  }, 1000 * 60 * 60 * 24)//Wait 12 hours: 1000 * 60 * 60 * 12
+}
+
 //Parsing questions
 let questions = file.questions;
 //Getting random question
@@ -73,13 +83,8 @@ let question=questions[index];
 client.on('ready', async function() {
   const channel = await client.channels.fetch(process.env.CHANNEL_ID);
 //Getting random question every day at 8am
-  cron.schedule(' 0 29 22 * * * ', function() {
-    let generatedNum = randomNum(0,questions.length)
-    message = channel.send(questions[generatedNum][0]);
-    message.react(':one:');
-    setTimeout(() => {
-      channel.send(questions[generatedNum][1]);
-    }, 1000 * 60 * 60 * 24)//Wait 12 hours: 1000 * 60 * 60 * 12
+  cron.schedule(' 0 42 22 * * * ', function() {
+    sendNewQuestion(channel);
   });
 });
 module.exports = client;
