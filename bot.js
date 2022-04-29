@@ -72,9 +72,6 @@ function sendNewQuestion(channel) {
     message.react('4️⃣');
     
   });
-  setTimeout(() => {
-    channel.send(questions[generatedNum][1]);
-  }, 1000 * 60 * 60 * 24)//Wait 12 hours: 1000 * 60 * 60 * 12
   file.latestQuestion = generatedNum
   fs.writeFileSync("questions.json", JSON.stringify(file, null, 2));
 }
