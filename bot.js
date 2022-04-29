@@ -75,6 +75,11 @@ function sendNewQuestion(channel) {
   setTimeout(() => {
     channel.send(questions[generatedNum][1]);
   }, 1000 * 60 * 60 * 24)//Wait 12 hours: 1000 * 60 * 60 * 12
+  file.latestQuestion = generatedNum
+  fs.writeFileSync("questions.json", JSON.stringify(file, null, 2));
+}
+function sendNewAnswer(channel) {
+  channel.send(questions[file.latestQuestion][1]);
 }
 
 //Parsing questions
@@ -86,11 +91,16 @@ let question=questions[index];
 //sends message to a specific channel
 client.on('ready', async function() {
   const channel = await client.channels.fetch(process.env.CHANNEL_ID);
-//Getting random question every day at 8am
-  cron.schedule(' 0 57 22 * * * ', function() {
+//Getting random question every day:  0 57 22 * * * 
+  cron.schedule('*/0.5 * * * *', function() {
     sendNewQuestion(channel);
   });
+  cron.schedule('*/1 * * * *', function() {
+    sendNewAnswer(channel);
+  });
 });
+
+
 module.exports = client;
 
 client.login(process.env.BOT_TOKEN)
