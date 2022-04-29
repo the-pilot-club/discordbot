@@ -95,7 +95,7 @@ client.on('ready', async function() {
   cron.schedule('*/0.5 * * * *', function() {
     sendNewQuestion(channel);
   });
-  cron.schedule('*/1 * * * *', function() {
+  cron.schedule('*/2 * * * *', function() {
     sendNewAnswer(channel);
   });
 });
