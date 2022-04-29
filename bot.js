@@ -108,7 +108,7 @@ cron.schedule('0 22 21 * * * ', function() {
        //newArr = questions.splice(generatedNum, 1)
        //fs.writeFileSync("questions.json", JSON.stringify(file));
        //TODO: DELETE ITEM FROM ARRAY
-   }, 1000)//Wait 12 hours: 1000 * 60 * 60 * 12
+   }, 1000 * 60 * 60 * 24)//Wait 12 hours: 1000 * 60 * 60 * 12
   });
 });
 module.exports = client;
