@@ -97,10 +97,10 @@ let question=questions[index];
 client.on('ready', async function() {
   const channel = await client.channels.fetch(process.env.CHANNEL_ID);
   channel.send('The Bot has Restarted');
-  message.react (':one:')
-    .then (() => message.react(':two:'))
-    .then (() => message.react(':three:'))
-    .then (() => message.react(':four:'))
+    message.react (':one:')
+      .then (() => message.react(':two:'))
+      .then (() => message.react(':three:'))
+      .then (() => message.react(':four:'))
 //Getting random question every day at 8am
 cron.schedule('0  0  20 * * ', function() {
   let generatedNum = randomNum(0,questions.length)
