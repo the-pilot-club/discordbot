@@ -1,5 +1,3 @@
-require('dotenv').config()
-
 const { Client, Collection, Intents } = require('discord.js');
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MESSAGE_REACTIONS] });
 const prefix = "$"
@@ -8,13 +6,7 @@ const fs = require('fs');
 const { clientId, guildId, token } = require('./config.json');
 
 
-client.on('ready', () => {
-    console.log(`Logged in as ${client.user.tag}!`);
-    client.user.setActivity('XPlane 11' , {type: "PLAYING"})
-  });
-
-
- client.on("messageCreate", (message) => {
+client.on("messageCreate", (message) => {
     if (message.content.toUpperCase() === `TPC WELCOME`) {
       message.reply("Welcome to The Pilot Club!")
     }
@@ -52,52 +44,4 @@ client.on('ready', () => {
     }
   })
 
-// q and a funtion
-
-const file = require("./questions.json")
-const cron = require('node-cron'); //ability to repeat code   
-
-function randomNum(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
-}
-
-function sendNewQuestion(channel) {
-  let generatedNum = randomNum(0,questions.length)
-  channel.send(questions[generatedNum][0]).then (message => {
-    message.react('1️⃣');
-    message.react('2️⃣');
-    message.react('3️⃣');
-    message.react('4️⃣');
-    
-  });
-  file.latestQuestion = generatedNum
-  fs.writeFileSync("questions.json", JSON.stringify(file, null, 2));
-}
-function sendNewAnswer(channel) {
-  channel.send(questions[file.latestQuestion][1]);
-}
-
-//Parsing questions
-let questions = file.questions;
-//Getting random question
-let index=randomNum(0,questions.length-1);
-let question=questions[index];
-
-//sends message to a specific channel
-client.on('ready', async function() {
-  const channel = await client.channels.fetch(process.env.CHANNEL_ID);
-//Getting random question every day:  0 57 22 * * * 
-  cron.schedule('0 39 23 * * *', function() {
-    sendNewQuestion(channel);
-  });
-  cron.schedule('0 32 23 * * *', function() {
-    sendNewAnswer(channel);
-  });
-});
-
-
-module.exports = client;
-
-client.login(process.env.BOT_TOKEN)
+  module.exports = client;

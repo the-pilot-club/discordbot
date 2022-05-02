@@ -1,52 +1,52 @@
 {
   "questions": [
     [
-      "With respect to the certification of airmen, which is a category of aircraft? \n \n Gyroplane, helicopter, airship, free balloon. \n Airplane, rotorcraft, glider, lighter-than-air. \n possible answer 3 \n possible answer 4",
-      "answer 1 test"
+      "<:training_team:895480894901592074> With respect to the certification of airmen, which is a category of aircraft? \n \n 1️⃣: Gyroplane, helicopter, airship, free balloon. \n 2️⃣: Airplane, rotorcraft, glider, lighter-than-air. \n 3️⃣: Single-engine land and sea, multiengine land and sea.",
+      "<:training_team:895480894901592074> Airplane, rotorcraft, glider, lighter-than-air."
     ],
     [
-      "question 2 test \n \n possible answer 1 \n possible answer 2 \n possible answer 3 \n possible answer 4",
-      "answer 2 test"
+      "<:training_team:895480894901592074> With respect to the certification of airmen, which is a class of aircraft \n \n 1️⃣: Single-engine land and sea, multiengine land and sea. \n 2️⃣: Lighter-than-air, airship, hot air balloon, gas balloon. \n 3️⃣: Airplane, rotorcraft, glider, lighter-than-air.",
+      "<:training_team:895480894901592074> Single-engine land and sea, multiengine land and sea."
     ],
     [
-      "question 3 test \n \n possible answer 1 \n possible answer 2 \n possible answer 3 \n possible answer 4",
-      "answer 3 test"
+      "<:training_team:895480894901592074> With respect to the certification of aircraft, which is a category of aircraft? \n \n 1️⃣: Airplane, rotorcraft, glider. \n 2️⃣: Landplane, seaplane. \n 3️⃣: Normal, utility, acrobatic.",
+      "<:training_team:895480894901592074> Normal, utility, acrobatic."
     ],
     [
-      "question 4 test \n \n possible answer 1 \n possible answer 2 \n possible answer 3 \n possible answer 4",
-      "answer 4 test"
+      "<:training_team:895480894901592074> With respect to the certification of aircraft, which is a class of aircraft \n \n 1️⃣: Airplane, rotorcraft, glider, balloon \n 2️⃣: Transport, restricted, provisional. \n 3️⃣: Normal, utility, acrobatic, limited.",
+      "<:training_team:895480894901592074> Airplane, rotorcraft, glider, balloon"
     ],
     [
-      "question 5 test \n \n possible answer 1 \n possible answer 2 \n possible answer 3 \n possible answer 4",
-      "answer 5 test"
+      "<:training_team:895480894901592074> The definition of nighttime is \n \n 1️⃣: the time between the end of evening civil twilight and the beginning of morning civil twilight. \n 2️⃣: sunset to sunrise. \n 3️⃣: 1 hour after sunset to 1 hour before sunrise.",
+      "<:training_team:895480894901592074> the time between the end of evening civil twilight and the beginning of morning civil twilight."
     ],
     [
-      "question 6 test \n \n possible answer 1 \n possible answer 2 \n possible answer 3 \n possible answer 4",
-      "answer 6 test"
+      "<:training_team:895480894901592074> Which V-speed represents maneuvering speed \n \n 1️⃣: VLO. \n 2️⃣: VNE. \n 3️⃣: VA.",
+      "<:training_team:895480894901592074> VA."
     ],
     [
-      "question 7 test \n \n possible answer 1 \n possible answer 2 \n possible answer 3 \n possible answer 4",
-      "answer 7 test"
+      "<:training_team:895480894901592074> Which V-speed represents maximum flap extended speed? \n \n 1️⃣: VFE. \n 2️⃣: VLOF. \n 3️⃣: VFC.",
+      "<:training_team:895480894901592074> VFE."
     ],
     [
-      "question 8 test \n \n possible answer 1 \n possible answer 2 \n possible answer 3 \n possible answer 4",
-      "answer 8 test"
+      "<:training_team:895480894901592074> Which V-speed represents maximum landing gear extended speed? \n \n 1️⃣: VLE. \n 2️⃣: VLO. \n 3️⃣: VFE.",
+      "<:training_team:895480894901592074> VLE."
     ],
     [
-      "question 9 test \n \n possible answer 1 \n possible answer 2 \n possible answer 3 \n possible answer 4",
-      "answer 9 test"
+      "<:training_team:895480894901592074> VNO is defined as the \n \n 1️⃣: normal operating range. \n 2️⃣: maximum structural cruising speed. \n 3️⃣: never-exceed speed.",
+      "<:training_team:895480894901592074> maximum structural cruising speed."
     ],
     [
-      "question 10 test \n \n possible answer 1 \n possible answer 2 \n possible answer 3 \n possible answer 4",
-      "answer 10 test"
+      "<:training_team:895480894901592074> VSO is defined as the \n \n 1️⃣: stalling speed or minimum steady flight speed in a specified configuration. \n 2️⃣: stalling speed or minimum takeoff safety speed. \n 3️⃣: stalling speed or minimum steady flight speed in the landing configuration.",
+      "<:training_team:895480894901592074> stalling speed or minimum steady flight speed in the landing configuration."
     ],
     [
-      "question 11 test \n \n possible answer 1 \n possible answer 2 \n possible answer 3 \n possible answer 4",
-      "answer 11 test"
+      "<:training_team:895480894901592074> Which would provide the greatest gain in altitude in the shortest distance during climb after takeoff? \n \n 1️⃣: VY. \n 2️⃣: VX. \n 3️⃣: VA.",
+      "<:training_team:895480894901592074> VX"
     ],
     [
-      "question 12 test \n \n possible answer 1 \n possible answer 2 \n possible answer 3 \n possible answer 4",
-      "answer 12 test"
+      "<:training_team:895480894901592074> After takeoff, which airspeed would the pilot use to gain the most altitude in a given period of time? \n \n 1️⃣: VA. \n 2️⃣: VX. \n 3️⃣: VY.",
+      "<:training_team:895480894901592074> VY."
     ]
   ],
   "latestQuestion": 1
