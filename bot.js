@@ -66,9 +66,9 @@ function randomNum(min, max) {
 function sendNewQuestion(channel) {
   let generatedNum = randomNum(0,questions.length)
   channel.send(questions[generatedNum][0]).then (message => {
-    message.react('1️⃣');
-    message.react('2️⃣');
-    message.react('3️⃣');
+    message.react('🇦');
+    message.react('🇧');
+    message.react('🇨');
     
   });
   file.latestQuestion = generatedNum
@@ -88,10 +88,10 @@ let question=questions[index];
 client.on('ready', async function() {
   const channel = await client.channels.fetch(process.env.CHANNEL_ID);
 //Getting random question every day:  0 57 22 * * * 
-  cron.schedule('0 00 21 * * *', function() {
+  cron.schedule('0 00 20 * * *', function() { //Correct time is 0 00 20 * * *
     sendNewQuestion(channel);
   });
-  cron.schedule('0 53 20 * * *', function() {
+  cron.schedule('0 53 19 * * *', function() { // Correct time is 0 53 19 * * *
     sendNewAnswer(channel);
   });
 });

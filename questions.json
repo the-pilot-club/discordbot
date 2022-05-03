@@ -1,53 +1,373 @@
 {
   "questions": [
     [
-      "<:training_team:895480894901592074> With respect to the certification of airmen, which is a category of aircraft? \n \n 1️⃣: Gyroplane, helicopter, airship, free balloon. \n 2️⃣: Airplane, rotorcraft, glider, lighter-than-air. \n 3️⃣: Single-engine land and sea, multiengine land and sea.",
+      "<:training_team:895480894901592074> With respect to the certification of airmen, which is a category of aircraft? \n \n 🇦: Gyroplane, helicopter, airship, free balloon. \n 🇧: Airplane, rotorcraft, glider, lighter-than-air. \n 🇨: Single-engine land and sea, multiengine land and sea.",
       "<:training_team:895480894901592074> Airplane, rotorcraft, glider, lighter-than-air."
     ],
     [
-      "<:training_team:895480894901592074> With respect to the certification of airmen, which is a class of aircraft \n \n 1️⃣: Single-engine land and sea, multiengine land and sea. \n 2️⃣: Lighter-than-air, airship, hot air balloon, gas balloon. \n 3️⃣: Airplane, rotorcraft, glider, lighter-than-air.",
+      "<:training_team:895480894901592074> With respect to the certification of airmen, which is a class of aircraft \n \n 🇦: Single-engine land and sea, multiengine land and sea. \n 🇧: Lighter-than-air, airship, hot air balloon, gas balloon. \n 🇨: Airplane, rotorcraft, glider, lighter-than-air.",
       "<:training_team:895480894901592074> Single-engine land and sea, multiengine land and sea."
     ],
     [
-      "<:training_team:895480894901592074> With respect to the certification of aircraft, which is a category of aircraft? \n \n 1️⃣: Airplane, rotorcraft, glider. \n 2️⃣: Landplane, seaplane. \n 3️⃣: Normal, utility, acrobatic.",
+      "<:training_team:895480894901592074> With respect to the certification of aircraft, which is a category of aircraft? \n \n 🇦: Airplane, rotorcraft, glider. \n 🇧: Landplane, seaplane. \n 🇨: Normal, utility, acrobatic.",
       "<:training_team:895480894901592074> Normal, utility, acrobatic."
     ],
     [
-      "<:training_team:895480894901592074> With respect to the certification of aircraft, which is a class of aircraft \n \n 1️⃣: Airplane, rotorcraft, glider, balloon \n 2️⃣: Transport, restricted, provisional. \n 3️⃣: Normal, utility, acrobatic, limited.",
+      "<:training_team:895480894901592074> With respect to the certification of aircraft, which is a class of aircraft \n \n 🇦: Airplane, rotorcraft, glider, balloon \n 🇧: Transport, restricted, provisional. \n 🇨: Normal, utility, acrobatic, limited.",
       "<:training_team:895480894901592074> Airplane, rotorcraft, glider, balloon"
     ],
     [
-      "<:training_team:895480894901592074> The definition of nighttime is \n \n 1️⃣: the time between the end of evening civil twilight and the beginning of morning civil twilight. \n 2️⃣: sunset to sunrise. \n 3️⃣: 1 hour after sunset to 1 hour before sunrise.",
+      "<:training_team:895480894901592074> The definition of nighttime is \n \n 🇦: the time between the end of evening civil twilight and the beginning of morning civil twilight. \n 🇧: sunset to sunrise. \n 🇨: 1 hour after sunset to 1 hour before sunrise.",
       "<:training_team:895480894901592074> the time between the end of evening civil twilight and the beginning of morning civil twilight."
     ],
     [
-      "<:training_team:895480894901592074> Which V-speed represents maneuvering speed \n \n 1️⃣: VLO. \n 2️⃣: VNE. \n 3️⃣: VA.",
+      "<:training_team:895480894901592074> Which V-speed represents maneuvering speed \n \n 🇦: VLO. \n 🇧: VNE. \n 🇨: VA.",
       "<:training_team:895480894901592074> VA."
     ],
     [
-      "<:training_team:895480894901592074> Which V-speed represents maximum flap extended speed? \n \n 1️⃣: VFE. \n 2️⃣: VLOF. \n 3️⃣: VFC.",
+      "<:training_team:895480894901592074> Which V-speed represents maximum flap extended speed? \n \n 🇦: VFE. \n 🇧: VLOF. \n 🇨: VFC.",
       "<:training_team:895480894901592074> VFE."
     ],
     [
-      "<:training_team:895480894901592074> Which V-speed represents maximum landing gear extended speed? \n \n 1️⃣: VLE. \n 2️⃣: VLO. \n 3️⃣: VFE.",
+      "<:training_team:895480894901592074> Which V-speed represents maximum landing gear extended speed? \n \n 🇦: VLE. \n 🇧: VLO. \n 🇨: VFE.",
       "<:training_team:895480894901592074> VLE."
     ],
     [
-      "<:training_team:895480894901592074> VNO is defined as the \n \n 1️⃣: normal operating range. \n 2️⃣: maximum structural cruising speed. \n 3️⃣: never-exceed speed.",
+      "<:training_team:895480894901592074> VNO is defined as the \n \n 🇦: normal operating range. \n 🇧: maximum structural cruising speed. \n 🇨: never-exceed speed.",
       "<:training_team:895480894901592074> maximum structural cruising speed."
     ],
     [
-      "<:training_team:895480894901592074> VSO is defined as the \n \n 1️⃣: stalling speed or minimum steady flight speed in a specified configuration. \n 2️⃣: stalling speed or minimum takeoff safety speed. \n 3️⃣: stalling speed or minimum steady flight speed in the landing configuration.",
+      "<:training_team:895480894901592074> VSO is defined as the \n \n 🇦: stalling speed or minimum steady flight speed in a specified configuration. \n 🇧: stalling speed or minimum takeoff safety speed. \n 🇨: stalling speed or minimum steady flight speed in the landing configuration.",
       "<:training_team:895480894901592074> stalling speed or minimum steady flight speed in the landing configuration."
     ],
     [
-      "<:training_team:895480894901592074> Which would provide the greatest gain in altitude in the shortest distance during climb after takeoff? \n \n 1️⃣: VY. \n 2️⃣: VX. \n 3️⃣: VA.",
+      "<:training_team:895480894901592074> Which would provide the greatest gain in altitude in the shortest distance during climb after takeoff? \n \n 🇦: VY. \n 🇧: VX. \n 🇨: VA.",
       "<:training_team:895480894901592074> VX"
     ],
     [
-      "<:training_team:895480894901592074> After takeoff, which airspeed would the pilot use to gain the most altitude in a given period of time? \n \n 1️⃣: VA. \n 2️⃣: VX. \n 3️⃣: VY.",
+      "<:training_team:895480894901592074> After takeoff, which airspeed would the pilot use to gain the most altitude in a given period of time? \n \n 🇦: VA. \n 🇧: VX. \n 🇨: VY.",
       "<:training_team:895480894901592074> VY."
+    ],
+    [
+      "<:training_team:895480894901592074> Preventive maintenance has been performed on an aircraft. What paperwork is required? \n \n 🇦: The date the work was completed, and the name of the person who did the work must be entered in the airframe and engine logbook. \n 🇧: The signature, certificate number, and kind of certificate held by the person approving the work and a description of the work must be entered in the aircraft maintenance records. \n 🇨: A full, detailed description of the work done must be entered in the airframe logbook.",
+      "<:training_team:895480894901592074> The signature, certificate number, and kind of certificate held by the person approving the work and a description of the work must be entered in the aircraft maintenance records."
+    ],
+    [
+      "<:training_team:895480894901592074> Which operation would be described as preventive maintenance? \n \n 🇦: Alteration of main seat support brackets. \n 🇧: Engine adjustments to allow automotive gas to be used. \n 🇨: Servicing landing gear wheel bearings.",
+      "<:training_team:895480894901592074> Servicing landing gear wheel bearings."
+    ],
+    [
+      "<:training_team:895480894901592074> Which operation would be described as preventive maintenance? \n \n 🇦: Replenishing hydraulic fluid. \n 🇧: Repair of landing gear brace struts. \n 🇨: Repair of portions of skin sheets by making additional seams.",
+      "<:training_team:895480894901592074> Replenishing hydraulic fluid."
+    ],
+    [
+      "<:training_team:895480894901592074> When must a current pilot certificate be in the pilot's personal possession or readily accessible in the aircraft? \n \n 🇦: Only when passengers are carried. \n 🇧: Anytime when acting as pilot in command or as a required crewmember. \n 🇨: When acting as a crew chief during launch and recovery.",
+      "<:training_team:895480894901592074> Anytime when acting as pilot in command or as a required crewmember."
+    ],
+    [
+      "<:training_team:895480894901592074> Each person who holds a pilot certificate or a medical certificate shall present it for inspection upon the request of the Administrator, the National Transportation Safety Board, or any \n \n 🇦: person in a position of authority. \n 🇧: authorized representative of the Department of Transportation. \n 🇨: federal, state, or local law enforcement officer.",
+      "<:training_team:895480894901592074> federal, state, or local law enforcement officer."
+    ],
+    [
+      "<:training_team:895480894901592074> A Third-Class Medical Certificate is issued to a 51-year-old pilot on May 3, this year. To exercise the privileges of a Private Pilot Certificate, the medical certificate will be valid until midnight on \n \n 🇦: May 31, 2 years later. \n 🇧: May 31, 1 year later. \n 🇨: May 3, 1 year later.",
+      "<:training_team:895480894901592074> May 31, 2 years later."
+    ],
+    [
+      "<:training_team:895480894901592074> For private pilot operations, a Second-Class Medical Certificate issued to a 42-year-old pilot on July 15, this year, will expire at midnight on \n \n 🇦: July 31, 1 year later. \n 🇧: July 31, 2 years later. \n 🇨: July 15, 2 years later.",
+      "<:training_team:895480894901592074> July 31, 2 years later."
+    ],
+    [
+      "<:training_team:895480894901592074> The pilot in command is required to hold a type rating in which aircraft? \n \n 🇦: Aircraft involved in ferry flights, training flights, or test flights. \n 🇧: Aircraft operated under an authorization issued by the Administrator. \n 🇨: Aircraft having a gross weight of more than 12,500 pounds.",
+      "<:training_team:895480894901592074> Aircraft having a gross weight of more than 12,500 pounds."
+    ],
+    [
+      "<:training_team:895480894901592074> What is the definition of a high-performance airplane? \n \n 🇦: An airplane with a normal cruise speed in excess of 200 knots. \n 🇧: An airplane with 180 horsepower, or retractable landing gear, flaps, and a fixed-pitch propeller. \n 🇨: An airplane with an engine of more than 200 horsepower.",
+      "<:training_team:895480894901592074> An airplane with an engine of more than 200 horsepower."
+    ],
+    [
+      "<:training_team:895480894901592074> Before a person holding a private pilot certificate may act as pilot in command of a high-performance airplane, that person must have \n \n 🇦: received ground and flight instruction from an authorized flight instructor who then endorses that person's logbook. \n 🇧: an endorsement in that person's logbook that he or she is competent to act as pilot in command. \n 🇨: passed a flight test in that airplane from an FAA inspector.",
+      "<:training_team:895480894901592074> Received ground and flight instruction from an authorized flight instructor who then endorses that person's logbook."
+    ],
+    [
+      "<:training_team:895480894901592074> In order to act as pilot in command of a high-performance airplane, a pilot must have \n \n 🇦: received and logged ground and flight instruction in an airplane that has more than 200 horsepower. \n 🇧: made and logged three solo takeoffs and landings in a high-performance airplane. \n 🇨: passed a flight test in a high-performance airplane.",
+      "<:training_team:895480894901592074> received and logged ground and flight instruction in an airplane that has more than 200 horsepower."
+    ],
+    [
+      "<:training_team:895480894901592074> To act as pilot in command of an aircraft carrying passengers, a pilot must show by logbook endorsement the satisfactory completion of a flight review or completion of a pilot proficiency check within the preceding \n \n 🇦: 24 calendar months. \n 🇧: 6 calendar months. \n 🇨: 12 calendar months.",
+      "<:training_team:895480894901592074> 24 calendar months."
+    ],
+    [
+      "<:training_team:895480894901592074> If recency of experience requirements for night flight are not met and official sunset is 1830, the latest time passengers may be carried is \n \n 🇦: 1929. \n 🇧: 1859. \n 🇨: 1829.",
+      "<:training_team:895480894901592074> 1929."
+    ],
+    [
+      "<:training_team:895480894901592074> To act as pilot in command of an aircraft carrying passengers, the pilot must have made at least three takeoffs and three landings in an aircraft of the same category, class, and if a type rating is required, of the same type, within the preceding \n \n 🇦: 24 calendar months. \n 🇧: 90 days. \n 🇨: 12 calendar months.",
+      "<:training_team:895480894901592074> 90 days."
+    ],
+    [
+      "<:training_team:895480894901592074> To act as pilot in command of an aircraft carrying passengers, the pilot must have made three takeoffs and three landings within the preceding 90 days in an aircraft of the same \n \n 🇦: make and model. \n 🇧: category, class, and type, if a type rating is required. \n 🇨: category and class, but not type.",
+      "<:training_team:895480894901592074> category, class, and type, if a type rating is required."
+    ],
+    [
+      "<:training_team:895480894901592074> The takeoffs and landings required to meet the recency of experience requirements for carrying passengers in a tailwheel airplane \n \n 🇦: may be touch and go or full stop. \n 🇧: must be to a full stop. \n 🇨: must be touch and go.",
+      "<:training_team:895480894901592074> must be to a full stop."
+    ],
+    [
+      "<:training_team:895480894901592074> The three takeoffs and landings that are required to act as pilot in command at night must be done during the time period from \n \n 🇦: sunset to sunrise. \n 🇧: 1 hour after sunset to 1 hour before sunrise \n 🇨: the end of evening civil twilight to the beginning of morning civil twilight.",
+      "<:training_team:895480894901592074> 1 hour after sunset to 1 hour before sunrise"
+    ],
+    [
+      "<:training_team:895480894901592074> To meet the recency of experience requirements to act as pilot in command carrying passengers at night, a pilot must have made at least three takeoffs and three landings to a full stop within the preceding 90 days in \n \n 🇦: any aircraft. \n 🇧: the same type of aircraft to be used. \n 🇨: the same category and class of aircraft to be used.",
+      "<:training_team:895480894901592074> the same category and class of aircraft to be used."
+    ],
+    [
+      "<:training_team:895480894901592074> If a certificated pilot changes permanent mailing address and fails to notify the FAA Airmen Certification Branch of the new address, the pilot is entitled to exercise the privileges of the pilot certificate for a period of only \n \n 🇦: 30 days after the date of the move. \n 🇧: 90 days after the date of the move. \n 🇨: 60 days after the date of the move.",
+      "<:training_team:895480894901592074> 30 days after the date of the move."
+    ],
+    [
+      "<:training_team:895480894901592074> A certificated private pilot may not act as pilot in command of an aircraft towing a glider unless there is entered in the pilot's logbook a minimum of \n \n 🇦: 100 hours of pilot flight time in any aircraft, that the pilot is using to tow a glider. \n 🇧: 100 hours of pilot-in-command time in the aircraft category, class, and type, if required, that the pilot is using to tow a glider. \n 🇨: 200 hours of pilot-in-command time in the aircraft category, class, and type, if required, that the pilot is using to tow a glider.",
+      "<:training_team:895480894901592074> 100 hours of pilot-in-command time in the aircraft category, class, and type, if required, that the pilot is using to tow a glider."
+    ],
+    [
+      "<:training_team:895480894901592074> To act as pilot in command of an aircraft towing a glider, a pilot is required to have made within the preceding 12 months \n \n 🇦: at least three actual or simulated glider tows while accompanied by a qualified pilot. \n 🇧: at least three flights as observer in a glider being towed by an aircraft. \n 🇨: at least three flights in a powered glider.",
+      "<:training_team:895480894901592074> at least three actual or simulated glider tows while accompanied by a qualified pilot."
+    ],
+    [
+      "<:training_team:895480894901592074> Each recreational or private pilot is required to have \n \n 🇦: a biennial flight review. \n 🇧: an annual flight review. \n 🇨: a semiannual flight review.",
+      "<:training_team:895480894901592074> a biennial flight review."
+    ],
+    [
+      "<:training_team:895480894901592074> If a recreational or private pilot had a flight review on August 8, this year, when is the next flight review required \n \n 🇦: August 31, 2 years later. \n 🇧: August 8, next year. \n 🇨: August 31, 1 year later.",
+      "<:training_team:895480894901592074> August 31, 2 years later."
+    ],
+    [
+      "<:training_team:895480894901592074> How many passengers is a recreational pilot allowed to carry on board \n \n 🇦: Three. \n 🇧: Two. \n 🇨: One.",
+      "<:training_team:895480894901592074> One."
+    ],
+    [
+      "<:training_team:895480894901592074> According to regulations pertaining to privileges and limitations, a recreational pilot may \n \n 🇦: be paid for the operating expenses of a flight. \n 🇧: not pay less than the pro rata share of the operating expenses of a flight with a passenger. \n 🇨: not be paid in any manner for the operating expenses of a flight.",
+      "<:training_team:895480894901592074> not pay less than the pro rata share of the operating expenses of a flight with a passenger."
+    ],
+    [
+      "<:training_team:895480894901592074> In regard to privileges and limitations, a recreational pilot may \n \n 🇦: fly for compensation or hire within 50 nautical miles from the departure airport with a logbook endorsement. \n 🇧: not be paid in any manner for the operating expenses of a flight from a passenger. \n 🇨: not pay less than the pro rata share of the operating expenses of a flight with a passenger.",
+      "<:training_team:895480894901592074> not pay less than the pro rata share of the operating expenses of a flight with a passenger."
+    ],
+    [
+      "<:training_team:895480894901592074> A recreational pilot may act as pilot in command of an aircraft that is certificated for a maximum of how many occupants \n \n 🇦: Four. \n 🇧: Three. \n 🇨: Two.",
+      "<:training_team:895480894901592074> Four."
+    ],
+    [
+      "<:training_team:895480894901592074> A recreational pilot may act as pilot in command of an aircraft with a maximum engine horsepower of \n \n 🇦: 180. \n 🇧: 200. \n 🇨: 160.",
+      "<:training_team:895480894901592074> 180."
+    ],
+    [
+      "<:training_team:895480894901592074> What exception, if any, permits a recreational pilot to act as pilot in command of an aircraft carrying a passenger for hire \n \n 🇦: If a donation is made to a charitable organization for the flight. \n 🇧: There is no exception. \n 🇨: If the passenger pays no more than the operating expenses.",
+      "<:training_team:895480894901592074> There is no exception."
+    ],
+    [
+      "<:training_team:895480894901592074> May a recreational pilot act as pilot in command of an aircraft in furtherance of a business \n \n 🇦: Yes, if the flight is only incidental to that business. \n 🇧: No, it is not allowed. \n 🇨: Yes, providing the aircraft does not carry a person or property for compensation or hire.",
+      "<:training_team:895480894901592074> No, it is not allowed."
+    ],
+    [
+      "<:training_team:895480894901592074> With respect to daylight hours, what is the earliest time a recreational pilot may take off \n \n 🇦: At the beginning of morning civil twilight. \n 🇧: One hour before sunrise. \n 🇨: At sunrise.",
+      "<:training_team:895480894901592074> At sunrise."
+    ],
+    [
+      "<:training_team:895480894901592074> If sunset is 2021 and the end of evening civil twilight is 2043, when must a recreational pilot terminate the flight \n \n 🇦: 2043. \n 🇧: 2021. \n 🇨: 2121.",
+      "<:training_team:895480894901592074> 2021."
+    ],
+    [
+      "<:training_team:895480894901592074> When may a recreational pilot operate to or from an airport that lies within Class C airspace \n \n 🇦: Anytime the control tower is in operation. \n 🇧: When the ceiling is at least 1,000 feet and the surface visibility is at least 3 miles. \n 🇨: For the purpose of obtaining an additional certificate or rating while under the supervision of an authorized flight instructor.",
+      "<:training_team:895480894901592074> For the purpose of obtaining an additional certificate or rating while under the supervision of an authorized flight instructor."
+    ],
+    [
+      "<:training_team:895480894901592074> Under what conditions may a recreational pilot operate at an airport that lies within Class D airspace and that has a part-time control tower in operation \n \n 🇦: Between sunrise and sunset when the tower is in operation, the ceiling is at least 2,500 feet, and the visibility is at least 3 miles. \n 🇧: Between sunrise and sunset when the tower is closed, the ceiling is at least 1,000 feet, and the visibility is at least 3 miles. \n 🇨: Any time when the tower is in operation, the ceiling is at least 3,000 feet, and the visibility is more than 1 mile.",
+      "<:training_team:895480894901592074> Between sunrise and sunset when the tower is closed, the ceiling is at least 1,000 feet, and the visibility is at least 3 miles."
+    ],
+    [
+      "<:training_team:895480894901592074> When may a recreational pilot fly above 10,000 feet MSL \n \n 🇦: When 2,500 feet AGL or below. \n 🇧: When outside of controlled airspace. \n 🇨: When 2,000 feet AGL or below.",
+      "<:training_team:895480894901592074> When 2,000 feet AGL or below."
+    ],
+    [
+      "<:training_team:895480894901592074> During daytime, what is the minimum flight or surface visibility required for recreational pilots in Class G airspace below 10,000 feet MSL \n \n 🇦: 1 mile. \n 🇧: 3 miles. \n 🇨: 5 miles.",
+      "<:training_team:895480894901592074> 3 miles."
+    ],
+    [
+      "<:training_team:895480894901592074> During daytime, what is the minimum flight visibility required for recreational pilots in controlled airspace below 10,000 feet MSL \n \n 🇦: 1 mile. \n 🇧: 3 miles. \n 🇨: 5 miles.",
+      "<:training_team:895480894901592074> 3 miles."
+    ],
+    [
+      "<:training_team:895480894901592074> Under what conditions, if any, may a recreational pilot demonstrate an aircraft in flight to a prospective buyer \n \n 🇦: The flight is not outside the United States. \n 🇧: The buyer pays all the operating expenses. \n 🇨: None.",
+      "<:training_team:895480894901592074> None."
+    ],
+    [
+      "<:training_team:895480894901592074> When, if ever, may a recreational pilot act as pilot in command in an aircraft towing a banner \n \n 🇦: If the pilot has an endorsement in his/her pilot logbook from an authorized flight instructor. \n 🇧: It is not allowed. \n 🇨: If the pilot has logged 100 hours of flight time in powered aircraft.",
+      "<:training_team:895480894901592074> It is not allowed."
+    ],
+    [
+      "<:training_team:895480894901592074> When must a recreational pilot have a pilot-in-command flight check \n \n 🇦: Every 180 days. \n 🇧: If the pilot has less than 400 total flight hours and has not flown as pilot in command in an aircraft within the preceding 180 days. \n 🇨: Every 400 hours.",
+      "<:training_team:895480894901592074> If the pilot has less than 400 total flight hours and has not flown as pilot in command in an aircraft within the preceding 180 days."
+    ],
+    [
+      "<:training_team:895480894901592074> A recreational pilot may fly as sole occupant of an aircraft at night while under the supervision of a flight instructor provided the flight or surface visibility is at least \n \n 🇦: 4 miles. \n 🇧: 3 miles. \n 🇨: 5 miles.",
+      "<:training_team:895480894901592074> 5 miles."
+    ],
+    [
+      "<:training_team:895480894901592074> What exception, if any, permits a private pilot to act as pilot in command of an aircraft carrying passengers who pay for the flight \n \n 🇦: There is no exception. \n 🇧: If a donation is made to a charitable organization for the flight. \n 🇨: If the passengers pay all the operating expenses.",
+      "<:training_team:895480894901592074> If a donation is made to a charitable organization for the flight."
+    ],
+    [
+      "<:training_team:895480894901592074> The width of a Federal Airway from either side of the centerline is \n \n 🇦: 6 nautical miles. \n 🇧: 4 nautical miles. \n 🇨: 8 nautical miles.",
+      "<:training_team:895480894901592074> 4 nautical miles."
+    ],
+    [
+      "<:training_team:895480894901592074> Unless otherwise specified, Federal Airways include that Class E airspace extending upward from \n \n 🇦: 1,200 feet above the surface up to and including 17,999 feet MSL. \n 🇧: the surface up to and including 18,000 feet MSL. \n 🇨: 700 feet above the surface up to and including 17,999 feet MSL.",
+      "<:training_team:895480894901592074> 1,200 feet above the surface up to and including 17,999 feet MSL."
+    ],
+    [
+      "<:training_team:895480894901592074> Normal VFR operations in Class D airspace with an operating control tower require the ceiling and visibility to be at least \n \n 🇦: 1,000 feet and 3 miles. \n 🇧: 2,500 feet and 3 miles. \n 🇨: 1,000 feet and 1 mile.",
+      "<:training_team:895480894901592074> 1,000 feet and 3 miles."
+    ],
+    [
+      "<:training_team:895480894901592074> The final authority as to the operation of an aircraft is the \n \n 🇦: pilot in command. \n 🇧: aircraft manufacturer. \n 🇨: Federal Aviation Administration.",
+      "<:training_team:895480894901592074> pilot in command."
+    ],
+    [
+      "<:training_team:895480894901592074> If an in-flight emergency requires immediate action, the pilot in command may \n \n 🇦: deviate from the FAR's to the extent required to meet that emergency. \n 🇧: deviate from the FAR's to the extent required to meet the emergency, but must submit a written report to the Administrator within 24 hours. \n 🇨: not deviate from the FAR's unless prior to the deviation approval is granted by the Administrator.",
+      "<:training_team:895480894901592074> deviate from the FAR's to the extent required to meet that emergency."
+    ],
+    [
+      "<:training_team:895480894901592074> When must a pilot who deviates from a regulation during an emergency send a written report of that deviation to the Administrator \n \n 🇦: Within 10 days \n 🇧: Within 7 days. \n 🇨: Upon request.",
+      "<:training_team:895480894901592074> Upon request."
+    ],
+    [
+      "<:training_team:895480894901592074> Who is responsible for determining if an aircraft is in condition for safe flight \n \n 🇦: The pilot in command. \n 🇧: The owner or operator. \n 🇨: A certificated aircraft mechanic.",
+      "<:training_team:895480894901592074> The pilot in command."
+    ],
+    [
+      "<:training_team:895480894901592074> Where may an aircraft's operating limitations be found \n \n 🇦: In the current, FAA-approved flight manual, approved manual material, markings, and placards, or any combination thereof. \n 🇧: On the Airworthiness Certificate. \n 🇨: In the aircraft airframe and engine logbooks.",
+      "<:training_team:895480894901592074> In the current, FAA-approved flight manual, approved manual material, markings, and placards, or any combination thereof."
+    ],
+    [
+      "<:training_team:895480894901592074> Under what conditions may objects be dropped from an aircraft \n \n 🇦: If precautions are taken to avoid injury or damage to persons or property on the surface. \n 🇧: If prior permission is received from the Federal Aviation Administration. \n 🇨: Only in an emergency.",
+      "<:training_team:895480894901592074> If precautions are taken to avoid injury or damage to persons or property on the surface."
+    ],
+    [
+      "<:training_team:895480894901592074> A person may not act as a crewmember of a civil aircraft if alcoholic beverages have been consumed by that person within the preceding \n \n 🇦: 12 hours. \n 🇧: 8 hours. \n 🇨: 24 hours.",
+      "<:training_team:895480894901592074> 8 hours."
+    ],
+    [
+      "<:training_team:895480894901592074> Under what condition, if any, may a pilot allow a person who is obviously under the influence of drugs to be carried aboard an aircraft \n \n 🇦: In an emergency or if the person is a medical patient under proper care. \n 🇧: Only if the person does not have access to the cockpit or pilot's compartment. \n 🇨: Under no condition.",
+      "<:training_team:895480894901592074> In an emergency or if the person is a medical patient under proper care."
+    ],
+    [
+      "<:training_team:895480894901592074> No person may attempt to act as a crewmember of a civil aircraft with \n \n 🇦: .008 percent by weight or more alcohol in the blood. \n 🇧: .004 percent by weight or more alcohol in the blood. \n 🇨: .04 percent by weight or more alcohol in the blood.",
+      "<:training_team:895480894901592074> .04 percent by weight or more alcohol in the blood."
+    ],
+    [
+      "<:training_team:895480894901592074> Which preflight action is specifically required of the pilot prior to each flight \n \n 🇦: Review wake turbulence avoidance procedures. \n 🇧: Become familiar with all available information concerning the flight. \n 🇨: Check the aircraft logbooks for appropriate entries.",
+      "<:training_team:895480894901592074> Become familiar with all available information concerning the flight."
+    ],
+    [
+      "<:training_team:895480894901592074> Preflight action, as required for all flights away from the vicinity of an airport, shall include \n \n 🇦: a study of arrival procedures at airports/ heliports of intended use. \n 🇧: an alternate course of action if the flight cannot be completed as planned. \n 🇨: the designation of an alternate airport.",
+      "<:training_team:895480894901592074> an alternate course of action if the flight cannot be completed as planned."
+    ],
+    [
+      "<:training_team:895480894901592074> In addition to other preflight actions for a VFR flight away from the vicinity of the departure airport, regulations specifically require the pilot in command to \n \n 🇦: check the accuracy of the navigation equipment and the emergency locator transmitter (ELT). \n 🇧: review traffic control light signal procedures. \n 🇨: determine runway lengths at airports of intended use and the aircraft's takeoff and landing distance data.",
+      "<:training_team:895480894901592074> determine runway lengths at airports of intended use and the aircraft's takeoff and landing distance data."
+    ],
+    [
+      "<:training_team:895480894901592074> Flight crewmembers are required to keep their safety belts and shoulder harnesses fastened during \n \n 🇦: flight in turbulent air. \n 🇧: takeoffs and landings. \n 🇨: all flight conditions.",
+      "<:training_team:895480894901592074> takeoffs and landings."
+    ],
+    [
+      "<:training_team:895480894901592074> Which best describes the flight conditions under which flight crewmembers are specifically required to keep their safety belts and shoulder harnesses fastened \n \n 🇦: Safety belts during takeoff and landing and while en route; shoulder harnesses during takeoff and landing. \n 🇧: Safety belts during takeoff and landing; shoulder harnesses during takeoff and landing and while en route. \n 🇨: Safety belts during takeoff and landing; shoulder harnesses during takeoff and landing.",
+      "<:training_team:895480894901592074> Safety belts during takeoff and landing and while en route; shoulder harnesses during takeoff and landing."
+    ],
+    [
+      "<:training_team:895480894901592074> With respect to passengers, what obligation, if any, does a pilot in command have concerning the use of safety belts \n \n 🇦: The pilot in command has no obligation in regard to passengers' use of safety belts. \n 🇧: The pilot in command must brief the passengers on the use of safety belts and notify them to fasten their safety belts during taxi, takeoff, and landing. \n 🇨: The pilot in command must instruct the passengers to keep their safety belts fastened for the entire flight.",
+      "<:training_team:895480894901592074> The pilot in command must brief the passengers on the use of safety belts and notify them to fasten their safety belts during taxi, takeoff, and landing."
+    ],
+    [
+      "<:training_team:895480894901592074> With certain exceptions, safety belts are required to be secured about passengers during \n \n 🇦: all flight conditions. \n 🇧: flight in turbulent air. \n 🇨: taxi, takeoffs, and landings.",
+      "<:training_team:895480894901592074> taxi, takeoffs, and landings."
+    ],
+    [
+      "<:training_team:895480894901592074> Safety belts are required to be properly secured about which persons in an aircraft and when \n \n 🇦: Pilots only, during takeoffs and landings. \n 🇧: Passengers, during taxi, takeoffs, and landings only. \n 🇨: Each person on board the aircraft during the entire flight.",
+      "<:training_team:895480894901592074> Passengers, during taxi, takeoffs, and landings only."
+    ],
+    [
+      "<:training_team:895480894901592074> No person may operate an aircraft in formation flight \n \n 🇦: in Class D airspace under special VFR. \n 🇧: over a densely populated area. \n 🇨: except by prior arrangement with the pilot in command of each aircraft.",
+      "<:training_team:895480894901592074> except by prior arrangement with the pilot in command of each aircraft."
+    ],
+    [
+      "<:training_team:895480894901592074> Which aircraft has the right-of-way over all other air traffic \n \n 🇦: An aircraft on final approach to land. \n 🇧: An aircraft in distress. \n 🇨: A balloon.",
+      "<:training_team:895480894901592074> An aircraft in distress."
+    ],
+    [
+      "<:training_team:895480894901592074> What action is required when two aircraft of the same category converge, but not head-on \n \n 🇦: The aircraft on the left shall give way. \n 🇧: Each aircraft shall give way to the right. \n 🇨: The faster aircraft shall give way.",
+      "<:training_team:895480894901592074> The aircraft on the left shall give way."
+    ],
+    [
+      "<:training_team:895480894901592074> Which aircraft has the right-of-way over the other aircraft listed \n \n 🇦: Glider. \n 🇧: Aircraft refueling other aircraft. \n 🇨: Airship.",
+      "<:training_team:895480894901592074> Glider."
+    ],
+    [
+      "<:training_team:895480894901592074> An airplane and an airship are converging. If the airship is left of the airplane's position, which aircraft has the right-of-way \n \n 🇦: The airplane. \n 🇧: Each pilot should alter course to the right. \n 🇨: The airship.",
+      "<:training_team:895480894901592074> The airship."
+    ],
+    [
+      "<:training_team:895480894901592074> Which aircraft has the right-of-way over the other aircraft listed \n \n 🇦: Airship. \n 🇧: Aircraft towing other aircraft. \n 🇨: Gyroplane.",
+      "<:training_team:895480894901592074> Airship."
+    ],
+    [
+      "<:training_team:895480894901592074> What action should the pilots of a glider and an airplane take if on a head-on collision course \n \n 🇦: Both pilots should give way to the right. \n 🇧: The glider pilot should give way to the right. \n 🇨: The airplane pilot should give way to the left.",
+      "<:training_team:895480894901592074> Both pilots should give way to the right."
+    ],
+    [
+      "<:training_team:895480894901592074> When two or more aircraft are approaching an airport for the purpose of landing, the right-of-way belongs to the aircraft \n \n 🇦: that has the other to its right. \n 🇧: that is the least maneuverable. \n 🇨: at the lower altitude, but it shall not take advantage of this rule to cut in front of or to overtake another.",
+      "<:training_team:895480894901592074> at the lower altitude, but it shall not take advantage of this rule to cut in front of or to overtake another."
+    ],
+    [
+      "<:training_team:895480894901592074> A seaplane and a motorboat are on crossing courses. If the motorboat is to the left of the seaplane, which has the right-of-way \n \n 🇦: The seaplane. \n 🇧: The motorboat. \n 🇨: Both should alter course to the right.",
+      "<:training_team:895480894901592074> The seaplane."
+    ],
+    [
+      "<:training_team:895480894901592074> Unless otherwise authorized, what is the maximum indicated airspeed at which a person may operate an aircraft below 10,000 feet MSL \n \n 🇦: 200 knots. \n 🇧: 250 knots. \n 🇨: 288 knots.",
+      "<:training_team:895480894901592074> 250 knots."
+    ],
+    [
+      "<:training_team:895480894901592074> Unless otherwise authorized, the maximum indicated airspeed at which aircraft may be flown when at or below 2,500 feet AGL and within 4 nautical miles of the primary airport of Class C airspace is \n \n 🇦: 200 knots. \n 🇧: 250 knots. \n 🇨: 230 knots.",
+      "<:training_team:895480894901592074> 250 knots."
+    ],
+    [
+      "<:training_team:895480894901592074> When flying in the airspace underlying Class B airspace, the maximum speed authorized is \n \n 🇦: 230 knots. \n 🇧: 200 knots. \n 🇨: 250 knots.",
+      "<:training_team:895480894901592074> 200 knots."
+    ],
+    [
+      "<:training_team:895480894901592074> When flying in a VFR corridor designated through Class B airspace, the maximum speed authorized is \n \n 🇦: 200 knots. \n 🇧: 250 knots. \n 🇨: 180 knots.",
+      "<:training_team:895480894901592074> 200 knots."
+    ],
+    [
+      "<:training_team:895480894901592074> Except when necessary for takeoff or landing, what is the minimum safe altitude for a pilot to operate an aircraft anywhere \n \n 🇦: An altitude allowing, if a power unit fails, an emergency landing without undue hazard to persons or property on the surface. \n 🇧: An altitude of 500 feet above the surface and no closer than 500 feet to any person, vessel, vehicle, or structure. \n 🇨: An altitude of 500 feet above the highest obstacle within a horizontal radius of 1,000 feet.",
+      "<:training_team:895480894901592074> An altitude allowing, if a power unit fails, an emergency landing without undue hazard to persons or property on the surface."
+    ],
+    [
+      "<:training_team:895480894901592074> Except when necessary for takeoff or landing, what is the minimum safe altitude required for a pilot to operate an aircraft over congested areas \n \n 🇦: An altitude of 1,000 feet above any person, vessel, vehicle, or structure. \n 🇧: An altitude of 500 feet above the highest obstacle within a horizontal radius of 1,000 feet of the aircraft. \n 🇨: An altitude of 1,000 feet above the highest obstacle within a horizontal radius of 2,000 feet of the aircraft.",
+      "<:training_team:895480894901592074> An altitude of 1,000 feet above the highest obstacle within a horizontal radius of 2,000 feet of the aircraft."
+    ],
+    [
+      "<:training_team:895480894901592074> Except when necessary for takeoff or landing, what is the minimum safe altitude required for a pilot to operate an aircraft over other than a congested area \n \n 🇦: An altitude of 500 feet above the highest obstacle within a horizontal radius of 1,000 feet. \n 🇧: An altitude allowing, if a power unit fails, an emergency landing without undue hazard to persons or property on the surface. \n 🇨: An altitude of 500 feet AGL, except over open water or a sparsely populated area, which requires 500 feet from any person, vessel, vehicle, or structure.",
+      "<:training_team:895480894901592074> An altitude of 500 feet AGL, except over open water or a sparsely populated area, which requires 500 feet from any person, vessel, vehicle, or structure."
+    ],
+    [
+      "<:training_team:895480894901592074> Except when necessary for takeoff or landing, an aircraft may not be operated closer than what distance from any person, vessel, vehicle, or structure \n \n 🇦: 500 feet. \n 🇧: 700 feet. \n 🇨: 1,000 feet.",
+      "<:training_team:895480894901592074> 500 feet."
+    ],
+    [
+      "<:training_team:895480894901592074> If an altimeter setting is not available before flight, to which altitude should the pilot adjust the altimeter \n \n 🇦: Pressure altitude corrected for nonstandard temperature. \n 🇧: The elevation of the nearest airport corrected to mean sea level. \n 🇨: The elevation of the departure area.",
+      "<:training_team:895480894901592074> The elevation of the departure area."
     ]
   ],
-  "latestQuestion": 8
+  "latestQuestion": 4
 }
