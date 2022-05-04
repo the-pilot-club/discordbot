@@ -1,11 +1,12 @@
 require('dotenv').config()
 
-const { Client, Collection, Intents } = require('discord.js');
+const { Client, Collection, Intents, Interaction } = require('discord.js');
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MESSAGE_REACTIONS, Intents.FLAGS.GUILD_MEMBERS] });
 const prefix = "$"
 const { MessageActionRow, MessageButton } = require('discord.js');
 const fs = require('fs');
 const { clientId, guildId, token } = require('./config.json');
+const fetch = require('node-fetch');
 
 
 
@@ -58,7 +59,7 @@ client.on('ready', () => {
     if(oldMember.roles.cache.has('930863426224410684')) return;
     if(newMember.roles.cache.has('930863426224410684')) {
       const channel = client.channels.cache.get('864834861603487754');
-      channel.send(`${oldMember} has now made it to the <@&930863426224410684> level! Congtrats!`);
+      channel.send(`Join me in congratulating ${oldmember} with achieving <@&930863426224410684> status at TPC!`);
     }
     })
 
@@ -67,7 +68,7 @@ client.on('guildMemberUpdate', async (oldMember, newMember) => {
   if(oldMember.roles.cache.has('855253377209204750')) return;
   if(newMember.roles.cache.has('855253377209204750')) {
     const channel = client.channels.cache.get('864834861603487754');
-    channel.send(`${oldMember} has now made it to the <@&855253377209204750> level! Congtrats!`);
+    channel.send(`Join me in congratulating ${oldmember} with achieving <@&855253377209204750> status at TPC!`);
   }
   })
 
@@ -76,11 +77,17 @@ client.on('guildMemberUpdate', async (oldMember, newMember) => {
   if(oldMember.roles.cache.has('930863007372836876')) return;
   if(newMember.roles.cache.has('930863007372836876')) {
     const channel = client.channels.cache.get('864834861603487754');
-    channel.send(`${oldMember} has now made it to the <@&930863007372836876> level! Congtrats!`);
+    channel.send(`Join me in congratulating ${oldmember} with achieving <@&930863007372836876> status at TPC!`);
   }
   })
-
-
+//Booster
+  client.on('guildMemberUpdate', async (oldMember, newMember) => {
+    if(oldMember.roles.cache.has('838504056358961164')) return;
+    if(newMember.roles.cache.has('838504056358961164')) {
+      const channel = client.channels.cache.get('864834861603487754');
+      channel.send(`${oldmember} Thank you for boosting the club!`);
+    }
+    })
  
 // q and a funtion
 
