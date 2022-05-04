@@ -59,7 +59,7 @@ client.on('ready', () => {
     if(oldMember.roles.cache.has('930863426224410684')) return;
     if(newMember.roles.cache.has('930863426224410684')) {
       const channel = client.channels.cache.get('864834861603487754');
-      channel.send(`Join me in congratulating ${oldMember} with achieving <@&930863426224410684> status at TPC!`);
+      channel.send(`Join us in congratulating ${oldMember} with achieving <@&930863426224410684> status at TPC!`);
     }
     })
 
@@ -68,7 +68,7 @@ client.on('guildMemberUpdate', async (oldMember, newMember) => {
   if(oldMember.roles.cache.has('855253377209204750')) return;
   if(newMember.roles.cache.has('855253377209204750')) {
     const channel = client.channels.cache.get('864834861603487754');
-    channel.send(`Join me in congratulating ${oldMember} with achieving <@&855253377209204750> status at TPC!`);
+    channel.send(`Join us in congratulating ${oldMember} with achieving <@&855253377209204750> status at TPC!`);
   }
   })
 
@@ -77,7 +77,7 @@ client.on('guildMemberUpdate', async (oldMember, newMember) => {
   if(oldMember.roles.cache.has('930863007372836876')) return;
   if(newMember.roles.cache.has('930863007372836876')) {
     const channel = client.channels.cache.get('864834861603487754');
-    channel.send(`Join me in congratulating ${oldMember} with achieving <@&930863007372836876> status at TPC!`);
+    channel.send(`Join us in congratulating ${oldMember} with achieving <@&930863007372836876> status at TPC!`);
   }
   })
 //Booster
