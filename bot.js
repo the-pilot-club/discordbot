@@ -1,11 +1,12 @@
 require('dotenv').config()
 
 const { Client, Collection, Intents } = require('discord.js');
-const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MESSAGE_REACTIONS] });
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MESSAGE_REACTIONS, Intents.FLAGS.GUILD_MEMBERS] });
 const prefix = "$"
 const { MessageActionRow, MessageButton } = require('discord.js');
 const fs = require('fs');
 const { clientId, guildId, token } = require('./config.json');
+
 
 
 client.on('ready', () => {
@@ -52,6 +53,35 @@ client.on('ready', () => {
     }
   })
 
+  //commuter role
+  client.on('guildMemberUpdate', async (oldMember, newMember) => {
+    if(oldMember.roles.cache.has('930863426224410684')) return;
+    if(newMember.roles.cache.has('930863426224410684')) {
+      const channel = client.channels.cache.get('864834861603487754');
+      channel.send(`${oldMember} has now made it to the <@&930863426224410684> level! Congtrats!`);
+    }
+    })
+
+//frequent flyer
+client.on('guildMemberUpdate', async (oldMember, newMember) => {
+  if(oldMember.roles.cache.has('855253377209204750')) return;
+  if(newMember.roles.cache.has('855253377209204750')) {
+    const channel = client.channels.cache.get('864834861603487754');
+    channel.send(`${oldMember} has now made it to the <@&855253377209204750> level! Congtrats!`);
+  }
+  })
+
+//VIP
+client.on('guildMemberUpdate', async (oldMember, newMember) => {
+  if(oldMember.roles.cache.has('930863007372836876')) return;
+  if(newMember.roles.cache.has('930863007372836876')) {
+    const channel = client.channels.cache.get('864834861603487754');
+    channel.send(`${oldMember} has now made it to the <@&930863007372836876> level! Congtrats!`);
+  }
+  })
+
+
+ 
 // q and a funtion
 
 const file = require("./questions.json")
