@@ -58,7 +58,7 @@ client.on('ready', () => {
   client.on('guildMemberUpdate', async (oldMember, newMember) => {
     if(oldMember.roles.cache.has('930863426224410684')) return;
     if(newMember.roles.cache.has('930863426224410684')) {
-      const channel = client.channels.cache.get('864834861603487754');
+      const channel = client.channels.cache.get('830209982770708500');
       channel.send(`Join us in congratulating ${oldMember} with achieving <@&930863426224410684> status at TPC!`);
     }
     })
@@ -67,7 +67,7 @@ client.on('ready', () => {
 client.on('guildMemberUpdate', async (oldMember, newMember) => {
   if(oldMember.roles.cache.has('855253377209204750')) return;
   if(newMember.roles.cache.has('855253377209204750')) {
-    const channel = client.channels.cache.get('864834861603487754');
+    const channel = client.channels.cache.get('830209982770708500');
     channel.send(`Join us in congratulating ${oldMember} with achieving <@&855253377209204750> status at TPC!`);
   }
   })
@@ -76,7 +76,7 @@ client.on('guildMemberUpdate', async (oldMember, newMember) => {
 client.on('guildMemberUpdate', async (oldMember, newMember) => {
   if(oldMember.roles.cache.has('930863007372836876')) return;
   if(newMember.roles.cache.has('930863007372836876')) {
-    const channel = client.channels.cache.get('864834861603487754');
+    const channel = client.channels.cache.get('830209982770708500');
     channel.send(`Join us in congratulating ${oldMember} with achieving <@&930863007372836876> status at TPC!`);
   }
   })
@@ -84,7 +84,7 @@ client.on('guildMemberUpdate', async (oldMember, newMember) => {
   client.on('guildMemberUpdate', async (oldMember, newMember) => {
     if(oldMember.roles.cache.has('838504056358961164')) return;
     if(newMember.roles.cache.has('838504056358961164')) {
-      const channel = client.channels.cache.get('864834861603487754');
+      const channel = client.channels.cache.get('830209982770708500');
       channel.send(`${oldMember} Thank you for boosting the club!`);
     }
     })
