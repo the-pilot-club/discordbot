@@ -8,7 +8,7 @@ const fs = require('fs');
 const { clientId, guildId, token } = require('./config.json');
 const fetch = require('node-fetch');
 const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
-
+const {handler} = require('vatsim-data-handler');
 client.setMaxListeners(0);
 
 
@@ -39,9 +39,13 @@ for (const file of eventFiles) {
       interaction.reply(body)
     } else if (commandName === 'atis') {
       const airport = interaction.options.getString('airport')
-      const response = await fetch(`https://datis.clowd.io/api/${airport}`);
-      const body = await response.text();
-      interaction.reply(body[0].datis)
+      await handler.getAirportInfo(airport).then(val => {
+        if (val.atis === undefined) {
+        interaction.reply("Atis isn't posted for " + airport)
+        } else {
+          interaction.reply(val.atis.text_atis.toString())
+        }
+    })
     }
   });
 
