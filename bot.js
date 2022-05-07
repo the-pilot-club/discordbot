@@ -37,7 +37,24 @@ for (const file of eventFiles) {
       const response = await fetch(`https://metar.vatsim.net/metar.php?id=${airport}`);
       const body = await response.text();
       if (body != undefined){
-      interaction.reply(body)
+        var metarEmbed =
+        {
+          "type": "rich",
+          "title": `METAR`,
+          "description": `METAR for ${airport}`,
+          "color": 0x00FFFF,
+          "fields": [
+            {
+              "name": `Live METAR`,
+              "value": body
+            }
+          ],
+          "footer": {
+            "text": `made by Eric + Losh`
+          }
+        }
+      interaction.reply({ embeds: [metarEmbed] })
+      //interaction.reply(body)
     } else {
       interaction.reply("METAR isn't posted for: " + airport)
     }
@@ -47,9 +64,56 @@ for (const file of eventFiles) {
         if (val.atis === undefined) {
         interaction.reply("Atis isn't posted for " + airport)
         } else {
-          interaction.reply(val.atis.text_atis.toString())
+          var atisEmbed =
+        {
+          "type": "rich",
+          "title": `ATIS`,
+          "description": `ATIS for ${airport} (on vatsim, not real life)`,
+          "color": 0x00FFFF,
+          "fields": [
+            {
+              "name": `Live ATIS`,
+              "value": val.atis.text_atis.toString()
+            }
+          ],
+          "footer": {
+            "text": `made by Eric + Losh`
+          }
+        }
+          interaction.reply({ embeds: [atisEmbed] })
         }
     })
+    } else if (commandName === 'airport') {
+      const airport = interaction.options.getString('airport')
+      const response = await fetch(`https://metar.vatsim.net/metar.php?id=${airport}`);
+      const body = await response.text();
+      if (body != undefined){
+      let airportEmbed =
+        {
+          "type": "rich",
+          "title": `Airport`,
+          "description": `Information about ${airport}`,
+          "color": 0x00FFFF,
+          "fields": [
+            {
+              "name": `Charts (airnav)`,
+              "value": `https://www.airnav.com/airport/${airport}`
+            },
+            {
+              "name": `METAR`,
+              "value": body
+            }
+          ],
+          "footer": {
+            "text": `made by Eric + Losh`
+          }
+        }
+      
+    
+      interaction.reply({ embeds: [airportEmbed] })
+    } else {
+      interaction.reply("METAR isn't posted for: " + airport)
+    }
     }
   });
 
