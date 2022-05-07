@@ -41,6 +41,15 @@ for (const file of eventFiles) {
           .setStyle('LINK'),
         ) ;
       await interaction.reply({content:`Next TPC Group Flight:`, components: [row]})
+      } else if (commandName === 'server-commands') {
+        const row = new MessageActionRow()
+          .addComponents(
+            new MessageButton()
+            .setLabel('TPC Server Commands')
+            .setURL("https://docs.google.com/document/d/1zubqEpy1vIOExAOF4r41a7sLnVFsWSkhNiaZ0WnxXXg/edit?usp=sharing")
+            .setStyle('LINK'),
+          ) ;
+        await interaction.reply({content:`Here is a full list of member friendly commands:`, components: [row]})
       } else if (commandName === 'leaderboard') {
         const row = new MessageActionRow()
           .addComponents(
