@@ -32,15 +32,24 @@ for (const file of eventFiles) {
       await interaction.reply(`Total members: ${interaction.guild.memberCount}`);
     } else if (commandName === 'user') {
       await interaction.reply(`Your tag: ${interaction.user.tag}\nYour id: ${interaction.user.id}`);
-    } else if (commandName === 'leaderboard') {
+    } else if (commandName === 'next flight') {
       const row = new MessageActionRow()
         .addComponents(
           new MessageButton()
-          .setLabel('TPC Leaderboard')
-          .setURL("https://mee6.xyz/thepilotclub")
+          .setLabel('TPC Next Flight')
+          .setURL("https://www.thepilotclub.org/dispatch")
           .setStyle('LINK'),
         ) ;
       await interaction.reply({content:`The TPC Leaderboard:`, components: [row]})
+      } else if (commandName === 'leaderboard') {
+        const row = new MessageActionRow()
+          .addComponents(
+            new MessageButton()
+            .setLabel('TPC Leaderboard')
+            .setURL("https://mee6.xyz/thepilotclub")
+            .setStyle('LINK'),
+          ) ;
+        await interaction.reply({content:`The TPC Leaderboard:`, components: [row]})
     } else if (commandName === 'metar') {
       const airport = interaction.options.getString('airport')
       const response = await fetch(`https://metar.vatsim.net/metar.php?id=${airport}`);
