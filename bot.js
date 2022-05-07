@@ -53,7 +53,7 @@ client.on('ready', () => {
       message.reply("is better than you...")
     }
   })
-  client.on("messageCreate", (message) => {
+  client.on("messageCreate", async (message) => {
     if (message.content.toLowerCase() === "metar") {
       const response = await fetch('https://metar.vatsim.net/metar.php?id=KJFK');
       const body = await response.text();
