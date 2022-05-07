@@ -41,7 +41,7 @@ for (const file of eventFiles) {
         {
           "type": "rich",
           "title": `METAR`,
-          "description": `METAR for ${airport}`,
+          "description": `METAR for ${airport.toUpperCase()}`,
           "color": 0x00FFFF,
           "fields": [
             {
@@ -55,6 +55,7 @@ for (const file of eventFiles) {
         }
       interaction.reply({ embeds: [metarEmbed] })
       //interaction.reply(body)
+        //test
     } else {
       interaction.reply("METAR isn't posted for: " + airport)
     }
@@ -62,13 +63,13 @@ for (const file of eventFiles) {
       const airport = interaction.options.getString('airport')
       await handler.getAirportInfo(airport).then(val => {
         if (val.atis === undefined) {
-        interaction.reply("Atis isn't available for " + airport)
+        interaction.reply("ATIS isn't available for " + airport)
         } else {
           var atisEmbed =
         {
           "type": "rich",
           "title": `ATIS`,
-          "description": `ATIS for ${airport} (VATSIM)`,
+          "description": `ATIS for ${airport.toUpperCase()} (VATSIM)`,
           "color": 0x00FFFF,
           "fields": [
             {
@@ -92,7 +93,7 @@ for (const file of eventFiles) {
         {
           "type": "rich",
           "title": `Airport`,
-          "description": `Information about ${airport}`,
+          "description": `Information about ${airport.toUpperCase()}`,
           "color": 0x00FFFF,
           "fields": [
             {
