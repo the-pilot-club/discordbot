@@ -72,15 +72,6 @@ client.on('ready', () => {
       message.reply("is better than you...")
     }
   })
-  client.on("messageCreate", async (message) => {
-    if (message.content.toLowerCase() === "metar") {
-      const response = await fetch('https://metar.vatsim.net/metar.php?id=KJFK');
-      const body = await response.text();
-      message.reply(body)
-      //hi
-    }
-  })
-
   //commuter role
   client.on('guildMemberUpdate', async (oldMember, newMember) => {
     if(oldMember.roles.cache.has('930863426224410684')) return;
