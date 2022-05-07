@@ -37,6 +37,11 @@ for (const file of eventFiles) {
       const response = await fetch(`https://metar.vatsim.net/metar.php?id=${airport}`);
       const body = await response.text();
       interaction.reply(body)
+    } else if (commandName === 'atis') {
+      const airport = interaction.options.getString('airport')
+      const response = await fetch(`https://datis.clowd.io/api/${airport}`);
+      const body = await response.text();
+      interaction.reply(body)
     }
   });
 
