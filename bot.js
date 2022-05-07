@@ -7,13 +7,19 @@ const { MessageActionRow, MessageButton } = require('discord.js');
 const fs = require('fs');
 const { clientId, guildId, token } = require('./config.json');
 const fetch = require('node-fetch');
+const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
+
+client.setMaxListeners(0);
 
 
-
-client.on('ready', () => {
-    console.log(`Logged in as ${client.user.tag}!`);
-    client.user.setActivity('XPlane 11' , {type: "PLAYING"})
-  });
+for (const file of eventFiles) {
+	const event = require(`./events/${file}`);
+	if (event.once) {
+		client.once(event.name, (...args) => event.execute(...args));
+	} else {
+		client.on(event.name, (...args) => event.execute(...args));
+	}
+}
 
   client.on('interactionCreate', async interaction => {
     if (!interaction.isCommand()) return;
@@ -34,44 +40,6 @@ client.on('ready', () => {
     }
   });
 
-
- client.on("messageCreate", (message) => {
-    if (message.content.toUpperCase() === `TPC WELCOME`) {
-      message.reply("Welcome to The Pilot Club!")
-    }
-  })
-
-
-  client.on("messageCreate", (message) => {
-    if (message.content.toLowerCase() === `tpc website`) {
-      const row = new MessageActionRow()
-        .addComponents(
-          new MessageButton()
-            .setLabel('The Pilot Club Website')
-            .setStyle('LINK')
-            .setURL('https://www.thepilotclub.org'));
-    message.reply({ content: 'The button below will take you to our website. Thank you for being a vauled member of The Pilot Club!!', components: [row]})
-        }
-  })
-
-/*  client.on("messageCreate", (message) => {
-    if (message.content.toLowerCase() === "support") {
-    message.reply("To get support or submit feedback, click here: https://support.thepilotclub.org/open.php  Thank you for being a valued member of The Pilot Club!!")
-        }
-  })
-*/
-
-  client.on("messageCreate", (message) => {
-    if (message.content.toLowerCase() === "eric") {
-      message.reply("<@398557782623649794> That one guy who knew enough coding to make me a thing (with help from <@875527822611992577>). If you are seeing this message, DM him and tell him the code word || Green Horn ||")
-    }
-  })
-
-  client.on("messageCreate", (message) => {
-    if (message.content.toLowerCase() === "losh") {
-      message.reply("is better than you...")
-    }
-  })
   //commuter role
   client.on('guildMemberUpdate', async (oldMember, newMember) => {
     if(oldMember.roles.cache.has('930863426224410684')) return;
@@ -111,6 +79,7 @@ client.on('guildMemberUpdate', async (oldMember, newMember) => {
 
 const file = require("./questions.json")
 const cron = require('node-cron'); //ability to repeat code
+const { EventEmitter } = require('stream');
 
 function randomNum(min, max) {
   min = Math.ceil(min);
