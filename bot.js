@@ -53,6 +53,14 @@ client.on('ready', () => {
       message.reply("is better than you...")
     }
   })
+  client.on("messageCreate", (message) => {
+    if (message.content.toLowerCase() === "metar") {
+      const response = await fetch('https://metar.vatsim.net/metar.php?id=KJFK');
+      const body = await response.text();
+      message.reply(body)
+      //hi
+    }
+  })
 
   //commuter role
   client.on('guildMemberUpdate', async (oldMember, newMember) => {
@@ -88,11 +96,11 @@ client.on('guildMemberUpdate', async (oldMember, newMember) => {
       channel.send(`${oldMember} Thank you for boosting the club!`);
     }
     })
- 
+
 // q and a funtion
 
 const file = require("./questions.json")
-const cron = require('node-cron'); //ability to repeat code   
+const cron = require('node-cron'); //ability to repeat code
 
 function randomNum(min, max) {
   min = Math.ceil(min);
@@ -106,7 +114,7 @@ function sendNewQuestion(channel) {
     message.react('🇦');
     message.react('🇧');
     message.react('🇨');
-    
+
   });
   file.latestQuestion = generatedNum
   fs.writeFileSync("questions.json", JSON.stringify(file, null, 2));
@@ -124,7 +132,7 @@ let question=questions[index];
 //sends message to a specific channel
 client.on('ready', async function() {
   const channel = await client.channels.fetch(process.env.CHANNEL_ID);
-//Getting random question every day:  0 57 22 * * * 
+//Getting random question every day:  0 57 22 * * *
   cron.schedule('0 00 08 * * *', function() { //Correct time is 0 00 08 * * *
     sendNewQuestion(channel);
   });
