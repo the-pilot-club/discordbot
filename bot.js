@@ -61,7 +61,7 @@ for (const file of eventFiles) {
     }
     } else if (commandName === 'atis') {
       const airport = interaction.options.getString('airport')
-      await handler.getAirportInfo(airport).then(val => {
+      await handler.getAirportInfo(airport.toUpperCase()).then(val => {
         if (val.atis === undefined) {
         interaction.reply("ATIS isn't available for " + airport.toUpperCase())
         } else {
