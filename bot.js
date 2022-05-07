@@ -40,7 +40,7 @@ for (const file of eventFiles) {
           .setURL("https://www.thepilotclub.org/dispatch")
           .setStyle('LINK'),
         ) ;
-      await interaction.reply({content:`The TPC Leaderboard:`, components: [row]})
+      await interaction.reply({content:`Next TPC Group Flight:`, components: [row]})
       } else if (commandName === 'leaderboard') {
         const row = new MessageActionRow()
           .addComponents(
