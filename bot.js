@@ -97,7 +97,7 @@ for (const file of eventFiles) {
           "color": 0X37B6FF,
           "fields": [
             {
-              "name": `Charts (airnav)`,
+              "name": `CHARTS (AirNav)`,
               "value": `https://www.airnav.com/airport/${airport}`
             },
             {
@@ -112,7 +112,37 @@ for (const file of eventFiles) {
       
     
       interaction.reply({ embeds: [airportEmbed] })
-    }
+    } else if (commandName === 'charts') {
+    const airport = interaction.options.getString('airport')
+    const response = await fetch(`https://metar.vatsim.net/metar.php?id=${airport}`);
+    const body = await response.text();
+    
+    let chartsEmbed =
+      {
+        "type": "rich",
+        "title": `Airport`,
+        "description": `Information about ${airport.toUpperCase()}`,
+        "color": 0X37B6FF,
+        "fields": [
+          {
+            "name": `CHARTS (AirNav)`,
+            "value": `https://www.airnav.com/airport/${airport}`
+          },
+          {
+            "name": `METAR`,
+            "value": body || "Not available"
+          }
+        ],
+        "footer": {
+          "text": `made by the TPC Dev Team`
+        }
+      }
+    
+  
+    interaction.reply({ embeds: [chartsEmbed] })
+  }
+
+    
   });
 
   //commuter role

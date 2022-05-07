@@ -18,7 +18,11 @@ const commands = [
 	new SlashCommandBuilder().setName('airport').setDescription('gives information about specific airport').addStringOption(option =>
         option.setName('airport')
         .setDescription('The input to echo back')
-        .setRequired(true))
+        .setRequired(true)),
+        new SlashCommandBuilder().setName('charts').setDescription('gives information about specific airport').addStringOption(option =>
+                option.setName('airport')
+                .setDescription('The input to echo back')
+                .setRequired(true))
 ]
 	.map(command => command.toJSON());
 
