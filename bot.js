@@ -36,7 +36,7 @@ for (const file of eventFiles) {
       const row = new MessageActionRow()
         .addComponents(
           new MessageButton()
-          .setLabel('TPC Next Flight')
+          .setLabel('Next TPC Group Flight')
           .setURL("https://www.thepilotclub.org/dispatch")
           .setStyle('LINK'),
         ) ;
