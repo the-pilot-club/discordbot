@@ -33,7 +33,6 @@ for (const file of eventFiles) {
     } else if (commandName === 'user') {
       await interaction.reply(`Your tag: ${interaction.user.tag}\nYour id: ${interaction.user.id}`);
     } else if (commandName === 'leaderboard') {
-      await interaction.reply(`The TPC Leaderboard:`)
       const row = new MessageActionRow()
         .addComponents(
           new MessageButton()
@@ -41,6 +40,7 @@ for (const file of eventFiles) {
           .setURL("https://mee6.xyz/thepilotclub")
           .setStyle('LINK'),
         ) ;
+      await interaction.reply({content:`The TPC Leaderboard:`, components: [row]})
     } else if (commandName === 'metar') {
       const airport = interaction.options.getString('airport')
       const response = await fetch(`https://metar.vatsim.net/metar.php?id=${airport}`);
