@@ -50,7 +50,7 @@ for (const file of eventFiles) {
             }
           ],
           "footer": {
-            "text": `made by Eric + Losh`
+            "text": `made by the TPC Dev Team`
           }
         }
       interaction.reply({ embeds: [metarEmbed] })
@@ -63,7 +63,7 @@ for (const file of eventFiles) {
       const airport = interaction.options.getString('airport')
       await handler.getAirportInfo(airport).then(val => {
         if (val.atis === undefined) {
-        interaction.reply("ATIS isn't available for " + airport)
+        interaction.reply("ATIS isn't available for " + airport.toUpperCase())
         } else {
           var atisEmbed =
         {
@@ -78,7 +78,7 @@ for (const file of eventFiles) {
             }
           ],
           "footer": {
-            "text": `made by Eric + Losh`
+            "text": `made by the TPC Dev Team`
           }
         }
           interaction.reply({ embeds: [atisEmbed] })
@@ -106,7 +106,7 @@ for (const file of eventFiles) {
             }
           ],
           "footer": {
-            "text": `made by Eric + Losh`
+            "text": `made by the TPC Dev Team`
           }
         }
       
