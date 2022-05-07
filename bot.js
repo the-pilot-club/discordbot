@@ -42,7 +42,7 @@ for (const file of eventFiles) {
           "type": "rich",
           "title": `METAR`,
           "description": `METAR for ${airport.toUpperCase()}`,
-          "color": 0x00FFFF,
+          "color": 0X37B6FF,
           "fields": [
             {
               "name": `Live METAR`,
@@ -70,7 +70,7 @@ for (const file of eventFiles) {
           "type": "rich",
           "title": `ATIS`,
           "description": `ATIS for ${airport.toUpperCase()} (VATSIM)`,
-          "color": 0x00FFFF,
+          "color": 0X37B6FF,
           "fields": [
             {
               "name": `Live ATIS`,
@@ -94,7 +94,7 @@ for (const file of eventFiles) {
           "type": "rich",
           "title": `Airport`,
           "description": `Information about ${airport.toUpperCase()}`,
-          "color": 0x00FFFF,
+          "color": 0X37B6FF,
           "fields": [
             {
               "name": `Charts (airnav)`,
