@@ -32,6 +32,15 @@ for (const file of eventFiles) {
       await interaction.reply(`Total members: ${interaction.guild.memberCount}`);
     } else if (commandName === 'user') {
       await interaction.reply(`Your tag: ${interaction.user.tag}\nYour id: ${interaction.user.id}`);
+    } else if (commandName === 'leaderboard') {
+      await interaction.reply(`The TPC Leaderboard:`)
+      const row = new MessageActionRow()
+        .addComponents(
+          new MessageButton()
+          .setLabel('TPC Leaderboard')
+          .setURL("https://mee6.xyz/thepilotclub")
+          .setStyle('LINK'),
+        ) ;
     } else if (commandName === 'metar') {
       const airport = interaction.options.getString('airport')
       const response = await fetch(`https://metar.vatsim.net/metar.php?id=${airport}`);

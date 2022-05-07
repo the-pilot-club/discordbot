@@ -7,6 +7,7 @@ const commands = [
 	new SlashCommandBuilder().setName('ping').setDescription('Replies with pong!'),
 	new SlashCommandBuilder().setName('membercount').setDescription('Replies with current member count!'),
 	new SlashCommandBuilder().setName('user').setDescription('Replies with user info!'),
+        new SlashCommandBuilder().setName('leaderboard').setDescription('The link to find our leaderbaord!'),
     new SlashCommandBuilder().setName('metar').setDescription('gives metar for specific airport').addStringOption(option =>
         option.setName('airport')
         .setDescription('The input to echo back')
