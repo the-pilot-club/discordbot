@@ -15,6 +15,25 @@ client.on('ready', () => {
     client.user.setActivity('XPlane 11' , {type: "PLAYING"})
   });
 
+  client.on('interactionCreate', async interaction => {
+    if (!interaction.isCommand()) return;
+  
+    const { commandName } = interaction;
+  
+    if (commandName === 'ping') {
+      await interaction.reply('Pong!');
+    } else if (commandName === 'server') {
+      await interaction.reply(`Server name: ${interaction.guild.name}\nTotal members: ${interaction.guild.memberCount}`);
+    } else if (commandName === 'user') {
+      await interaction.reply(`Your tag: ${interaction.user.tag}\nYour id: ${interaction.user.id}`);
+    } else if (commandName === 'metar') {
+      const airport = interaction.options.getString('airport')
+      const response = await fetch(`https://metar.vatsim.net/metar.php?id=${airport}`);
+      const body = await response.text();
+      interaction.reply(body)
+    }
+  });
+
 
  client.on("messageCreate", (message) => {
     if (message.content.toUpperCase() === `TPC WELCOME`) {
