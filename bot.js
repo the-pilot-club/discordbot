@@ -32,7 +32,7 @@ for (const file of eventFiles) {
       await interaction.reply(`Total members: ${interaction.guild.memberCount}`);
     } else if (commandName === 'user') {
       await interaction.reply(`Your tag: ${interaction.user.tag}\nYour id: ${interaction.user.id}`);
-    } else if (commandName === 'next flight') {
+    } else if (commandName === 'next-flight') {
       const row = new MessageActionRow()
         .addComponents(
           new MessageButton()
