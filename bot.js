@@ -41,7 +41,7 @@ for (const file of eventFiles) {
       const airport = interaction.options.getString('airport')
       const response = await fetch(`https://datis.clowd.io/api/${airport}`);
       const body = await response.text();
-      interaction.reply(body)
+      interaction.reply(body[0].datis)
     }
   });
 
