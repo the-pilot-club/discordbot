@@ -36,7 +36,11 @@ for (const file of eventFiles) {
       const airport = interaction.options.getString('airport')
       const response = await fetch(`https://metar.vatsim.net/metar.php?id=${airport}`);
       const body = await response.text();
+      if (body != undefined){
       interaction.reply(body)
+    } else {
+      interaction.reply("METAR isn't posted for: " + airport)
+    }
     } else if (commandName === 'atis') {
       const airport = interaction.options.getString('airport')
       await handler.getAirportInfo(airport).then(val => {
