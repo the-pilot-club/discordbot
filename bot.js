@@ -62,13 +62,13 @@ for (const file of eventFiles) {
       const airport = interaction.options.getString('airport')
       await handler.getAirportInfo(airport).then(val => {
         if (val.atis === undefined) {
-        interaction.reply("Atis isn't posted for " + airport)
+        interaction.reply("Atis isn't available for " + airport)
         } else {
           var atisEmbed =
         {
           "type": "rich",
           "title": `ATIS`,
-          "description": `ATIS for ${airport} (on vatsim, not real life)`,
+          "description": `ATIS for ${airport} (VATSIM)`,
           "color": 0x00FFFF,
           "fields": [
             {
@@ -87,7 +87,7 @@ for (const file of eventFiles) {
       const airport = interaction.options.getString('airport')
       const response = await fetch(`https://metar.vatsim.net/metar.php?id=${airport}`);
       const body = await response.text();
-      if (body != undefined){
+      
       let airportEmbed =
         {
           "type": "rich",
@@ -101,7 +101,7 @@ for (const file of eventFiles) {
             },
             {
               "name": `METAR`,
-              "value": body
+              "value": body || "Not available"
             }
           ],
           "footer": {
@@ -111,9 +111,6 @@ for (const file of eventFiles) {
       
     
       interaction.reply({ embeds: [airportEmbed] })
-    } else {
-      interaction.reply("METAR isn't posted for: " + airport)
-    }
     }
   });
 
