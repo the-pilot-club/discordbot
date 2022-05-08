@@ -91,16 +91,18 @@ for (const file of eventFiles) {
       await handler.getAirportInfo(airport.toUpperCase()).then(val => {
         if (val.atis === undefined) {
         interaction.reply("ATIS isn't available for " + airport.toUpperCase())
+        } else if (val.atis.text_atis == undefined){
+          interaction.reply("ATIS isn't available for " + airport.toUpperCase())
         } else {
           var atisEmbed =
         {
           "type": "rich",
           "title": `ATIS`,
-          "description": `ATIS for ${airport.toUpperCase()} (VATSIM)`,
+          "description": airport.toUpperCase(),
           "color": 0X37B6FF,
           "fields": [
             {
-              "name": `Live ATIS`,
+              "name": `(VATSIM)`,
               "value": val.atis.text_atis.toString()
             }
           ],
