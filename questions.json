@@ -371,23 +371,23 @@
     [
       "<:training_team:895480894901592074> Prior to takeoff, the altimeter should be set to which altitude or altimeter setting \n \n 🇦: The current local altimeter setting, if available, or the departure airport elevation. \n 🇧: The corrected density altitude of the departure airport. \n 🇨: The corrected pressure altitude for the departure airport.",
       "<:training_team:895480894901592074> The correct answer is 🇦: The current local altimeter setting, if available, or the departure airport elevation."
-    ],  
+    ],
     [
       "<:training_team:895480894901592074> At what altitude shall the altimeter be set to 29.92, when climbing to cruising flight level \n \n 🇦: 24,000 feet MSL. \n 🇧: 18,000 feet MSL. \n 🇨: 14,500 feet MSL.",
       "<:training_team:895480894901592074> The correct answer is 🇧: 18,000 feet MSL."
-    ],  
+    ],
     [
       "<:training_team:895480894901592074> When an ATC clearance has been obtained, no pilot in command may deviate from that clearance, unless that pilot obtains an amended clearance. The one exception to this regulation is \n \n 🇦: an emergency. \n 🇧: when the clearance states 'at pilot's discretion.' \n 🇨: if the clearance contains a restriction.",
       "<:training_team:895480894901592074> The correct answer is 🇦: an emergency."
-    ],  
+    ],
     [
       "<:training_team:895480894901592074> When would a pilot be required to submit a detailed report of an emergency which caused the pilot to deviate from an ATC clearance \n \n 🇦: Immediately. \n 🇧: Within 7 days. \n 🇨: When requested by ATC.",
       "<:training_team:895480894901592074> The correct answer is 🇨: When requested by ATC."
-    ],  
+    ],
     [
       "<:training_team:895480894901592074> What action, if any, is appropriate if the pilot deviates from an ATC instruction during an emergency and is given priority \n \n 🇦: File a detailed report within 48 hours to the chief of the appropriate ATC facility, if requested. \n 🇧: File a report to the FAA Administrator, as soon as possible. \n 🇨: Take no special action since you are pilot in command.",
       "<:training_team:895480894901592074> The correct answer is 🇦: File a detailed report within 48 hours to the chief of the appropriate ATC facility, if requested."
-    ] 
+    ]
   ],
-  "latestQuestion": 36
+  "latestQuestion": 43
 }

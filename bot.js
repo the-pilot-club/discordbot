@@ -8,7 +8,6 @@ const fs = require('fs');
 const { clientId, guildId, token } = require('./config.json');
 const fetch = require('node-fetch');
 const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
-const {handler} = require('vatsim-data-handler');
 client.setMaxListeners(0);
 
 
