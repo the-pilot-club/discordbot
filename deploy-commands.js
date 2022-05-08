@@ -14,10 +14,6 @@ const commands = [
         option.setName('airport')
         .setDescription('The input to echo back')
         .setRequired(true)),
-	new SlashCommandBuilder().setName('atis').setDescription('gives atis for specific airport').addStringOption(option =>
-        option.setName('airport')
-        .setDescription('The input to echo back')
-        .setRequired(true)),
 	new SlashCommandBuilder().setName('airport').setDescription('gives information about specific airport').addStringOption(option =>
         option.setName('airport')
         .setDescription('The input to echo back')

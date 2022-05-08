@@ -86,33 +86,6 @@ for (const file of eventFiles) {
     } else {
       interaction.reply("METAR isn't posted for: " + airport)
     }
-    } else if (commandName === 'atis') {
-      const airport = interaction.options.getString('airport')
-      await handler.getAirportInfo(airport.toUpperCase()).then(val => {
-        if (val.atis === undefined) {
-        interaction.reply("ATIS isn't available for " + airport.toUpperCase())
-        } else if (val.atis.text_atis == undefined){
-          interaction.reply("ATIS isn't available for " + airport.toUpperCase())
-        } else {
-          var atisEmbed =
-        {
-          "type": "rich",
-          "title": `ATIS`,
-          "description": airport.toUpperCase(),
-          "color": 0X37B6FF,
-          "fields": [
-            {
-              "name": `(VATSIM)`,
-              "value": val.atis.text_atis.toString()
-            }
-          ],
-          "footer": {
-            "text": `made by the TPC Dev Team`
-          }
-        }
-          interaction.reply({ embeds: [atisEmbed] })
-        }
-    })
     } else if (commandName === 'airport') {
       const airport = interaction.options.getString('airport')
       const response = await fetch(`https://metar.vatsim.net/metar.php?id=${airport}`);
