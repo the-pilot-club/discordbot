@@ -206,7 +206,7 @@ function sendNewQuestion(channel) {
 }
 function sendNewEvent(channel, image) {
   channel.send({
-    content: "<@&838379351295787079> Pilots, one hour until the Flight Briefing. Start heading to the airport in 30 minutes to start setting up! \nSee you there!",
+    content: "<@&937389346204557342> Pilots, one hour until the Flight Briefing. Start heading to the airport in 30 minutes to start setting up! \nSee you there!",
     files: [{
       attachment: image,
       name: 'file.png'
