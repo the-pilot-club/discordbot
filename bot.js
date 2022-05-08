@@ -57,7 +57,7 @@ for (const file of eventFiles) {
             .setURL("https://mee6.xyz/thepilotclub")
             .setStyle('LINK'),
           ) ;
-        await interaction.reply({content:`The TPC Leaderboard:`, components: [row]})
+        await interaction.reply({content:`Check out our leaderboard!`, components: [row]})
     } else if (commandName === 'metar') {
       const airport = interaction.options.getString('airport')
       const response = await fetch(`https://metar.vatsim.net/metar.php?id=${airport}`);
@@ -204,6 +204,16 @@ function sendNewQuestion(channel) {
   file.latestQuestion = generatedNum
   fs.writeFileSync("questions.json", JSON.stringify(file, null, 2));
 }
+function sendNewEvent(channel, image) {
+  channel.send({
+    content: "<@&838379351295787079> Pilots, one hour until the Flight Briefing. Start heading to the airport in 30 minutes to start setting up! \nSee you there!",
+    files: [{
+      attachment: image,
+      name: 'file.png'
+    }]
+  })
+  //channel.send(`<@&838379351295787079> Pilots, one hour until the Event Briefing. Start heading to the airport in 30 minutes to start setting up! See you there!`)
+}
 function sendNewAnswer(channel) {
   channel.send(questions[file.latestQuestion][1]);
 }
@@ -224,6 +234,20 @@ client.on('ready', async function() {
   cron.schedule('0 52 07 * * *', function() { // Correct time is 0 53 07 * * *
     sendNewAnswer(channel);
   });
+  //EVENTS:
+  const eventChannel = await client.channels.fetch(process.env.EVENT_CHANNEL);
+  sendNewEvent(eventChannel, "./pics/ga_tuesday.png");
+  cron.schedule('0 17 * * 2', function() {
+    sendNewEvent(eventChannel, "./pics/ga_tuesday.png");
+  });
+  cron.schedule('0 18 * * 4', function() {
+    sendNewEvent(eventChannel, "./pics/fly_in_thursday.png");
+  });
+  cron.schedule('0 13 * * 0', function() { 
+    sendNewEvent(eventChannel, "./pics/sunday_funday.png");
+  }); 
+  
+
 });
 
 
