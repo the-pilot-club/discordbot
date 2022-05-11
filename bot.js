@@ -10,6 +10,20 @@ const fetch = require('node-fetch');
 const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
 client.setMaxListeners(0);
 
+var monthNames = [
+  "january",
+  "february",
+  "march",
+  "april",
+  "may",
+  "june",
+  "july",
+  "august",
+  "september",
+  "october",
+  "november",
+  "december"
+];
 
 for (const file of eventFiles) {
 	const event = require(`./events/${file}`);
@@ -204,11 +218,15 @@ function sendNewQuestion(channel) {
   file.latestQuestion = generatedNum
   fs.writeFileSync("questions.json", JSON.stringify(file, null, 2));
 }
-function sendNewEvent(channel, image) {
+function sendNewEvent(channel, flight, ping) {
+  const today = new Date();
+  const day = today.getDate();        // 24
+  const month = monthNames[today.getMonth()] //may
+  const year = today.getFullYear();   // 2020
   channel.send({
-    content: "<@&937389346204557342> Pilots, one hour until the Flight Briefing. Start heading to the airport in 30 minutes to start setting up! \nSee you there!",
+    content: ping + ` :group_flights: One hour until the flight briefing. Head to the airport in 30 min to start setting up! See you there! https://www.thepilotclub.org/dispatch/${flight}-${day}${month}${year}`,
     files: [{
-      attachment: image,
+      attachment: `./pics/${flight}.png`,
       name: 'file.png'
     }]
   })
@@ -236,15 +254,15 @@ client.on('ready', async function() {
   });
   //EVENTS:
   const eventChannel = await client.channels.fetch(process.env.EVENT_CHANNEL);
-  sendNewEvent(eventChannel, "./pics/ga_tuesday.png");
+  sendNewEvent(eventChannel, "ga-tuesday", "<@&937389346204557342> <@&898240224189120532>");
   cron.schedule('0 17 * * 2', function() {
-    sendNewEvent(eventChannel, "./pics/ga_tuesday.png");
+    sendNewEvent(eventChannel, "ga-tuesday", "<@&937389346204557342> <@&898240224189120532>");
   });
   cron.schedule('0 18 * * 4', function() {
-    sendNewEvent(eventChannel, "./pics/fly_in_thursday.png");
+    sendNewEvent(eventChannel, "sbr-tpc-fly-in-thursday", "<@&937389346204557342>");
   });
   cron.schedule('0 13 * * 0', function() { 
-    sendNewEvent(eventChannel, "./pics/sunday_funday.png");
+    sendNewEvent(eventChannel, "sunday-funday", "<@&937389346204557342>");
   }); 
   
 
