@@ -224,7 +224,7 @@ function sendNewEvent(channel, flight, ping) {
   const month = monthNames[today.getMonth()] //may
   const year = today.getFullYear();   // 2020
   channel.send({
-    content: ping + ` :group_flights: One hour until the flight briefing. Head to the airport in 30 min to start setting up! See you there! https://www.thepilotclub.org/dispatch/${flight}-${day}${month}${year}`,
+    content: ping + ` One hour until the flight briefing. Head to the airport in 30 min to start setting up! See you there! https://www.thepilotclub.org/dispatch/${flight}-${day}${month}${year}`,
     files: [{
       attachment: `./pics/${flight}.png`,
       name: 'file.png'
