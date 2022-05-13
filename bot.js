@@ -254,7 +254,7 @@ client.on('ready', async function() {
   });
   //EVENTS:
   const eventChannel = await client.channels.fetch(process.env.EVENT_CHANNEL);
-  sendNewEvent(eventChannel, "ga-tuesday", "<@&937389346204557342> <@&898240224189120532>");
+  //sendNewEvent(eventChannel, "ga-tuesday", "<@&937389346204557342> <@&898240224189120532>");
   cron.schedule('0 17 * * 2', function() {
     sendNewEvent(eventChannel, "ga-tuesday", "<@&937389346204557342> <@&898240224189120532>");
   });
