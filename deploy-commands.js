@@ -21,6 +21,10 @@ const commands = [
         new SlashCommandBuilder().setName('charts').setDescription('gives information about specific airport').addStringOption(option =>
                 option.setName('airport')
                 .setDescription('The input to echo back')
+                .setRequired(true)),
+        new SlashCommandBuilder().setName('poll').setDescription('create a poll').addStringOption(option =>
+                option.setName('question')
+                .setDescription('The input to echo back')
                 .setRequired(true))
 ]
 	.map(command => command.toJSON());

@@ -9,7 +9,6 @@ const { clientId, guildId, token } = require('./config.json');
 const fetch = require('node-fetch');
 const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
 client.setMaxListeners(0);
-
 var monthNames = [
   "january",
   "february",
@@ -45,6 +44,18 @@ for (const file of eventFiles) {
       await interaction.reply(`Total members: ${interaction.guild.memberCount}`);
     } else if (commandName === 'user') {
       await interaction.reply(`Your tag: ${interaction.user.tag}\nYour id: ${interaction.user.id}`);
+    } else if (commandName === 'poll') {
+      const question = interaction.options.getString('question')
+      if (interaction.member.roles.cache.some(role => role.name === 'Staff')){
+      const message = await interaction.reply({ content: question, fetchReply: true });
+      message.react('👍')
+        .then(() => message.react('👎'))
+        .then(() => message.react('🤷'))
+        .catch(error => console.error('One of the emojis failed to react:', error));
+      } else {
+        await interaction.reply("You need to be staff to use /poll!")
+      }
+
     } else if (commandName === 'next-flight') {
       const row = new MessageActionRow()
         .addComponents(
