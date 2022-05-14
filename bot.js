@@ -263,6 +263,7 @@ client.on('ready', async function() {
   cron.schedule('0 52 07 * * *', function() { // Correct time is 0 53 07 * * *
     sendNewAnswer(channel);
   });
+
   //EVENTS:
   const eventChannel = await client.channels.fetch(process.env.EVENT_CHANNEL);
   //sendNewEvent(eventChannel, "ga-tuesday", "<@&937389346204557342> <@&898240224189120532>");
@@ -275,7 +276,46 @@ client.on('ready', async function() {
   cron.schedule('0 13 * * 0', function() { 
     sendNewEvent(eventChannel, "sunday-funday", "<@&937389346204557342>");
   }); 
+  cron.schedule('0 10 * * 6', function() { // every saturday
+  const today = new Date();
+  const day = today.getDate();        // 24
+  if (day <= 7){
+  const month = monthNames[today.getMonth()] //may
+  const year = today.getFullYear();   // 2020
+  channel.send({
+    content: `<@&937389346204557342> STARTING SOON: JOIN US for WORLD TOUR. Head to the airport in 30 min to start setting up! See you there! https://www.thepilotclub.org/dispatch/world-tour-${day}${month}${year}`,
+    files: [{
+      attachment: `./pics/world-tour.png`,
+      name: 'file.png'
+    }]
+  })
+  } else {
+    console.log("not first saturday of the month")
+  }
+
+  });
+  cron.schedule('0 14 * * 6', function() { // every saturday
+    const today = new Date();
+    const day = today.getDate();        // 24
+    if (day > 7 && day <=14){
+      //second saturday of the month
+      sendNewEvent(eventChannel, "challengeflight", "<@&937389346204557342>");
+  } else {
+    console.log("not second saturday of the month")
+  }
   
+    });
+    cron.schedule('0 11 * * 6', function() { // every saturday
+      const today = new Date();
+      const day = today.getDate();        // 24
+      if (day > 14 && day <=21){
+        //third saturday of the month
+        sendNewEvent(eventChannel, "15zulu", "<@&937389346204557342>");
+    } else {
+      console.log("not third saturday of the month")
+    }
+    
+      });
 
 });
 

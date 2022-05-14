@@ -25,7 +25,22 @@ const commands = [
         new SlashCommandBuilder().setName('poll').setDescription('create a poll').addStringOption(option =>
                 option.setName('question')
                 .setDescription('The input to echo back')
-                .setRequired(true))
+                .setRequired(true)),
+        new SlashCommandBuilder().setName('poll2').setDescription('create a poll').addStringOption(option =>
+                option.setName('question')
+                .setDescription('The input to echo back')
+                .setRequired(true)).addStringOption(option =>
+                        option.setName('answer a')
+                        .setDescription('The input to echo back')
+                        .setRequired(true)).addSubcommand(subcommand =>
+                                subcommand
+                                        .setName('user')
+                                        .setDescription('Info about a user')
+                                        .addUserOption(option => option.setName('target').setDescription('The user')))
+                        .addSubcommand(subcommand =>
+                                subcommand
+                                        .setName('server')
+                                        .setDescription('Info about the server'))
 ]
 	.map(command => command.toJSON());
 
