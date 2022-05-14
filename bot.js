@@ -46,7 +46,7 @@ for (const file of eventFiles) {
       await interaction.reply(`Your tag: ${interaction.user.tag}\nYour id: ${interaction.user.id}`);
     } else if (commandName === 'poll') {
       const question = interaction.options.getString('question')
-      if (interaction.member.roles.cache.some(role => role.name === 'Staff')){
+      if (interaction.member.roles.cache.some(role => role.name === 'Staff') || interaction.member.roles.cache.some(role => role.name === 'Air Marshals')){
       const message = await interaction.reply({ content: question, fetchReply: true });
       message.react('👍')
         .then(() => message.react('👎'))
