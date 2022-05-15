@@ -120,12 +120,12 @@ for (const file of eventFiles) {
         var metarEmbed =
         {
           "type": "rich",
-          "title": `METAR`,
-          "description": `METAR for ${airport.toUpperCase()}`,
+          "title": `WEATHER REPORT`,
+          "description": airport.toUpperCase(),
           "color": 0X37B6FF,
           "fields": [
             {
-              "name": `Live METAR`,
+              "name": `METAR`,
               "value": body
             }
           ],
