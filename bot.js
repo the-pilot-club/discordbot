@@ -46,11 +46,40 @@ for (const file of eventFiles) {
       await interaction.reply(`Your tag: ${interaction.user.tag}\nYour id: ${interaction.user.id}`);
     } else if (commandName === 'poll') {
       const question = interaction.options.getString('question')
+      var answer_a = interaction.options.getString('answer_a')
+      var answer_b = interaction.options.getString('answer_b')
+      var answer_c = interaction.options.getString('answer_c')
       if (interaction.member.roles.cache.some(role => role.name === 'Staff') || interaction.member.roles.cache.some(role => role.name === 'Air Marshals')){
-      const message = await interaction.reply({ content: question, fetchReply: true });
-      message.react('👍')
-        .then(() => message.react('👎'))
-        .then(() => message.react('🤷'))
+      toSend = {
+        "type": "rich",
+        "title": `Poll!`,
+        "description": `react below to vote:`,
+        "color": 0x00FFFF,
+        "fields": [
+          {
+            "name": `A:`,
+            "value": answer_a,
+            "inline": true
+          },
+          {
+            "name": `B:`,
+            "value": answer_b,
+            "inline": true
+          },
+          {
+            "name": `C:`,
+            "value": answer_c,
+            "inline": true
+          }
+        ],
+        "footer": {
+          "text": `made by the TPC Dev Team`
+        }
+      }
+      const message = await interaction.reply({ embeds: [toSend], fetchReply: true });
+      message.react('🇦')
+        .then(() => message.react('🇧'))
+        .then(() => message.react('🇨'))
         .catch(error => console.error('One of the emojis failed to react:', error));
       } else {
         await interaction.reply("You need to be staff to use /poll!")

@@ -24,28 +24,20 @@ const commands = [
                 .setRequired(true)),
         new SlashCommandBuilder().setName('poll').setDescription('create a poll').addStringOption(option =>
                 option.setName('question')
-                .setDescription('The input to echo back')
-                .setRequired(true)),
-        new SlashCommandBuilder().setName('poll2').setDescription('create a poll').addStringOption(option =>
-                option.setName('question')
-                .setDescription('The input to echo back')
+                .setDescription('What is your question?')
                 .setRequired(true)).addStringOption(option =>
-                        option.setName('answer a')
-                        .setDescription('The input to echo back')
-                        .setRequired(true)).addSubcommand(subcommand =>
-                                subcommand
-                                        .setName('user')
-                                        .setDescription('Info about a user')
-                                        .addUserOption(option => option.setName('target').setDescription('The user')))
-                        .addSubcommand(subcommand =>
-                                subcommand
-                                        .setName('server')
-                                        .setDescription('Info about the server'))
+                        option.setName('answer_a')
+                        .setDescription('a possible answer')
+                        .setRequired(true)).addStringOption(option =>
+                                option.setName('answer_b')
+                                .setDescription('another possible answer')
+                                .setRequired(true)).addStringOption(option =>
+                                        option.setName('answer_c')
+                                        .setDescription('another possible answer')
+                                        .setRequired(true))
 ]
 	.map(command => command.toJSON());
-
 const rest = new REST({ version: '9' }).setToken(token);
-
 rest.put(Routes.applicationGuildCommands(clientId, guildId), { body: commands })
 	.then(() => console.log('Successfully registered application commands.'))
 	.catch(console.error);
