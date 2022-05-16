@@ -99,7 +99,7 @@ for (const file of eventFiles) {
           .addComponents(
             new MessageButton()
             .setLabel('TPC Server Commands')
-            .setURL("https://docs.google.com/document/d/1zubqEpy1vIOExAOF4r41a7sLnVFsWSkhNiaZ0WnxXXg/edit?usp=sharing")
+            .setURL("https://www.thepilotclub.org/server-commands")
             .setStyle('LINK'),
           ) ;
         await interaction.reply({content:`Here is a full list of member friendly commands:`, components: [row]})
