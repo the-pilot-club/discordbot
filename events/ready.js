@@ -3,6 +3,6 @@ module.exports = {
 	once: true,
 	execute(client) {
 		console.log(`Logged in as ${client.user.tag}`);
-        client.user.setActivity('XPlane 11' , {type: "PLAYING"})
+        client.user.setActivity('Pre Flight Checks' , {type: "STARTING"})
 	},
 };
