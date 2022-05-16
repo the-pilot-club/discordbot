@@ -73,7 +73,7 @@ for (const file of eventFiles) {
           }
         ],
         "footer": {
-          "text": `made by the TPC Dev Team`
+          "text": `Made by The Pilot Club`
         }
       }
       const message = await interaction.reply({ embeds: [toSend], fetchReply: true });
@@ -130,7 +130,7 @@ for (const file of eventFiles) {
             }
           ],
           "footer": {
-            "text": `made by the TPC Dev Team`
+            "text": `Made by The Pilot Club`
           }
         }
       interaction.reply({ embeds: [metarEmbed] })
@@ -161,7 +161,7 @@ for (const file of eventFiles) {
             }
           ],
           "footer": {
-            "text": `made by the TPC Dev Team`
+            "text": `Made by The Pilot Club`
           }
         }
       
@@ -189,7 +189,7 @@ for (const file of eventFiles) {
           }
         ],
         "footer": {
-          "text": `made by the TPC Dev Team`
+          "text": `Made by The Pilot Club`
         }
       }
     
