@@ -64,12 +64,12 @@ for (const file of eventFiles) {
           {
             "name": `B:`,
             "value": answer_b,
-            "inline": false
+            "inline": true
           },
           {
             "name": `C:`,
             "value": answer_c,
-            "inline": false
+            "inline": true
           }
         ],
         "footer": {
