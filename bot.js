@@ -57,19 +57,19 @@ for (const file of eventFiles) {
         "color": 0X37B6FF,
         "fields": [
           {
-            "name": `A:`,
+            "name": `🇦:`,
             "value": answer_a,
-            "inline": true
+            "inline": false
           },
           {
-            "name": `B:`,
+            "name": `🇧:`,
             "value": answer_b,
-            "inline": true
+            "inline": false
           },
           {
-            "name": `C:`,
+            "name": `🇨:`,
             "value": answer_c,
-            "inline": true
+            "inline": false
           }
         ],
         "footer": {
