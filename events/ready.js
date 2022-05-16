@@ -3,6 +3,6 @@ module.exports = {
 	once: true,
 	execute(client) {
 		console.log(`Logged in as ${client.user.tag}`);
-        client.user.setActivity('Pre Flight Checks' , {type: "STARTING"})
+        client.user.setActivity('To Seattle Center on 135.450' , {type: "LISTENING"})
 	},
 };
