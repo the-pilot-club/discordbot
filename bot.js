@@ -58,15 +58,15 @@ for (const file of eventFiles) {
         "fields": [
           {
             "name": `🇦`, "value": answer_a,
-            "inline": false
+            "inline": true
           },
           {
             "name": `🇧`, "value": answer_b,
-            "inline": false
+            "inline": true
           },
           {
             "name": `🇨`, "value": answer_c,
-            "inline": false
+            "inline": true
           }
         ],
         "footer": {
