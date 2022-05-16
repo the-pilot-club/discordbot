@@ -59,17 +59,17 @@ for (const file of eventFiles) {
           {
             "name": `A:`,
             "value": answer_a,
-            "inline": true
+            "inline": false
           },
           {
             "name": `B:`,
             "value": answer_b,
-            "inline": true
+            "inline": false
           },
           {
             "name": `C:`,
             "value": answer_c,
-            "inline": true
+            "inline": false
           }
         ],
         "footer": {
