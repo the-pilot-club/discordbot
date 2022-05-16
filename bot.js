@@ -52,8 +52,8 @@ for (const file of eventFiles) {
       if (interaction.member.roles.cache.some(role => role.name === 'Staff') || interaction.member.roles.cache.some(role => role.name === 'Air Marshals')){
       toSend = {
         "type": "rich",
-        "title": `Poll!`,
-        "description": `react below to vote:`,
+        "title": `TPC Poll!`,
+        "description": question,
         "color": 0x00FFFF,
         "fields": [
           {
