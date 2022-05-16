@@ -54,7 +54,7 @@ for (const file of eventFiles) {
         "type": "rich",
         "title": `TPC Poll!`,
         "description": question,
-        "color": 0x00FFFF,
+        "color": 0X37B6FF,
         "fields": [
           {
             "name": `A:`,
