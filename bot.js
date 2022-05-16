@@ -94,7 +94,7 @@ for (const file of eventFiles) {
           .setStyle('LINK'),
         ) ;
       await interaction.reply({content:`Next TPC Group Flight:`, components: [row]})
-      } else if (commandName === 'commands' || commandName === 'help') {
+      } else if (commandName === 'server-commands') {
         const row = new MessageActionRow()
           .addComponents(
             new MessageButton()
