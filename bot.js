@@ -50,30 +50,12 @@ for (const file of eventFiles) {
       var answer_b = interaction.options.getString('answer_b')
       var answer_c = interaction.options.getString('answer_c')
       if (interaction.member.roles.cache.some(role => role.name === 'Staff') || interaction.member.roles.cache.some(role => role.name === 'Air Marshals')){
-      toSend = {
-        "type": "rich",
-        "title": `TPC Poll!`,
-        "description": question,
-        "color": 0X37B6FF,
-        "fields": [
-          {
-            "name": `🇦`, "value": answer_a,
-            "inline": false
-          },
-          {
-            "name": `🇧`, "value": answer_b,
-            "inline": false
-          },
-          {
-            "name": `🇨`, "value": answer_c,
-            "inline": false
-          }
-        ],
-        "footer": {
-          "text": `Made by The Pilot Club`
-        }
-      }
-      const message = await interaction.reply({ embeds: [toSend], fetchReply: true });
+      newSend = 
+      `TPC POLL (react below to vote): ${question}
+🇦: ${answer_a}
+🇧: ${answer_b}
+🇨: ${answer_c}`
+      const message = await interaction.reply({ content: newSend, fetchReply: true });
       message.react('🇦')
         .then(() => message.react('🇧'))
         .then(() => message.react('🇨'))
