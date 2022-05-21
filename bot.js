@@ -181,8 +181,12 @@ for (const file of eventFiles) {
     let reportembed =
     {
       "type": "rich",
+      "author": {
+        "name": `${interaction.user.tag}`,
+        "icon_url" : `${interaction.user.displayAvatarURL()}`
+      },
       "title": `New Report`,
-      "description": `A member of TPC has reported ${user}`,
+      "description": `A member of TPC has submitted a report for moderation review.`,
       "color": 0XFF0000,
       "fields": [
         {
