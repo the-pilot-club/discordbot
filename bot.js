@@ -174,6 +174,31 @@ for (const file of eventFiles) {
     
   
     interaction.reply({ embeds: [chartsEmbed] })
+  } else if (commandName === 'report') {
+    const channel=client.channels.cache.get('865416768641433630')
+    const user = interaction.options.getString('user')
+    const reason = interaction.options.getString('reason')
+    let reportembed =
+    {
+      "type": "rich",
+      "title": `Report`,
+      "description": `A member of TPC has reported ${user}`,
+      "color": 0XFF0000,
+      "fields": [
+        {
+          "name": `Detailed Report`,
+          "value": `**User:** ${interaction.user} \n  **Reported** ${user} \n **Reason:** ${reason} \n \n **Channel:** ${interaction.channel}  `
+        },
+      ],
+      "footer": {
+        "text": `Made by The Pilot Club For Moderators`
+      }
+    }
+    channel.send({
+      embeds: [reportembed]})
+    await interaction.reply({content:`You have reported ${user} for ${reason}. A moderator will deal with this as soon as we can. If this is urgent, please ping Ground Crew as soon as possible.`, ephemeral: true}
+    )
+  
   }
 
     

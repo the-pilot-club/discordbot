@@ -34,8 +34,11 @@ const commands = [
                                 .setRequired(true)).addStringOption(option =>
                                         option.setName('answer_c')
                                         .setDescription('another possible answer')
-                                        .setRequired(true))
-]
+                                        .setRequired(true)),
+        new SlashCommandBuilder().setName('report').setDescription('Use this commnad to report a user.').addStringOption(option =>
+                                        option.setName('user').setDescription('who is the user that you would like to report').setRequired(true)).addStringOption(option=>
+                                                option.setName('reason').setDescription('What happened with this user').setRequired(true))
+                                ]
 	.map(command => command.toJSON());
 const rest = new REST({ version: '9' }).setToken(token);
 rest.put(Routes.applicationGuildCommands(clientId, guildId), { body: commands })
