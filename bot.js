@@ -187,7 +187,7 @@ for (const file of eventFiles) {
       "fields": [
         {
           "name": `Detailed Report`,
-          "value": `**User Reporting:** ${interaction.user} (ID: ${interaction.user.id}) \n  **User Reported:** ${user} \n **Reason:** ${reason} \n \n **Channel:** ${interaction.channel}  `
+          "value": `**User Reporting:** ${interaction.user} (ID: ${interaction.user.id}) \n  **User Reported:** ${user} \n **Reason:** ${reason} \n \n **Channel:** ${interaction.channel} \n **Last Messages Sent:** [Jump To Content](https://discord.com/channels/${interaction.guildId}/${interaction.channelId}/${interaction.id})  `
         },
       ],
       "footer": {
