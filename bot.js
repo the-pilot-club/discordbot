@@ -181,13 +181,13 @@ for (const file of eventFiles) {
     let reportembed =
     {
       "type": "rich",
-      "title": `Report`,
+      "title": `New Report`,
       "description": `A member of TPC has reported ${user}`,
       "color": 0XFF0000,
       "fields": [
         {
           "name": `Detailed Report`,
-          "value": `**User:** ${interaction.user} \n  **Reported** ${user} \n **Reason:** ${reason} \n \n **Channel:** ${interaction.channel}  `
+          "value": `**User Reporting:** ${interaction.user} (ID: ${interaction.user.id}) \n  **User Reported** ${user} \n **Reason:** ${reason} \n \n **Channel:** ${interaction.channel}  `
         },
       ],
       "footer": {
