@@ -387,6 +387,98 @@
     [
       "<:training_team:895480894901592074> What action, if any, is appropriate if the pilot deviates from an ATC instruction during an emergency and is given priority \n \n 🇦: File a detailed report within 48 hours to the chief of the appropriate ATC facility, if requested. \n 🇧: File a report to the FAA Administrator, as soon as possible. \n 🇨: Take no special action since you are pilot in command.",
       "<:training_team:895480894901592074> The correct answer is 🇦: File a detailed report within 48 hours to the chief of the appropriate ATC facility, if requested."
+    ],
+    [
+      "<:training_team:895480894901592074> A steady green light signal directed from the control tower to an aircraft in flight is a signal that the pilot \n \n 🇦: should give way to other aircraft and continue circling.. \n 🇧: should return for landing. \n 🇨: is cleared to land.",
+      "<:training_team:895480894901592074> The correct answer is 🇨: is cleared to land."
+    ],   
+    [
+      "<:training_team:895480894901592074> Which light signal from the control tower clears a pilot to taxi \n \n 🇦: Flashing green. \n 🇧: Flashing white. \n 🇨: Steady green.",
+      "<:training_team:895480894901592074> The correct answer is 🇦: Flashing green."
+    ],   
+    [
+      "<:training_team:895480894901592074> If the control tower uses a light signal to direct a pilot to give way to other aircraft and continue circling, the light will be \n \n 🇦: steady red. \n 🇧: flashing red. \n 🇨: alternating red and green.",
+      "<:training_team:895480894901592074> The correct answer is 🇦: steady red."
+    ],   
+    [
+      "<:training_team:895480894901592074> A flashing white light signal from the control tower to a taxiing aircraft is an indication to \n \n 🇦: taxi only on taxiways and not cross runways. \n 🇧: taxi at a faster speed. \n 🇨: return to the starting point on the airport.",
+      "<:training_team:895480894901592074> The correct answer is 🇨: return to the starting point on the airport."
+    ],   
+    [
+      "<:training_team:895480894901592074> An alternating red and green light signal directed from the control tower to an aircraft in flight is a signal to \n \n 🇦: exercise extreme caution. \n 🇧: hold position. \n 🇨: not land; the airport is unsafe.",
+      "<:training_team:895480894901592074> The correct answer is 🇦: exercise extreme caution."
+    ],
+    [
+      "<:training_team:895480894901592074> While on final approach for landing, an alternating green and red light followed by a flashing red light is received from the control tower. Under these circumstances, the pilot should \n \n 🇦: exercise extreme caution and abandon the approach, realizing the airport is unsafe for landing. \n 🇧: abandon the approach, circle the airport to the right, and expect a flashing white light when the airport is safe for landing. \n 🇨: discontinue the approach, fly the same traffic pattern and approach again, and land.",
+      "<:training_team:895480894901592074> The correct answer is 🇦: exercise extreme caution and abandon the approach, realizing the airport is unsafe for landing."
+    ],
+    [
+      "<:training_team:895480894901592074> A blue segmented circle on a Sectional Chart depicts which class airspace \n \n 🇦: Class B. \n 🇧: Class C. \n 🇨: Class D.",
+      "<:training_team:895480894901592074> The correct answer is 🇨: Class D."
+    ],
+    [
+      "<:training_team:895480894901592074> Airspace at an airport with a part-time control tower is classified as Class D airspace only \n \n 🇦: when the associated control tower is in operation. \n 🇧: when the associated Flight Service Station is in operation. \n 🇨: when the weather minimums are below basic VFR.",
+      "<:training_team:895480894901592074> The correct answer is 🇦: when the associated control tower is in operation."
+    ],
+    [
+      "<:training_team:895480894901592074> Unless otherwise authorized, two-way radio communications with Air Traffic Control are required for landings or takeoffs \n \n 🇦: at all tower controlled airports only when weather conditions are less than VFR. \n 🇧: at all tower controlled airports regardless of weather conditions. \n 🇨: at all tower controlled airports within Class D airspace only when weather conditions are less than VFR.",
+      "<:training_team:895480894901592074> The correct answer is 🇧: at all tower controlled airports regardless of weather conditions."
+    ],
+    [
+      "<:training_team:895480894901592074> Each pilot of an aircraft approaching to land on a runway served by a visual approach slope indicator (VASI) shall \n \n 🇦: maintain a 3° glide to the runway. \n 🇧: maintain an altitude at or above the glide slope. \n 🇨: stay high until the runway can be reached in a power-off landing.",
+      "<:training_team:895480894901592074> The correct answer is 🇧: maintain an altitude at or above the glide slope."
+    ],
+    [
+      "<:training_team:895480894901592074> When approaching to land on a runway served by a visual approach slope indicator (VASI), the pilot shall \n \n 🇦: maintain an altitude at or above the glide slope. \n 🇧: maintain an altitude that captures the glide slope at least 2 miles downwind from the runway threshold. \n 🇨: remain on the glide slope and land between the two-light bar.",
+      "<:training_team:895480894901592074> The correct answer is 🇦: maintain an altitude at or above the glide slope."
+    ],
+    [
+      "<:training_team:895480894901592074> Which is appropriate for a helicopter approaching an airport for landing \n \n 🇦: Fly right-hand traffic.. \n 🇧: Avoid the flow of fixed-wing traffic. \n 🇨: Remain below the airplane traffic pattern altitude.",
+      "<:training_team:895480894901592074> The correct answer is 🇧: Avoid the flow of fixed-wing traffic."
+    ],
+    [
+      "<:training_team:895480894901592074> Which is the correct traffic pattern departure procedure to use at a noncontrolled airport \n \n 🇦: Make all turns to the left. \n 🇧: Comply with any FAA traffic pattern established for the airport. \n 🇨: Depart in any direction consistent with safety, after crossing the airport boundary.",
+      "<:training_team:895480894901592074> The correct answer is 🇧: Comply with any FAA traffic pattern established for the airport."
+    ],
+    [
+      "<:training_team:895480894901592074> Two-way radio communication must be established with the Air Traffic Control facility having jurisdiction over the area prior to entering which class airspace \n \n 🇦: Class E. \n 🇧: Class C. \n 🇨: Class G.",
+      "<:training_team:895480894901592074> The correct answer is 🇧: Class C."
+    ],
+    [
+      "<:training_team:895480894901592074> What minimum radio equipment is required for operation within Class C airspace \n \n 🇦: Two-way radio communications equipment, a 4096-code transponder, and an encoding altimeter. \n 🇧: Two-way radio communications equipment and a 4096-code transponder. \n 🇨: Two-way radio communications equipment, a 4096-code transponder, and DME.",
+      "<:training_team:895480894901592074> The correct answer is 🇦: Two-way radio communications equipment, a 4096-code transponder, and an encoding altimeter."
+    ],
+    [
+      "<:training_team:895480894901592074> What minimum pilot certification is required for operation within Class B airspace \n \n 🇦: Private Pilot Certificate with an instrument rating. \n 🇧: Private Pilot Certificate or Student Pilot Certificate with appropriate logbook endorsements. \n 🇨: Recreational Pilot Certificate.",
+      "<:training_team:895480894901592074> The correct answer is 🇧: Private Pilot Certificate or Student Pilot Certificate with appropriate logbook endorsements."
+    ],
+    [
+      "<:training_team:895480894901592074> What minimum pilot certification is required for operation within Class B airspace \n \n 🇦: Private Pilot Certificate with an instrument rating. \n 🇧: Private Pilot Certificate or Student Pilot Certificate with appropriate logbook endorsements. \n 🇨: Commercial Pilot Certificate.",
+      "<:training_team:895480894901592074> The correct answer is 🇧: Private Pilot Certificate or Student Pilot Certificate with appropriate logbook endorsements."
+    ],
+    [
+      "<:training_team:895480894901592074> What minimum radio equipment is required for VFR operation within Class B airspace \n \n 🇦: Two-way radio communications equipment, a 4096-code transponder, an encoding altimeter, and a VOR or TACAN receiver. \n 🇧: Two-way radio communications equipment, a 4096-code transponder, and an encoding altimeter. \n 🇨: Two-way radio communications equipment and a 4096-code transponder.",
+      "<:training_team:895480894901592074> The correct answer is 🇧: Two-way radio communications equipment, a 4096-code transponder, and an encoding altimeter."
+    ],
+    [
+      "<:training_team:895480894901592074> An operable 4096-code transponder and Mode C encoding altimeter are required in \n \n 🇦: Class B airspace and within 30 miles of the Class B primary airport. \n 🇧: Class D airspace. \n 🇨: Class E airspace below 10,000 feet MSL.",
+      "<:training_team:895480894901592074> The correct answer is 🇦: Class B airspace and within 30 miles of the Class B primary airport."
+    ],
+    [
+      "<:training_team:895480894901592074> In which type of airspace are VFR flights prohibited \n \n 🇦: Class A. \n 🇧: Class B. \n 🇨: Class C.",
+      "<:training_team:895480894901592074> The correct answer is 🇦: Class A."
+    ],
+    [
+      "<:training_team:895480894901592074> What is the specific fuel requirement for flight under VFR during daylight hours in an airplane \n \n 🇦: Enough to fly to the first point of intended landing and to fly after that for 45 minutes at normal cruising speed. \n 🇧: Enough to fly to the first point of intended landing and to fly after that for 30 minutes at normal cruising speed. \n 🇨: Enough to complete the flight at normal cruising speed with adverse wind conditions.",
+      "<:training_team:895480894901592074> The correct answer is 🇧: Enough to fly to the first point of intended landing and to fly after that for 30 minutes at normal cruising speed."
+    ],
+    [
+      "<:training_team:895480894901592074> What is the specific fuel requirement for flight under VFR at night in an airplane \n \n 🇦: Enough to complete the flight at normal cruising speed with adverse wind conditions. \n 🇧: Enough to fly to the first point of intended landing and to fly after that for 45 minutes at normal cruising speed. \n 🇨: Enough to fly to the first point of intended landing and to fly after that for 30 minutes at normal cruising speed.",
+      "<:training_team:895480894901592074> The correct answer is 🇧: Enough to fly to the first point of intended landing and to fly after that for 45 minutes at normal cruising speed."
+    ],
+    [
+      "<:training_team:895480894901592074> What minimum visibility and clearance from clouds are required for a recreational pilot in Class G airspace at 1,200 feet AGL or below during daylight hours \n \n 🇦: 3 miles visibility, 500 feet below the clouds. \n 🇧: 3 miles visibility and clear of clouds. \n 🇨: 1 mile visibility and clear of clouds.",
+      "<:training_team:895480894901592074> The correct answer is 🇧: 3 miles visibility and clear of clouds."
     ]
   ],
   "latestQuestion": 4
