@@ -1,0 +1,17 @@
+const { SlashCommandBuilder } = require('@discordjs/builders');
+
+module.exports = {
+	data: new SlashCommandBuilder()
+		.setName('server-commands')
+		.setDescription('The link to get a list of server commands!'),
+	async execute(interaction) {
+        const row = new MessageActionRow()
+        .addComponents(
+          new MessageButton()
+          .setLabel('TPC Server Commands')
+          .setURL("https://www.thepilotclub.org/server-commands")
+          .setStyle('LINK'),
+        ) ;
+      await interaction.reply({content:`Here is a full list of member friendly commands:`, components: [row]})
+	},
+};

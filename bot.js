@@ -7,6 +7,7 @@ const { MessageActionRow, MessageButton } = require('discord.js');
 const fs = require('fs');
 const { clientId, guildId, token } = require('./config.json');
 const fetch = require('node-fetch');
+const path = require('node:path');
 const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
 client.setMaxListeners(0);
 var monthNames = [
@@ -33,183 +34,35 @@ for (const file of eventFiles) {
 	}
 }
 
-  client.on('interactionCreate', async interaction => {
-    if (!interaction.isCommand()) return;
-  
-    const { commandName } = interaction;
-  
-    if (commandName === 'ping') {
-      await interaction.reply('Pong!');
-    } else if (commandName === 'membercount') {
-      await interaction.reply(`Total members: ${interaction.guild.memberCount}`);
-    } else if (commandName === 'user') {
-      await interaction.reply(`Your tag: ${interaction.user.tag}\nYour id: ${interaction.user.id}`);
-    } else if (commandName === 'poll') {
-      const question = interaction.options.getString('question')
-      var answer_a = interaction.options.getString('answer_a')
-      var answer_b = interaction.options.getString('answer_b')
-      var answer_c = interaction.options.getString('answer_c')
-      if (interaction.member.roles.cache.some(role => role.name === 'Staff') || interaction.member.roles.cache.some(role => role.name === 'Air Marshals')){
-      newSend = 
-      `TPC POLL (react below to vote): ${question}
-🇦: ${answer_a}
-🇧: ${answer_b}
-🇨: ${answer_c}`
-      const message = await interaction.reply({ content: newSend, fetchReply: true });
-      message.react('🇦')
-        .then(() => message.react('🇧'))
-        .then(() => message.react('🇨'))
-        .catch(error => console.error('One of the emojis failed to react:', error));
-      } else {
-        await interaction.reply("You need to be staff to use /poll!")
-      }
+client.commands = new Collection();
+const commandsPath = path.join(__dirname, 'commands');
+const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
 
-    } else if (commandName === 'next-flight') {
-      const row = new MessageActionRow()
-        .addComponents(
-          new MessageButton()
-          .setLabel('Next TPC Group Flight')
-          .setURL("https://thepilotclub.org/dispatch")
-          .setStyle('LINK'),
-        ) ;
-      await interaction.reply({content:`Next TPC Group Flight:`, components: [row]})
-      } else if (commandName === 'server-commands') {
-        const row = new MessageActionRow()
-          .addComponents(
-            new MessageButton()
-            .setLabel('TPC Server Commands')
-            .setURL("https://www.thepilotclub.org/server-commands")
-            .setStyle('LINK'),
-          ) ;
-        await interaction.reply({content:`Here is a full list of member friendly commands:`, components: [row]})
-      } else if (commandName === 'leaderboard') {
-        const row = new MessageActionRow()
-          .addComponents(
-            new MessageButton()
-            .setLabel('TPC Leaderboard')
-            .setURL("https://mee6.xyz/thepilotclub")
-            .setStyle('LINK'),
-          ) ;
-        await interaction.reply({content:`Check out our leaderboard!`, components: [row]})
-    } else if (commandName === 'metar') {
-      const airport = interaction.options.getString('airport')
-      const response = await fetch(`https://metar.vatsim.net/metar.php?id=${airport}`);
-      const body = await response.text();
-      if (body != undefined){
-        var metarEmbed =
-        {
-          "type": "rich",
-          "title": `WEATHER REPORT`,
-          "description": airport.toUpperCase(),
-          "color": 0X37B6FF,
-          "fields": [
-            {
-              "name": `METAR`,
-              "value": body
-            }
-          ],
-          "footer": {
-            "text": `Made by The Pilot Club`
-          }
-        }
-      interaction.reply({ embeds: [metarEmbed] })
-      //interaction.reply(body)
-        //test
-    } else {
-      interaction.reply("METAR isn't posted for: " + airport)
-    }
-    } else if (commandName === 'airport') {
-      const airport = interaction.options.getString('airport')
-      const response = await fetch(`https://metar.vatsim.net/metar.php?id=${airport}`);
-      const body = await response.text();
-      
-      let airportEmbed =
-        {
-          "type": "rich",
-          "title": `Airport`,
-          "description": `Information about ${airport.toUpperCase()}`,
-          "color": 0X37B6FF,
-          "fields": [
-            {
-              "name": `CHARTS (AirNav)`,
-              "value": `https://www.airnav.com/airport/${airport}`
-            },
-            {
-              "name": `METAR`,
-              "value": body || "Not available"
-            }
-          ],
-          "footer": {
-            "text": `Made by The Pilot Club`
-          }
-        }
-      
-    
-      interaction.reply({ embeds: [airportEmbed] })
-    } else if (commandName === 'charts') {
-    const airport = interaction.options.getString('airport')
-    const response = await fetch(`https://metar.vatsim.net/metar.php?id=${airport}`);
-    const body = await response.text();
-    
-    let chartsEmbed =
-      {
-        "type": "rich",
-        "title": `Airport`,
-        "description": `Information about ${airport.toUpperCase()}`,
-        "color": 0X37B6FF,
-        "fields": [
-          {
-            "name": `CHARTS (AirNav)`,
-            "value": `https://www.airnav.com/airport/${airport}`
-          },
-          {
-            "name": `METAR`,
-            "value": body || "Not available"
-          }
-        ],
-        "footer": {
-          "text": `Made by The Pilot Club`
-        }
-      }
-    
-  
-    interaction.reply({ embeds: [chartsEmbed] })
-  } else if (commandName === 'report') {
-    const channel=client.channels.cache.get('865416768641433630')
-    const user = interaction.options.getString('user')
-    const reason = interaction.options.getString('reason')
-    let reportembed =
-    {
-      "type": "rich",
-      "author": {
-        "name": `${interaction.user.tag}`,
-        "icon_url" : `${interaction.user.displayAvatarURL()}`
-      },
-      "title": `New Report`,
-      "description": `A member of TPC has submitted a report for moderation review.`,
-      "color": 0XFF0000,
-      "fields": [
-        {
-          "name": `Detailed Report`,
-          "value": `**User Reporting:** ${interaction.user} (ID: ${interaction.user.id}) \n  **User Reported:** ${user} \n **Reason:** ${reason} \n **Channel:** ${interaction.channel} \n **Last Messages Sent:** [Jump To Content](https://discord.com/channels/${interaction.guildId}/${interaction.channelId}/${interaction.id})  `
-        },
-      ],
-      "footer": {
-        "text": `Made by The Pilot Club For Moderators`
-      }
-    }
-    channel.send({
-      embeds: [reportembed]})
-    await interaction.reply({content:`You have reported ${user} for ${reason}. A moderator will deal with this as soon as we can. If this is urgent, please ping Ground Crew as soon as possible.`, ephemeral: true}
-    )
-  
-  }
+for (const file of commandFiles) {
+	const filePath = path.join(commandsPath, file);
+	const command = require(filePath);
+	// Set a new item in the Collection
+	// With the key as the command name and the value as the exported module
+	client.commands.set(command.data.name, command);
+}
 
-    
-  });
+client.on('interactionCreate', async interaction => {
+	if (!interaction.isCommand()) return;
+
+	const command = client.commands.get(interaction.commandName);
+
+	if (!command) return;
+
+	try {
+		await command.execute(interaction);
+	} catch (error) {
+		console.error(error);
+		await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+	}
+});
 
   //commuter role
-  client.on('guildMemberUpdate', async (oldMember, newMember) => {
+  /*client.on('guildMemberUpdate', async (oldMember, newMember) => {
     if(oldMember.roles.cache.has('930863426224410684')) return;
     if(newMember.roles.cache.has('930863426224410684')) {
       const channel = client.channels.cache.get('830209982770708500');
@@ -221,10 +74,10 @@ for (const file of eventFiles) {
         }]
       })
  }
-    })
+    })*/
 
 //frequent flyer
-client.on('guildMemberUpdate', async (oldMember, newMember) => {
+/*client.on('guildMemberUpdate', async (oldMember, newMember) => {
   if(oldMember.roles.cache.has('855253377209204750')) return;
   if(newMember.roles.cache.has('855253377209204750')) {
     const channel = client.channels.cache.get('830209982770708500');
@@ -236,10 +89,10 @@ client.on('guildMemberUpdate', async (oldMember, newMember) => {
       }]
     })
  }
-  })
+  })*/
 
 //VIP
-client.on('guildMemberUpdate', async (oldMember, newMember) => {
+/*client.on('guildMemberUpdate', async (oldMember, newMember) => {
   if(oldMember.roles.cache.has('930863007372836876')) return;
   if(newMember.roles.cache.has('930863007372836876')) {
     const channel = client.channels.cache.get('830209982770708500');
@@ -251,15 +104,15 @@ client.on('guildMemberUpdate', async (oldMember, newMember) => {
       }]
     })
   }
-  })
+  })*/
 //Booster
-  client.on('guildMemberUpdate', async (oldMember, newMember) => {
+/*  client.on('guildMemberUpdate', async (oldMember, newMember) => {
     if(oldMember.roles.cache.has('838504056358961164')) return;
     if(newMember.roles.cache.has('838504056358961164')) {
       const channel = client.channels.cache.get('830209982770708500');
       channel.send(`${oldMember} Thank you for boosting the club!`);
     }
-    })
+    })*/
 
 // q and a funtion
 
