@@ -36,7 +36,7 @@ module.exports = {
         let answer_d = interaction.options.getString('answer_d')
         let answer_e = interaction.options.getString('answer_e')
         if (interaction.member.roles.cache.some(role => role.name === 'Staff') || interaction.member.roles.cache.some(role => role.name === 'Air Marshals')){
-            newSend = `**TPC POLL:** \n ${question} \n \n 🇦: ${answer_a} \n 🇧: ${answer_b}`
+            newSend = `<:tpc:845075689241051138> **TPC POLL:** \n ${question} \n \n 🇦: ${answer_a} \n 🇧: ${answer_b}`
             if (answer_c !== null){
                 newSend += `\n 🇨: ${answer_c}`
             } if (answer_d !== null){
