@@ -1,4 +1,5 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
+const { Client, Collection, Intents, Interaction } = require('discord.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -8,8 +9,8 @@ module.exports = {
             option.setName('user').setDescription('who is the user that you would like to report').setRequired(true))
                 .addStringOption(option=>
                 option.setName('reason').setDescription('What happened with this user').setRequired(true)),
-	async execute(interaction) {
-		const channel=channels.cache.get('865416768641433630')
+	async execute(interaction,client) {
+    const channel = client.guilds.channels.cache.get('962160490837065861')
     const user = interaction.options.getString('user')
     const reason = interaction.options.getString('reason')
     let reportembed =
