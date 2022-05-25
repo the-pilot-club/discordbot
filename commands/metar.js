@@ -12,7 +12,7 @@ module.exports = {
       const response = await fetch(`https://metar.vatsim.net/metar.php?id=${airport}`);
       const body = await response.text();
       if (body != undefined){
-        var metarEmbed =
+        let metarEmbed =
         {
           "type": "rich",
           "title": `WEATHER REPORT`,
