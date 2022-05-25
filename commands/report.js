@@ -9,7 +9,7 @@ module.exports = {
                 .addStringOption(option=>
                 option.setName('reason').setDescription('What happened with this user').setRequired(true)),
 	async execute(interaction) {
-		const channel=client.channels.cache.get('865416768641433630')
+		const channel=channels.cache.get('865416768641433630')
     const user = interaction.options.getString('user')
     const reason = interaction.options.getString('reason')
     let reportembed =
