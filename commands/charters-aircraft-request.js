@@ -17,7 +17,7 @@ module.exports = {
             option.setName('starting-location').setDescription('Where would you like to start using this aircraft? (We will get you as close as we can)').setRequired(true)
         ),
 	async execute(interaction,client) {
-        const channel = interaction.guild.client.channels.cache.get('864834861603487754')
+        const channel = interaction.guild.client.channels.cache.get('971481918396846140')
         const airline = interaction.options.getString('airline-code')
         const type = interaction.options.getString('aircraft-type')
         const seating = interaction.options.getString('seating-config')
