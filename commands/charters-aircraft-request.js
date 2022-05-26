@@ -30,7 +30,7 @@ module.exports = {
     .addFields({name:'Aircraft Details', value: `**TPC Charters User:** ${interaction.user} \n  **Airline Code:** ${airline} \n **Aircraft Type:** ${type} \n **Seating Configuration:** ${seating} \n **Starting Location:** ${start}`})
     .setFooter({text: 'Made by The Pilot Club For TPC Charters'});
     channel.send({content: `<@&910012872246046730>` , embeds: [embed]})
-    await interaction.reply({content:`You have requested a ${type} for ${airline}. A Charters Manager will assign the aircraft as soon as they can. If you do not have the aircraft assigned within 72 hours, please try this command again.`, ephemeral: true}
+    await interaction.reply({content:`You have requested a ${type} for ${airline}. A Charters Manager will assign the aircraft as soon as they can. If you do not have the aircraft assigned within 12 hours, please try this command again.`, ephemeral: true}
     )
   }
 }
