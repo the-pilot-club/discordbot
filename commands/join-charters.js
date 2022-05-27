@@ -27,11 +27,11 @@ module.exports = {
             .setTitle('New Join Request')
             .setDescription( 'A member of TPC has reqested to join TPC Charters.')
             .setColor('0X37B6FF')
-            .addFields({name:'Member Details', value: `**TPC Charters User:** ${interaction.user} \n  **Airline Code:** ${airline} \n **Home Base:** ${home} \n **Aircraft Type (For Assignment):** ${type} \n **Seating Configuration:** ${seating}`})
+            .addFields({name:'Member Details', value: `**TPC Charters User:** ${interaction.user} \n  **Airline Code:** ${airline} \n **Home Base:** ${home} \n **Inital Aircraft Type Request:** ${type} \n **Seating Configuration:** ${seating}`})
             .setFooter({text: 'Made by The Pilot Club For TPC Charters'});
         if (interaction.member.roles.cache.some(role => role.name === 'Pilots')){
             channel.send({content: `<@&910012872246046730>` , embeds: [embed]})
-            await interaction.reply({content:`You have requested a ${type} for ${airline}. A Charters Manager will assign the aircraft as soon as they can. If you do not have the aircraft assigned within 12 hours, please try this command again.`, ephemeral: true})
+            await interaction.reply({content:`Thank you for joining TPC Charters! We will try to assign you ${type} as soon as we can. If you have not heard anything within 12 hours, please try this command again! Welcome to TPC Charters. `, ephemeral: true})
         } else {
             interaction.reply({content:`If you are seeing this, ping a member of staff to give you the Pilots Role`, ephemeral: true})
         }
