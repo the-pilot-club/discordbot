@@ -115,7 +115,7 @@ client.on('guildMemberUpdate', async (oldMember, newMember) => {
     })
 
 // q and a funtion
-/*
+
 const file = require("./questions.json")
 const cron = require('node-cron'); //ability to repeat code
 const { EventEmitter } = require('stream');
@@ -225,7 +225,7 @@ client.on('ready', async function() {
     
       });
 
-});*/
+});
 
 
 module.exports = client;
