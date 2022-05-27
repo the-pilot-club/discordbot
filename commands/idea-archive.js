@@ -13,7 +13,7 @@ module.exports = {
             option.setName('idea-details').setDescription('Copy and paste the idea details').setRequired(true)
         ),
 	async execute(interaction,client) {
-        const channel = interaction.guild.client.channels.cache.get('979566041061552217')
+        const channel = interaction.guild.client.channels.cache.get('979578236122071050')
         const number = interaction.options.getString('suggestion-number')
         const idea = interaction.options.getString('idea-details')
         const embed = new MessageEmbed()
