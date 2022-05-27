@@ -26,14 +26,14 @@ module.exports = {
             .setAuthor({name:`${interaction.user.tag}`, iconURL:`${interaction.user.displayAvatarURL()}`})
             .setTitle(`Implemented Idea Archive for Suggestion #${number}`)
             .setColor('0X37B6FF')
-            .addFields({name: `Suggestion Deatails:`, value:`**Username of Idea Author:** ${user} \n ${idea}`}) 
+            .addFields({name: `Suggestion Deatails:`, value:`**Username of Idea Author:** ${user} \n **Users Idea:**${idea}`}) 
             .setFooter({text: 'Made by The Pilot Club For Administration'});
 
         const reasonembed = new MessageEmbed()
         .setAuthor({name:`${interaction.user.tag}`, iconURL:`${interaction.user.displayAvatarURL()}`})
         .setTitle(`Implemented Idea Archive for Suggestion #${number}`)
         .setColor('0X37B6FF')
-        .addFields({name: `Suggestion Deatails:`, value:`**Username of Idea Author:** ${user} \n ${idea}`})
+        .addFields({name: `Suggestion Deatails:`, value:`**Username of Idea Author:** ${user} \n **Users Idea:**${idea}`})
         .addFields({name: `Reason Given`, value: `${reason}`})  
         .setFooter({text: 'Made by The Pilot Club For Administration'});
 
