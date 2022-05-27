@@ -24,7 +24,7 @@ module.exports = {
         const type = interaction.options.getString('aircraft-type')
         const seating = interaction.options.getString('seating-config')
         const start = interaction.options.getString('starting-location')
-        const tail = interaction.option.getString('aircraft-tail-number')
+        const tail = interaction.options.getString('aircraft-tail-number')
         const tailembed = new MessageEmbed()
             .setAuthor({name:`${interaction.user.tag}`, iconURL:`${interaction.user.displayAvatarURL()}`})
             .setTitle('New Aircraft Request')
