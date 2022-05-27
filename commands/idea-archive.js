@@ -10,6 +10,8 @@ module.exports = {
         ).addStringOption(option =>
             option.setName('suggestion-number').setDescription('What is the Idea Number?').setRequired(true)
         ).addStringOption(option=>
+            option.setName('member-who-suggested').setDescription('Copy and paste the username who suggested the idea.').setRequired(true)
+        ).addStringOption(option=>
             option.setName('idea-details').setDescription('Copy and paste the idea details').setRequired(true)
         ).addStringOption(option=>
             option.setName('reason-given').setDescription('Copy and paste the reason given details').setRequired(false)
@@ -19,20 +21,21 @@ module.exports = {
         const number = interaction.options.getString('suggestion-number')
         const idea = interaction.options.getString('idea-details')
         const reason = interaction.options.getString('reason-given')
+        const user = interaction.options.getString('member-who-suggested')
         const noreasonembed = new MessageEmbed()
             .setAuthor({name:`${interaction.user.tag}`, iconURL:`${interaction.user.displayAvatarURL()}`})
             .setTitle(`Implemented Idea Archive for Suggestion #${number}`)
             .setColor('0X37B6FF')
-            .addFields({name: `Suggestion Deatails:`, value:`${idea}`}) 
-            .setFooter({text: 'Made by The Pilot Club For Adminisration'});
+            .addFields({name: `Suggestion Deatails:`, value:`**Username of Idea Author:** ${user} \n ${idea}`}) 
+            .setFooter({text: 'Made by The Pilot Club For Administration'});
 
         const reasonembed = new MessageEmbed()
         .setAuthor({name:`${interaction.user.tag}`, iconURL:`${interaction.user.displayAvatarURL()}`})
         .setTitle(`Implemented Idea Archive for Suggestion #${number}`)
         .setColor('0X37B6FF')
-        .addFields({name: `Suggestion Deatails:`, value:`${idea}`})
+        .addFields({name: `Suggestion Deatails:`, value:`**Username of Idea Author:** ${user} \n ${idea}`})
         .addFields({name: `Reason Given`, value: `${reason}`})  
-        .setFooter({text: 'Made by The Pilot Club For Adminisration'});
+        .setFooter({text: 'Made by The Pilot Club For Administration'});
 
     if (interaction.member.roles.cache.some(role => role.name === 'Air Marshals')){
         if (reason !== null){     
