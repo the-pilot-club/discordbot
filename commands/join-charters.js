@@ -17,7 +17,7 @@ module.exports = {
             option.setName('seating-config').setDescription('What is the prefered seating configuration you would like?').setRequired(true)
         ),
 	async execute(interaction,client) {
-        const channel = interaction.guild.client.channels.cache.get('979566039757103119')
+        const channel = interaction.guild.client.channels.cache.get('971481918396846140')
         const airline = interaction.options.getString('airline-code')
         const type = interaction.options.getString('aircraft-type')
         const seating = interaction.options.getString('seating-config')
