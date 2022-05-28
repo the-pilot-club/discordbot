@@ -3,6 +3,6 @@ module.exports = {
   once: false,
 	execute(message) {
 	if (message.content.toLowerCase() === "eric")
-    message.reply("<@398557782623649794> That one guy who knew enough coding to make me a thing (with help from <@875527822611992577>). If you are seeing this message, DM him and tell him the code word || Green Horn ||")
+    message.reply("|| If you are seeing this message, DM Eric | ZSE | TPC76 and tell him the code word Green Horn ||")
 	}
 };

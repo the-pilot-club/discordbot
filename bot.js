@@ -10,7 +10,7 @@ const fetch = require('node-fetch');
 const path = require('node:path');
 const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
 client.setMaxListeners(0);
-var monthNames = [
+let monthNames = [
   "january",
   "february",
   "march",
@@ -62,7 +62,7 @@ client.on('interactionCreate', async interaction => {
 });
 
   //commuter role
-  client.on('guildMemberUpdate', async (oldMember, newMember) => {
+client.on('guildMemberUpdate', async (oldMember, newMember) => {
     if(oldMember.roles.cache.has('930863426224410684')) return;
     if(newMember.roles.cache.has('930863426224410684')) {
       const channel = client.channels.cache.get('830209982770708500');
@@ -72,7 +72,7 @@ client.on('interactionCreate', async interaction => {
           attachment: `./pics/congrats.png`,
           name: 'file.png'
         }]
-      })
+    })
  }
     })
 
@@ -86,10 +86,10 @@ client.on('guildMemberUpdate', async (oldMember, newMember) => {
        files: [{
         attachment: `./pics/congrats.png`,
         name: 'file.png'
-      }]
-    })
- }
-  })
+            }]
+        })
+    }
+})
 
 //VIP
 client.on('guildMemberUpdate', async (oldMember, newMember) => {
@@ -101,26 +101,26 @@ client.on('guildMemberUpdate', async (oldMember, newMember) => {
        files: [{
         attachment: `./pics/congrats.png`,
         name: 'file.png'
-      }]
-    })
-  }
-  })
+            }]
+        })
+    }
+})
 //Booster
-  client.on('guildMemberUpdate', async (oldMember, newMember) => {
+client.on('guildMemberUpdate', async (oldMember, newMember) => {
     if(oldMember.roles.cache.has('838504056358961164')) return;
     if(newMember.roles.cache.has('838504056358961164')) {
       const channel = client.channels.cache.get('830209982770708500');
       channel.send(`${oldMember} Thank you for boosting the club!`);
     }
-    })
+})
  //dm for charters role
  client.on('guildMemberUpdate', async (oldMember, newMember) => {
     if(oldMember.roles.cache.has('897118707988451339')) return;
     if(newMember.roles.cache.has('897118707988451339')) {
     newMember.user.send( "Welcome to TPC Charters, we look forward to having you fly with us. Please read https://www.thepilotclub.org/s/TPC_Charters_-_pilots_guide_v10.pdf.  We hope this will answer most of your questions.  If you still have questions after having read this, then ask away."
-      )
- }
-    })
+        )
+    }
+})
 // q and a funtion
 
 const file = require("./questions.json")
@@ -139,25 +139,25 @@ function sendNewQuestion(channel) {
     message.react('🇦');
     message.react('🇧');
     message.react('🇨');
-
-  });
-  file.latestQuestion = generatedNum
-  fs.writeFileSync("questions.json", JSON.stringify(file, null, 2));
+});
+file.latestQuestion = generatedNum
+fs.writeFileSync("questions.json", JSON.stringify(file, null, 2));
 }
+
 function sendNewEvent(channel, flight, ping) {
   const today = new Date();
   const day = today.getDate();        // 24
   const month = monthNames[today.getMonth()] //may
   const year = today.getFullYear();   // 2020
-  channel.send({
+    channel.send({
     content: ping + ` One hour until the flight briefing. Head to the airport soon to start setting up! See you there! https://www.thepilotclub.org/dispatch/${flight}-${day}${month}${year}`,
     files: [{
       attachment: `./pics/${flight}.png`,
       name: 'file.png'
-    }]
-  })
-  //channel.send(`<@&838379351295787079> Pilots, one hour until the Event Briefing. Start heading to the airport in 30 minutes to start setting up! See you there!`)
+        }]
+    })
 }
+
 function sendNewAnswer(channel) {
   channel.send(questions[file.latestQuestion][1]);
 }
@@ -168,73 +168,67 @@ let questions = file.questions;
 let index=randomNum(0,questions.length-1);
 let question=questions[index];
 
-//sends message to a specific channel
+//sends message to a specific channel for QandA and Events Notification
 client.on('ready', async function() {
   const channel = await client.channels.fetch(process.env.CHANNEL_ID);
 //Getting random question every day:  0 57 22 * * *
-  cron.schedule('0 00 08 * * *', function() { //Correct time is 0 00 08 * * *
+cron.schedule('0 00 08 * * *', function() { //Correct time is 0 00 08 * * *
     sendNewQuestion(channel);
-  });
-  cron.schedule('0 52 07 * * *', function() { // Correct time is 0 53 07 * * *
+});
+cron.schedule('0 52 07 * * *', function() { // Correct time is 0 53 07 * * *
     sendNewAnswer(channel);
-  });
+});
 
   //EVENTS:
-  const eventChannel = await client.channels.fetch(process.env.EVENT_CHANNEL);
+const eventChannel = await client.channels.fetch(process.env.EVENT_CHANNEL);
   //sendNewEvent(eventChannel, "ga-tuesday", "<@&937389346204557342> <@&898240224189120532>");
-  cron.schedule('0 17 * * 2', function() {
+cron.schedule('0 17 * * 2', function() {
     sendNewEvent(eventChannel, "ga-tuesday", "<@&937389346204557342> <@&898240224189120532>");
-  });
-  cron.schedule('0 18 * * 4', function() {
+});
+cron.schedule('0 18 * * 4', function() {
     sendNewEvent(eventChannel, "sbr-tpc-fly-in-thursday", "<@&937389346204557342>");
-  });
-  cron.schedule('0 13 * * 0', function() { 
+});
+cron.schedule('0 13 * * 0', function() { 
     sendNewEvent(eventChannel, "sunday-funday", "<@&937389346204557342>");
-  }); 
-  cron.schedule('0 10 * * 6', function() { // every saturday
-  const today = new Date();
-  const day = today.getDate();        // 24
-  if (day <= 7){
-  const month = monthNames[today.getMonth()] //may
-  const year = today.getFullYear();   // 2020
-  channel.send({
-    content: `<@&937389346204557342> STARTING SOON: JOIN US for WORLD TOUR. Head to the airport in 30 min to start setting up! See you there! https://www.thepilotclub.org/dispatch/world-tour-${day}${month}${year}`,
-    files: [{
-      attachment: `./pics/world-tour.png`,
-      name: 'file.png'
+}); 
+cron.schedule('0 10 * * 6', function() { // every saturday
+    const today = new Date();
+    const day = today.getDate();        // 24
+    if (day <= 7){
+    const month = monthNames[today.getMonth()] //may
+    const year = today.getFullYear();   // 2020
+    channel.send({
+        content: `<@&937389346204557342> STARTING SOON: JOIN US for WORLD TOUR. Head to the airport in 30 min to start setting up! See you there! https://www.thepilotclub.org/dispatch/world-tour-${day}${month}${year}`,
+        files: [{
+          attachment: `./pics/world-tour.png`,
+          name: 'file.png'
     }]
-  })
-  } else {
+})
+    } else {
     console.log("not first saturday of the month")
-  }
+    }
 
-  });
-  cron.schedule('0 14 * * 6', function() { // every saturday
+});
+cron.schedule('0 14 * * 6', function() { // every saturday
     const today = new Date();
     const day = today.getDate();        // 24
     if (day > 7 && day <=14){
       //second saturday of the month
       sendNewEvent(eventChannel, "challengeflight", "<@&937389346204557342>");
-  } else {
+    } else {
     console.log("not second saturday of the month")
-  }
-  
-    });
-    cron.schedule('0 11 * * 6', function() { // every saturday
-      const today = new Date();
-      const day = today.getDate();        // 24
-      if (day > 14 && day <=21){
-        //third saturday of the month
-        sendNewEvent(eventChannel, "15zulu", "<@&937389346204557342>");
+    } 
+});
+cron.schedule('0 11 * * 6', function() { // every saturday
+    const today = new Date();
+    const day = today.getDate();// 24
+    if (day > 14 && day <=21){
+    //third saturday of the month
+    sendNewEvent(eventChannel, "15zulu", "<@&937389346204557342>");
     } else {
       console.log("not third saturday of the month")
-    }
-    
-      });
-
+    }   
+    });
 });
-
-
 module.exports = client;
-
 client.login(process.env.BOT_TOKEN)
