@@ -6,8 +6,11 @@ module.exports = {
             .setDescription('picks random user with giveaway role'),
 	async execute(interaction) {
         if (interaction.member.roles.cache.some(role => role.name === 'Staff') || interaction.member.roles.cache.some(role => role.name === 'Air Marshals')){
-            let members = interaction.guild.roles.cache.get('860938566426558505').members.map(m=>m.user.tag)
-            interaction.reply("The winner is: " + members[Math.round(Math.random() * members.length)] + " Congrats!");
+            interaction.guild.roles.fetch('860938566426558505').then(role => {
+                let memebers = role.members.map(m=>m.user.tag);
+                interaction.reply("The winner is: " + members[Math.round(Math.random() * members.length)] + " Congrats!");
+                console.log(members.length)
+            })
         }
 	},
 };
