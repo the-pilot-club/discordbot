@@ -10,7 +10,7 @@ module.exports = {
             interaction.guild.roles.fetch('860938566426558505').then(role => {
                 let members = role.members.map(m=>m.user.tag);
                 //channel.send("The winner is: " + members[Math.round(Math.random() * members.length)] + " Congrats!");
-                console.log(members.length, role.members.length)
+                console.log(members.length, role.members.size)
             })
         }
 	},
