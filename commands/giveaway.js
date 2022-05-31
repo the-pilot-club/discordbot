@@ -9,12 +9,9 @@ module.exports = {
             let channel = interaction.channel;
             interaction.guild.members.fetch().then(members => {
                 let result = members.filter(m => m.roles.cache.find(role => role.id == '860938566426558505'));
-                console.log(result.size)
-            })
-            interaction.guild.roles.fetch('860938566426558505').then(role => {
-                let members = role.members.map(m=>m.user.tag);
-                //channel.send("The winner is: " + members[Math.round(Math.random() * members.length)] + " Congrats!");
-                console.log(members.length, role.members.size)
+                let tags = role.members.map(m=>m.user.tag);
+                //channel.send("The winner is: " + tags[Math.round(Math.random() * tags.length)] + " Congrats!");
+                console.log(result.size, tags.length);
             })
         }
 	},
