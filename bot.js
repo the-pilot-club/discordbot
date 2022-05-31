@@ -133,13 +133,44 @@ function randomNum(min, max) {
   return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
 }
 
-function sendNewQuestion(channel) {
+function sendNewQuestion(channel, eventChannel) {
   let generatedNum = randomNum(0,questions.length)
+  var correct = questions[generatedNum][1]
+  if (correct.includes('🇦')){
+    correct = '🇦'
+    } else if (correct.includes('🇧')){
+      correct = '🇧'
+    } else if (correct.includes('🇨')){
+      correct = '🇨'
+    }
   channel.send(questions[generatedNum][0]).then (message => {
     message.react('🇦');
     message.react('🇧');
     message.react('🇨');
+    const filter = (reaction, user) => {
+      return user.id != message.author.id && reaction.emoji.name === '🇦' || user.id != message.author.id && reaction.emoji.name === '🇧' || user.id != message.author.id && reaction.emoji.name === '🇨'
+    };
+    
+    const collector = message.createReactionCollector({ filter, time: 43200000 }); //correct time: 43200000
+    var users = []
+    collector.on('collect', (reaction, user) => {
+      console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
+      if (reaction.emoji.name == correct && !users.includes(user.tag)){
+      users.push([user.tag, reaction.emoji.name])
+      }
+    });
+    
+    collector.on('end', collected => {
+      
+      //console.log(`Correct: ${correct} Users: ${users}`);
+      var formatted = ""
+      for (var i = 0; i < users.length; i++){
+        formatted+= "\n" +(users[i][0])
+      }
+      eventChannel.send(`Congrats to the following people for successfully answering today's quiz!${formatted}`)
+    });
 });
+
 file.latestQuestion = generatedNum
 fs.writeFileSync("questions.json", JSON.stringify(file, null, 2));
 }
@@ -156,6 +187,7 @@ function sendNewEvent(channel, flight, ping) {
       name: 'file.png'
         }]
     })
+    
 }
 
 function sendNewAnswer(channel) {
@@ -171,16 +203,18 @@ let question=questions[index];
 //sends message to a specific channel for QandA and Events Notification
 client.on('ready', async function() {
   const channel = await client.channels.fetch(process.env.CHANNEL_ID);
+  const eventChannel = await client.channels.fetch(process.env.EVENT_CHANNEL);
+  sendNewQuestion(channel, eventChannel);
 //Getting random question every day:  0 57 22 * * *
 cron.schedule('0 00 08 * * *', function() { //Correct time is 0 00 08 * * *
-    sendNewQuestion(channel);
+    sendNewQuestion(channel, eventChannel);
 });
 cron.schedule('0 52 07 * * *', function() { // Correct time is 0 53 07 * * *
     sendNewAnswer(channel);
 });
 
   //EVENTS:
-const eventChannel = await client.channels.fetch(process.env.EVENT_CHANNEL);
+
   //sendNewEvent(eventChannel, "ga-tuesday", "<@&937389346204557342> <@&898240224189120532>");
 cron.schedule('0 17 * * 2', function() {
     sendNewEvent(eventChannel, "ga-tuesday", "<@&937389346204557342> <@&898240224189120532>");

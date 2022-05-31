@@ -391,19 +391,19 @@
     [
       "<:training_team:895480894901592074> A steady green light signal directed from the control tower to an aircraft in flight is a signal that the pilot \n \n 🇦: should give way to other aircraft and continue circling.. \n 🇧: should return for landing. \n 🇨: is cleared to land.",
       "<:training_team:895480894901592074> The correct answer is 🇨: is cleared to land."
-    ],   
+    ],
     [
       "<:training_team:895480894901592074> Which light signal from the control tower clears a pilot to taxi \n \n 🇦: Flashing green. \n 🇧: Flashing white. \n 🇨: Steady green.",
       "<:training_team:895480894901592074> The correct answer is 🇦: Flashing green."
-    ],   
+    ],
     [
       "<:training_team:895480894901592074> If the control tower uses a light signal to direct a pilot to give way to other aircraft and continue circling, the light will be \n \n 🇦: steady red. \n 🇧: flashing red. \n 🇨: alternating red and green.",
       "<:training_team:895480894901592074> The correct answer is 🇦: steady red."
-    ],   
+    ],
     [
       "<:training_team:895480894901592074> A flashing white light signal from the control tower to a taxiing aircraft is an indication to \n \n 🇦: taxi only on taxiways and not cross runways. \n 🇧: taxi at a faster speed. \n 🇨: return to the starting point on the airport.",
       "<:training_team:895480894901592074> The correct answer is 🇨: return to the starting point on the airport."
-    ],   
+    ],
     [
       "<:training_team:895480894901592074> An alternating red and green light signal directed from the control tower to an aircraft in flight is a signal to \n \n 🇦: exercise extreme caution. \n 🇧: hold position. \n 🇨: not land; the airport is unsafe.",
       "<:training_team:895480894901592074> The correct answer is 🇦: exercise extreme caution."
@@ -481,5 +481,5 @@
       "<:training_team:895480894901592074> The correct answer is 🇧: 3 miles visibility and clear of clouds."
     ]
   ],
-  "latestQuestion": 4
+  "latestQuestion": 38
 }
