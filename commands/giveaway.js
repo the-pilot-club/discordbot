@@ -7,7 +7,7 @@ module.exports = {
 	async execute(interaction) {
         if (interaction.member.roles.cache.some(role => role.name === 'Staff') || interaction.member.roles.cache.some(role => role.name === 'Air Marshals')){
             interaction.guild.roles.fetch('860938566426558505').then(role => {
-                let memebers = role.members.map(m=>m.user.tag);
+                let members = role.members.map(m=>m.user.tag);
                 interaction.reply("The winner is: " + members[Math.round(Math.random() * members.length)] + " Congrats!");
                 console.log(members.length)
             })
