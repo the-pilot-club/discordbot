@@ -6,7 +6,7 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
 	data: new SlashCommandBuilder()
         .setName('join-charters')
-        .setDescription('Use this commnad to request an aircraft for use in OnAir.'
+        .setDescription('Use this commnad to request to join TPC Charters hosted on OnAir!'
         ).addStringOption(option =>
             option.setName('airline-code').setDescription('What is the code to your Airline in OnAir?').setRequired(true)
         ).addStringOption(option=>
