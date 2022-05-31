@@ -11,6 +11,8 @@ module.exports = {
                 let tags = result.map(m=>m.user.tag);
                 interaction.reply("And the winner is" + tags[Math.floor(Math.random() * tags.length)] + ". Congratulations!");
             })
-        }
+        } else {
+	   interaction.reply("Sorry, /giveaway is staff only")
+	}
 	},
 };
