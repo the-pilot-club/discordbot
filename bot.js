@@ -204,7 +204,7 @@ let question=questions[index];
 client.on('ready', async function() {
   const channel = await client.channels.fetch(process.env.CHANNEL_ID);
   const eventChannel = await client.channels.fetch(process.env.EVENT_CHANNEL);
-  sendNewQuestion(channel, eventChannel);
+  //sendNewQuestion(channel, eventChannel);
 //Getting random question every day:  0 57 22 * * *
 cron.schedule('0 00 08 * * *', function() { //Correct time is 0 00 08 * * *
     sendNewQuestion(channel, eventChannel);
