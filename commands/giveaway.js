@@ -9,8 +9,10 @@ module.exports = {
             interaction.guild.members.fetch().then(members => {
                 let result = members.filter(m => m.roles.cache.find(role => role.id == '860938566426558505'));
                 let tags = result.map(m=>m.user.tag);
-                interaction.reply("The winner is: " + tags[Math.round(Math.random() * tags.length)] + " Congrats!");
+                interaction.reply("And the winner is" + tags[Math.floor(Math.random() * tags.length)] + ". Congratulations!");
             })
-        }
+        } else {
+	   interaction.reply("Sorry, /giveaway is staff only")
+	}
 	},
 };
