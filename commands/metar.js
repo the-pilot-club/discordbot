@@ -11,7 +11,7 @@ module.exports = {
 		const airport = interaction.options.getString('icao')
       const response = await fetch(`https://metar.vatsim.net/metar.php?id=${airport}`);
       const body = await response.text();
-      if (body != undefined){
+      if (body != undefined || body != null){
         let metarEmbed =
         {
           "type": "rich",
