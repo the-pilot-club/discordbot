@@ -209,7 +209,7 @@ client.on('ready', async function() {
 cron.schedule('0 00 08 * * *', function() { //Correct time is 0 00 08 * * *
     sendNewQuestion(channel, eventChannel);
 });
-cron.schedule('0 52 07 * * *', function() { // Correct time is 0 53 07 * * *
+cron.schedule('0 52 07 * * *', function() { // Correct time is 0 52 07 * * *
     sendNewAnswer(channel);
 });
 
