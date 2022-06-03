@@ -151,7 +151,7 @@ function sendNewQuestion(channel, eventChannel) {
       return user.id != message.author.id && reaction.emoji.name === '🇦' || user.id != message.author.id && reaction.emoji.name === '🇧' || user.id != message.author.id && reaction.emoji.name === '🇨'
     };
     
-    const collector = message.createReactionCollector({ filter, time: 15000 }); //correct time: 43200000
+    const collector = message.createReactionCollector({ filter, time: 15000 }); //correct time: 32400000
     var users = []
     collector.on('collect', (reaction, user) => {
       console.log(`Collected ${reaction.emoji.name} from ${"<@" + user.id + ">"}`);
@@ -167,7 +167,7 @@ function sendNewQuestion(channel, eventChannel) {
       for (var i = 0; i < users.length; i++){
         formatted+= "\n" +(users[i][0])
       }
-      eventChannel.send(`:training_team: Congrats to the following members for answering yesterday’s quiz correctly! Good job!${formatted}`)
+      eventChannel.send(`<:training_team:895480894901592074> Congrats to the following members for answering yesterday’s quiz correctly! Good job!${formatted}`)
     });
 });
 
