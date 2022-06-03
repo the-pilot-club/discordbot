@@ -151,12 +151,12 @@ function sendNewQuestion(channel, eventChannel) {
       return user.id != message.author.id && reaction.emoji.name === '🇦' || user.id != message.author.id && reaction.emoji.name === '🇧' || user.id != message.author.id && reaction.emoji.name === '🇨'
     };
     
-    const collector = message.createReactionCollector({ filter, time: 43200000 }); //correct time: 43200000
+    const collector = message.createReactionCollector({ filter, time: 15000 }); //correct time: 43200000
     var users = []
     collector.on('collect', (reaction, user) => {
-      console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
-      if (reaction.emoji.name == correct && !users.includes(user.tag)){
-      users.push([user.tag, reaction.emoji.name])
+      console.log(`Collected ${reaction.emoji.name} from ${"<@" + user.id + ">"}`);
+      if (reaction.emoji.name == correct && !users.includes("<@" + user.id + ">")){
+      users.push(["<@" + user.id + ">", reaction.emoji.name])
       }
     });
     
@@ -167,7 +167,7 @@ function sendNewQuestion(channel, eventChannel) {
       for (var i = 0; i < users.length; i++){
         formatted+= "\n" +(users[i][0])
       }
-      eventChannel.send(`Congrats to the following people for successfully answering today's quiz!${formatted}`)
+      eventChannel.send(`:training_team: Congrats to the following members for answering yesterday’s quiz correctly! Good job!${formatted}`)
     });
 });
 
@@ -204,10 +204,12 @@ let question=questions[index];
 client.on('ready', async function() {
   const channel = await client.channels.fetch(process.env.CHANNEL_ID);
   const eventChannel = await client.channels.fetch(process.env.EVENT_CHANNEL);
+  const testChannel = await client.channels.fetch("864834861603487754");
+  sendNewQuestion(testChannel, testChannel);
   //sendNewQuestion(channel, eventChannel);
 //Getting random question every day:  0 57 22 * * *
 cron.schedule('0 00 08 * * *', function() { //Correct time is 0 00 08 * * *
-    sendNewQuestion(channel, eventChannel);
+    sendNewQuestion(channel, testChannel);
 });
 cron.schedule('0 52 07 * * *', function() { // Correct time is 0 53 07 * * *
     sendNewAnswer(channel);
