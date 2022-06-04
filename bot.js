@@ -154,9 +154,9 @@ function sendNewQuestion(channel, eventChannel) {
     const collector = message.createReactionCollector({ filter, time: 43200000 }); //correct time: 43200000
     var users = []
     collector.on('collect', (reaction, user) => {
-      console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
-      if (reaction.emoji.name == correct && !users.includes(user.tag)){
-      users.push([user.tag, reaction.emoji.name])
+      console.log(`Collected ${reaction.emoji.name} from ${user.id}`);
+      if (reaction.emoji.name == correct && !users.includes(user.id)){
+      users.push([user.id, reaction.emoji.name])
       }
     });
     
@@ -165,9 +165,10 @@ function sendNewQuestion(channel, eventChannel) {
       //console.log(`Correct: ${correct} Users: ${users}`);
       var formatted = ""
       for (var i = 0; i < users.length; i++){
-        formatted+= "\n" +(users[i][0])
+        formatted+= "\n" +("<@" + users[i][0] + ">")
       }
-      eventChannel.send(`Congrats to the following people for successfully answering today's quiz!${formatted}`)
+      console.log(formatted)
+      eventChannel.send(`Congrats to the following people for successfully answering today's quiz! The correct answer was ${correct} ${formatted}`)
     });
 });
 
@@ -204,10 +205,11 @@ let question=questions[index];
 client.on('ready', async function() {
   const channel = await client.channels.fetch(process.env.CHANNEL_ID);
   const eventChannel = await client.channels.fetch(process.env.EVENT_CHANNEL);
-  //sendNewQuestion(channel, eventChannel);
+  const testChannel = await client.channels.fetch(process.env.TEST_CHANNEL); //correct id: 864834861603487754 
+  sendNewQuestion(channel, testChannel);
 //Getting random question every day:  0 57 22 * * *
 cron.schedule('0 00 08 * * *', function() { //Correct time is 0 00 08 * * *
-    sendNewQuestion(channel, eventChannel);
+    sendNewQuestion(channel, testChannel);
 });
 cron.schedule('0 52 07 * * *', function() { // Correct time is 0 52 07 * * *
     sendNewAnswer(channel);
