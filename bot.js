@@ -167,7 +167,7 @@ function sendNewQuestion(channel, eventChannel) {
       for (var i = 0; i < users.length; i++){
         formatted+= "\n" +(users[i][0])
       }
-      eventChannel.send(`Congrats to the following people for successfully answering today's quiz!${formatted}`)
+      //eventChannel.send(`Congrats to the following people for successfully answering today's quiz!${formatted}`)
     });
 });
 
