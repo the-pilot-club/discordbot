@@ -216,7 +216,7 @@ cron.schedule('0 52 07 * * *', function() { // Correct time is 0 52 07 * * *
   //EVENTS:
 
   //sendNewEvent(eventChannel, "ga-tuesday", "<@&937389346204557342> <@&898240224189120532>");
-cron.schedule('0 17 * * 2', function() {
+cron.schedule('0 18 * * 2', function() {
     sendNewEvent(eventChannel, "ga-tuesday", "<@&937389346204557342> <@&898240224189120532>");
 });
 cron.schedule('0 18 * * 4', function() {
