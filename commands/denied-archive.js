@@ -32,7 +32,7 @@ module.exports = {
         const reasonembed = new MessageEmbed()
         .setAuthor({name:`${interaction.user.tag}`, iconURL:`${interaction.user.displayAvatarURL()}`})
         .setTitle(`Denied Idea Archive for Suggestion #${number}`)
-        .setColor('0X37B6FF')
+        .setColor('0XFF0000')
         .addFields({name: `Suggestion Deatails:`, value:`**Username of Idea Author:** ${user} \n **Users Idea:** ${idea}`})
         .addFields({name: `Reason Given`, value: `${reason}`})  
         .setFooter({text: 'Made by The Pilot Club For Administration'});
