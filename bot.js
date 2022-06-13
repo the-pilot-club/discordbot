@@ -150,7 +150,6 @@ function sendNewQuestion(channel, eventChannel) {
     const filter = (reaction, user) => {
       return user.id != message.author.id && reaction.emoji.name === '🇦' || user.id != message.author.id && reaction.emoji.name === '🇧' || user.id != message.author.id && reaction.emoji.name === '🇨'
     };
-    
     const collector = message.createReactionCollector({ filter, time: 43200000 }); //correct time: 43200000
     var users = []
     collector.on('collect', (reaction, user) => {
@@ -218,7 +217,7 @@ cron.schedule('0 52 07 * * *', function() { // Correct time is 0 52 07 * * *
   //EVENTS:
 
   //sendNewEvent(eventChannel, "ga-tuesday", "<@&937389346204557342> <@&898240224189120532>");
-cron.schedule('0 17 * * 2', function() {
+cron.schedule('0 18 * * 2', function() {
     sendNewEvent(eventChannel, "ga-tuesday", "<@&937389346204557342> <@&898240224189120532>");
 });
 cron.schedule('0 18 * * 4', function() {
@@ -266,5 +265,6 @@ cron.schedule('0 11 * * 6', function() { // every saturday
     }   
     });
 });
-module.exports = client;
+
+ module.exports = client;
 client.login(process.env.BOT_TOKEN)
