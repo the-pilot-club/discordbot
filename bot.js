@@ -11,18 +11,18 @@ const path = require('node:path');
 const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
 client.setMaxListeners(0);
 let monthNames = [
-  "january",
-  "february",
-  "march",
-  "april",
+  "jan",
+  "feb",
+  "mar",
+  "apr",
   "may",
   "june",
-  "july",
-  "august",
-  "september",
-  "october",
-  "november",
-  "december"
+  "jul",
+  "aug",
+  "sep",
+  "oct",
+  "nov",
+  "dec"
 ];
 
 for (const file of eventFiles) {
