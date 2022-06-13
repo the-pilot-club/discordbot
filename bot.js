@@ -150,7 +150,6 @@ function sendNewQuestion(channel, eventChannel) {
     const filter = (reaction, user) => {
       return user.id != message.author.id && reaction.emoji.name === '🇦' || user.id != message.author.id && reaction.emoji.name === '🇧' || user.id != message.author.id && reaction.emoji.name === '🇨'
     };
-    
     const collector = message.createReactionCollector({ filter, time: 43200000 }); //correct time: 43200000
     var users = []
     collector.on('collect', (reaction, user) => {
@@ -264,5 +263,6 @@ cron.schedule('0 11 * * 6', function() { // every saturday
     }   
     });
 });
-module.exports = client;
+
+ module.exports = client;
 client.login(process.env.BOT_TOKEN)

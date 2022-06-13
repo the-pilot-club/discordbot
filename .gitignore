@@ -3,4 +3,3 @@ config.json
 node_modules
 oldData.json
 vatsimData.json
-questions.json
