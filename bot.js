@@ -167,7 +167,7 @@ function sendNewQuestion(channel, eventChannel) {
         formatted+= "\n" +("<@" + users[i][0] + ">")
       }
       console.log(formatted)
-      eventChannel.send(`Congrats to the following people for successfully answering today's quiz! The correct answer was ${correct} ${formatted}`)
+      //eventChannel.send(`Congrats to the following people for successfully answering today's quiz! The correct answer was ${correct} ${formatted}`)
     });
 });
 
@@ -204,11 +204,10 @@ let question=questions[index];
 client.on('ready', async function() {
   const channel = await client.channels.fetch(process.env.CHANNEL_ID);
   const eventChannel = await client.channels.fetch(process.env.EVENT_CHANNEL);
-  const testChannel = await client.channels.fetch(process.env.TEST_CHANNEL); //correct id: 864834861603487754 
-  sendNewQuestion(channel, testChannel);
+ //const testChannel = await client.channels.fetch(process.env.TEST_CHANNEL); //correct id: 864834861603487754 
 //Getting random question every day:  0 57 22 * * *
 cron.schedule('0 00 08 * * *', function() { //Correct time is 0 00 08 * * *
-    sendNewQuestion(channel, testChannel);
+    sendNewQuestion(channel);
 });
 cron.schedule('0 52 07 * * *', function() { // Correct time is 0 52 07 * * *
     sendNewAnswer(channel);
