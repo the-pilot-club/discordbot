@@ -205,7 +205,7 @@ let question=questions[index];
 client.on('ready', async function() {
   const channel = await client.channels.fetch(process.env.CHANNEL_ID);
   const eventChannel = await client.channels.fetch(process.env.EVENT_CHANNEL);
-  const dailiesChannel = await client.channels.fetch(process.env.NOTAM_CHANNEL);
+  const dailiesChannel = await client.channels.fetch(process.env.DAILIES_CHANNEL);
   const guildId = process.env.GUILD_ID;
  //const testChannel = await client.channels.fetch(process.env.TEST_CHANNEL); //correct id: 864834861603487754 
 //Getting random question every day:  0 57 22 * * *
