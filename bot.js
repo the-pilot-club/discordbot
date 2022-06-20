@@ -10,6 +10,7 @@ const fetch = require('node-fetch');
 const path = require('node:path');
 const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
 client.setMaxListeners(0);
+
 let monthNames = [
   "jan",
   "feb",
