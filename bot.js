@@ -218,7 +218,7 @@ cron.schedule('0 52 07 * * *', function() { // Correct time is 0 52 07 * * *
 
   //EVENTS:
   // run code every week:
-  cron.schedule('0 8 * * 1', function() { //Correct time is 0 8 * * 1 (every Monday at 8:00)
+  cron.schedule('0 7 * * 1', function() { //Correct time is 0 8 * * 1 (every Monday at 8:00)
     //get MEE6 leaderboard and send it to the event channel
     Mee6LevelsApi.getLeaderboardPage(tpcguildId).then(leaderboard => {
       //get the top 5 users
