@@ -221,27 +221,20 @@ cron.schedule('0 00 08 * * *', function() { //Correct time is 0 00 08 * * *
 cron.schedule('0 52 07 * * *', function() { // Correct time is 0 52 07 * * *
     sendNewAnswer(channel);
 });
-// run code every day at 8:00 AM
-cron.schedule('0 00 08 * * *', async function() { // Correct time is 0 8 * * *
-// console.log() each item in the currentWeek array
-  
 
+//  Top Pilots for Charters. This code will run every day at 8:00 AM
+cron.schedule('0 20 13 * * *', async function() { // Correct time is 0 00 07 * * *  
   let companyEmployees = await Api.getVirtualAirlineMembers()
-  //let companyEmployees = require("./currentWeek.json")
   companyEmployees.forEach(employee => {
     currentWeek.push({"airline": employee.Company.AirlineCode, "name": employee.Company.Name,"hours": employee.FlightHours});
-    //console.log(employee.Id)
-    //console.log(employee.FlightHours)
   })
   fs.writeFile("currentWeek.json", JSON.stringify(currentWeek), (err) => {
     if (err) throw err;
-    //console.log("The file has been saved!");
   })
   let updatedHours = []
   let updatedHoursNames = []
   currentWeek.forEach(function eachPilot(item, index) {
     if (previousWeek[index]) {
-      //console.log(item.hours + " " + previousWeek[index].hours)
       if (item.hours > previousWeek[index].hours) {
     console.log(`${item.airline}: (${item.name}) ${item.hours - previousWeek[index].hours}`)
     updatedHours.push(item.hours - previousWeek[index].hours)
@@ -258,13 +251,10 @@ cron.schedule('0 00 08 * * *', async function() { // Correct time is 0 8 * * *
   previousWeek = currentWeek;
   fs.writeFile("previousWeek.json", JSON.stringify(previousWeek), (err) => {
     if (err) throw err;
-    //console.log("The file has been saved!");
   })
-
-  //console.log(currentWeek)
-  //compare two arrays, currentWeek and previousWeek
 });
-  //EVENTS:
+
+//EVENTS:
 
   //GA Tuesday 
   cron.schedule('0 18 * * 2', function() {
