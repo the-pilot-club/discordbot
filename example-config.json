@@ -1,0 +1,5 @@
+{
+    "clientId": "bot client id goes here",
+    "guildId": "guild id for dev goes here",
+    "token": "bot token goes here"
+}
