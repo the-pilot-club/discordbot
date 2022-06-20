@@ -265,5 +265,3 @@ cron.schedule('0 11 * * 6', function() { // every saturday
 
  module.exports = client;
 client.login(process.env.BOT_TOKEN)
-
-// This is a test. do not be alarmed!
