@@ -6,11 +6,11 @@ const prefix = "$"
 const { MessageActionRow, MessageButton } = require('discord.js');
 const fs = require('fs');
 const { clientId, guildId, token } = require('./config.json');
+const Mee6LevelsApi = require("mee6-levels-api");
 const fetch = require('node-fetch');
 const path = require('node:path');
 const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
 client.setMaxListeners(0);
-
 let monthNames = [
   "jan",
   "feb",
@@ -205,6 +205,8 @@ let question=questions[index];
 client.on('ready', async function() {
   const channel = await client.channels.fetch(process.env.CHANNEL_ID);
   const eventChannel = await client.channels.fetch(process.env.EVENT_CHANNEL);
+  const notamChannel = await client.channels.fetch(process.env.NOTAM_CHANNEL);
+  const guildId = process.env.GUILD_ID;
  //const testChannel = await client.channels.fetch(process.env.TEST_CHANNEL); //correct id: 864834861603487754 
 //Getting random question every day:  0 57 22 * * *
 cron.schedule('0 00 08 * * *', function() { //Correct time is 0 00 08 * * *
@@ -215,7 +217,16 @@ cron.schedule('0 52 07 * * *', function() { // Correct time is 0 52 07 * * *
 });
 
   //EVENTS:
-
+  // run code every week:
+  cron.schedule('0 8 * * 1', function() { //Correct time is 0 8 * * 1 (every Monday at 8:00)
+    //get MEE6 leaderboard and send it to the event channel
+    Mee6LevelsApi.getLeaderboardPage(guildId).then(leaderboard => {
+      //get the top 5 users
+      var top5 = leaderboard.slice(0,5)
+      notamChannel.send(`Our **Top 5** of the week: \n${top5.map(user => user.username).join('\n')}\nSee all rankings here: https://vats.im/tpc-leaderboard`)
+    }).catch(err => {
+    });
+  })
   //sendNewEvent(eventChannel, "ga-tuesday", "<@&937389346204557342> <@&898240224189120532>");
 cron.schedule('0 18 * * 2', function() {
     sendNewEvent(eventChannel, "ga-tuesday", "<@&937389346204557342> <@&898240224189120532>");
@@ -266,5 +277,5 @@ cron.schedule('0 11 * * 6', function() { // every saturday
     });
 });
 
- module.exports = client;
+module.exports = client;
 client.login(process.env.BOT_TOKEN)
