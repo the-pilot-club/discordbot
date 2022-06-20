@@ -205,7 +205,7 @@ let question=questions[index];
 client.on('ready', async function() {
   const channel = await client.channels.fetch(process.env.CHANNEL_ID);
   const eventChannel = await client.channels.fetch(process.env.EVENT_CHANNEL);
-  const notamChannel = await client.channels.fetch(process.env.NOTAM_CHANNEL);
+  const dailiesChannel = await client.channels.fetch(process.env.NOTAM_CHANNEL);
   const guildId = process.env.GUILD_ID;
  //const testChannel = await client.channels.fetch(process.env.TEST_CHANNEL); //correct id: 864834861603487754 
 //Getting random question every day:  0 57 22 * * *
@@ -223,7 +223,7 @@ cron.schedule('0 52 07 * * *', function() { // Correct time is 0 52 07 * * *
     Mee6LevelsApi.getLeaderboardPage(guildId).then(leaderboard => {
       //get the top 5 users
       var top5 = leaderboard.slice(0,5)
-      notamChannel.send(`Our **Top 5** of the week: \n${top5.map(user => user.username).join('\n')}\nSee all rankings here: https://vats.im/tpc-leaderboard`)
+      dailiesChannel.send(`Our **Top 5** of the week: \n${top5.map(user => user.username).join('\n')}\nSee all rankings here: https://vats.im/tpc-leaderboard`)
     }).catch(err => {
     });
   })
