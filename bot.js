@@ -225,10 +225,18 @@ cron.schedule('0 52 07 * * *', function() { // Correct time is 0 52 07 * * *
       var top5 = leaderboard.slice(0,5)
       let list = top5.map(user => user.id)
       var formatted = ""
-      for (var i = 0; i < list.length; i++){
-        formatted+= "\n" +("<@" + list[i] + ">")
-      }
-      dailiesChannel.send(`Our **Top 5** of the week: \n${formatted}\nSee all rankings here: https://vats.im/tpc-leaderboard`)
+      const row = new MessageActionRow()
+        .addComponents(
+          new MessageButton()
+          .setLabel('TPC Leaderboard')
+          .setURL("https://mee6.xyz/thepilotclub")
+          .setStyle('LINK'),
+        ) ;
+      var formatted = ""
+        for (var i = 0; i < list.length; i++){
+            formatted+= "\n" +("<@" + list[i] + ">")
+            }
+            dailiesChannel.reply({content:`Our **Top 5** of the week: \n${formatted}\n \nSee all rankings here:`,  components: [row]})
     }).catch(err => {
     });
   })
