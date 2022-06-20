@@ -203,10 +203,10 @@ let question=questions[index];
 
 //sends message to a specific channel for QandA and Events Notification
 client.on('ready', async function() {
-  const channel = await client.channels.fetch(process.env.CHANNEL_ID);
+  const channel = await client.channels.fetch(process.env.QANDA_CHANNEL_ID);
   const eventChannel = await client.channels.fetch(process.env.EVENT_CHANNEL);
   const dailiesChannel = await client.channels.fetch(process.env.DAILIES_CHANNEL);
-  const guildId = process.env.GUILD_ID;
+  const tpcguildId = process.env.TPC_GUILD_ID;
  //const testChannel = await client.channels.fetch(process.env.TEST_CHANNEL); //correct id: 864834861603487754 
 //Getting random question every day:  0 57 22 * * *
 cron.schedule('0 00 08 * * *', function() { //Correct time is 0 00 08 * * *
@@ -220,7 +220,7 @@ cron.schedule('0 52 07 * * *', function() { // Correct time is 0 52 07 * * *
   // run code every week:
   cron.schedule('0 8 * * 1', function() { //Correct time is 0 8 * * 1 (every Monday at 8:00)
     //get MEE6 leaderboard and send it to the event channel
-    Mee6LevelsApi.getLeaderboardPage(guildId).then(leaderboard => {
+    Mee6LevelsApi.getLeaderboardPage(tpcguildId).then(leaderboard => {
       //get the top 5 users
       var top5 = leaderboard.slice(0,5)
       dailiesChannel.send(`Our **Top 5** of the week: \n${top5.map(user => user.username).join('\n')}\nSee all rankings here: https://vats.im/tpc-leaderboard`)
