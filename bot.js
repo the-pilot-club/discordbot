@@ -129,7 +129,9 @@ client.on('guildMemberUpdate', async (oldMember, newMember) => {
         ).catch(error => {console.error`I could not DM this memeber :(`})
     }
 })
-// q and a funtion
+
+
+// Cron Jobs for the quiz and the event postings
 
 const file = require("./questions.json")
 const cron = require('node-cron'); //ability to repeat code
@@ -204,11 +206,9 @@ function sendNewAnswer(channel) {
 
 //Parsing questions
 let questions = file.questions;
-//Getting random question
 let index=randomNum(0,questions.length-1);
 let question=questions[index];
 
-//sends message to a specific channel for QandA and Events Notification
 client.on('ready', async function() {
   const channel = await client.channels.fetch(process.env.QANDA_CHANNEL_ID);
   const eventChannel = await client.channels.fetch(process.env.EVENT_CHANNEL);
@@ -265,17 +265,20 @@ cron.schedule('0 00 08 * * *', async function() { // Correct time is 0 8 * * *
   //compare two arrays, currentWeek and previousWeek
 });
   //EVENTS:
-  // run code every week:
-  //sendNewEvent(eventChannel, "ga-tuesday", "<@&937389346204557342> <@&898240224189120532>");
-cron.schedule('0 18 * * 2', function() {
+
+  //GA Tuesday 
+  cron.schedule('0 18 * * 2', function() {
     sendNewEvent(eventChannel, "ga-tuesday", "<@&937389346204557342> <@&898240224189120532>");
 });
+    // Fly In Thursday
 cron.schedule('0 18 * * 4', function() {
     sendNewEvent(eventChannel, "sbr-tpc-fly-in-thursday", "<@&937389346204557342>");
 });
+    //Sunday Funday
 cron.schedule('0 13 * * 0', function() { 
     sendNewEvent(eventChannel, "sunday-funday", "<@&937389346204557342>");
 }); 
+    //World Tour
 cron.schedule('0 10 * * 6', function() { // every saturday
     const today = new Date();
     const day = today.getDate();        // 24
@@ -294,6 +297,7 @@ cron.schedule('0 10 * * 6', function() { // every saturday
     }
 
 });
+// Challenge Flight
 cron.schedule('0 14 * * 6', function() { // every saturday
     const today = new Date();
     const day = today.getDate();        // 24
@@ -304,6 +308,7 @@ cron.schedule('0 14 * * 6', function() { // every saturday
     console.log("not second saturday of the month")
     } 
 });
+// 15-Zulu Flight
 cron.schedule('0 11 * * 6', function() { // every saturday
     const today = new Date();
     const day = today.getDate();// 24
