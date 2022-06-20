@@ -23,7 +23,7 @@ async execute(interaction, client) {
         ) ;
     var formatted = ""
         for (var i = 0; i < list.length; i++){
-        formatted+= `\n${i+1}.` +("<@" + list[i] + ">")
+        formatted+= `\n${i+1}. ` +("<@" + list[i] + ">")
         }
             dailiesChannel.send({content:`Our **Top 5** this week: \n${formatted}\n \nSee all rankings here:`,  components: [row]})
             interaction.reply({content:`Top 5 posted!`, ephemeral: true})
