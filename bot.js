@@ -236,7 +236,7 @@ cron.schedule('0 52 07 * * *', function() { // Correct time is 0 52 07 * * *
         for (var i = 0; i < list.length; i++){
             formatted+= "\n" +("<@" + list[i] + ">")
             }
-            dailiesChannel.send({content:`Our **Top 5** of the week: \n${formatted}\n \nSee all rankings here:`,  components: [row]})
+            //dailiesChannel.send({content:`Our **Top 5** of the week: \n${formatted}\n \nSee all rankings here:`,  components: [row]})
     }).catch(err => {
     });
   })
