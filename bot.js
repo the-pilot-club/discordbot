@@ -268,3 +268,6 @@ cron.schedule('0 11 * * 6', function() { // every saturday
 
  module.exports = client;
 client.login(process.env.BOT_TOKEN)
+
+
+//this is only a test. I am making sure things work!
