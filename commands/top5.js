@@ -25,7 +25,7 @@ module.exports = {
             for (var i = 0; i < list.length; i++){
                 formatted+= "\n" +("<@" + list[i] + ">")
                 }
-                dailiesChannel.send({content:`Our **Top 5** of the week: \n${formatted}\n \nSee all rankings here:`,  components: [row]})
+                dailiesChannel.send({content:`Our **Top 5** of this week: \n${formatted}\n \nSee all rankings here:`,  components: [row]})
                 interaction.reply({content:`Top 5 posted!`, ephemeral: true})
                     }).catch(err => {
                 });
