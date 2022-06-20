@@ -1,5 +1,6 @@
 const Mee6LevelsApi = require("mee6-levels-api");
 const guildId = process.env.TPC_GUILD_ID;
+const { MessageActionRow, MessageButton } = require('discord.js')
 module.exports = {
 name: 'messageCreate',
 once: false,
@@ -10,11 +11,18 @@ once: false,
       //get the top 5 users
       var top5 = leaderboard.slice(0,5)
       let list = top5.map(user => user.id)
+      const row = new MessageActionRow()
+        .addComponents(
+          new MessageButton()
+          .setLabel('TPC Leaderboard')
+          .setURL("https://mee6.xyz/thepilotclub")
+          .setStyle('LINK'),
+        ) ;
       var formatted = ""
         for (var i = 0; i < list.length; i++){
             formatted+= "\n" +("<@" + list[i] + ">")
             }
-            message.reply(`Our **Top 5** of the week: \n${formatted}\n \nSee all rankings here: https://vats.im/tpc-leaderboard`)
+            message.reply({content:`Our **Top 5** of the week: \n${formatted}\n \nSee all rankings here:`,  components: [row]})
                 }).catch(err => {
             });
         }
