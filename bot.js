@@ -223,7 +223,7 @@ cron.schedule('0 52 07 * * *', function() { // Correct time is 0 52 07 * * *
 });
 
 //  Top Pilots for Charters. This code will run every day at 8:00 AM
-cron.schedule('0 20 13 * * *', async function() { // Correct time is 0 00 07 * * *  
+cron.schedule('0 00 07 * * *', async function() { // Correct time is 0 00 07 * * *  
   let companyEmployees = await Api.getVirtualAirlineMembers()
   companyEmployees.forEach(employee => {
     currentWeek.push({"airline": employee.Company.AirlineCode, "name": employee.Company.Name,"hours": employee.FlightHours});
