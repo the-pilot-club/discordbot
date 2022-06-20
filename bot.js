@@ -6,11 +6,11 @@ const prefix = "$"
 const { MessageActionRow, MessageButton } = require('discord.js');
 const fs = require('fs');
 const { clientId, guildId, token } = require('./config.json');
+const Mee6LevelsApi = require("mee6-levels-api");
 const fetch = require('node-fetch');
 const path = require('node:path');
 const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
 client.setMaxListeners(0);
-
 let monthNames = [
   "jan",
   "feb",
@@ -203,8 +203,10 @@ let question=questions[index];
 
 //sends message to a specific channel for QandA and Events Notification
 client.on('ready', async function() {
-  const channel = await client.channels.fetch(process.env.CHANNEL_ID);
+  const channel = await client.channels.fetch(process.env.QANDA_CHANNEL_ID);
   const eventChannel = await client.channels.fetch(process.env.EVENT_CHANNEL);
+  const dailiesChannel = await client.channels.fetch(process.env.DAILIES_CHANNEL);
+  const tpcguildId = process.env.TPC_GUILD_ID;
  //const testChannel = await client.channels.fetch(process.env.TEST_CHANNEL); //correct id: 864834861603487754 
 //Getting random question every day:  0 57 22 * * *
 cron.schedule('0 00 08 * * *', function() { //Correct time is 0 00 08 * * *
@@ -215,7 +217,29 @@ cron.schedule('0 52 07 * * *', function() { // Correct time is 0 52 07 * * *
 });
 
   //EVENTS:
-
+  // run code every week:
+  cron.schedule('0 7 * * 1', function() { //Correct time is 0 8 * * 1 (every Monday at 8:00)
+    //get MEE6 leaderboard and send it to the event channel
+    Mee6LevelsApi.getLeaderboardPage(tpcguildId).then(leaderboard => {
+      //get the top 5 users
+      var top5 = leaderboard.slice(0,5)
+      let list = top5.map(user => user.id)
+      var formatted = ""
+      const row = new MessageActionRow()
+        .addComponents(
+          new MessageButton()
+          .setLabel('TPC Leaderboard')
+          .setURL("https://mee6.xyz/thepilotclub")
+          .setStyle('LINK'),
+        ) ;
+      var formatted = ""
+        for (var i = 0; i < list.length; i++){
+            formatted+= "\n" +("<@" + list[i] + ">")
+            }
+            dailiesChannel.send({content:`Our **Top 5** of the week: \n${formatted}\n \nSee all rankings here:`,  components: [row]})
+    }).catch(err => {
+    });
+  })
   //sendNewEvent(eventChannel, "ga-tuesday", "<@&937389346204557342> <@&898240224189120532>");
 cron.schedule('0 18 * * 2', function() {
     sendNewEvent(eventChannel, "ga-tuesday", "<@&937389346204557342> <@&898240224189120532>");
