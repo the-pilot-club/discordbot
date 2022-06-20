@@ -223,7 +223,12 @@ cron.schedule('0 52 07 * * *', function() { // Correct time is 0 52 07 * * *
     Mee6LevelsApi.getLeaderboardPage(tpcguildId).then(leaderboard => {
       //get the top 5 users
       var top5 = leaderboard.slice(0,5)
-      dailiesChannel.send(`Our **Top 5** of the week: \n${top5.map(user => user.username).join('\n')}\nSee all rankings here: https://vats.im/tpc-leaderboard`)
+      let list = top5.map(user => user.id)
+      var formatted = ""
+      for (var i = 0; i < list.length; i++){
+        formatted+= "\n" +("<@" + list[i] + ">")
+      }
+      dailiesChannel.send(`Our **Top 5** of the week: \n${formatted}\nSee all rankings here: https://vats.im/tpc-leaderboard`)
     }).catch(err => {
     });
   })
