@@ -13,7 +13,7 @@ module.exports = {
           //get the top 5 users
           var top5 = leaderboard.slice(0,5)
           let list = top5.map(user => user.id)
-          const dailiesChannel = interaction.guild.client.channels.cache.get(process.env.TEST_CHANNEL);
+          const dailiesChannel = interaction.guild.client.channels.cache.get(process.env.DAILIES_CHANNEL);
           const row = new MessageActionRow()
             .addComponents(
               new MessageButton()
