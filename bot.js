@@ -277,5 +277,5 @@ cron.schedule('0 11 * * 6', function() { // every saturday
     });
 });
 
-module.exports = client;
+ module.exports = client;
 client.login(process.env.BOT_TOKEN)
