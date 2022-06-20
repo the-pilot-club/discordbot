@@ -4,6 +4,17 @@ const { Client, Collection, Intents, Interaction } = require('discord.js');
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MESSAGE_REACTIONS, Intents.FLAGS.GUILD_MEMBERS] });
 const fs = require('fs');
 const { clientId, guildId, token } = require('./config.json');
+let currentWeek = []
+let previousWeek = require('./previousWeek.json')
+const { OnAirApi } = require('onair-api');
+const apiConfig = {
+	apiKey: "e4e41811-e560-4fd8-8189-c73316faf690",
+	companyId: "d88495ec-7a27-4ca7-95c5-370e7a7a9f14",
+	vaId: "d88495ec-7a27-4ca7-95c5-370e7a7a9f14",
+};
+
+// instantiate the OnAirApi
+const Api = new OnAirApi(apiConfig);
 const path = require('node:path');
 const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
 client.setMaxListeners(0);
@@ -202,7 +213,7 @@ client.on('ready', async function() {
   const channel = await client.channels.fetch(process.env.QANDA_CHANNEL_ID);
   const eventChannel = await client.channels.fetch(process.env.EVENT_CHANNEL);
   const tpcguildId = process.env.TPC_GUILD_ID;
- //const testChannel = await client.channels.fetch(process.env.TEST_CHANNEL); //correct id: 864834861603487754 
+  const testChannel = await client.channels.fetch(process.env.TEST_CHANNEL); //correct id: 864834861603487754 
 //Getting random question every day:  0 57 22 * * *
 cron.schedule('0 00 08 * * *', function() { //Correct time is 0 00 08 * * *
     sendNewQuestion(channel);
@@ -210,7 +221,49 @@ cron.schedule('0 00 08 * * *', function() { //Correct time is 0 00 08 * * *
 cron.schedule('0 52 07 * * *', function() { // Correct time is 0 52 07 * * *
     sendNewAnswer(channel);
 });
+// run code every day at 8:00 AM
+cron.schedule('0 00 08 * * *', async function() { // Correct time is 0 8 * * *
+// console.log() each item in the currentWeek array
+  
 
+  let companyEmployees = await Api.getVirtualAirlineMembers()
+  //let companyEmployees = require("./currentWeek.json")
+  companyEmployees.forEach(employee => {
+    currentWeek.push({"airline": employee.Company.AirlineCode, "name": employee.Company.Name,"hours": employee.FlightHours});
+    //console.log(employee.Id)
+    //console.log(employee.FlightHours)
+  })
+  fs.writeFile("currentWeek.json", JSON.stringify(currentWeek), (err) => {
+    if (err) throw err;
+    //console.log("The file has been saved!");
+  })
+  let updatedHours = []
+  let updatedHoursNames = []
+  currentWeek.forEach(function eachPilot(item, index) {
+    if (previousWeek[index]) {
+      //console.log(item.hours + " " + previousWeek[index].hours)
+      if (item.hours > previousWeek[index].hours) {
+    console.log(`${item.airline}: (${item.name}) ${item.hours - previousWeek[index].hours}`)
+    updatedHours.push(item.hours - previousWeek[index].hours)
+    updatedHoursNames.push(item.airline)
+      }
+    }
+  })
+  //get top 5 pilots from updatedHours array
+  var topPilots = updatedHours.sort((a,b) => b-a).slice(0,5);
+  if (topPilots == ""){
+    topPilots = "No pilots have flown today"
+  }
+  testChannel.send(topPilots)
+  previousWeek = currentWeek;
+  fs.writeFile("previousWeek.json", JSON.stringify(previousWeek), (err) => {
+    if (err) throw err;
+    //console.log("The file has been saved!");
+  })
+
+  //console.log(currentWeek)
+  //compare two arrays, currentWeek and previousWeek
+});
   //EVENTS:
   // run code every week:
   //sendNewEvent(eventChannel, "ga-tuesday", "<@&937389346204557342> <@&898240224189120532>");
