@@ -247,7 +247,7 @@ cron.schedule('0 00 07 * * *', async function() { // Correct time is 0 00 07 * *
   if (topPilots == ""){
     topPilots = "No pilots have flown today"
   }
-  testChannel.send(topPilots)
+  //testChannel.send(topPilots)
   previousWeek = currentWeek;
   fs.writeFile("previousWeek.json", JSON.stringify(previousWeek), (err) => {
     if (err) throw err;
