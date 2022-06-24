@@ -27,7 +27,7 @@ module.exports = {
             .setFooter({text: 'Made by The Pilot Club For TPC Charters'});
         if (interaction.member.roles.cache.some(role => role.name === 'TPC Charters')){    
                 channel.send({content: `<@&910012872246046730>` , embeds: [embed]})
-                await interaction.reply({content:`You have requested for tail number ${tail} to be ferried from ${start} to ${end}. A Charters Manager will ferry the aircraft as soon as they can. If you do not have the aircraft assigned within 12 hours, please try this command again.`, ephemeral: true})
+                await interaction.reply({content:`You have requested for tail number ${tail} to be ferried from ${start} to ${end}. A Charters Manager will ferry the aircraft as soon as they can. If you do not have the aircraft moved within 12 hours, please try this command again.`, ephemeral: true})
         } else {
             interaction.reply({content:`You do not have the TPC Charters Role! Go to #about-and-sop to learn more!`, ephemeral: true})
         }
