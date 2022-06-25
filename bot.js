@@ -8,9 +8,9 @@ let currentWeek = []
 let previousWeek = require('./previousWeek.json')
 const { OnAirApi } = require('onair-api');
 const apiConfig = {
-	apiKey: "e4e41811-e560-4fd8-8189-c73316faf690",
-	companyId: "d88495ec-7a27-4ca7-95c5-370e7a7a9f14",
-	vaId: "d88495ec-7a27-4ca7-95c5-370e7a7a9f14",
+	apiKey: process.env.ONAIR_API_KEY,
+	companyId: process.env.ONAIR_COMPANYID,
+	vaId: process.env.ONAIR_VAID,
 };
 
 // instantiate the OnAirApi
@@ -65,15 +65,15 @@ client.on('interactionCreate', async interaction => {
 		await command.execute(interaction);
 	} catch (error) {
 		console.error(error);
-		await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+		await interaction.reply({ content: 'There was an error while executing this command! Please let Eric | ZSE | TPC76 know ASAP so that a fix can occur!', ephemeral: true });
 	}
 });
 
   //commuter role
 client.on('guildMemberUpdate', async (oldMember, newMember) => {
-    if(oldMember.roles.cache.has('930863426224410684')) return;
-    if(newMember.roles.cache.has('930863426224410684')) {
-      const channel = client.channels.cache.get('830209982770708500');
+    if(oldMember.roles.cache.has(process.env.COMMUTER_ROLE)) return;
+    if(newMember.roles.cache.has(process.env.COMMUTER_ROLE)) {
+      const channel = client.channels.cache.get(process.env.EVENT_CHANNEL);
       channel.send({
         content: `Join us in congratulating ${oldMember} with achieving <@&930863426224410684> status at TPC!`,
          files: [{
@@ -86,9 +86,9 @@ client.on('guildMemberUpdate', async (oldMember, newMember) => {
 
 //frequent flyer
 client.on('guildMemberUpdate', async (oldMember, newMember) => {
-  if(oldMember.roles.cache.has('855253377209204750')) return;
-  if(newMember.roles.cache.has('855253377209204750')) {
-    const channel = client.channels.cache.get('830209982770708500');
+  if(oldMember.roles.cache.has(process.env.FREQUENTFLIER_ROLE)) return;
+  if(newMember.roles.cache.has(process.env.FREQUENTFLIER_ROLE)) {
+    const channel = client.channels.cache.get(process.env.EVENT_CHANNEL);
     channel.send({
       content: `Join us in congratulating ${oldMember} with achieving <@&855253377209204750> status at TPC!`,
        files: [{
@@ -101,9 +101,9 @@ client.on('guildMemberUpdate', async (oldMember, newMember) => {
 
 //VIP
 client.on('guildMemberUpdate', async (oldMember, newMember) => {
-  if(oldMember.roles.cache.has('930863007372836876')) return;
-  if(newMember.roles.cache.has('930863007372836876')) {
-    const channel = client.channels.cache.get('830209982770708500');
+  if(oldMember.roles.cache.has(process.env.VIP_ROLE)) return;
+  if(newMember.roles.cache.has(process.env.VIP_ROLE)) {
+    const channel = client.channels.cache.get(process.env.EVENT_CHANNEL);
     channel.send({
       content: `Join us in congratulating ${oldMember} with achieving <@&930863007372836876> status at TPC!`,
        files: [{
@@ -115,16 +115,16 @@ client.on('guildMemberUpdate', async (oldMember, newMember) => {
 })
 //Booster
 client.on('guildMemberUpdate', async (oldMember, newMember) => {
-    if(oldMember.roles.cache.has('838504056358961164')) return;
-    if(newMember.roles.cache.has('838504056358961164')) {
-      const channel = client.channels.cache.get('830209982770708500');
+    if(oldMember.roles.cache.has(process.env.BOOSTER_ROLE)) return;
+    if(newMember.roles.cache.has(process.env.BOOSTER_ROLE)) {
+      const channel = client.channels.cache.get(process.env.EVENT_CHANNEL);
       channel.send(`${oldMember} Thank you for boosting the club!`);
     }
 })
  //dm for charters role
  client.on('guildMemberUpdate', async (oldMember, newMember) => {
-    if(oldMember.roles.cache.has('897118707988451339')) return;
-    if(newMember.roles.cache.has('897118707988451339')) {
+    if(oldMember.roles.cache.has(process.env.CHARTERS_ROLE)) return;
+    if(newMember.roles.cache.has(process.env.CHARTERS_ROLE)) {
     newMember.user.send( "Welcome to TPC Charters, we look forward to having you fly with us. Please read https://www.thepilotclub.org/s/TPC_Charters_-_pilots_guide_v10.pdf.  We hope this will answer most of your questions.  If you still have questions after having read this, then ask away."
         ).catch(error => {console.error`I could not DM this memeber :(`})
     }
