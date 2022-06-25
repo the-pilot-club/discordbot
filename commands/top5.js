@@ -13,7 +13,6 @@ async execute(interaction, client) {
       //get the top 5 users
       var top5 = leaderboard.slice(0,5)
       let list = top5.map(user => user.id)
-      const dailiesChannel = interaction.guild.client.channels.cache.get(process.env.DAILIES_CHANNEL);
       const row = new MessageActionRow()
         .addComponents(
           new MessageButton()
@@ -25,8 +24,7 @@ async execute(interaction, client) {
         for (var i = 0; i < list.length; i++){
         formatted+= `\n${i+1}. ` +("<@" + list[i] + ">")
         }
-            dailiesChannel.send({content:`Our **Top 5** this week: \n${formatted}\n \nSee all rankings here:`,  components: [row]})
-            interaction.reply({content:`Top 5 posted!`, ephemeral: true})
+            interaction.reply({content:`Our **Top 5** this week: \n${formatted}\n \nSee all rankings here:`,  components: [row]})
                 }).catch(err => {
             });
         }
