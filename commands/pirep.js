@@ -60,6 +60,7 @@ module.exports = {
         .setColor('0X37B6FF')
          .addFields({name:'PIREP Details', value: `**Aircraft Type:** ${type.toUpperCase()} 
               **Starting Airport:**   ${start.toUpperCase()}     **Ending Airport:**   ${end.toUpperCase()} 
+              **Airtime:**  ${airtime}
               **Payout:**   ${payout} 
               **Landing Rate:**   ${landingrate}
               **Crew State:**   ${crewstate}` })
