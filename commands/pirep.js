@@ -12,11 +12,13 @@ module.exports = {
         ).addStringOption(option=>
             option.setName('aircraft-type').setDescription('What is the aircraft type of the aircraft you used?').setRequired(true)
         ).addStringOption(option=>
-            option.setName('starting-location').setDescription('Where did you start this flight?').setRequired(true)
+            option.setName('tail-number').setDescription('What is the tail number of the aircraft you used?').setRequired(true)
+            ).addStringOption(option=>
+            option.setName('starting-icao').setDescription('Where did you start this flight?').setRequired(true)
         ).addStringOption(option=>
-            option.setName('ending-location').setDescription('Where did you end this flight?').setRequired(true)
+            option.setName('ending-icao').setDescription('Where did you end this flight?').setRequired(true)
         ).addStringOption(option=>
-            option.setName('airtime').setDescription('How long were you in flight?').setRequired(true)
+            option.setName('airtime').setDescription('How long were the engines running in hours (eg 1.5h)?').setRequired(true)
         ).addIntegerOption(option=>
             option.setName('payout').setDescription('how much money did you make on this flight?').setRequired(true)
         ).addStringOption(option=>
@@ -26,7 +28,7 @@ module.exports = {
                 {name: 'Normal Landing', value: 'Normal Landing'},
                 {name: 'Hard Landing', value: 'Hard Landing'},)
         ).addStringOption(option=>
-            option.setName('crew-state').setDescription('What is your crew currently doing?').setRequired(true)
+            option.setName('crew-state').setDescription('State whether on duty or resting. Give state end-time in  Zulu/UTC.').setRequired(true)
         ).addStringOption(option=>
             option.setName('comments').setDescription('Any comments you would like to add about the flight?').setRequired(false)
 ),
@@ -34,6 +36,7 @@ module.exports = {
         const channel = interaction.guild.client.channels.cache.get(process.env.TEST_CHANNEL)
         const airline = interaction.options.getString('airline-code')
         const type = interaction.options.getString('aircraft-type')
+        const tail = interaction.options.getString('tail-number')
         const start = interaction.options.getString('starting-location')
         const end = interaction.options.getString('ending-location')
         const airtime = interaction.options.getString('airtime')
@@ -45,7 +48,8 @@ module.exports = {
         .setAuthor({name:`${interaction.user.tag}`, iconURL:`${interaction.user.displayAvatarURL()}`})
         .setTitle(`PIREP for ${airline.toUpperCase()}`)            
         .setColor('0X37B6FF')
-        .addFields({name:'PIREP Details', value: `**Aircraft Type:** ${type.toUpperCase()} 
+        .addFields({name:'PIREP Details', value: `**Aircraft Type:** ${type.toUpperCase()}
+             **Aircraft Tail Nuber:** ${tail} 
              **Starting Airport:**   ${start.toUpperCase()}     **Ending Airport:**   ${end.toUpperCase()} 
              **Airtime:**  ${airtime}
              **Payout:**   ${payout} 
@@ -59,6 +63,7 @@ module.exports = {
         .setTitle(`PIREP for ${airline.toUpperCase()}`)
         .setColor('0X37B6FF')
          .addFields({name:'PIREP Details', value: `**Aircraft Type:** ${type.toUpperCase()} 
+              **Aircraft Tail Nuber:** ${tail}  
               **Starting Airport:**   ${start.toUpperCase()}     **Ending Airport:**   ${end.toUpperCase()} 
               **Airtime:**  ${airtime}
               **Payout:**   ${payout} 
