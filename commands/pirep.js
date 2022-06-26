@@ -13,7 +13,7 @@ module.exports = {
             option.setName('aircraft-type').setDescription('What is the aircraft type of the aircraft you used?').setRequired(true)
         ).addStringOption(option=>
             option.setName('tail-number').setDescription('What is the tail number of the aircraft you used?').setRequired(true)
-            ).addStringOption(option=>
+        ).addStringOption(option=>
             option.setName('starting-icao').setDescription('Where did you start this flight?').setRequired(true)
         ).addStringOption(option=>
             option.setName('ending-icao').setDescription('Where did you end this flight?').setRequired(true)
@@ -37,8 +37,8 @@ module.exports = {
         const airline = interaction.options.getString('airline-code')
         const type = interaction.options.getString('aircraft-type')
         const tail = interaction.options.getString('tail-number')
-        const start = interaction.options.getString('starting-location')
-        const end = interaction.options.getString('ending-location')
+        const start = interaction.options.getString('starting-icao')
+        const end = interaction.options.getString('ending-icao')
         const airtime = interaction.options.getString('airtime')
         const payout = interaction.options.getInteger('payout')
         const landingrate = interaction.options.getString('landing-rate')
