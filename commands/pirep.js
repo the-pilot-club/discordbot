@@ -15,6 +15,8 @@ module.exports = {
             option.setName('starting-location').setDescription('Where did you start this flight?').setRequired(true)
         ).addStringOption(option=>
             option.setName('ending-location').setDescription('Where did you end this flight?').setRequired(true)
+        ).addStringOption(option=>
+            option.setName('airtime').setDescription('How long were you in flight?').setRequired(true)
         ).addIntegerOption(option=>
             option.setName('payout').setDescription('how much money did you make on this flight?').setRequired(true)
         ).addStringOption(option=>
@@ -34,6 +36,7 @@ module.exports = {
         const type = interaction.options.getString('aircraft-type')
         const start = interaction.options.getString('starting-location')
         const end = interaction.options.getString('ending-location')
+        const airtime = interaction.options.getString('airtime')
         const payout = interaction.options.getInteger('payout')
         const landingrate = interaction.options.getString('landing-rate')
         const crewstate = interaction.options.getString('crew-state')
@@ -44,6 +47,7 @@ module.exports = {
         .setColor('0X37B6FF')
         .addFields({name:'PIREP Details', value: `**Aircraft Type:** ${type.toUpperCase()} 
              **Starting Airport:**   ${start.toUpperCase()}     **Ending Airport:**   ${end.toUpperCase()} 
+             **Airtime:**  ${airtime}
              **Payout:**   ${payout} 
              **Landing Rate:**   ${landingrate}
              **Crew State:**   ${crewstate}
