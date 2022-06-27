@@ -33,7 +33,7 @@ module.exports = {
             option.setName('comments').setDescription('Any comments you would like to add about the flight?').setRequired(false)
 ),
 	async execute(interaction,client) {
-        const channel = interaction.guild.client.channels.cache.get(process.env.TEST_CHANNEL)
+        const channel = interaction.guild.client.channels.cache.get(process.env.CHARTERS_AIRLINEROPS_CHANNEL)
         const airline = interaction.options.getString('airline-code')
         const type = interaction.options.getString('aircraft-type')
         const tail = interaction.options.getString('tail-number')
