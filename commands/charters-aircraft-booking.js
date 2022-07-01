@@ -40,7 +40,7 @@ module.exports = {
              .setFooter({text: 'Made by The Pilot Club For TPC Charters'});
         const nocommentembed = new MessageEmbed()
         .setAuthor({name:`${interaction.user.tag}`, iconURL:`${interaction.user.displayAvatarURL()}`})
-        .setTitle(`PIREP for ${airline.toUpperCase()}`)
+        .setTitle(`Aircraft Booking for ${airline.toUpperCase()}`)
         .setColor('0X37B6FF')
          .addFields({name:'PIREP Details', value: `**Aircraft Type:** ${type.toUpperCase()} \n**Aircraft Tail Nuber:** ${tail.toUpperCase()}\n **Starting Airport:**   ${start.toUpperCase()} \n**Ending Airport:**   ${end.toUpperCase()} \n**Estimated Time of Departure:**  ${etd}` })
               .setTimestamp()
