@@ -55,14 +55,14 @@ module.exports = {
         .setAuthor({name:`${interaction.user.tag}`, iconURL:`${interaction.user.displayAvatarURL()}`})
         .setTitle(`PIREP for ${airline.toUpperCase()}`)            
         .setColor('0X37B6FF')
-        .addFields({name:'PIREP Details', value: `**Aircraft Type:** ${type.toUpperCase()}\n**Aircraft Tail Number:** ${tail} \n**Starting Airport:**   ${start.toUpperCase()}     **Ending Airport:**   ${end.toUpperCase()} \n**Airtime:**  ${airtime}\n**Payout:**   ${payout} \n**Landing Rate:**   ${landingrate}\n**Crew State:**   ${crewstate} until: ${until}\n**Any comments the member had:**    ${comments}` })
+        .addFields({name:'PIREP Details', value: `**Aircraft Type:** ${type.toUpperCase()}\n**Aircraft Tail Number:** ${tail.toUpperCase()} \n**Starting Airport:**   ${start.toUpperCase()}     **Ending Airport:**   ${end.toUpperCase()} \n**Airtime:**  ${airtime}\n**Payout:**   ${payout} \n**Landing Rate:**   ${landingrate}\n**Crew State:**   ${crewstate} until: ${until}\n**Any comments the member had:**    ${comments}` })
              .setTimestamp()
              .setFooter({text: 'Made by The Pilot Club For TPC Charters'});
         const nocommentembed = new MessageEmbed()
         .setAuthor({name:`${interaction.user.tag}`, iconURL:`${interaction.user.displayAvatarURL()}`})
         .setTitle(`PIREP for ${airline.toUpperCase()}`)
         .setColor('0X37B6FF')
-         .addFields({name:'PIREP Details', value: `**Aircraft Type:** ${type.toUpperCase()} \n**Aircraft Tail Nuber:** ${tail}\n **Starting Airport:**   ${start.toUpperCase()}     **Ending Airport:**   ${end.toUpperCase()} \n**Airtime:**  ${airtime} \n**Payout:**   ${payout} \n**Landing Rate:**   ${landingrate} \n**Crew State:**   ${crewstate} until: ${until}` })
+         .addFields({name:'PIREP Details', value: `**Aircraft Type:** ${type.toUpperCase()} \n**Aircraft Tail Nuber:** ${tail.toUpperCase()}\n **Starting Airport:**   ${start.toUpperCase()}     **Ending Airport:**   ${end.toUpperCase()} \n**Airtime:**  ${airtime} \n**Payout:**   ${payout} \n**Landing Rate:**   ${landingrate} \n**Crew State:**   ${crewstate} until: ${until}` })
               .setTimestamp()
               .setFooter({text: 'Made by The Pilot Club For TPC Charters'});
         if (interaction.member.roles.cache.some(role => role.name === 'TPC Charters')){  
