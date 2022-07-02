@@ -4,17 +4,6 @@ const { Client, Collection, Intents, Interaction } = require('discord.js');
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MESSAGE_REACTIONS, Intents.FLAGS.GUILD_MEMBERS] });
 const fs = require('fs');
 const { clientId, guildId, token } = require('./config.json');
-let currentWeek = []
-let previousWeek = require('./previousWeek.json')
-const { OnAirApi } = require('onair-api');
-const apiConfig = {
-	apiKey: process.env.ONAIR_API_KEY,
-	companyId: process.env.ONAIR_COMPANYID,
-	vaId: process.env.ONAIR_VAID,
-};
-
-// instantiate the OnAirApi
-const Api = new OnAirApi(apiConfig);
 const path = require('node:path');
 const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
 client.setMaxListeners(0);
@@ -82,7 +71,7 @@ client.on('guildMemberUpdate', async (oldMember, newMember) => {
         }]
     })
  }
-    })
+})
 
 //frequent flyer
 client.on('guildMemberUpdate', async (oldMember, newMember) => {
@@ -222,37 +211,8 @@ cron.schedule('0 52 07 * * *', function() { // Correct time is 0 52 07 * * *
     sendNewAnswer(channel);
 });
 
-//  Top Pilots for Charters. This code will run every day at 8:00 AM
-cron.schedule('0 00 07 * * *', async function() { // Correct time is 0 00 07 * * *  
-  let companyEmployees = await Api.getVirtualAirlineMembers()
-  companyEmployees.forEach(employee => {
-    currentWeek.push({"airline": employee.Company.AirlineCode, "name": employee.Company.Name,"hours": employee.FlightHours});
-  })
-  fs.writeFile("currentWeek.json", JSON.stringify(currentWeek), (err) => {
-    if (err) throw err;
-  })
-  let updatedHours = []
-  let updatedHoursNames = []
-  currentWeek.forEach(function eachPilot(item, index) {
-    if (previousWeek[index]) {
-      if (item.hours > previousWeek[index].hours) {
-    console.log(`${item.airline}: (${item.name}) ${item.hours - previousWeek[index].hours}`)
-    updatedHours.push(item.hours - previousWeek[index].hours)
-    updatedHoursNames.push(item.airline)
-      }
-    }
-  })
-  //get top 5 pilots from updatedHours array
-  var topPilots = updatedHours.sort((a,b) => b-a).slice(0,5);
-  if (topPilots == ""){
-    topPilots = "No pilots have flown today"
-  }
-  //testChannel.send(topPilots)
-  previousWeek = currentWeek;
-  fs.writeFile("previousWeek.json", JSON.stringify(previousWeek), (err) => {
-    if (err) throw err;
-  })
-});
+
+
 
 //EVENTS:
 
@@ -266,7 +226,7 @@ cron.schedule('0 18 * * 4', function() {
 });
     //Sunday Funday
 cron.schedule('0 13 * * 0', function() { 
-    sendNewEvent(eventChannel, "sunday-funday", "<@&937389346204557342>");
+    //sendNewEvent(eventChannel, "sunday-funday", "<@&937389346204557342>");
 }); 
     //World Tour
 cron.schedule('0 10 * * 6', function() { // every saturday
@@ -275,7 +235,7 @@ cron.schedule('0 10 * * 6', function() { // every saturday
     if (day <= 7){
     const month = monthNames[today.getMonth()] //may
     const year = today.getFullYear();   // 2020
-    channel.send({
+    eventChannel.send({
         content: `<@&937389346204557342> STARTING SOON: JOIN US for WORLD TOUR. Head to the airport in 30 min to start setting up! See you there! https://www.thepilotclub.org/dispatch/world-tour-${day}${month}${year}`,
         files: [{
           attachment: `./pics/world-tour.png`,
