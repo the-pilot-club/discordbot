@@ -17,8 +17,10 @@ module.exports = {
             option.setName('starting-icao').setDescription('Where will you start this flight?').setRequired(true)
         ).addStringOption(option=>
             option.setName('ending-icao').setDescription('Where will you end this flight?').setRequired(true)
-        ).addStringOption(option=>
-            option.setName('etd').setDescription('What time do you plan on departing?').setRequired(true)
+        ).addIntegerOption(option=>
+            option.setName('booking-begins').setDescription('When would you like to start? Aircraft can be reserved up to 3 hours from ETD. All times in Zulu.').setRequired(true)
+        ).addIntegerOption(option=>
+            option.setName('booking-ends').setDescription('When would you like to end? Aircraft can be reserved up to 3 hours from ETD. All times in Zulu.').setRequired(true)    
         ).addStringOption(option=>
         option.setName('comments').setDescription('Any comments you would like to add about this booking?').setRequired(false)
 ),
@@ -29,20 +31,21 @@ module.exports = {
         const tail = interaction.options.getString('tail-number')
         const start = interaction.options.getString('starting-icao')
         const end = interaction.options.getString('ending-icao')
-        const etd = interaction.options.getString('etd')
+        const etdstart = interaction.options.getInteger('booking-begins')
+        const etdends = interaction.options.getInteger('booking-ends')
         const comments = interaction.options.getString('comments')
         const commentembed = new MessageEmbed()
         .setAuthor({name:`${interaction.user.tag}`, iconURL:`${interaction.user.displayAvatarURL()}`})
         .setTitle(`Aircraft Booking for ${airline.toUpperCase()}`)            
         .setColor('0X37B6FF')
-        .addFields({name:'Booking Details', value: `**Aircraft Type:** ${type.toUpperCase()}\n**Aircraft Tail Number:** ${tail.toUpperCase()} \n**Starting Airport:**   ${start.toUpperCase()}\n**Ending Airport:**   ${end.toUpperCase()} \n**Estimated Time of Departure:**  ${etd}\n**Any comments the member had:**    ${comments}` })
+        .addFields({name:'Booking Details', value: `**Aircraft Type:** ${type.toUpperCase()}\n**Aircraft Tail Number:** ${tail.toUpperCase()} \n**Starting Airport:**   ${start.toUpperCase()}\n**Ending Airport:**   ${end.toUpperCase()} \n**Booking Begins:**  ${etdstart}z\n**Booking Ends:** ${etdends}z \n**Any comments the member had:**    ${comments}` })
              .setTimestamp()
              .setFooter({text: 'Made by The Pilot Club For TPC Charters'});
         const nocommentembed = new MessageEmbed()
         .setAuthor({name:`${interaction.user.tag}`, iconURL:`${interaction.user.displayAvatarURL()}`})
         .setTitle(`Aircraft Booking for ${airline.toUpperCase()}`)
         .setColor('0X37B6FF')
-         .addFields({name:'PIREP Details', value: `**Aircraft Type:** ${type.toUpperCase()} \n**Aircraft Tail Nuber:** ${tail.toUpperCase()}\n **Starting Airport:**   ${start.toUpperCase()} \n**Ending Airport:**   ${end.toUpperCase()} \n**Estimated Time of Departure:**  ${etd}` })
+         .addFields({name:'Booking Details', value: `**Aircraft Type:** ${type.toUpperCase()} \n**Aircraft Tail Nuber:** ${tail.toUpperCase()}\n **Starting Airport:**   ${start.toUpperCase()} \n**Ending Airport:**   ${end.toUpperCase()} \n**Booking Begins:**  ${etdstart}z\n**Booking Ends:** ${etdends}z` })
               .setTimestamp()
               .setFooter({text: 'Made by The Pilot Club For TPC Charters'});
         if (interaction.member.roles.cache.some(role => role.name === 'TPC Charters')){  
