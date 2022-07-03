@@ -12,7 +12,7 @@ module.exports = {
         ).addStringOption(option=>
             option.setName('aircraft-type').setDescription('What is the aircraft type of the aircraft you will use?').setRequired(true)
         ).addStringOption(option=>
-            option.setName('tail-number').setDescription('What is the tail number of the aircraft you will use?').setRequired(true)
+            option.setName('tail-number').setDescription('Enter the Tail Number. Please use all caps.').setRequired(true)
         ).addStringOption(option=>
             option.setName('starting-icao').setDescription('Where will you start this flight?').setRequired(true)
         ).addStringOption(option=>
