@@ -211,9 +211,6 @@ cron.schedule('0 52 07 * * *', function() { // Correct time is 0 52 07 * * *
     sendNewAnswer(channel);
 });
 
-
-
-
 //EVENTS:
 
   //GA Tuesday 
@@ -226,7 +223,7 @@ cron.schedule('0 18 * * 4', function() {
 });
     //Sunday Funday
 cron.schedule('0 13 * * 0', function() { 
-    //sendNewEvent(eventChannel, "sunday-funday", "<@&937389346204557342>");
+    sendNewEvent(eventChannel, "sunday-funday", "<@&937389346204557342>");
 }); 
     //World Tour
 cron.schedule('0 10 * * 6', function() { // every saturday
