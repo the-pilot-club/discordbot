@@ -13,6 +13,6 @@ module.exports = {
           .setURL(`https://callsigns.thepilotclub.org/sendauthentication?id=${interaction.user.id}`)
           .setStyle('LINK'),
         ) ;
-      await interaction.reply({content:`Please use this button to connect your account!`, components: [row]})
+      await interaction.reply({content:`This feature is not avaiable yet!`}) //components: [row]})
 }
 };
