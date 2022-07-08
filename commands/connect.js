@@ -10,9 +10,9 @@ module.exports = {
         .addComponents(
           new MessageButton()
           .setLabel('Connect my account!')
-          .setURL(`https://callsigns.thepilotclub.org/sendauthentication?id=${interaction.user.id}`)
+          .setURL(`https://callsigns.thepilotclub.org/sendauthentication.aspx?id=${interaction.user.id}`)
           .setStyle('LINK'),
         ) ;
-      await interaction.reply({content:`This feature is not avaiable yet!`}) //components: [row]})
+      await interaction.reply({content:`This feature is not avaiable yet!`,}) //components: [row]})
 }
 };
