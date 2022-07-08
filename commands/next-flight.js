@@ -4,7 +4,7 @@ const { MessageActionRow, MessageButton } = require('discord.js');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('next-flight')
-		.setDescription('The link to find our out our next flight!'),
+		.setDescription('The link to find out our next flight!'),
 	async execute(interaction) {
         const row = new MessageActionRow()
         .addComponents(

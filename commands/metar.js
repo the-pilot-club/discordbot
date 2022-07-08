@@ -3,7 +3,7 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 module.exports = {
 	data: new SlashCommandBuilder()
         .setName('metar')
-        .setDescription('gives metar for specific airport').addStringOption(option =>
+        .setDescription('Gives METAR for a Specific Airport').addStringOption(option =>
         option.setName('icao')
         .setDescription('The input to echo back')
         .setRequired(true)),

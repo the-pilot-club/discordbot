@@ -6,7 +6,7 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
 	data: new SlashCommandBuilder()
         .setName('idea-archive')
-        .setDescription('This command if for the Admin team to process archives for ideas that have been put in the idea box.'
+        .setDescription('This command is for the Admin team to process archives for ideas that have been put in the idea box.'
         ).addStringOption(option =>
             option.setName('suggestion-number').setDescription('What is the Idea Number?').setRequired(true)
         ).addStringOption(option=>

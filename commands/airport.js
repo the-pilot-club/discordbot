@@ -3,7 +3,7 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 module.exports = {
 	data: new SlashCommandBuilder()
         .setName('airport')
-        .setDescription('gives information about specific airport')
+        .setDescription('Gives Information About a Specific Airport')
         .addStringOption(option =>
         option.setName('icao')
         .setDescription('The input to echo back')
