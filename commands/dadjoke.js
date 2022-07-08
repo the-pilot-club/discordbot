@@ -3,7 +3,7 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 module.exports = {
 	data: new SlashCommandBuilder()
         .setName('dad-joke')
-        .setDescription('Tell us a dad joke!'),
+        .setDescription('Tells you a dad joke!'),
 	async execute(interaction) {
       const response = await fetch(`https://icanhazdadjoke.com/`, {
         headers: {
