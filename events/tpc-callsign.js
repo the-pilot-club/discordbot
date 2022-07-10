@@ -16,7 +16,7 @@ execute(message) {
         .addComponents(
           new MessageButton()
           .setLabel('The Pilot Club Support')
-          .setURL("https://support.thepilotclub.org/open.php")
+          .setURL("https://support.thepilotclub.org/pages/tpc-callsign-request")
           .setStyle('LINK')) 
     message.reply({embeds:[embed], components:[row]})
         }
