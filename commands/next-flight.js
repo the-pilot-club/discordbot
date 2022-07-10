@@ -1,18 +1,18 @@
-const { SlashCommandBuilder } = require('@discordjs/builders');
-const { MessageActionRow, MessageButton } = require('discord.js');
+const {SlashCommandBuilder} = require('@discordjs/builders');
+const {MessageActionRow, MessageButton} = require('discord.js');
 
 module.exports = {
-	data: new SlashCommandBuilder()
-		.setName('next-flight')
-		.setDescription('The link to find out our next flight!'),
-	async execute(interaction) {
+    data: new SlashCommandBuilder()
+        .setName('next-flight')
+        .setDescription('The link to find out our next flight!'),
+    async execute(interaction) {
         const row = new MessageActionRow()
-        .addComponents(
-          new MessageButton()
-          .setLabel('Next TPC Group Flight')
-          .setURL("https://thepilotclub.org/dispatch")
-          .setStyle('LINK'),
-        ) ;
-      await interaction.reply({content:`Next TPC Group Flight:`, components: [row]})
-}
+            .addComponents(
+                new MessageButton()
+                    .setLabel('Next TPC Group Flight')
+                    .setURL("https://thepilotclub.org/dispatch")
+                    .setStyle('LINK'),
+            );
+        await interaction.reply({content: `Next TPC Group Flight:`, components: [row]})
+    }
 };
