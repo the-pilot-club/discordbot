@@ -4,8 +4,8 @@
     <list default="true" id="b8d3ab61-5183-4eaf-bc36-d69ab4452e29" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/commands/join-charters.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/join-charters.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/modal.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/modal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/events/modalsubmit.js" beforeDir="false" afterPath="$PROJECT_DIR$/events/modalsubmit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/modal.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/events/modalsubmit.js" beforeDir="false" afterPath="$PROJECT_DIR$/events/joinchrtssubmit.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +49,7 @@
       <workItem from="1657431731092" duration="878000" />
       <workItem from="1657432628035" duration="39000" />
       <workItem from="1657432931330" duration="8594000" />
-      <workItem from="1657470871066" duration="422000" />
+      <workItem from="1657470871066" duration="2171000" />
     </task>
     <servers />
   </component>
