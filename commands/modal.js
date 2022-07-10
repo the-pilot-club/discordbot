@@ -8,7 +8,7 @@ module.exports = {
     async execute(interaction) {
         const modal  = new Modal()
             .setCustomId('join-charters')
-            .setTitle('Join TPC Charters');
+            .setTitle('Join TPC Charters')
         const airlinecode = new TextInputComponent()
             .setCustomId('airlinecode')
             .setLabel('What is your Airline Code?')

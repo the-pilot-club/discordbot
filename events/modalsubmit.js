@@ -4,7 +4,7 @@ module.exports = {
     once: false,
     async execute(interaction) {
         if (interaction.customId === 'join-charters') {
-            const channel = interaction.guild.client.channels.cache.get(process.env.CHARTERS_REQUEST_CHANNEL)
+            const channel = interaction.guild.client.channels.cache.get(process.env.TEST_CHANNEL)
             const airline = interaction.fields.getTextInputValue('airlinecode')
             const type = interaction.fields.getTextInputValue('aircraft')
             const seating = interaction.fields.getTextInputValue('seating')
@@ -19,7 +19,10 @@ module.exports = {
                     value: `**TPC Charters User:** ${interaction.user} \n**Airline Code:** ${airline.toUpperCase()} \n**Home Base:** ${home.toUpperCase()} \n**Initial Aircraft Type Request:** ${type.toUpperCase()} \n**Seating Configuration:** ${seating}`
                 })
                 .setFooter({text: 'Made by The Pilot Club For TPC Charters'});
-            await interaction.reply({content: 'Your request to join charters has been submitted', ephemeral: true})
+            await interaction.reply({
+                content: `Thank you for joining TPC Charters! We will try to assign you ${type.toUpperCase()} as soon as we can. If you have not heard anything within 12 hours, please try this command again! Welcome to TPC Charters.`,
+                ephemeral: true
+            })
             channel.send({content: `<@&910012872246046730>`, embeds: [embed]})
         }
     }
