@@ -6,7 +6,7 @@ const {MessageEmbed} = require('discord.js');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('join-charters')
-        .setDescription('Use this commnad to request to join TPC Charters hosted on OnAir!'
+        .setDescription('Use this command to request to join TPC Charters hosted on OnAir!'
         ).addStringOption(option =>
             option.setName('airline-code').setDescription('What is the code to your Airline in OnAir?').setRequired(true)
         ).addStringOption(option =>
@@ -14,7 +14,7 @@ module.exports = {
         ).addStringOption(option =>
             option.setName('aircraft-type').setDescription('What is the aircraft type you would like?').setRequired(true)
         ).addStringOption(option =>
-            option.setName('seating-config').setDescription('What is the prefered seating configuration you would like?').setRequired(true)
+            option.setName('seating-config').setDescription('What is the preferred seating configuration you would like?').setRequired(true)
         ),
     async execute(interaction, client) {
         const channel = interaction.guild.client.channels.cache.get(process.env.CHARTERS_REQUEST_CHANNEL)
@@ -25,11 +25,11 @@ module.exports = {
         const embed = new MessageEmbed()
             .setAuthor({name: `${interaction.user.tag}`, iconURL: `${interaction.user.displayAvatarURL()}`})
             .setTitle('New Join Request')
-            .setDescription('A member of TPC has reqested to join TPC Charters.')
+            .setDescription('A member of TPC has requested to join TPC Charters.')
             .setColor('0X37B6FF')
             .addFields({
                 name: 'Member Details',
-                value: `**TPC Charters User:** ${interaction.user} \n**Airline Code:** ${airline} \n**Home Base:** ${home} \n**Inital Aircraft Type Request:** ${type} \n**Seating Configuration:** ${seating}`
+                value: `**TPC Charters User:** ${interaction.user} \n**Airline Code:** ${airline} \n**Home Base:** ${home} \n**Initial Aircraft Type Request:** ${type} \n**Seating Configuration:** ${seating}`
             })
             .setFooter({text: 'Made by The Pilot Club For TPC Charters'});
         if (interaction.member.roles.cache.some(role => role.name === 'Pilots')) {

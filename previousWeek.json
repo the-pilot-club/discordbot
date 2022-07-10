@@ -2,191 +2,265 @@
   {
     "airline": "JTLI",
     "name": "JetLine",
-    "hours": 0
+    "hours": 0,
+    "current_hours": 0
   },
   {
     "airline": "TYBS",
     "name": "TybsAir",
-    "hours": 19.699159722222227
+    "hours": 41.316209444444446,
+    "current_hours": 0
+  },
+  {
+    "airline": "WHIT",
+    "name": "Whitledge Air Transport",
+    "hours": 1.2432408333333334,
+    "current_hours": 0
   },
   {
     "airline": "DDAL",
     "name": "The Pilot Club",
-    "hours": 0
+    "hours": 0,
+    "current_hours": 0
   },
   {
     "airline": "SERG",
     "name": "Sergykal Aviation",
-    "hours": 11.356144444444444
+    "hours": 11.356144444444444,
+    "current_hours": 0
   },
   {
     "airline": "TPCC",
     "name": "1 Day Delivery",
-    "hours": 0
+    "hours": 0,
+    "current_hours": 0
   },
   {
     "airline": "DHSA",
     "name": "DHSAir",
-    "hours": 80.53057555555557
+    "hours": 80.53057555555557,
+    "current_hours": 0
   },
   {
     "airline": "JMVR",
     "name": "Arsenal's",
-    "hours": 0
+    "hours": 0,
+    "current_hours": 0
   },
   {
     "airline": "AAAW",
     "name": "Alpine Airways",
-    "hours": 58.685615277777764
+    "hours": 63.28345138888888,
+    "current_hours": 0
   },
   {
     "airline": "CCAR",
     "name": "ChuckAir",
-    "hours": 0
+    "hours": 0,
+    "current_hours": 0
+  },
+  {
+    "airline": "HEES",
+    "name": "Heavenly Express",
+    "hours": 0,
+    "current_hours": 0
   },
   {
     "airline": "UJWP",
     "name": "X46 Business Charter",
-    "hours": 77.65573722222224
+    "hours": 77.65573722222224,
+    "current_hours": 0
   },
   {
     "airline": "DA01",
     "name": "DudeAir",
-    "hours": 117.1722908333333
+    "hours": 122.83706944444442,
+    "current_hours": 0
   },
   {
     "airline": "UNDA",
     "name": "Undone Air",
-    "hours": 19.408949999999997
+    "hours": 27.2058525,
+    "current_hours": 0
+  },
+  {
+    "airline": "J39D",
+    "name": "Tabletop Airways",
+    "hours": 7.849618611111111,
+    "current_hours": 0
   },
   {
     "airline": "J326",
     "name": "326 Charters",
-    "hours": 0
+    "hours": 0,
+    "current_hours": 0
   },
   {
     "airline": "VAC1",
     "name": "Valhalla Air Charter",
-    "hours": 0
+    "hours": 0,
+    "current_hours": 0
   },
   {
     "airline": "HACH",
     "name": "Havana Charters",
-    "hours": 0
+    "hours": 4.317739722222222,
+    "current_hours": 0
   },
   {
     "airline": "WEYU",
     "name": "Weyland Yutani",
-    "hours": 37.84451444444444
+    "hours": 41.201255277777776,
+    "current_hours": 0
   },
   {
     "airline": "ROBR",
     "name": "rob air",
-    "hours": 0
+    "hours": 0,
+    "current_hours": 0
   },
   {
     "airline": "ATAC",
     "name": "Eric's Air Charter",
-    "hours": 0
+    "hours": 1.5940474999999998,
+    "current_hours": 0
   },
   {
     "airline": "PC25",
     "name": "Paulie's Charters",
-    "hours": 0
+    "hours": 0,
+    "current_hours": 0
   },
   {
     "airline": "EBAY",
     "name": "East Bay Aviation Ch",
-    "hours": 20.791798333333332
+    "hours": 43.84302861111111,
+    "current_hours": 0
   },
   {
     "airline": "TNGY",
     "name": "ThingyAir",
-    "hours": 0
+    "hours": 0,
+    "current_hours": 0
   },
   {
     "airline": "SHYC",
     "name": "ShyCargo",
-    "hours": 0
+    "hours": 0,
+    "current_hours": 0
   },
   {
     "airline": "CANR",
     "name": "CanAir",
-    "hours": 5.526936111111111
+    "hours": 12.79069722222222,
+    "current_hours": 0
   },
   {
     "airline": "ELIT",
     "name": "MattB Aircraft",
-    "hours": 89.42634416666668
+    "hours": 92.17481916666668,
+    "current_hours": 0
   },
   {
     "airline": "ZPLN",
     "name": "Zeppelin Airways",
-    "hours": 0
+    "hours": 0,
+    "current_hours": 0
   },
   {
     "airline": "WOOD",
     "name": "Morningwood Aviation",
-    "hours": 52.827083333333334
+    "hours": 61.41350277777778,
+    "current_hours": 0
   },
   {
     "airline": "MTVC",
     "name": "Mountain View ",
-    "hours": 2.2676608333333332
+    "hours": 2.2676608333333332,
+    "current_hours": 0
   },
   {
     "airline": "MACC",
     "name": "MacAir",
-    "hours": 4.547956388888889
+    "hours": 4.547956388888889,
+    "current_hours": 0
   },
   {
     "airline": "OMEL",
     "name": "OmegaElite Air",
-    "hours": 0
+    "hours": 0,
+    "current_hours": 0
   },
   {
     "airline": "VNCA",
     "name": "VirtualNCAir",
-    "hours": 228.10259805555543
+    "hours": 265.86438888888875,
+    "current_hours": 0
   },
   {
     "airline": "SAVO",
     "name": "SavageSkies",
-    "hours": 0
+    "hours": 0,
+    "current_hours": 0
   },
   {
     "airline": "SEND",
     "name": "SEN Dynamics ",
-    "hours": 0
+    "hours": 0,
+    "current_hours": 0
   },
   {
     "airline": "RPDA",
     "name": "RapidAircraft",
-    "hours": 0
+    "hours": 0,
+    "current_hours": 0
   },
   {
     "airline": "FXRA",
     "name": "Fox Ridge Aviation",
-    "hours": 22.819407777777776
+    "hours": 22.819407777777776,
+    "current_hours": 0
   },
   {
     "airline": "PLTA",
     "name": "Palmetto Airways",
-    "hours": 8.786761944444445
+    "hours": 8.786761944444445,
+    "current_hours": 0
   },
   {
     "airline": "AIKI",
     "name": "Aikido79 Inc",
-    "hours": 21.802989999999998
+    "hours": 27.25361472222222,
+    "current_hours": 0
   },
   {
     "airline": "COMJ",
     "name": "Pitch Perfect",
-    "hours": 0
+    "hours": 0,
+    "current_hours": 0
+  },
+  {
+    "airline": "KIAI",
+    "name": "King Air",
+    "hours": 0,
+    "current_hours": 0
+  },
+  {
+    "airline": "F114",
+    "name": "Faint Airlines",
+    "hours": 0,
+    "current_hours": 0
+  },
+  {
+    "airline": "BCJB",
+    "name": "Boltons Charters",
+    "hours": 5.0658505555555555,
+    "current_hours": 0
   },
   {
     "airline": "PKAR",
     "name": "Peck Air",
-    "hours": 9.632355555555556
+    "hours": 10.258660277777778,
+    "current_hours": 0
   }
 ]

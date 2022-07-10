@@ -6,7 +6,7 @@ const {MessageEmbed} = require('discord.js');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('charters-aircraft-booking')
-        .setDescription('Use this commnad to book an aircraft in OnAir.'
+        .setDescription('Use this command to book an aircraft in OnAir.'
         ).addStringOption(option =>
             option.setName('airline-code').setDescription('What is your airline code?').setRequired(true)
         ).addStringOption(option =>
@@ -53,7 +53,7 @@ module.exports = {
             .setColor('0X37B6FF')
             .addFields({
                 name: 'Booking Details',
-                value: `**Aircraft Type:** ${type.toUpperCase()} \n**Aircraft Tail Nuber:** ${tail.toUpperCase()}\n **Starting Airport:**   ${start.toUpperCase()} \n**Ending Airport:**   ${end.toUpperCase()} \n**Booking Begins:**  ${etdstart}z\n**Booking Ends:** ${etdends}z`
+                value: `**Aircraft Type:** ${type.toUpperCase()} \n**Aircraft Tail Number:** ${tail.toUpperCase()}\n **Starting Airport:**   ${start.toUpperCase()} \n**Ending Airport:**   ${end.toUpperCase()} \n**Booking Begins:**  ${etdstart}z\n**Booking Ends:** ${etdends}z`
             })
             .setTimestamp()
             .setFooter({text: 'Made by The Pilot Club For TPC Charters'});

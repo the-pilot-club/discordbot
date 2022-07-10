@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b8d3ab61-5183-4eaf-bc36-d69ab4452e29" name="Changes" comment="" />
+    <list default="true" id="b8d3ab61-5183-4eaf-bc36-d69ab4452e29" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bot.js" beforeDir="false" afterPath="$PROJECT_DIR$/bot.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/charters-aircraft-booking.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/charters-aircraft-booking.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/charters-aircraft-request.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/charters-aircraft-request.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/connect.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/connect.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/denied-archive.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/denied-archive.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/ferry.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/ferry.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/idea-archive.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/idea-archive.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/join-charters.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/join-charters.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/leaderboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/leaderboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/pirep.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/pirep.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/report.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/report.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/winners.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/winners.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/events/kara.js" beforeDir="false" afterPath="$PROJECT_DIR$/events/kara.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/previousWeek.json" beforeDir="false" afterPath="$PROJECT_DIR$/previousWeek.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,21 +30,25 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectId" id="2BjuHMetcVOc9Mltn6AVt0vOhpA" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/erics/Desktop/TPC Discord Bot/discordbot&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/erics/Desktop/TPC Discord Bot/discordbot",
+    "nodejs_package_manager_path": "npm",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -38,6 +59,7 @@
       <updated>1657431728054</updated>
       <workItem from="1657431731092" duration="878000" />
       <workItem from="1657432628035" duration="39000" />
+      <workItem from="1657432931330" duration="3067000" />
     </task>
     <servers />
   </component>

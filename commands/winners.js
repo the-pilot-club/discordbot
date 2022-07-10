@@ -20,11 +20,11 @@ async function getwinners() {
             "current_hours": employee.FlightHours - previousHoursMap[employee.Company.AirlineCode]
         });
     })
-    var top = currentWeek.sort((a, b) => b.current_hours - a.current_hours).slice(0, 5).map(x => x.name).join(" \n");
+    var top = currentWeek.sort((a, b) => b.current_hours - a.current_hours).slice(0, 5).map(x => x.name).join(" \n") ;
     testChannel.send(top)
     previousWeek = currentWeek;
-    fs.writeFile("../previousWeek.json", JSON.stringify(previousWeek), (err) => {
-        if (err) throw err;
+    fs.writeFile("previousWeek.json", JSON.stringify(previousWeek), (err) => {
+        if (err) console.log(err);
     })
 }
 
