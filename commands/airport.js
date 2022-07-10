@@ -1,40 +1,40 @@
-const { SlashCommandBuilder } = require('@discordjs/builders');
+const {SlashCommandBuilder} = require('@discordjs/builders');
 
 module.exports = {
-	data: new SlashCommandBuilder()
+    data: new SlashCommandBuilder()
         .setName('airport')
         .setDescription('Gives Information About a Specific Airport')
         .addStringOption(option =>
-        option.setName('icao')
-        .setDescription('The input to echo back')
-        .setRequired(true)),
-	async execute(interaction) {
-		const airport = interaction.options.getString('icao')
-      const response = await fetch(`https://metar.vatsim.net/metar.php?id=${airport}`);
-      const body = await response.text();
-      
-      let airportEmbed =
-        {
-          "type": "rich",
-          "title": `Airport`,
-          "description": `Information about ${airport.toUpperCase()}`,
-          "color": 0X37B6FF,
-          "fields": [
+            option.setName('icao')
+                .setDescription('The input to echo back')
+                .setRequired(true)),
+    async execute(interaction) {
+        const airport = interaction.options.getString('icao')
+        const response = await fetch(`https://metar.vatsim.net/metar.php?id=${airport}`);
+        const body = await response.text();
+
+        let airportEmbed =
             {
-              "name": `CHARTS (AirNav)`,
-              "value": `https://www.airnav.com/airport/${airport}`
-            },
-            {
-              "name": `METAR`,
-              "value": body || "Not available"
+                "type": "rich",
+                "title": `Airport`,
+                "description": `Information about ${airport.toUpperCase()}`,
+                "color": 0X37B6FF,
+                "fields": [
+                    {
+                        "name": `CHARTS (AirNav)`,
+                        "value": `https://www.airnav.com/airport/${airport}`
+                    },
+                    {
+                        "name": `METAR`,
+                        "value": body || "Not available"
+                    }
+                ],
+                "footer": {
+                    "text": `Made by The Pilot Club`
+                }
             }
-          ],
-          "footer": {
-            "text": `Made by The Pilot Club`
-          }
-        }
-      
-    
-      interaction.reply({ embeds: [airportEmbed] });
-	},
+
+
+        interaction.reply({embeds: [airportEmbed]});
+    },
 };
