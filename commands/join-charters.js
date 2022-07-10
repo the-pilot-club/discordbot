@@ -4,7 +4,7 @@ const { MessageActionRow, Modal, TextInputComponent } = require('discord.js');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('join-charters')
-        .setDescription('This is a test for Eric to test Modals for the join command'),
+        .setDescription('Use this command if you would like to join TPC Charters'),
     async execute(interaction) {
         const modal  = new Modal()
             .setCustomId('join-charters')
