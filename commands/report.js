@@ -6,7 +6,7 @@ const {MessageEmbed} = require('discord.js');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('report')
-        .setDescription('Use this commnad to report a user.')
+        .setDescription('Use this command to report a user.')
         .addStringOption(option =>
             option.setName('user').setDescription('who is the user that you would like to report').setRequired(true))
         .addStringOption(option =>

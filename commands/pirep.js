@@ -6,7 +6,7 @@ const {MessageEmbed} = require('discord.js');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('charters-pirep')
-        .setDescription('Use this commnad to submit a Charters PIREP.'
+        .setDescription('Use this command to submit a Charters PIREP.'
         ).addStringOption(option =>
             option.setName('airline-code').setDescription('What is your airline code?').setRequired(true)
         ).addStringOption(option =>

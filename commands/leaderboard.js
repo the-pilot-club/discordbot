@@ -4,7 +4,7 @@ const {MessageActionRow, MessageButton} = require('discord.js');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('leaderboard')
-        .setDescription('The link to find our leaderbaord!'),
+        .setDescription('The link to find our leaderboard!'),
     async execute(interaction) {
         const row = new MessageActionRow()
             .addComponents(

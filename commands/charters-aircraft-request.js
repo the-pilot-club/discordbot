@@ -6,13 +6,13 @@ const {MessageEmbed} = require('discord.js');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('charters-aircraft-request')
-        .setDescription('Use this commnad to request an aircraft for use in OnAir.'
+        .setDescription('Use this command to request an aircraft for use in OnAir.'
         ).addStringOption(option =>
             option.setName('airline-code').setDescription('What is the code to your Airline in OnAir?').setRequired(true)
         ).addStringOption(option =>
             option.setName('aircraft-type').setDescription('What is the aircraft type you would like?').setRequired(true)
         ).addStringOption(option =>
-            option.setName('seating-config').setDescription('What is the prefered seating configuration you would like?').setRequired(true)
+            option.setName('seating-config').setDescription('What is the preferred seating configuration you would like?').setRequired(true)
         ).addStringOption(option =>
             option.setName('starting-location').setDescription('Where would you like to start using this aircraft? (We will get you as close as we can)').setRequired(true)
         ).addStringOption(option =>

@@ -3,6 +3,6 @@ module.exports = {
     once: false,
     execute(message) {
         if (message.content.includes("Kara"))
-            message.reply("Thats my name, dont wear it out!")
+            message.reply("That's my name, dont wear it out!")
     }
 };

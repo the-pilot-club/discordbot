@@ -6,7 +6,7 @@ const {MessageEmbed} = require('discord.js');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('ferry-aircraft-request')
-        .setDescription('Use this commnad to request an aircraft to be ferried to another location.'
+        .setDescription('Use this command to request an aircraft to be ferried to another location.'
         ).addStringOption(option =>
             option.setName('aircraft-registration').setDescription('What is the Tail Number for the aircraft you would like ferried?').setRequired(true)
         ).addStringOption(option =>
@@ -25,7 +25,7 @@ module.exports = {
             .setColor('0X37B6FF')
             .addFields({
                 name: 'Details',
-                value: `**TPC Charters User:** ${interaction.user} \n**Registraton Number** ${tail} \n**Starting Location:** ${start} \n**Ending Location** ${end}`
+                value: `**TPC Charters User:** ${interaction.user} \n**Registration Number** ${tail} \n**Starting Location:** ${start} \n**Ending Location** ${end}`
             })
             .setFooter({text: 'Made by The Pilot Club For TPC Charters'});
         if (interaction.member.roles.cache.some(role => role.name === 'TPC Charters')) {
