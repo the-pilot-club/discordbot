@@ -1,48 +1,42 @@
 const {SlashCommandBuilder} = require('@discordjs/builders');
-const {Client, Collection, Intents, Interaction} = require('discord.js');
-const fetch = require('node-fetch');
-const {MessageEmbed} = require('discord.js');
+const { MessageActionRow, Modal, TextInputComponent } = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('join-charters')
-        .setDescription('Use this command to request to join TPC Charters hosted on OnAir!'
-        ).addStringOption(option =>
-            option.setName('airline-code').setDescription('What is the code to your Airline in OnAir?').setRequired(true)
-        ).addStringOption(option =>
-            option.setName('home-base').setDescription('Where is the airport that you have started your company?').setRequired(true)
-        ).addStringOption(option =>
-            option.setName('aircraft-type').setDescription('What is the aircraft type you would like?').setRequired(true)
-        ).addStringOption(option =>
-            option.setName('seating-config').setDescription('What is the preferred seating configuration you would like?').setRequired(true)
-        ),
-    async execute(interaction, client) {
-        const channel = interaction.guild.client.channels.cache.get(process.env.CHARTERS_REQUEST_CHANNEL)
-        const airline = interaction.options.getString('airline-code')
-        const type = interaction.options.getString('aircraft-type')
-        const seating = interaction.options.getString('seating-config')
-        const home = interaction.options.getString('home-base')
-        const embed = new MessageEmbed()
-            .setAuthor({name: `${interaction.user.tag}`, iconURL: `${interaction.user.displayAvatarURL()}`})
-            .setTitle('New Join Request')
-            .setDescription('A member of TPC has requested to join TPC Charters.')
-            .setColor('0X37B6FF')
-            .addFields({
-                name: 'Member Details',
-                value: `**TPC Charters User:** ${interaction.user} \n**Airline Code:** ${airline.toUpperCase()} \n**Home Base:** ${home.toUpperCase()} \n**Initial Aircraft Type Request:** ${type} \n**Seating Configuration:** ${seating}`
-            })
-            .setFooter({text: 'Made by The Pilot Club For TPC Charters'});
-        if (interaction.member.roles.cache.some(role => role.name === 'Pilots')) {
-            channel.send({content: `<@&910012872246046730>`, embeds: [embed]})
-            await interaction.reply({
-                content: `Thank you for joining TPC Charters! We will try to assign you ${type.toUpperCase()} as soon as we can. If you have not heard anything within 12 hours, please try this command again! Welcome to TPC Charters.`,
-                ephemeral: true
-            })
-        } else {
-            interaction.reply({
-                content: `If you are seeing this, ping a member of staff to give you the Pilots Role`,
-                ephemeral: true
-            })
-        }
-    }
-}
+        .setDescription('This is a test for Eric to test Modals for the join command'),
+    async execute(interaction) {
+        const modal  = new Modal()
+            .setCustomId('join-charters')
+            .setTitle('Join TPC Charters')
+        const airlinecode = new TextInputComponent()
+            .setCustomId('airlinecode')
+            .setLabel('What is your Airline Code?')
+            .setStyle('SHORT')
+        const homebase = new TextInputComponent()
+            .setCustomId('homebase')
+            .setLabel('What is your home base?')
+            .setStyle('SHORT')
+        const aircraft = new TextInputComponent()
+            .setCustomId('aircraft')
+            .setLabel('What is the aircraft type you would like?')
+            .setStyle('SHORT')
+        const seating = new TextInputComponent()
+            .setCustomId('seating')
+            .setLabel('What is the Seating Config you would like?')
+            .setStyle('SHORT')
+        const actionrow1 = new MessageActionRow().addComponents(airlinecode)
+        const actionrow2 = new MessageActionRow().addComponents(homebase)
+        const actionrow3 = new MessageActionRow().addComponents(aircraft)
+        const actionrow4 = new MessageActionRow().addComponents(seating)
+
+        modal.addComponents(actionrow1,actionrow2,actionrow3,actionrow4)
+
+        await interaction.showModal(modal);
+    },
+};
+
+//airline code
+//home base
+//aircraft type
+//seating config
