@@ -3,6 +3,6 @@ module.exports = {
     once: false,
     execute(message) {
         if (message.content.includes("Kara"))
-            message.reply("That's my name, dont wear it out!")
+            message.reply("https://tenor.com/view/kara-danvers-kara-zor-el-super-girl-shocked-gif-13811592")
     }
 };
