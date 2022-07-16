@@ -1,6 +1,4 @@
 const {SlashCommandBuilder} = require('@discordjs/builders');
-const {Client, Collection, Intents, Interaction} = require('discord.js');
-const fetch = require('node-fetch');
 const {MessageEmbed} = require('discord.js');
 
 module.exports = {
@@ -24,11 +22,12 @@ module.exports = {
         ).addStringOption(option =>
             option.setName('comments').setDescription('Any comments you would like to add about this booking?').setRequired(false)
         ),
-    async execute(interaction, client) {
+    async execute(interaction) {
         const a3201channel = interaction.guild.client.channels.cache.get(process.env.A320_AIRCRAFT_1CHANNEL)//CORRECT CHANNEL: A320_AIRCRAFT_1CHANNEL
         const a3202channel = interaction.guild.client.channels.cache.get(process.env.A320_AIRCRAFT_2CHANNEL)//CORRECT CHANNEL: A320_AIRCRAFT_2CHANNEL
         const b7371channel = interaction.guild.client.channels.cache.get(process.env.B737_AIRCRAFT_1CHANNEL)//CORRECT CHANNEL: B737_AIRCRAFT_1CHANNEL
         const channel = interaction.guild.client.channels.cache.get(process.env.CHARTERS_AIRLINEROPS_CHANNEL)//CORRECT CHANNEL: CHARTERS_AIRLINEROPS_CHANNEL
+        const crjchannel = interaction.guild.client.channels.cache.get(process.env.CRJX_AIRCRAFT1_CHANNEL)
         const airline = interaction.options.getString('airline-code')
         const type = interaction.options.getString('aircraft-type')
         const tail = interaction.options.getString('tail-number')
@@ -59,39 +58,30 @@ module.exports = {
             .setFooter({text: 'Made by The Pilot Club For TPC Charters'});
         if (interaction.member.roles.cache.some(role => role.name === 'TPC Charters')) {
             if (comments !== null) {
-                if (tail == process.env.A320_AIRCRAFT_1U) {
+                if (tail == process.env.A320_AIRCRAFT_1U || tail == process.env.A320_AIRCRAFT_1L) {
                     a3201channel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
-                } else if (tail == process.env.A320_AIRCRAFT_1L) {
-                    a3201channel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
-                } else if (tail == process.env.B737_AIRCRAFT_1U) {
+                } else if (tail == process.env.B737_AIRCRAFT_1U || tail == process.env.B737_AIRCRAFT_1L) {
                     b7371channel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
-                } else if (tail == process.env.B737_AIRCRAFT_1L) {
-                    b7371channel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
-                } else if (tail == process.env.A320_AIRCRAFT_2L) {
+                } else if (tail == process.env.A320_AIRCRAFT_2L || tail == process.env.A320_AIRCRAFT_2U) {
                     a3202channel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
-                } else if (tail == process.env.A320_AIRCRAFT_2U) {
-                    a3202channel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                } else if (tail == process.env.CRJX_AIRCRAFT_1U || tail == process.env.CRJX_AIRCRAFT_1L) {
+                    crjchannel.send ({content: `<@&910012872246046730>`, embeds:[commentembed]})
                 } else {
                     channel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
                 }
 
             } else {
-                if (tail == process.env.A320_AIRCRAFT_1U) {
+                if (tail == process.env.A320_AIRCRAFT_1U || tail == process.env.A320_AIRCRAFT_1L) {
                     a3201channel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
-                } else if (tail == process.env.A320_AIRCRAFT_1L) {
-                    a3201channel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
-                } else if (tail == process.env.B737_AIRCRAFT_1U) {
+                } else if (tail == process.env.B737_AIRCRAFT_1U || tail == process.env.B737_AIRCRAFT_1L) {
                     b7371channel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
-                } else if (tail == process.env.B737_AIRCRAFT_1L) {
-                    b7371channel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
-                } else if (tail == process.env.A320_AIRCRAFT_2L) {
+                } else if (tail == process.env.A320_AIRCRAFT_2L || tail == process.env.A320_AIRCRAFT_2U) {
                     a3202channel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
-                } else if (tail == process.env.A320_AIRCRAFT_2U) {
-                    a3202channel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                } else if (tail == process.env.CRJX_AIRCRAFT_1U || tail == process.env.CRJX_AIRCRAFT_1L) {
+                    crjchannel.send ({content: `<@&910012872246046730>`, embeds:[nocommentembed]})
                 } else {
-                    channel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
-                }
-            }
+                    channel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                }            }
             await interaction.reply({content: `Your Booking has been submitted! Thank you!`, ephemeral: true})
         } else {
             interaction.reply({
