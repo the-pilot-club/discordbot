@@ -37,10 +37,11 @@ module.exports = {
         ).addStringOption(option =>
             option.setName('until-what-time').setDescription('Put what time the crew are on duty/resting to').setRequired(true)
         ).addStringOption(option =>
-            option.setName('comments').setDescription('Any comments you would like to add about the flight?').setRequired(false)
+            option.setName('comments').setDescription('Any comments you would like to add about the flight?').setRequired(false).setMaxLength(250)
         ),
     async execute(interaction, client) {
-        const channel = interaction.guild.client.channels.cache.get(process.env.CHARTERS_AIRLINEROPS_CHANNEL)
+        const airchannel = interaction.guild.client.channels.cache.get(process.env.AIRLINER_PIREPS_CHANNEL)
+        const gachannel = interaction.guild.client.channels.cache.get(process.env.GA_PIREPS_CHANNEL)
         const airline = interaction.options.getString('airline-code')
         const type = interaction.options.getString('aircraft-type')
         const tail = interaction.options.getString('tail-number')
@@ -74,10 +75,41 @@ module.exports = {
             .setFooter({text: 'Made by The Pilot Club For TPC Charters'});
         if (interaction.member.roles.cache.some(role => role.name === 'TPC Charters')) {
             if (comments !== null) {
-                channel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                if (tail == "N2052D" || tail == "n2052d") {
+                    airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                } else if (tail == "N1551J" || tail == "n1551j") {
+                    airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                } else if (tail == "N9155K" || tail == "n9155k") {
+                    airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                } else if (tail == "N2467G" || tail == "n2467g") {
+                    airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                }else if (tail == "N1890C" || tail == "n1890c") {
+                    airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                } else if (tail == "N3123F" || tail == "n3123f") {
+                    airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                }else if (tail == "N7780T" || tail == "n7780t") {
+                    airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                } else {
+                    gachannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                }
             } else {
-                channel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
-            }
+                if (tail == "N2052D" || tail == "n2052d") {
+                    airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                } else if (tail == "N1551J" || tail == "n1551j") {
+                    airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                } else if (tail == "N9155K" || tail == "n9155k") {
+                    airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                } else if (tail == "N2467G" || tail == "n2467g") {
+                    airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                }else if (tail == "N1890C" || tail == "n1890c") {
+                    airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                } else if (tail == "N3123F" || tail == "n3123f") {
+                    airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                }else if (tail == "N7780T" || tail == "n7780t") {
+                    airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                } else {
+                    gachannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                }           }
             await interaction.reply({content: `Your PIREP has been submitted! Thank you!`, ephemeral: true})
         } else {
             interaction.reply({
