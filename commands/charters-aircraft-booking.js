@@ -25,9 +25,12 @@ module.exports = {
     async execute(interaction) {
         const a3201channel = interaction.guild.client.channels.cache.get(process.env.A320_AIRCRAFT_1CHANNEL)//CORRECT CHANNEL: A320_AIRCRAFT_1CHANNEL
         const a3202channel = interaction.guild.client.channels.cache.get(process.env.A320_AIRCRAFT_2CHANNEL)//CORRECT CHANNEL: A320_AIRCRAFT_2CHANNEL
+        const a3203channel = interaction.guild.client.channels.cache.get(process.env.A320_AIRCRAFT_3CHANNEL)
         const b7371channel = interaction.guild.client.channels.cache.get(process.env.B737_AIRCRAFT_1CHANNEL)//CORRECT CHANNEL: B737_AIRCRAFT_1CHANNEL
+        const b7372channel = interaction.guild.client.channels.cache.get(process.env.B737_AIRCRAFT_2CHANNEL)
         const channel = interaction.guild.client.channels.cache.get(process.env.CHARTERS_AIRLINEROPS_CHANNEL)//CORRECT CHANNEL: CHARTERS_AIRLINEROPS_CHANNEL
-        const crjchannel = interaction.guild.client.channels.cache.get(process.env.CRJX_AIRCRAFT1_CHANNEL)
+        const crj1channel = interaction.guild.client.channels.cache.get(process.env.CRJX_AIRCRAFT1_CHANNEL)
+        const crj2channel = interaction.guild.client.channels.cache.get(process.env.CRJX_AIRCRAFT2_CHANNEL)
         const airline = interaction.options.getString('airline-code')
         const type = interaction.options.getString('aircraft-type')
         const tail = interaction.options.getString('tail-number')
@@ -58,30 +61,42 @@ module.exports = {
             .setFooter({text: 'Made by The Pilot Club For TPC Charters'});
         if (interaction.member.roles.cache.some(role => role.name === 'TPC Charters')) {
             if (comments !== null) {
-                if (tail == process.env.A320_AIRCRAFT_1U || tail == process.env.A320_AIRCRAFT_1L) {
+                if (tail == "N2052D" || tail == "n2052d") {
                     a3201channel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
-                } else if (tail == process.env.B737_AIRCRAFT_1U || tail == process.env.B737_AIRCRAFT_1L) {
-                    b7371channel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
-                } else if (tail == process.env.A320_AIRCRAFT_2L || tail == process.env.A320_AIRCRAFT_2U) {
+                } else if (tail == "N1551J" || tail == "n1551j") {
                     a3202channel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
-                } else if (tail == process.env.CRJX_AIRCRAFT_1U || tail == process.env.CRJX_AIRCRAFT_1L) {
-                    crjchannel.send ({content: `<@&910012872246046730>`, embeds:[commentembed]})
+                } else if (tail == "N9155K" || tail == "n9155k") {
+                    a3203channel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                } else if (tail == "N2467G" || tail == "n2467g") {
+                    b7371channel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                }else if (tail == "N1890C" || tail == "n1890c") {
+                    b7372channel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                } else if (tail == "N3123F" || tail == "n3123f") {
+                    crj1channel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                }else if (tail == "N7780T" || tail == "n7780t") {
+                    crj2channel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
                 } else {
                     channel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
                 }
 
             } else {
-                if (tail == process.env.A320_AIRCRAFT_1U || tail == process.env.A320_AIRCRAFT_1L) {
+                if (tail == "N2052D" || tail == "n2052d") {
                     a3201channel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
-                } else if (tail == process.env.B737_AIRCRAFT_1U || tail == process.env.B737_AIRCRAFT_1L) {
-                    b7371channel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
-                } else if (tail == process.env.A320_AIRCRAFT_2L || tail == process.env.A320_AIRCRAFT_2U) {
+                } else if (tail == "N1551J" || tail == "n1551j") {
                     a3202channel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
-                } else if (tail == process.env.CRJX_AIRCRAFT_1U || tail == process.env.CRJX_AIRCRAFT_1L) {
-                    crjchannel.send ({content: `<@&910012872246046730>`, embeds:[nocommentembed]})
+                } else if (tail == "N9155K" || tail == "n9155k") {
+                    a3203channel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                } else if (tail == "N2467G" || tail == "n2467g") {
+                    b7371channel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                }else if (tail == "N1890C" || tail == "n1890c") {
+                    b7372channel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                } else if (tail == "N3123F" || tail == "n3123f") {
+                    crj1channel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                }else if (tail == "N7780T" || tail == "n7780t") {
+                    crj2channel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
                 } else {
-                    channel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
-                }            }
+                    channel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                }           }
             await interaction.reply({content: `Your Booking has been submitted! Thank you!`, ephemeral: true})
         } else {
             interaction.reply({
