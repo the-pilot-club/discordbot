@@ -24,7 +24,8 @@ module.exports = {
         ).addStringOption(option =>
             option.setName('landing-rate').setDescription('What was the landing rate that OnAir Gave to you?').setRequired(true)
                 .addChoices(
-                    {name: 'Soft Landing', value: 'Soft Landing'},
+                    {name: 'Very Smooth Landing', value: 'Very Smooth Landing'},
+                    {name: 'Smooth Landing', value: 'Smooth Landing'},
                     {name: 'Normal Landing', value: 'Normal Landing'},
                     {name: 'Hard Landing', value: 'Hard Landing'},)
         ).addStringOption(option =>
