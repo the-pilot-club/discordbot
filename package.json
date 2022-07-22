@@ -7,7 +7,7 @@
     "devStart": "nodemon bot.js"
   },
   "dependencies": {
-    "@discordjs/builders": "^0.13.0",
+    "@discordjs/builders": "^1.0.0",
     "@discordjs/rest": "^0.4.1",
     "discord-api-types": "^0.32.1",
     "discord.js": "^13.6.0",
