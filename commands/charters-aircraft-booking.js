@@ -20,7 +20,7 @@ module.exports = {
         ).addIntegerOption(option =>
             option.setName('booking-ends').setDescription('When will you be finished?').setRequired(true)
         ).addStringOption(option =>
-            option.setName('comments').setDescription('Any comments you would like to add about this booking?').setRequired(false)
+            option.setName('comments').setDescription('Any comments you would like to add about this booking?').setRequired(false).setMaxLength(250)
         ),
     async execute(interaction) {
         const a3201channel = interaction.guild.client.channels.cache.get(process.env.A320_AIRCRAFT_1CHANNEL)//CORRECT CHANNEL: A320_AIRCRAFT_1CHANNEL
