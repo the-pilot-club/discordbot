@@ -1,28 +1,76 @@
 const {SlashCommandBuilder} = require('@discordjs/builders');
-
+const {MessageActionRow, MessageButton} = require("discord.js");
+const {MessageEmbed} = require('discord.js');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('sync')
         .setDescription('Sync your VATSIM Ratings for TPC!'),
-    async execute(interaction) {
-//         const response = await fetch(`https://callsigns.thepilotclub.org/ServiceOperations.asmx`, {
-//             method : 'POST',
-//             headers:{'Content-Type': 'text/xml;charset=UTF-8'},
-//             body: `<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
-//   <soap:Body>
-//     <GetVatsimHrsInfo xmlns="http://tempuri.org/"
-//       <DiscordId>${interaction.user.id}</DiscordId>
-//     </GetVatsimHrsInfo>
-//   </soap:Body>
-// </soap:Envelope>`,
-//         })
-//         const body = await response.text();
-//         console.log(body)
-        // if (body !== undefined && body !== '') {
-        //     interaction.reply(`${body}`)
-        // } else {
-             interaction.reply("What is this command? The world may never know 😉 ")
-        // }
-        // ;
-    },
-};
+    async execute(interaction , client) {
+        const response = await fetch(`https://callsigns.thepilotclub.org/DiscordOperations/GetVatsimRatingInfo?Discordid=${interaction.user.id}`, {
+            method: 'POST'})
+        let body = await response.json()
+        if (body === "{Not Found}") {
+            const row = new MessageActionRow()
+                    .addComponents(
+                        new MessageButton()
+                            .setLabel('Connect my account!')
+                            .setURL(`https://callsigns.thepilotclub.org/sendauthentication.aspx?id=${interaction.user.id}`)
+                            .setStyle('LINK'),
+                    );
+            await interaction.reply({content: `Please connect your VATSIM account to the TPC Discord!`,components: [row], ephemeral: true})
+        } else {
+            let data = JSON.parse(body)
+            let rating = data.rating
+            let pilotrating = data.pilotrating
+            let roles = []
+            if (rating == "2") { //S1
+                roles.push("ATC")
+            }else if (rating == "3") {  //S2
+                roles.push("ATC")
+            }else if (rating == "4") {  //S3
+                roles.push("ATC")
+            }else if (rating == "5") {  //C1
+                roles.push("ATC")
+            }else if (rating == "6") {  //C2
+                roles.push("ATC")
+            }else if (rating == "7") {  //C3
+                roles.push("ATC")
+            }else if (rating == "8") { //I1
+                roles.push("ATC")
+            }else if (rating == "9") {  //I2
+                roles.push("ATC")
+            }else if (rating == "10") {  //I3
+                roles.push("ATC")
+            }else if (rating == "11") {  //SUP
+                roles.push("Network Supervisor")
+            }else if (rating == "12"){  //ADM
+                roles.push("Network Administrator")
+            }
+            if (pilotrating == "0") {
+                roles.push("P0")
+            }else if (pilotrating == "1") {
+                roles.push("P1")
+            }else if (pilotrating == "3") {
+                roles.push("P2")
+            }else if (pilotrating == "7") {
+                roles.push("P3")
+            }else if (pilotrating == "15") {
+                roles.push("P4")
+            }
+            let roleStr = ""
+                for (let i = 0; i < roles.length; i++) {
+                const role = interaction.guild.roles.cache.find(role => role.name === roles[i])
+                interaction.member.roles.add(role).catch(e => console.error(e))
+                roleStr += `${role} `}
+
+                const embed = new MessageEmbed()
+                .setAuthor({name: `${interaction.user.tag}`, iconURL: `${interaction.user.displayAvatarURL()}`})
+                .setTitle('Your Roles have been assigned!')
+                .setDescription(`${roleStr}`)
+                .setColor('0X37B6FF')
+                .setFooter({text: "Made for The Pilot Club"})
+                .setTimestamp()
+            interaction.reply({embeds: [embed]})
+        }
+    }
+}
