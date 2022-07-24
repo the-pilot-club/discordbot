@@ -57,7 +57,20 @@ module.exports = {
             }else if (pilotrating == "15") {
                 roles.push("P4")
             }
-            let roleStr = ""
+            let roleStr = "",
+                excluded = ['TPC Custom','Carl Bot', 'Founder', 'Air Marshals', 'Training Coordinator', 'Deputy Training Coordinator', 'Training Ops Manager'
+                    , 'Ground Crew','The Pilot Club', 'Developers', 'Muted', 'Flight Ops','Training Team','ATO CFI','ATO D-CFI',
+                    'Examiner','Instructor','Team Lead','Staff','Charters Asst. Ops Manager',
+                    'Charters Managers',' Social Media Team','Early Adopter','Partners','VIP','Frequent Flyer','Commuter','Booster','Lucky Pilots','IRL Pilots','Streamers',
+                    'TPC Charters','Explorers','Pilots','Group Flights','GA Flights','World Tour','Giveaway','Other Bots','Flight School', 'Livery Maker',
+                    'Onboarded','CTD King','DISBOARD.org','MonitoRSS','DSL','VATBot','Statbot','StickyBot','Charters Top Gun','Insiders'
+                ]
+                interaction.member.roles.cache.forEach(role => {
+                if (role.id !== interaction.guild.roles.everyone.id
+                    && excluded.indexOf(role.name) < 0
+                    && roles.indexOf(role.name) < 0)
+                    interaction.member.roles.remove(role).catch(e => console.error(e))
+            })
                 for (let i = 0; i < roles.length; i++) {
                 const role = interaction.guild.roles.cache.find(role => role.name === roles[i])
                 interaction.member.roles.add(role).catch(e => console.error(e))
