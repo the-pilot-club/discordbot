@@ -157,7 +157,7 @@ function sendNewQuestion(channel, eventChannel) {
         const collector = message.createReactionCollector({filter, time: 43200000}); //correct time: 43200000
         var users = []
         collector.on('collect', (reaction, user) => {
-            console.log(`Collected ${reaction.emoji.name} from ${user.id}`);
+            //console.log(`Collected ${reaction.emoji.name} from ${user.id}`);
             if (reaction.emoji.name == correct && !users.includes(user.id)) {
                 users.push([user.id, reaction.emoji.name])
             }
@@ -171,7 +171,7 @@ function sendNewQuestion(channel, eventChannel) {
                 formatted += "\n" + ("<@" + users[i][0] + ">")
             }
             console.log(formatted)
-            //eventChannel.send(`Congrats to the following people for successfully answering today's quiz! The correct answer was ${correct} ${formatted}`)
+            testChannel.send(`Congrats to the following people for successfully answering today's quiz! The correct answer was ${correct} ${formatted}`)
         });
     });
 
