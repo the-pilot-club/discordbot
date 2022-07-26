@@ -137,7 +137,7 @@ function randomNum(min, max) {
     return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
 }
 
-function sendNewQuestion(channel, eventChannel) {
+function sendNewQuestion(channel, testChannel) {
     let generatedNum = randomNum(0, questions.length)
     var correct = questions[generatedNum][1]
     if (correct.includes('🇦')) {
