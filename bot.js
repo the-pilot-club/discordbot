@@ -210,7 +210,7 @@ client.on('ready', async function () {
     const testChannel = await client.channels.fetch(process.env.TEST_CHANNEL); //correct id: 864834861603487754
 //Getting random question every day:  0 57 22 * * *
     cron.schedule('0 00 08 * * *', function () { //Correct time is 0 00 08 * * *
-        sendNewQuestion(channel);
+        sendNewQuestion(channel , testChannel);
     });
     cron.schedule('0 52 07 * * *', function () { // Correct time is 0 52 07 * * *
         sendNewAnswer(channel);
