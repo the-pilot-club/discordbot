@@ -154,7 +154,7 @@ function sendNewQuestion(channel, testChannel) {
         const filter = (reaction, user) => {
             return user.id != message.author.id && reaction.emoji.name === '🇦' || user.id != message.author.id && reaction.emoji.name === '🇧' || user.id != message.author.id && reaction.emoji.name === '🇨'
         };
-        const collector = message.createReactionCollector({filter, time: 43200000}); //correct time: 43200000
+        const collector = message.createReactionCollector({filter, time: 85920000}); //correct time: 85920000
         var users = []
         collector.on('collect', (reaction, user) => {
             //console.log(`Collected ${reaction.emoji.name} from ${user.id}`);
@@ -171,7 +171,7 @@ function sendNewQuestion(channel, testChannel) {
                 formatted += "\n" + ("<@" + users[i][0] + ">")
             }
             console.log(formatted)
-            testChannel.send(`Congrats to the following people for successfully answering today's quiz! The correct answer was ${correct} ${formatted}`)
+            testChannel.send(`<:training_team:895480894901592074> Congrats to the following people for successfully answering yesterday's quiz! The correct answer was ${correct} \n ${formatted}`)
         });
     });
 
