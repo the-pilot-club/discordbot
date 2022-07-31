@@ -90,6 +90,8 @@ module.exports = {
                     airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
                 }else if (tail == "N7780T" || tail == "n7780t") {
                     airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                }else if (tail == "N4741N" || tail == "n4741n") {
+                    airchannel.send({content: '<@&910012872246046730>', embeds:[commentembed]})
                 } else {
                     gachannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
                 }
@@ -108,6 +110,8 @@ module.exports = {
                     airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
                 }else if (tail == "N7780T" || tail == "n7780t") {
                     airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                }else if (tail == "N4741N" || tail == "n4741n") {
+                    airchannel.send({content: '<@&910012872246046730>', embeds:[nocommentembed]})
                 } else {
                     gachannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
                 }           }
