@@ -137,42 +137,12 @@ function randomNum(min, max) {
     return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
 }
 
-function sendNewQuestion(channel, testChannel) {
+function sendNewQuestion(channel) {
     let generatedNum = randomNum(0, questions.length)
-    var correct = questions[generatedNum][1]
-    if (correct.includes('🇦')) {
-        correct = '🇦'
-    } else if (correct.includes('🇧')) {
-        correct = '🇧'
-    } else if (correct.includes('🇨')) {
-        correct = '🇨'
-    }
     channel.send(questions[generatedNum][0]).then(message => {
         message.react('🇦');
         message.react('🇧');
         message.react('🇨');
-        const filter = (reaction, user) => {
-            return user.id != message.author.id && reaction.emoji.name === '🇦' || user.id != message.author.id && reaction.emoji.name === '🇧' || user.id != message.author.id && reaction.emoji.name === '🇨'
-        };
-        const collector = message.createReactionCollector({filter, time: 85920000}); //correct time: 85920000
-        var users = []
-        collector.on('collect', (reaction, user) => {
-            //console.log(`Collected ${reaction.emoji.name} from ${user.id}`);
-            if (reaction.emoji.name == correct && !users.includes(user.id)) {
-                users.push([user.id, reaction.emoji.name])
-            }
-        });
-
-        collector.on('end', collected => {
-
-            //console.log(`Correct: ${correct} Users: ${users}`);
-            var formatted = ""
-            for (var i = 0; i < users.length; i++) {
-                formatted += "\n" + ("<@" + users[i][0] + ">")
-            }
-            console.log(formatted)
-            testChannel.send(`<:training_team:895480894901592074> Congrats to the following people for successfully answering yesterday's quiz! The correct answer was ${correct} \n ${formatted}`)
-        });
     });
 
     file.latestQuestion = generatedNum
@@ -210,7 +180,7 @@ client.on('ready', async function () {
     const testChannel = await client.channels.fetch(process.env.TEST_CHANNEL); //correct id: 864834861603487754
 //Getting random question every day:  0 57 22 * * *
     cron.schedule('0 00 08 * * *', function () { //Correct time is 0 00 08 * * *
-        sendNewQuestion(channel , testChannel);
+        sendNewQuestion(channel);
     });
     cron.schedule('0 52 07 * * *', function () { // Correct time is 0 52 07 * * *
         sendNewAnswer(channel);
