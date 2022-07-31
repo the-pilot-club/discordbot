@@ -1,6 +1,6 @@
 ﻿# The Pilot Club Custom Discord Bot
 
-This is the bot made for The Pilot Club. This bot has been made Possible by Eric (TPC76), Losh, and Ryan! We also had
+This is the bot made for The Pilot Club. This bot has been made Possible by Eric (TPC76) and Losh! We also had
 some insight by Jon (TPC985). We would like to think this is a good product and is always ever evolving!
 
 If you would like to host this bot for yourself, you may clone the repo and import it to your server. You will need to
