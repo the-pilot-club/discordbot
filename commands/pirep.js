@@ -26,8 +26,9 @@ module.exports = {
                 .addChoices(
                     {name: 'Very Smooth Landing', value: 'Very Smooth Landing'},
                     {name: 'Smooth Landing', value: 'Smooth Landing'},
-                    {name: 'Normal Landing', value: 'Normal Landing'},
-                    {name: 'Hard Landing', value: 'Hard Landing'},)
+                    {name: 'Regular Landing', value: 'Regular Landing'},
+                    {name: 'Hard Landing', value: 'Hard Landing'},
+                    {name: 'Very Hard Landing', value:'Very Hard Landing'})
         ).addStringOption(option =>
             option.setName('crew-state').setDescription('State whether on duty or resting. Give state end-time in  Zulu/UTC.').setRequired(true)
                 .addChoices(
