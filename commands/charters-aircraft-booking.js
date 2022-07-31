@@ -23,12 +23,13 @@ module.exports = {
             option.setName('comments').setDescription('Any comments you would like to add about this booking?').setRequired(false).setMaxLength(250)
         ),
     async execute(interaction) {
-        const a3201channel = interaction.guild.client.channels.cache.get(process.env.A320_AIRCRAFT_1CHANNEL)//CORRECT CHANNEL: A320_AIRCRAFT_1CHANNEL
-        const a3202channel = interaction.guild.client.channels.cache.get(process.env.A320_AIRCRAFT_2CHANNEL)//CORRECT CHANNEL: A320_AIRCRAFT_2CHANNEL
+        const a3201channel = interaction.guild.client.channels.cache.get(process.env.A320_AIRCRAFT_1CHANNEL)
+        const a3202channel = interaction.guild.client.channels.cache.get(process.env.A320_AIRCRAFT_2CHANNEL)
         const a3203channel = interaction.guild.client.channels.cache.get(process.env.A320_AIRCRAFT_3CHANNEL)
-        const b7371channel = interaction.guild.client.channels.cache.get(process.env.B737_AIRCRAFT_1CHANNEL)//CORRECT CHANNEL: B737_AIRCRAFT_1CHANNEL
+        const a3204channel = interaction.guild.client.channels.cache.get(process.env.A320_AIRCRAFT_4CHANNEL)
+        const b7371channel = interaction.guild.client.channels.cache.get(process.env.B737_AIRCRAFT_1CHANNEL)
         const b7372channel = interaction.guild.client.channels.cache.get(process.env.B737_AIRCRAFT_2CHANNEL)
-        const channel = interaction.guild.client.channels.cache.get(process.env.CHARTERS_AIRLINEROPS_CHANNEL)//CORRECT CHANNEL: CHARTERS_AIRLINEROPS_CHANNEL
+        const channel = interaction.guild.client.channels.cache.get(process.env.CHARTERS_AIRLINEROPS_CHANNEL)
         const crj1channel = interaction.guild.client.channels.cache.get(process.env.CRJX_AIRCRAFT1_CHANNEL)
         const crj2channel = interaction.guild.client.channels.cache.get(process.env.CRJX_AIRCRAFT2_CHANNEL)
         const airline = interaction.options.getString('airline-code')
@@ -75,6 +76,8 @@ module.exports = {
                     crj1channel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
                 }else if (tail == "N7780T" || tail == "n7780t") {
                     crj2channel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                }else if (tail == "N4741N" || tail == "n4741n") {
+                    a3204channel.send({content: '<@&910012872246046730>', embeds:[commentembed]})
                 } else {
                     channel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
                 }
@@ -94,6 +97,8 @@ module.exports = {
                     crj1channel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
                 }else if (tail == "N7780T" || tail == "n7780t") {
                     crj2channel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                }else if (tail == "N4741N" || tail == "n4741n") {
+                    a3204channel.send({content: '<@&910012872246046730>', embeds:[nocommentembed]})
                 } else {
                     channel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
                 }           }
