@@ -9,7 +9,7 @@ module.exports = {
                 .addComponents(
                     new MessageButton()
                         .setLabel('Get the World Tour Role')
-                        .setURL("https://discord.com/channels/830201397974663229/831645469472981002/856378173280223243")
+                        .setURL("https://discord.com/channels/830201397974663229/833198809701679124/848245312815497237")
                         .setStyle('LINK'),
                 )
             message.reply({
