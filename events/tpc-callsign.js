@@ -18,11 +18,11 @@ module.exports = {
                     name: '\u200b',
                     value: 'To get a TPC callsign you just need to register one that has not yet been taken. You can do so with the button below and fill in the blanks!'
                 })
-                .setFooter({text: 'Made by The Pilot Club For TPC Charters'});
+                .setFooter({text: 'Made by The Pilot Club'});
             const row = new MessageActionRow()
                 .addComponents(
                     new MessageButton()
-                        .setLabel('The Pilot Club Support')
+                        .setLabel('Get a Call Sign Here!')
                         .setURL("https://support.thepilotclub.org/pages/tpc-callsign-request")
                         .setStyle('LINK'))
             message.reply({embeds: [embed], components: [row]})

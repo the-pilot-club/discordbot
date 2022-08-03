@@ -10,7 +10,7 @@ module.exports = {
             .addComponents(
                 new MessageButton()
                     .setLabel('TPC Server Commands')
-                    .setURL("https://www.thepilotclub.org/server-commands")
+                    .setURL("https://vats.im/tpc-commands")
                     .setStyle('LINK'),
             );
         await interaction.reply({content: `Here is a full list of member friendly commands:`, components: [row]})
