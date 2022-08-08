@@ -76,45 +76,126 @@ module.exports = {
             .setFooter({text: 'Made by The Pilot Club For TPC Charters'});
         if (interaction.member.roles.cache.some(role => role.name === 'TPC Charters')) {
             if (comments !== null) {
-                if (tail == "N2052D" || tail == "n2052d") {
-                    airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
-                } else if (tail == "N1551J" || tail == "n1551j") {
-                    airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
-                } else if (tail == "N9155K" || tail == "n9155k") {
-                    airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
-                } else if (tail == "N2467G" || tail == "n2467g") {
-                    airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
-                }else if (tail == "N1890C" || tail == "n1890c") {
-                    airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
-                } else if (tail == "N3123F" || tail == "n3123f") {
-                    airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
-                }else if (tail == "N7780T" || tail == "n7780t") {
-                    airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
-                }else if (tail == "N4741N" || tail == "n4741n") {
-                    airchannel.send({content: '<@&910012872246046730>', embeds:[commentembed]})
-                } else {
-                    gachannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
-                }
+                switch (tail) {
+                    case "N2052D":
+                        airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                            break
+                    case "n2052d":
+                        airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                        break
+                    case "N1551J":
+                        airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                            break
+                    case "n1551j":
+                        airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                        break
+                    case "N9155K":
+                        airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                            break
+                    case "n9155k":
+                        airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                        break
+                    case "N2467G":
+                        airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                            break
+                    case "n2467g":
+                        airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                        break
+                    case "N1890C":
+                        airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                            break
+                    case "n1890c":
+                        airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                        break
+                    case "N3123F":
+                        airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                            break
+                    case "n3123f":
+                        airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                        break
+                    case "N7780T":
+                        airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                            break
+                    case "n7780t":
+                        airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                        break
+                    case "N4741N":
+                        airchannel.send({content: '<@&910012872246046730>', embeds:[commentembed]})
+                            break
+                    case "n4741n":
+                        airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                        break
+                    case "N7999F":
+                        airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                        break
+                    case "n7999f":
+                        airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                        break
+                    default:
+                        gachannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                        break
+                    }
             } else {
-                if (tail == "N2052D" || tail == "n2052d") {
-                    airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
-                } else if (tail == "N1551J" || tail == "n1551j") {
-                    airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
-                } else if (tail == "N9155K" || tail == "n9155k") {
-                    airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
-                } else if (tail == "N2467G" || tail == "n2467g") {
-                    airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
-                }else if (tail == "N1890C" || tail == "n1890c") {
-                    airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
-                } else if (tail == "N3123F" || tail == "n3123f") {
-                    airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
-                }else if (tail == "N7780T" || tail == "n7780t") {
-                    airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
-                }else if (tail == "N4741N" || tail == "n4741n") {
-                    airchannel.send({content: '<@&910012872246046730>', embeds:[nocommentembed]})
-                } else {
-                    gachannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
-                }           }
+                switch (tail) {
+                    case "N2052D":
+                        airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                        break
+                    case "n2052d":
+                        airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                        break
+                    case "N1551J":
+                        airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                        break
+                    case "n1551j":
+                        airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                        break
+                    case "N9155K":
+                        airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                        break
+                    case "n9155k":
+                        airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                        break
+                    case "N2467G":
+                        airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                        break
+                    case "n2467g":
+                        airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                        break
+                    case "N1890C":
+                        airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                        break
+                    case "n1890c":
+                        airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                        break
+                    case "N3123F":
+                        airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                        break
+                    case "n3123f":
+                        airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                        break
+                    case "N7780T":
+                        airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                        break
+                    case "n7780t":
+                        airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                        break
+                    case "N4741N":
+                        airchannel.send({content: '<@&910012872246046730>', embeds:[nocommentembed]})
+                        break
+                    case "n4741n":
+                        airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                        break
+                    case "N7999F":
+                        airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                        break
+                    case "n7999f":
+                        airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                        break
+                    default:
+                        gachannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                        break
+                }
+            }
             await interaction.reply({content: `Your PIREP has been submitted! Thank you!`, ephemeral: true})
         } else {
             interaction.reply({
