@@ -25,24 +25,32 @@ module.exports = {
             let roles = []
             if (rating == "2") { //S1
                 roles.push("ATC")
+                roles.push("S1")
             }else if (rating == "3") {  //S2
                 roles.push("ATC")
+                roles.push("S2")
             }else if (rating == "4") {  //S3
                 roles.push("ATC")
+                roles.push("S3")
             }else if (rating == "5") {  //C1
                 roles.push("ATC")
+                roles.push("C1")
             }else if (rating == "6") {  //C2
                 roles.push("ATC")
             }else if (rating == "7") {  //C3
                 roles.push("ATC")
+                roles.push("C3")
             }else if (rating == "8") { //I1
                 roles.push("ATC")
+                roles.push("I1")
             }else if (rating == "9") {  //I2
                 roles.push("ATC")
             }else if (rating == "10") {  //I3
                 roles.push("ATC")
+                roles.push("I3")
             }else if (rating == "11") {  //SUP
                 roles.push("Network Supervisor")
+                roles.push("ATC")
             }else if (rating == "12"){  //ADM
                 roles.push("Network Administrator")
             }

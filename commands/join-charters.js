@@ -3,7 +3,7 @@ const { MessageActionRow, Modal, TextInputComponent } = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('join-charters')
+        .setName('charters-join')
         .setDescription('Use this command if you would like to join TPC Charters'),
     async execute(interaction) {
         const modal  = new Modal()

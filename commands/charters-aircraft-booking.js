@@ -3,7 +3,7 @@ const {MessageEmbed} = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('aircraft-booking')
+        .setName('charters-booking')
         .setDescription('Use this command to book an aircraft in OnAir.'
         )
         .addSubcommand(subcommand =>
