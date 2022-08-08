@@ -5,7 +5,7 @@ const {MessageEmbed} = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('ferry-aircraft-request')
+        .setName('charters-ferry-request')
         .setDescription('Use this command to request an aircraft to be ferried to another location.'
         ).addStringOption(option =>
             option.setName('aircraft-registration').setDescription('What is the Tail Number for the aircraft you would like ferried?').setRequired(true)
