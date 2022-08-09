@@ -49,7 +49,7 @@ module.exports = {
                 url: `https://thepilotclub.org`
             })
             .addFields({
-                name: `${color1} : ${desc1}`,
+                name: `${color1}   ${desc1}`,
                 value: `\u200b`
             })
             .setColor('0X37B6FF')
@@ -62,8 +62,8 @@ module.exports = {
                 url: `https://thepilotclub.org`
             })
             .addFields(
-                {name: `${color1} : ${desc1}`, value: `\u200b`},
-                {name: `${color2} : ${desc2}`, value: `\u200b`})
+                {name: `${color1}   ${desc1}`, value: `\u200b`},
+                {name: `${color2}   ${desc2}`, value: `\u200b`})
             .setColor('0X37B6FF')
             .setTimestamp();
         const embed3 = new MessageEmbed()
@@ -74,9 +74,9 @@ module.exports = {
                 url: `https://thepilotclub.org`
             })
             .addFields(
-        {name: `${color1} : ${desc1}`, value: `\u200b`},
-            {name: `${color2} : ${desc2}`, value: `\u200b`},
-            {name:`${color3} : ${desc3}`, value: `\u200b`})
+        {name: `${color1}   ${desc1}`, value: `\u200b`},
+            {name: `${color2}   ${desc2}`, value: `\u200b`},
+            {name:`${color3}   ${desc3}`, value: `\u200b`})
             .setColor('0X37B6FF')
             .setTimestamp();
 
