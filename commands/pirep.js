@@ -78,121 +78,157 @@ module.exports = {
             if (comments !== null) {
                 switch (tail) {
                     case "N2052D":
-                        airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                        airchannel.send({embeds: [commentembed]})
                             break
                     case "n2052d":
-                        airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                        airchannel.send({embeds: [commentembed]})
                         break
                     case "N1551J":
-                        airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                        airchannel.send({embeds: [commentembed]})
                             break
                     case "n1551j":
-                        airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                        airchannel.send({embeds: [commentembed]})
                         break
                     case "N9155K":
-                        airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                        airchannel.send({embeds: [commentembed]})
                             break
                     case "n9155k":
-                        airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                        airchannel.send({embeds: [commentembed]})
                         break
                     case "N2467G":
-                        airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                        airchannel.send({embeds: [commentembed]})
                             break
                     case "n2467g":
-                        airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                        airchannel.send({embeds: [commentembed]})
                         break
                     case "N1890C":
-                        airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                        airchannel.send({embeds: [commentembed]})
                             break
                     case "n1890c":
-                        airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                        airchannel.send({embeds: [commentembed]})
                         break
                     case "N3123F":
-                        airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                        airchannel.send({embeds: [commentembed]})
                             break
                     case "n3123f":
-                        airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                        airchannel.send({embeds: [commentembed]})
                         break
                     case "N7780T":
-                        airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                        airchannel.send({embeds: [commentembed]})
                             break
                     case "n7780t":
-                        airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                        airchannel.send({embeds: [commentembed]})
                         break
                     case "N4741N":
-                        airchannel.send({content: '<@&910012872246046730>', embeds:[commentembed]})
+                        airchannel.send({embeds:[commentembed]})
                             break
                     case "n4741n":
-                        airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                        airchannel.send({embeds: [commentembed]})
                         break
                     case "N7999F":
-                        airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                        airchannel.send({embeds: [commentembed]})
                         break
                     case "n7999f":
-                        airchannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                        airchannel.send({embeds: [commentembed]})
+                        break
+                    case "N3934A":
+                        airchannel.send({embeds: [commentembed]})
+                        break
+                    case "n3934a":
+                        airchannel.send({embeds: [commentembed]})
+                        break
+                    case "N9545H":
+                        airchannel.send({embeds: [commentembed]})
+                        break
+                    case "n9545h":
+                        airchannel.send({embeds: [commentembed]})
+                        break
+                    case "N2070R":
+                        airchannel.send({embeds: [commentembed]})
+                        break
+                    case "n2070r":
+                        airchannel.send({embeds: [commentembed]})
                         break
                     default:
-                        gachannel.send({content: `<@&910012872246046730>`, embeds: [commentembed]})
+                        gachannel.send({embeds: [commentembed]})
                         break
                     }
             } else {
                 switch (tail) {
                     case "N2052D":
-                        airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                        airchannel.send({embeds: [nocommentembed]})
                         break
                     case "n2052d":
-                        airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                        airchannel.send({embeds: [nocommentembed]})
                         break
                     case "N1551J":
-                        airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                        airchannel.send({embeds: [nocommentembed]})
                         break
                     case "n1551j":
-                        airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                        airchannel.send({embeds: [nocommentembed]})
                         break
                     case "N9155K":
-                        airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                        airchannel.send({embeds: [nocommentembed]})
                         break
                     case "n9155k":
-                        airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                        airchannel.send({embeds: [nocommentembed]})
                         break
                     case "N2467G":
-                        airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                        airchannel.send({embeds: [nocommentembed]})
                         break
                     case "n2467g":
-                        airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                        airchannel.send({embeds: [nocommentembed]})
                         break
                     case "N1890C":
-                        airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                        airchannel.send({embeds: [nocommentembed]})
                         break
                     case "n1890c":
-                        airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                        airchannel.send({embeds: [nocommentembed]})
                         break
                     case "N3123F":
-                        airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                        airchannel.send({embeds: [nocommentembed]})
                         break
                     case "n3123f":
-                        airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                        airchannel.send({embeds: [nocommentembed]})
                         break
                     case "N7780T":
-                        airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                        airchannel.send({embeds: [nocommentembed]})
                         break
                     case "n7780t":
-                        airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                        airchannel.send({embeds: [nocommentembed]})
                         break
                     case "N4741N":
-                        airchannel.send({content: '<@&910012872246046730>', embeds:[nocommentembed]})
+                        airchannel.send({embeds:[nocommentembed]})
                         break
                     case "n4741n":
-                        airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                        airchannel.send({embeds: [nocommentembed]})
                         break
                     case "N7999F":
-                        airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                        airchannel.send({embeds: [nocommentembed]})
                         break
                     case "n7999f":
-                        airchannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                        airchannel.send({embeds: [nocommentembed]})
+                        break
+                    case "N3934A":
+                        airchannel.send({embeds: [nocommentembed]})
+                        break
+                    case "n3934a":
+                        airchannel.send({embeds: [nocommentembed]})
+                        break
+                    case "N9545H":
+                        airchannel.send({embeds: [nocommentembed]})
+                        break
+                    case "n9545h":
+                        airchannel.send({embeds: [nocommentembed]})
+                        break
+                    case "N2070R":
+                        airchannel.send({embeds: [nocommentembed]})
+                        break
+                    case "n2070r":
+                        airchannel.send({embeds: [nocommentembed]})
                         break
                     default:
-                        gachannel.send({content: `<@&910012872246046730>`, embeds: [nocommentembed]})
+                        gachannel.send({embeds: [nonocommentembed]})
                         break
                 }
             }
