@@ -21,7 +21,8 @@ module.exports = {
                         {name: 'N7999F', value: 'N7999F'},
                         {name: 'N3934A', value: 'N3934A'},
                         {name: 'N9545A', value: 'N9545H'},
-                        {name: 'N2070R', value: 'N2070R'})
+                        {name: 'N2070R', value: 'N2070R'},
+                        {name:'N8554U', value:'N8554U'})
             ).addStringOption(option =>
                 option.setName('starting-icao').setDescription('Where will you start this flight?').setRequired(true)
             ).addStringOption(option =>
@@ -94,6 +95,10 @@ module.exports = {
                         aircraft.push('A320Neo')
                         channel.push(process.env.N2070R_CHANNEL)
                         break
+                    case 'N8554U':
+                        aircraft.push('CRJ700ER')
+                        channel.push(process.env.N8554U_CHANNEL)
+                        break
                 }
                 const commentemebed = new MessageEmbed()
                     .setAuthor({name: `${interaction.user.tag}`, iconURL: `${interaction.user.displayAvatarURL()}`})
@@ -157,6 +162,11 @@ module.exports = {
                         aircraft.push('A320Neo')
                         channel.push(process.env.N2070R_CHANNEL)
                         break
+                    case 'N8554U':
+                        aircraft.push('CRJ700ER')
+                        channel.push(process.env.N8554U_CHANNEL)
+                        break
+
                 }
                 const nocommentemebed = new MessageEmbed()
                     .setAuthor({name: `${interaction.user.tag}`, iconURL: `${interaction.user.displayAvatarURL()}`})

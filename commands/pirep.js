@@ -149,6 +149,12 @@ module.exports = {
                     case "n2070r":
                         airchannel.send({embeds: [commentembed]})
                         break
+                    case'N8554U':
+                        airchannel.send({embeds: [commentembed]})
+                        break
+                    case'n8554u':
+                        airchannel.send({embeds: [commentembed]})
+                        break
                     default:
                         gachannel.send({embeds: [commentembed]})
                         break
@@ -225,6 +231,12 @@ module.exports = {
                         airchannel.send({embeds: [nocommentembed]})
                         break
                     case "n2070r":
+                        airchannel.send({embeds: [nocommentembed]})
+                        break
+                    case'N8554U':
+                        airchannel.send({embeds: [nocommentembed]})
+                        break
+                    case'n8554u':
                         airchannel.send({embeds: [nocommentembed]})
                         break
                     default:
