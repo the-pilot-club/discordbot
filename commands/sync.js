@@ -71,7 +71,7 @@ module.exports = {
                     'Examiner','Instructor','Team Lead','Staff','Charters Asst. Ops Manager',
                     'Charters Managers','Social Media Team','Early Adopters','Partners','VIP','Frequent Flyer','Commuter','Booster','Lucky Pilots','IRL Pilots','Streamers',
                     'TPC Charters','Explorers','Pilots','Group Flights','GA Flights','World Tour','Giveaway','Other Bots','Flight School', 'Livery Maker',
-                    'Onboarded','CTD King','DISBOARD.org','MonitoRSS','DSL','VATBot','Statbot','StickyBot','Charters Top Gun','Insiders'
+                    'Onboarded','CTD King','DISBOARD.org','MonitoRSS','DSL','VATBot','Statbot','StickyBot','Charters Top Gun','Insiders' , 'MSFS 2020', 'X-Plane', 'P3D', 'FSX'
                 ]
                 interaction.member.roles.cache.forEach(role => {
                 if (role.id !== interaction.guild.roles.everyone.id
