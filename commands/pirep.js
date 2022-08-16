@@ -1,6 +1,4 @@
 const {SlashCommandBuilder} = require('@discordjs/builders');
-const {Client, Collection, Intents, Interaction} = require('discord.js');
-const fetch = require('node-fetch');
 const {MessageEmbed} = require('discord.js');
 
 module.exports = {
@@ -40,7 +38,7 @@ module.exports = {
         ).addStringOption(option =>
             option.setName('comments').setDescription('Any comments you would like to add about the flight?').setRequired(false).setMaxLength(250)
         ),
-    async execute(interaction, client) {
+    async execute(interaction) {
         const airchannel = interaction.guild.client.channels.cache.get(process.env.AIRLINER_PIREPS_CHANNEL)
         const gachannel = interaction.guild.client.channels.cache.get(process.env.GA_PIREPS_CHANNEL)
         const airline = interaction.options.getString('airline-code')

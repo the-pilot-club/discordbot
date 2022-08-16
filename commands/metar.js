@@ -1,4 +1,5 @@
 const {SlashCommandBuilder} = require('@discordjs/builders');
+const {MessageEmbed} = require("discord.js");
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -12,25 +13,14 @@ module.exports = {
         const response = await fetch(`https://metar.vatsim.net/metar.php?id=${airport}`);
         const body = await response.text();
         if (body !== undefined && body !== '') {
-            let metarEmbed =
-                {
-                    "type": "rich",
-                    "title": `WEATHER REPORT`,
-                    "description": airport.toUpperCase(),
-                    "color": 0X37B6FF,
-                    "fields": [
-                        {
-                            "name": `METAR`,
-                            "value": `${body}`
-                        }
-                    ],
-                    "footer": {
-                        "text": `Made by The Pilot Club`
-                    }
-                }
+            let metarEmbed = new MessageEmbed()
+                .setTitle('Weather Report')
+                .setDescription(`${airport.toUpperCase()}`)
+                .setColor(`#37B6FF`)
+                .addFields({name: 'METAR', value: `${body}` || `Not Available`})
+                .setFooter({text:`Made by The Pilot Club` ,iconURL: `https://static1.squarespace.com/static/614689d3918044012d2ac1b4/t/616ff36761fabc72642806e3/1634726781251/TPC_FullColor_TransparentBg_1280x1024_72dpi.png`})
+                .setTimestamp()
             interaction.reply({embeds: [metarEmbed]})
-            //interaction.reply(body)
-            //test
         } else {
             interaction.reply("METAR isn't posted for: " + airport.toUpperCase())
         }

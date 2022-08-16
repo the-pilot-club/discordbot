@@ -5,6 +5,6 @@ module.exports = {
         .setName('membercount')
         .setDescription('Replies with the Member Count!'),
     async execute(interaction) {
-        await interaction.reply(`Total members: ${interaction.guild.memberCount}`);
+        await interaction.reply(`Number of Captains in The Pilot Club: ${interaction.guild.memberCount}`);
     },
 };
