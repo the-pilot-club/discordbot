@@ -1,6 +1,4 @@
 const {SlashCommandBuilder} = require('@discordjs/builders');
-const {Client, Collection, Intents, Interaction} = require('discord.js');
-const fetch = require('node-fetch');
 const {MessageEmbed} = require('discord.js');
 
 module.exports = {
@@ -18,7 +16,7 @@ module.exports = {
         ).addStringOption(option =>
             option.setName('aircraft-tail-number').setDescription('What is the tail number of the aircraft you would like?').setRequired(false)
         ),
-    async execute(interaction, client) {
+    async execute(interaction) {
         const channel = interaction.guild.client.channels.cache.get(process.env.CHARTERS_REQUEST_CHANNEL)
         const airline = interaction.options.getString('airline-code')
         const type = interaction.options.getString('aircraft-type')

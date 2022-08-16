@@ -1,6 +1,4 @@
 const {SlashCommandBuilder} = require('@discordjs/builders');
-const {Client, Collection, Intents, Interaction} = require('discord.js');
-const fetch = require('node-fetch');
 const {MessageEmbed} = require('discord.js');
 
 module.exports = {
@@ -16,7 +14,7 @@ module.exports = {
         ).addStringOption(option =>
             option.setName('reason-given').setDescription('Copy and paste the reason given details').setRequired(false)
         ),
-    async execute(interaction, client) {
+    async execute(interaction) {
         const channel = interaction.guild.client.channels.cache.get('979578236122071050')
         const number = interaction.options.getString('suggestion-number')
         const idea = interaction.options.getString('idea-details')
@@ -25,7 +23,7 @@ module.exports = {
         const noreasonembed = new MessageEmbed()
             .setAuthor({name: `${interaction.user.tag}`, iconURL: `${interaction.user.displayAvatarURL()}`})
             .setTitle(`Implemented Idea Archive for Suggestion #${number}`)
-            .setColor('0X37B6FF')
+            .setColor('#37B6FF')
             .addFields({
                 name: `Suggestion Details:`,
                 value: `**Username of Idea Author:** ${user} \n **Users Idea:** ${idea}`
@@ -35,7 +33,7 @@ module.exports = {
         const reasonembed = new MessageEmbed()
             .setAuthor({name: `${interaction.user.tag}`, iconURL: `${interaction.user.displayAvatarURL()}`})
             .setTitle(`Implemented Idea Archive for Suggestion #${number}`)
-            .setColor('0X37B6FF')
+            .setColor('#37B6FF')
             .addFields({
                 name: `Suggestion Details:`,
                 value: `**Username of Idea Author:** ${user} \n **Users Idea:** ${idea}`
