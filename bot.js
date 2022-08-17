@@ -2,7 +2,6 @@ require('dotenv').config()
 const {Client, Collection, Intents, Interaction} = require('discord.js');
 const client = new Client({intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MESSAGE_REACTIONS, Intents.FLAGS.GUILD_MEMBERS]});
 const fs = require('fs');
-const {clientId, guildId, token} = require('./config.json');
 const path = require('node:path');
 const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
 client.setMaxListeners(0);
@@ -59,7 +58,7 @@ client.on('interactionCreate', async interaction => {
 
 //Role congrats and Charters DM
 client.on('guildMemberUpdate', async (oldMember, newMember) => {
-    const channel = client.channels.cache.get(process.env.EVENT_CHANNEL);
+    const channel = client.channels.cache.find(channel => channel.name === "crew-chat");
     if (oldMember.roles.cache.has(process.env.COMMUTER_ROLE)) return;
     if (newMember.roles.cache.has(process.env.COMMUTER_ROLE)) {
         channel.send({
