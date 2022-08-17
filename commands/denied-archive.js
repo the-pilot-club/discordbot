@@ -17,7 +17,7 @@ module.exports = {
             option.setName('reason-given').setDescription('Copy and paste the reason given details').setRequired(false)
         ),
     async execute(interaction, client) {
-        const channel = interaction.guild.client.channels.cache.get('979578236122071050')
+        const channel = interaction.guild.client.channels.cache.find(channel => channel.name === 'ideabox-archive')
         const number = interaction.options.getString('suggestion-number')
         const idea = interaction.options.getString('idea-details')
         const reason = interaction.options.getString('reason-given')
