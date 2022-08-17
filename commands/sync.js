@@ -5,7 +5,7 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('sync')
         .setDescription('Sync your VATSIM Ratings for TPC!'),
-    async execute(interaction , client) {
+    async execute(interaction) {
         const response = await fetch(`https://callsigns.thepilotclub.org/DiscordOperations/GetVatsimRatingInfo?Discordid=${interaction.user.id}`, {
             method: 'POST'})
         let body = await response.json()
@@ -91,12 +91,8 @@ module.exports = {
                 .setColor('0X37B6FF')
                 .setFooter({text: "Made for The Pilot Club" , iconURL: `https://static1.squarespace.com/static/614689d3918044012d2ac1b4/t/616ff36761fabc72642806e3/1634726781251/TPC_FullColor_TransparentBg_1280x1024_72dpi.png`})
                 .setTimestamp()
-            interaction.deferReply()
-            setTimeout(function () {
-                interaction.editReply({embeds: [embed]}).catch(error =>
+                await interaction.reply({embeds: [embed]}).catch(error =>
                     console.log(error))
-            },750)
-
         }
     }
 }
