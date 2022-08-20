@@ -85,7 +85,6 @@ client.on('guildMemberUpdate', async (oldMember, newMember) => {
         channel.send(`${oldMember} Thank you for boosting the club!`);}
  })
 
-
 // Cron Jobs for the quiz and the event postings
 
 const file = require("./questions.json")
