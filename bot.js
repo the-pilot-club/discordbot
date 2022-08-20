@@ -172,16 +172,16 @@ client.on('ready', async function () {
         }
     });
 // 15-Zulu Flight
-    cron.schedule('0 11 * * 6', function () { // every saturday
-        const today = new Date();
-        const day = today.getDate();// 24
-        if (day > 14 && day <= 21) {
-            //third saturday of the month
-            sendNewEvent(eventChannel, "15zulu", "<@&937389346204557342>");
-        } else {
-            console.log("not third saturday of the month")
-        }
-    });
+//     cron.schedule('0 11 * * 6', function () { // every saturday
+//         const today = new Date();
+//         const day = today.getDate();// 24
+//         if (day > 14 && day <= 21) {
+//             //third saturday of the month
+//             sendNewEvent(eventChannel, "15zulu", "<@&937389346204557342>");
+//         } else {
+//             console.log("not third saturday of the month")
+//         }
+//     });
 });
 
 module.exports = client;
