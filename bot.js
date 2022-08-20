@@ -1,9 +1,10 @@
 require('dotenv').config()
-const {Client, Collection, Intents, Interaction} = require('discord.js');
-const client = new Client({intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MESSAGE_REACTIONS, Intents.FLAGS.GUILD_MEMBERS]});
+const { Client, Collection, GatewayIntentBits } = require('discord.js');
+const client = new Client({ intents: [
+    GatewayIntentBits.Guilds, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMessages, GatewayIntentBits.DirectMessages,
+    GatewayIntentBits.DirectMessageReactions, GatewayIntentBits.GuildMembers] })
 const fs = require('fs');
 const path = require('node:path');
-const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
 client.setMaxListeners(0);
 let monthNames = [
     "jan",
@@ -19,26 +20,18 @@ let monthNames = [
     "nov",
     "dec"
 ];
-for (const file of eventFiles) {
-    const event = require(`./events/${file}`);
-    if (event.once) {
-        client.once(event.name, (...args) => event.execute(...args));
-    } else {
-        client.on(event.name, (...args) => event.execute(...args));
-    }
-}
 client.commands = new Collection();
 const commandsPath = path.join(__dirname, 'commands');
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
+
 for (const file of commandFiles) {
     const filePath = path.join(commandsPath, file);
     const command = require(filePath);
-    // Set a new item in the Collection
-    // With the key as the command name and the value as the exported module
     client.commands.set(command.data.name, command);
 }
+
 client.on('interactionCreate', async interaction => {
-    if (!interaction.isCommand()) return;
+    if (!interaction.isChatInputCommand()) return;
 
     const command = client.commands.get(interaction.commandName);
 
@@ -48,13 +41,23 @@ client.on('interactionCreate', async interaction => {
         await command.execute(interaction);
     } catch (error) {
         console.error(error);
-        await interaction.reply({
-            content: 'There was an error while executing this command! Please let Eric | ZSE | TPC76 know ASAP so that a fix can occur!'
-            +'\n \nIf this is the booking or PIREP Command, please un-archive the channel as this is the reason you are getting this error',
-            ephemeral: true
-        });
+        await interaction.reply({ content: 'There was an error while executing this command! Please let Eric | ZSE | TPC76 know ASAP so that a fix can occur!'
+                +'\n \nIf this is the booking or PIREP Command, please un-archive the channel as this is the reason you are getting this error', ephemeral: true });
     }
-});
+})
+
+const eventsPath = path.join(__dirname, 'events');
+const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
+
+for (const file of eventFiles) {
+    const filePath = path.join(eventsPath, file);
+    const event = require(filePath);
+    if (event.once) {
+        client.once(event.name, (...args) => event.execute(...args));
+    } else {
+        client.on(event.name, (...args) => event.execute(...args));
+    }
+};
 
 //Role congrats and Charters DM
 client.on('guildMemberUpdate', async (oldMember, newMember) => {
@@ -86,8 +89,7 @@ client.on('guildMemberUpdate', async (oldMember, newMember) => {
 // Cron Jobs for the quiz and the event postings
 
 const file = require("./questions.json")
-const cron = require('node-cron'); //ability to repeat code
-const {EventEmitter} = require('stream');
+const cron = require('node-cron');
 function randomNum(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -122,7 +124,7 @@ let question = questions[index];
 client.on('ready', async function () {
     const channel = await client.channels.fetch(process.env.QANDA_CHANNEL_ID);
     const eventChannel = await client.channels.fetch(process.env.EVENT_CHANNEL);
-    const testChannel = await client.channels.fetch(process.env.TEST_CHANNEL); //correct id: 864834861603487754
+    //const testChannel = await client.channels.fetch(process.env.TEST_CHANNEL); //correct id: 864834861603487754
 //Getting random question every day:  0 57 22 * * *
     cron.schedule('0 00 08 * * *', function () { //Correct time is 0 00 08 * * *
         sendNewQuestion(channel);

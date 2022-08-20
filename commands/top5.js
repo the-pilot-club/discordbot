@@ -1,8 +1,7 @@
-const {SlashCommandBuilder} = require('@discordjs/builders');
+const {SlashCommandBuilder} = require('discord.js');
 const Mee6LevelsApi = require("mee6-levels-api");
 const guildId = process.env.TPC_GUILD_ID;
-const {MessageActionRow, MessageButton} = require('discord.js')
-
+const {ActionRowBuilder, ButtonBuilder, ButtonStyle} = require('discord.js');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('top5')
@@ -13,12 +12,12 @@ module.exports = {
             //get the top 5 users
             var top5 = leaderboard.slice(0, 5)
             let list = top5.map(user => user.id)
-            const row = new MessageActionRow()
+            const row = new ActionRowBuilder()
                 .addComponents(
-                    new MessageButton()
+                    new ButtonBuilder()
                         .setLabel('TPC Leaderboard')
                         .setURL("https://mee6.xyz/thepilotclub")
-                        .setStyle('LINK'),
+                        .setStyle(ButtonStyle.Link),
                 );
             var formatted = ""
             for (var i = 0; i < list.length; i++) {

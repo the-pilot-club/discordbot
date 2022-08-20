@@ -1,4 +1,4 @@
-const {MessageEmbed} = require("discord.js");
+const {EmbedBuilder} = require("discord.js");
 module.exports = {
     name: 'interactionCreate',
     once: false,
@@ -9,11 +9,11 @@ module.exports = {
             const type = interaction.fields.getTextInputValue('aircraft')
             const seating = interaction.fields.getTextInputValue('seating')
             const home = interaction.fields.getTextInputValue('homebase')
-            const embed = new MessageEmbed()
+            const embed = new EmbedBuilder()
                 .setAuthor({name: `${interaction.user.tag}`, iconURL: `${interaction.user.displayAvatarURL()}`})
                 .setTitle('New Join Request')
                 .setDescription('A member of TPC has requested to join TPC Charters.')
-                .setColor('0X37B6FF')
+                .setColor('#37B6FF')
                 .addFields({
                     name: 'Member Details',
                     value: `**TPC Charters User:** ${interaction.user} \n**Airline Code:** ${airline.toUpperCase()} \n**Home Base:** ${home.toUpperCase()} \n**Initial Aircraft Type Request:** ${type.toUpperCase()} \n**Seating Configuration:** ${seating}`

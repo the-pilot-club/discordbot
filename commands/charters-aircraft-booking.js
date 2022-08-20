@@ -1,5 +1,5 @@
-const {SlashCommandBuilder} = require('@discordjs/builders');
-const {MessageEmbed} = require('discord.js');
+const {SlashCommandBuilder} = require('discord.js');
+const {EmbedBuilder} = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -100,7 +100,7 @@ module.exports = {
                         channel.push(process.env.N8554U_CHANNEL)
                         break
                 }
-                const commentemebed = new MessageEmbed()
+                const commentemebed = new EmbedBuilder()
                     .setAuthor({name: `${interaction.user.tag}`, iconURL: `${interaction.user.displayAvatarURL()}`})
                     .setTitle(`Aircraft Booking for ${airline.toUpperCase()}`)
                     .setColor('#37B6FF')
@@ -168,7 +168,7 @@ module.exports = {
                         break
 
                 }
-                const nocommentemebed = new MessageEmbed()
+                const nocommentemebed = new EmbedBuilder()
                     .setAuthor({name: `${interaction.user.tag}`, iconURL: `${interaction.user.displayAvatarURL()}`})
                     .setTitle(`Aircraft Booking for ${airline.toUpperCase()}`)
                     .setColor('#37B6FF')
