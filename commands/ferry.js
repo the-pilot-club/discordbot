@@ -1,5 +1,5 @@
-const {SlashCommandBuilder} = require('@discordjs/builders');
-const {MessageEmbed} = require('discord.js');
+const {SlashCommandBuilder} = require('discord.js');
+const {EmbedBuilder} = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -12,12 +12,12 @@ module.exports = {
         ).addStringOption(option =>
             option.setName('ending-icao').setDescription('Where would you like the aircraft to go?').setRequired(true)
         ),
-    async execute(interaction, client) {
+    async execute(interaction) {
         const channel = interaction.guild.client.channels.cache.get(process.env.CHARTERS_REQUEST_CHANNEL)
         const end = interaction.options.getString('ending-icao')
         const start = interaction.options.getString('starting-icao')
         const tail = interaction.options.getString('aircraft-registration')
-        const embed = new MessageEmbed()
+        const embed = new EmbedBuilder()
             .setAuthor({name: `${interaction.user.tag}`, iconURL: `${interaction.user.displayAvatarURL()}`})
             .setTitle('New Ferry Request')
             .setColor('0X37B6FF')

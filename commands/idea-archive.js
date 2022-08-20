@@ -1,5 +1,5 @@
-const {SlashCommandBuilder} = require('@discordjs/builders');
-const {MessageEmbed} = require('discord.js');
+const {SlashCommandBuilder} = require('discord.js');
+const {EmbedBuilder} = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -15,12 +15,12 @@ module.exports = {
             option.setName('reason-given').setDescription('Copy and paste the reason given details').setRequired(false)
         ),
     async execute(interaction) {
-        const channel = interaction.guild.client.channels.cache.get('979578236122071050')
+        const channel = interaction.guild.client.channels.cache.find(channel => channel.name === 'ideabox-archive')
         const number = interaction.options.getString('suggestion-number')
         const idea = interaction.options.getString('idea-details')
         const reason = interaction.options.getString('reason-given')
         const user = interaction.options.getString('member-who-suggested')
-        const noreasonembed = new MessageEmbed()
+        const noreasonembed = new EmbedBuilder()
             .setAuthor({name: `${interaction.user.tag}`, iconURL: `${interaction.user.displayAvatarURL()}`})
             .setTitle(`Implemented Idea Archive for Suggestion #${number}`)
             .setColor('#37B6FF')
@@ -30,7 +30,7 @@ module.exports = {
             })
             .setFooter({text: 'Made by The Pilot Club For Administration'});
 
-        const reasonembed = new MessageEmbed()
+        const reasonembed = new EmbedBuilder()
             .setAuthor({name: `${interaction.user.tag}`, iconURL: `${interaction.user.displayAvatarURL()}`})
             .setTitle(`Implemented Idea Archive for Suggestion #${number}`)
             .setColor('#37B6FF')

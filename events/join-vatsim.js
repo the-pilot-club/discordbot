@@ -1,16 +1,16 @@
-const {MessageActionRow, MessageButton} = require('discord.js');
+const {ActionRowBuilder, ButtonBuilder, ButtonStyle} = require('discord.js');
 
 module.exports = {
     name: 'messageCreate',
     once: false,
     execute(message) {
         if (message.content.toLowerCase() === "join vatsim") {
-            const row = new MessageActionRow()
+            const row = new ActionRowBuilder()
                 .addComponents(
-                    new MessageButton()
+                    new ButtonBuilder()
                         .setLabel('Joining VATSIM')
                         .setURL("https://my.vatsim.net/")
-                        .setStyle('LINK'),
+                        .setStyle(ButtonStyle.Link),
                 )
             message.reply({
                 content: "To Join VATSIM you should go to this website and click register!",

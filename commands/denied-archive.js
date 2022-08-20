@@ -1,7 +1,5 @@
-const {SlashCommandBuilder} = require('@discordjs/builders');
-const {Client, Collection, Intents, Interaction} = require('discord.js');
-const fetch = require('node-fetch');
-const {MessageEmbed} = require('discord.js');
+const {SlashCommandBuilder} = require('discord.js');
+const {EmbedBuilder} = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -16,26 +14,26 @@ module.exports = {
         ).addStringOption(option =>
             option.setName('reason-given').setDescription('Copy and paste the reason given details').setRequired(false)
         ),
-    async execute(interaction, client) {
+    async execute(interaction) {
         const channel = interaction.guild.client.channels.cache.find(channel => channel.name === 'ideabox-archive')
         const number = interaction.options.getString('suggestion-number')
         const idea = interaction.options.getString('idea-details')
         const reason = interaction.options.getString('reason-given')
         const user = interaction.options.getString('member-who-suggested')
-        const noreasonembed = new MessageEmbed()
+        const noreasonembed = new EmbedBuilder()
             .setAuthor({name: `${interaction.user.tag}`, iconURL: `${interaction.user.displayAvatarURL()}`})
             .setTitle(`Denied Idea Archive for Suggestion #${number}`)
-            .setColor('0XFF0000')
+            .setColor('#FF0000')
             .addFields({
                 name: `Suggestion Details:`,
                 value: `**Username of Idea Author:** ${user} \n **Users Idea:** ${idea}`
             })
             .setFooter({text: 'Made by The Pilot Club For Administration'});
 
-        const reasonembed = new MessageEmbed()
+        const reasonembed = new EmbedBuilder()
             .setAuthor({name: `${interaction.user.tag}`, iconURL: `${interaction.user.displayAvatarURL()}`})
             .setTitle(`Denied Idea Archive for Suggestion #${number}`)
-            .setColor('0XFF0000')
+            .setColor('#FF0000')
             .addFields({
                 name: `Suggestion Details:`,
                 value: `**Username of Idea Author:** ${user} \n **Users Idea:** ${idea}`

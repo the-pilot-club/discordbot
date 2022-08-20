@@ -1,5 +1,5 @@
-const {SlashCommandBuilder} = require('@discordjs/builders');
-const {MessageEmbed} = require('discord.js');
+const {SlashCommandBuilder} = require('discord.js');
+const {EmbedBuilder} = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -10,10 +10,10 @@ module.exports = {
         .addStringOption(option =>
             option.setName('reason').setDescription('What happened with this user').setRequired(true)),
     async execute(interaction) {
-        const channel = interaction.guild.client.channels.cache.get('865416768641433630')
+        const channel = interaction.guild.client.channels.cache.find(channel => channel.name === "mod-logs")
         const user = interaction.options.getString('user')
         const reason = interaction.options.getString('reason')
-        const embed = new MessageEmbed()
+        const embed = new EmbedBuilder()
             .setAuthor({name: `${interaction.user.tag}`, iconURL: `${interaction.user.displayAvatarURL()}`})
             .setTitle('New Report')
             .setDescription('A member of TPC has submitted a report for moderation review.')

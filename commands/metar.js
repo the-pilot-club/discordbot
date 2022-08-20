@@ -1,5 +1,5 @@
-const {SlashCommandBuilder} = require('@discordjs/builders');
-const {MessageEmbed} = require("discord.js");
+const {SlashCommandBuilder} = require('discord.js');
+const {EmbedBuilder} = require("discord.js");
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -13,7 +13,7 @@ module.exports = {
         const response = await fetch(`https://metar.vatsim.net/metar.php?id=${airport}`);
         const body = await response.text();
         if (body !== undefined && body !== '') {
-            let metarEmbed = new MessageEmbed()
+            let metarEmbed = new EmbedBuilder()
                 .setTitle('Weather Report')
                 .setDescription(`${airport.toUpperCase()}`)
                 .setColor(`#37B6FF`)

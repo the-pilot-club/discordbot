@@ -1,4 +1,4 @@
-const {SlashCommandBuilder} = require('@discordjs/builders');
+const {SlashCommandBuilder} = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -7,7 +7,7 @@ module.exports = {
     async execute(interaction) {
         if (interaction.member.roles.cache.some(role => role.name === 'Staff') || interaction.member.roles.cache.some(role => role.name === 'Air Marshals')) {
             interaction.guild.members.fetch().then(members => {
-                let result = members.filter(m => m.roles.cache.find(role => role.id == process.env.GIVEAWAY_ROLE));
+                let result = members.filter(m => m.roles.cache.find(role => role.id === process.env.GIVEAWAY_ROLE));
                 let tags = result.map(m => m.user.toString());
                  interaction.deferReply()
                  setTimeout(function (){

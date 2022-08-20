@@ -1,5 +1,5 @@
-const {SlashCommandBuilder} = require('@discordjs/builders');
-const {MessageEmbed} = require("discord.js");
+const {SlashCommandBuilder} = require('discord.js');
+const {EmbedBuilder} = require("discord.js");
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -40,8 +40,8 @@ module.exports = {
         const desc2 = interaction.options.getString('description-2')
         const color3 = interaction.options.getString('status-color-3')
         const desc3 = interaction.options.getString('description-3')
-        const notam = interaction.guild.client.channels.cache.get(process.env.NOTAM_CHANNEL)
-        const embed1 = new MessageEmbed()
+        const notam = interaction.guild.client.channels.cache.find(channel => channel.name === "club-notams")
+        const embed1 = new EmbedBuilder()
             .setTitle(`${subject}`)
             .setAuthor({
                 name: `The Pilot Club`,
@@ -52,9 +52,9 @@ module.exports = {
                 name: `${color1}   ${desc1}`,
                 value: `\u200b`
             })
-            .setColor('0X37B6FF')
+            .setColor('#37B6FF')
             .setTimestamp();
-        const embed2 = new MessageEmbed()
+        const embed2 = new EmbedBuilder()
             .setTitle(`${subject}`)
             .setAuthor({
                 name: `The Pilot Club`,
@@ -64,9 +64,9 @@ module.exports = {
             .addFields(
                 {name: `${color1}   ${desc1}`, value: `\u200b`},
                 {name: `${color2}   ${desc2}`, value: `\u200b`})
-            .setColor('0X37B6FF')
+            .setColor('#37B6FF')
             .setTimestamp();
-        const embed3 = new MessageEmbed()
+        const embed3 = new EmbedBuilder()
             .setTitle(`${subject}`)
             .setAuthor({
                 name: `The Pilot Club`,
@@ -77,7 +77,7 @@ module.exports = {
         {name: `${color1}   ${desc1}`, value: `\u200b`},
             {name: `${color2}   ${desc2}`, value: `\u200b`},
             {name:`${color3}   ${desc3}`, value: `\u200b`})
-            .setColor('0X37B6FF')
+            .setColor('#37B6FF')
             .setTimestamp();
 
         if (desc2 == null){

@@ -1,6 +1,6 @@
-const {SlashCommandBuilder} = require('@discordjs/builders');
-const {MessageActionRow, MessageButton} = require("discord.js");
-const {MessageEmbed} = require('discord.js');
+const {SlashCommandBuilder} = require('discord.js');
+const {ActionRowBuilder, ButtonBuilder, ButtonStyle} = require('discord.js');
+const {EmbedBuilder} = require('discord.js');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('sync')
@@ -10,12 +10,12 @@ module.exports = {
             method: 'POST'})
         let body = await response.json()
         if (body === "{Not Found}") {
-            const row = new MessageActionRow()
+            const row = new ActionRowBuilder()
                     .addComponents(
-                        new MessageButton()
+                        new ButtonBuilder()
                             .setLabel('Connect my account!')
                             .setURL(`https://callsigns.thepilotclub.org/sendauthentication.aspx?id=${interaction.user.id}`)
-                            .setStyle('LINK'),
+                            .setStyle(ButtonStyle.Link),
                     );
             await interaction.reply({content: `Please connect your VATSIM account to the TPC Discord!`,components: [row], ephemeral: true})
         } else {
@@ -84,11 +84,11 @@ module.exports = {
                 interaction.member.roles.add(role).catch(e => console.error(e))
                 roleStr += `${role} `}
 
-                const embed = new MessageEmbed()
+                const embed = new EmbedBuilder()
                 .setAuthor({name: `${interaction.user.tag}`, iconURL: `${interaction.user.displayAvatarURL()}`})
                 .setTitle('Your Roles have been assigned!')
                 .setDescription(`${roleStr}`)
-                .setColor('0X37B6FF')
+                .setColor('#37B6FF')
                 .setFooter({text: "Made for The Pilot Club" , iconURL: `https://static1.squarespace.com/static/614689d3918044012d2ac1b4/t/616ff36761fabc72642806e3/1634726781251/TPC_FullColor_TransparentBg_1280x1024_72dpi.png`})
                 .setTimestamp()
                 await interaction.reply({embeds: [embed]}).catch(error =>

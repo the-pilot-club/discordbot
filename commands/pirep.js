@@ -1,5 +1,5 @@
-const {SlashCommandBuilder} = require('@discordjs/builders');
-const {MessageEmbed} = require('discord.js');
+const {SlashCommandBuilder} = require('discord.js');
+const {EmbedBuilder} = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -52,23 +52,23 @@ module.exports = {
         const crewstate = interaction.options.getString('crew-state')
         const until = interaction.options.getString('until-what-time')
         const comments = interaction.options.getString('comments')
-        const commentembed = new MessageEmbed()
+        const commentembed = new EmbedBuilder()
             .setAuthor({name: `${interaction.user.tag}`, iconURL: `${interaction.user.displayAvatarURL()}`})
-            .setTitle(`PIREP for ${airline.toUpperCase()}`)
-            .setColor('0X37B6FF')
+            .setTitle(`PIREP Details for ${airline.toUpperCase()}`)
+            .setColor('#37B6FF')
             .addFields({
-                name: 'PIREP Details',
+                name: '\u200b',
                 value: `**Aircraft Type:** ${type.toUpperCase()}\n**Aircraft Tail Number:** ${tail.toUpperCase()} \n**Starting Airport:**   ${start.toUpperCase()}\n**Ending Airport:**   ${end.toUpperCase()} \n**Airtime:**  ${airtime}\n**Payout:**   ${payout} \n**Landing Rate:**   ${landingrate}\n**Crew State:**   ${crewstate} until: ${until}\n**Any comments the member had:**    ${comments}`
             })
             .setTimestamp()
             .setFooter({text: 'Made by The Pilot Club For TPC Charters'});
-        const nocommentembed = new MessageEmbed()
+        const nocommentembed = new EmbedBuilder()
             .setAuthor({name: `${interaction.user.tag}`, iconURL: `${interaction.user.displayAvatarURL()}`})
-            .setTitle(`PIREP for ${airline.toUpperCase()}`)
-            .setColor('0X37B6FF')
+            .setTitle(`PIREP Details for ${airline.toUpperCase()}`)
+            .setColor('#37B6FF')
             .addFields({
-                name: 'PIREP Details',
-                value: `**Aircraft Type:** ${type.toUpperCase()} \n**Aircraft Tail Nuber:** ${tail.toUpperCase()}\n **Starting Airport:**   ${start.toUpperCase()}\n**Ending Airport:**   ${end.toUpperCase()} \n**Airtime:**  ${airtime} \n**Payout:**   ${payout} \n**Landing Rate:**   ${landingrate} \n**Crew State:**   ${crewstate} until: ${until}`
+                name: '\u200b',
+                value: `**Aircraft Type:** ${type.toUpperCase()} \n**Aircraft Tail Number:** ${tail.toUpperCase()}\n **Starting Airport:**   ${start.toUpperCase()}\n**Ending Airport:**   ${end.toUpperCase()} \n**Airtime:**  ${airtime} \n**Payout:**   ${payout} \n**Landing Rate:**   ${landingrate} \n**Crew State:**   ${crewstate} until: ${until}`
             })
             .setTimestamp()
             .setFooter({text: 'Made by The Pilot Club For TPC Charters'});
