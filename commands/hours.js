@@ -52,9 +52,7 @@ module.exports = {
                 embed.addFields({name: "I1 Hours:", value:`${i1}`})}
             if (i3 != "0"){
                 embed.addFields({name: "I3 Hours:", value:`${i3}`})}
-
-            console.log(data)
-            interaction.reply({embeds:[embed],  ephemeral: true})
+            await interaction.reply({embeds:[embed],  ephemeral: true})
         }
     }
 }
