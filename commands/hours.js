@@ -39,9 +39,9 @@ module.exports = {
                 .setFooter({text: "Made for The Pilot Club" , iconURL: `https://static1.squarespace.com/static/614689d3918044012d2ac1b4/t/616ff36761fabc72642806e3/1634726781251/TPC_FullColor_TransparentBg_1280x1024_72dpi.png`})
                 .setTimestamp()
             if (s1 != "0"){
-                embed.addFields({name:'Hours As An S1:', value: `${s1}`})}
+                embed.addFields({name:'S1 Hours:', value: `${s1}`})}
             if (s2 != "0"){
-                embed.addFields({name: 'Hours As An S2', value: `${s2}`})}
+                embed.addFields({name: 'S2 Hours:', value: `${s2}`})}
             if (s3 != "0"){
                 embed.addFields({name:'S3 Hours:', value:`${s3}`})}
             if (c1 != "0") {
@@ -51,7 +51,7 @@ module.exports = {
             if (i1 != "0"){
                 embed.addFields({name: "I1 Hours:", value:`${i1}`})}
             if (i3 != "0"){
-                embed.addFields({name: "I1 Hours:", value:`${i3}`})}
+                embed.addFields({name: "I3 Hours:", value:`${i3}`})}
 
             console.log(data)
             interaction.reply({embeds:[embed],  ephemeral: true})
