@@ -238,7 +238,7 @@ module.exports = {
                         airchannel.send({embeds: [nocommentembed]})
                         break
                     default:
-                        gachannel.send({embeds: [nonocommentembed]})
+                        gachannel.send({embeds: [nocommentembed]})
                         break
                 }
             }
