@@ -13,7 +13,7 @@ module.exports = {
                         {name: 'N2052D', value: 'N2052D'},
                         {name: 'N1551J', value: 'N1551J'},
                         {name: 'N9155K', value: 'N9155K'},
-                        {name: 'N2467G', value: 'N2467G'},
+                        {name: 'N1577P', value: 'N1577P'},
                         {name: 'N1890C', value:'N1890C'},
                         {name: 'N3123F', value: 'N3123F'},
                         {name: 'N7780T', value: 'N7780T'},
@@ -63,9 +63,9 @@ module.exports = {
                         aircraft.push('A320Neo')
                         channel.push(process.env.N4741N_CHANNEL)
                         break
-                    case "N2467G":
+                    case "N1577P":
                         aircraft.push('B737')
-                        channel.push(process.env.N2467G_CHANNEL)
+                        channel.push(process.env.N1577P_CHANNEL)
                         break
                     case "N1890C":
                         aircraft.push('B737')
@@ -130,9 +130,9 @@ module.exports = {
                         aircraft.push('A320Neo')
                         channel.push(process.env.N4741N_CHANNEL)
                         break
-                    case "N2467G":
+                    case "N1577P":
                         aircraft.push('B737')
-                        channel.push(process.env.N2467G_CHANNEL)
+                        channel.push(process.env.N1577P_CHANNEL)
                         break
                     case "N1890C":
                         aircraft.push('B737')
