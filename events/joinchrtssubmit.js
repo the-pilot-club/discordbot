@@ -10,7 +10,7 @@ module.exports = {
             const seating = interaction.fields.getTextInputValue('seating')
             const home = interaction.fields.getTextInputValue('homebase')
             const embed = new EmbedBuilder()
-                .setAuthor({name: `${interaction.user.tag}`, iconURL: `${interaction.user.displayAvatarURL()}`})
+                .setAuthor({name: `${interaction.member.displayName}`, iconURL: `${interaction.user.displayAvatarURL()}`})
                 .setTitle('New Join Request')
                 .setDescription('A member of TPC has requested to join TPC Charters.')
                 .setColor('#37B6FF')

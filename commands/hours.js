@@ -31,7 +31,7 @@ module.exports = {
             let i1 = data.i1
             let i3 = data.i3
             const embed = new EmbedBuilder()
-                .setAuthor({name: `${interaction.user.tag}`, iconURL: `${interaction.user.displayAvatarURL()}`})
+                .setAuthor({name: `${interaction.member.displayName}`, iconURL: `${interaction.user.displayAvatarURL()}`})
                 .setTitle('Your Hours On VATSIM!')
                 .addFields({name:'Pilot Hours: ',value: `${pilot}`, inline: true},
                                 {name: 'ATC Hours:', value: `${atc}`})

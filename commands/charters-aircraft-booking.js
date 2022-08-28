@@ -101,7 +101,7 @@ module.exports = {
                         break
                 }
                 const commentemebed = new EmbedBuilder()
-                    .setAuthor({name: `${interaction.user.tag}`, iconURL: `${interaction.user.displayAvatarURL()}`})
+                    .setAuthor({name: `${interaction.member.displayName}`, iconURL: `${interaction.user.displayAvatarURL()}`})
                     .setTitle(`Aircraft Booking for ${airline.toUpperCase()}`)
                     .setColor('#37B6FF')
                     .addFields({
@@ -169,7 +169,7 @@ module.exports = {
 
                 }
                 const nocommentemebed = new EmbedBuilder()
-                    .setAuthor({name: `${interaction.user.tag}`, iconURL: `${interaction.user.displayAvatarURL()}`})
+                    .setAuthor({name: `${interaction.member.displayName}`, iconURL: `${interaction.user.displayAvatarURL()}`})
                     .setTitle(`Aircraft Booking for ${airline.toUpperCase()}`)
                     .setColor('#37B6FF')
                     .addFields({

@@ -29,21 +29,10 @@ module.exports = {
                 value: `**Username of Idea Author:** ${user} \n **Users Idea:** ${idea}`
             })
             .setFooter({text: 'Made by The Pilot Club For Administration'});
-
-        const reasonembed = new EmbedBuilder()
-            .setAuthor({name: `${interaction.user.tag}`, iconURL: `${interaction.user.displayAvatarURL()}`})
-            .setTitle(`Implemented Idea Archive for Suggestion #${number}`)
-            .setColor('#37B6FF')
-            .addFields({
-                name: `Suggestion Details:`,
-                value: `**Username of Idea Author:** ${user} \n **Users Idea:** ${idea}`
-            })
-            .addFields({name: `Reason Given`, value: `${reason}`})
-            .setFooter({text: 'Made by The Pilot Club For Administration'});
-
         if (interaction.member.roles.cache.some(role => role.name === 'Air Marshals')) {
             if (reason !== null) {
-                channel.send({embeds: [reasonembed]})
+                noreasonembed.addFields({name: `Reason Given`, value: `${reason}`})
+                channel.send({embeds: [noreasonembed]})
             } else {
                 channel.send({embeds: [noreasonembed]})
             }

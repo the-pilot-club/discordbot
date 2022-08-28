@@ -36,7 +36,3 @@ module.exports = {
     },
 };
 
-//airline code
-//home base
-//aircraft type
-//seating config
