@@ -18,7 +18,7 @@ module.exports = {
         const start = interaction.options.getString('starting-icao')
         const tail = interaction.options.getString('aircraft-registration')
         const embed = new EmbedBuilder()
-            .setAuthor({name: `${interaction.user.tag}`, iconURL: `${interaction.user.displayAvatarURL()}`})
+            .setAuthor({name: `${interaction.member.displayName}`, iconURL: `${interaction.user.displayAvatarURL()}`})
             .setTitle('New Ferry Request')
             .setColor('0X37B6FF')
             .addFields({

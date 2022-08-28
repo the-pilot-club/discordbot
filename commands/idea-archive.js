@@ -43,7 +43,8 @@ module.exports = {
 
         if (interaction.member.roles.cache.some(role => role.name === 'Air Marshals')) {
             if (reason !== null) {
-                channel.send({embeds: [reasonembed]})
+                noreasonembed.addFields({name: `Reason Given`, value: `${reason}`})
+                channel.send({embeds: [noreasonembed]})
             } else {
                 channel.send({embeds: [noreasonembed]})
             }

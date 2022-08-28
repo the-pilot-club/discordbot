@@ -53,7 +53,7 @@ module.exports = {
         const until = interaction.options.getString('until-what-time')
         const comments = interaction.options.getString('comments')
         const commentembed = new EmbedBuilder()
-            .setAuthor({name: `${interaction.user.tag}`, iconURL: `${interaction.user.displayAvatarURL()}`})
+            .setAuthor({name: `${interaction.member.displayName}`, iconURL: `${interaction.user.displayAvatarURL()}`})
             .setTitle(`PIREP Details for ${airline.toUpperCase()}`)
             .setColor('#37B6FF')
             .addFields({
@@ -63,7 +63,7 @@ module.exports = {
             .setTimestamp()
             .setFooter({text: 'Made by The Pilot Club For TPC Charters'});
         const nocommentembed = new EmbedBuilder()
-            .setAuthor({name: `${interaction.user.tag}`, iconURL: `${interaction.user.displayAvatarURL()}`})
+            .setAuthor({name: `${interaction.member.displayName}`, iconURL: `${interaction.user.displayAvatarURL()}`})
             .setTitle(`PIREP Details for ${airline.toUpperCase()}`)
             .setColor('#37B6FF')
             .addFields({

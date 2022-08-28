@@ -21,7 +21,7 @@ module.exports = {
         const reason = interaction.options.getString('reason-given')
         const user = interaction.options.getString('member-who-suggested')
         const noreasonembed = new EmbedBuilder()
-            .setAuthor({name: `${interaction.user.tag}`, iconURL: `${interaction.user.displayAvatarURL()}`})
+            .setAuthor({name: `${interaction.member.displayName}`, iconURL: `${interaction.user.displayAvatarURL()}`})
             .setTitle(`Denied Idea Archive for Suggestion #${number}`)
             .setColor('#FF0000')
             .addFields({
@@ -31,7 +31,7 @@ module.exports = {
             .setFooter({text: 'Made by The Pilot Club For Administration'});
 
         const reasonembed = new EmbedBuilder()
-            .setAuthor({name: `${interaction.user.tag}`, iconURL: `${interaction.user.displayAvatarURL()}`})
+            .setAuthor({name: `${interaction.member.displayName}`, iconURL: `${interaction.user.displayAvatarURL()}`})
             .setTitle(`Denied Idea Archive for Suggestion #${number}`)
             .setColor('#FF0000')
             .addFields({
@@ -43,7 +43,8 @@ module.exports = {
 
         if (interaction.member.roles.cache.some(role => role.name === 'Air Marshals')) {
             if (reason !== null) {
-                channel.send({embeds: [reasonembed]})
+                noreasonembed.addFields({name: `Reason Given`, value: `${reason}`})
+                channel.send({embeds: [noreasonembed]})
             } else {
                 channel.send({embeds: [noreasonembed]})
             }

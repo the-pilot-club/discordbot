@@ -85,7 +85,7 @@ module.exports = {
                 roleStr += `${role} `}
 
                 const embed = new EmbedBuilder()
-                .setAuthor({name: `${interaction.user.tag}`, iconURL: `${interaction.user.displayAvatarURL()}`})
+                .setAuthor({name: `${interaction.member.displayName}`, iconURL: `${interaction.user.displayAvatarURL()}`})
                 .setTitle('Your Roles have been assigned!')
                 .setDescription(`${roleStr}`)
                 .setColor('#37B6FF')

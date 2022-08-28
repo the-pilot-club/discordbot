@@ -14,7 +14,7 @@ module.exports = {
         const user = interaction.options.getString('user')
         const reason = interaction.options.getString('reason')
         const embed = new EmbedBuilder()
-            .setAuthor({name: `${interaction.user.tag}`, iconURL: `${interaction.user.displayAvatarURL()}`})
+            .setAuthor({name: `${interaction.member.displayName}`, iconURL: `${interaction.user.displayAvatarURL()}`})
             .setTitle('New Report')
             .setDescription('A member of TPC has submitted a report for moderation review.')
             .setColor('#FF0000')
