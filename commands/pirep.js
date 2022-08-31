@@ -135,10 +135,10 @@ module.exports = {
                     case "n3934a":
                         airchannel.send({embeds: [commentembed]})
                         break
-                    case "N9545H":
+                    case "N9549H":
                         airchannel.send({embeds: [commentembed]})
                         break
-                    case "n9545h":
+                    case "n9549h":
                         airchannel.send({embeds: [commentembed]})
                         break
                     case "N2070R":
@@ -219,10 +219,10 @@ module.exports = {
                     case "n3934a":
                         airchannel.send({embeds: [nocommentembed]})
                         break
-                    case "N9545H":
+                    case "N9549H":
                         airchannel.send({embeds: [nocommentembed]})
                         break
-                    case "n9545h":
+                    case "n9549h":
                         airchannel.send({embeds: [nocommentembed]})
                         break
                     case "N2070R":

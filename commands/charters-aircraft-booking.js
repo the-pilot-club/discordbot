@@ -20,7 +20,7 @@ module.exports = {
                         {name: 'N4741N', value: 'N4741N'},
                         {name: 'N7999F', value: 'N7999F'},
                         {name: 'N3934A', value: 'N3934A'},
-                        {name: 'N9545A', value: 'N9545H'},
+                        {name: 'N9549A', value: 'N9549H'},
                         {name: 'N2070R', value: 'N2070R'},
                         {name:'N8554U', value:'N8554U'})
             ).addStringOption(option =>
@@ -64,7 +64,7 @@ module.exports = {
                         channel.push(process.env.N4741N_CHANNEL)
                         break
                     case "N1577P":
-                        aircraft.push('B737')
+                        aircraft.push('B738')
                         channel.push(process.env.N1577P_CHANNEL)
                         break
                     case "N1890C":
@@ -87,7 +87,7 @@ module.exports = {
                         aircraft.push('B737')
                         channel.push(process.env.N3934A_CHANNEL)
                         break
-                    case "N9545H":
+                    case "N9549H":
                         aircraft.push('A320')
                         channel.push(process.env.N9545H_CHANNEL)
                         break
@@ -131,7 +131,7 @@ module.exports = {
                         channel.push(process.env.N4741N_CHANNEL)
                         break
                     case "N1577P":
-                        aircraft.push('B737')
+                        aircraft.push('B738')
                         channel.push(process.env.N1577P_CHANNEL)
                         break
                     case "N1890C":
@@ -154,7 +154,7 @@ module.exports = {
                         aircraft.push('B737')
                         channel.push(process.env.N3934A_CHANNEL)
                         break
-                    case "N9545H":
+                    case "N9549H":
                         aircraft.push('A320')
                         channel.push(process.env.N9545H_CHANNEL)
                         break
