@@ -68,7 +68,7 @@ module.exports = {
             let roleStr = "",
                 excluded = ['TPC Custom','Carl Bot', 'Founder', 'Air Marshals', 'Training Coordinator', 'Deputy Training Coordinator', 'Training Ops Manager'
                     , 'Ground Crew','The Pilot Club', 'Developers', 'Muted', 'Flight Ops','Training Team','ATO CFI','ATO D-CFI',
-                    'Examiner','Instructor','Instructor in Training','Team Lead','Staff','Charters Asst. Ops Manager',
+                    'Examiner','Instructor','Instructor in Training','Top Instructor','Team Lead','Staff','Charters Asst. Ops Manager',
                     'Charters Managers','Social Media Team','Early Adopters','Partners','VIP','Frequent Flyer','Commuter','Booster','Lucky Pilots','IRL Pilots','Streamers',
                     'TPC Charters','Explorers','Pilots','Group Flights','GA Flights','World Tour','Giveaway','Other Bots','Flight School', 'Livery Designer',
                     'Onboarded','CTD King','DISBOARD.org','MonitoRSS','DSL','VATBot','Statbot','StickyBot','Charters Top Gun','Insiders' , 'MSFS 2020', 'X-Plane', 'P3D', 'FSX'
