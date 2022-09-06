@@ -138,17 +138,17 @@ client.on('ready', async function () {
 
 //EVENTS:
     //GA Tuesday
-    // cron.schedule('0 18 * * 2', function () {
-    //     sendNewEvent(eventChannel, "ga-tuesday", "<@&937389346204557342> <@&898240224189120532>");
-    // });
+    cron.schedule('0 18 * * 2', function () {
+        sendNewEvent(eventChannel, "ga-tuesday", "<@&937389346204557342> <@&898240224189120532>");
+    });
     // // Fly In Thursday
-    // cron.schedule('0 18 * * 4', function () {
-    //     sendNewEvent(eventChannel, "sbr-tpc-fly-in-thursday", "<@&937389346204557342>");
-    // });
+    cron.schedule('0 18 * * 4', function () {
+        sendNewEvent(eventChannel, "sbr-tpc-fly-in-thursday", "<@&937389346204557342>");
+    });
     // //Sunday Funday
-    // cron.schedule('0 13 * * 0', function () {
-    //     sendNewEvent(eventChannel, "sunday-funday", "<@&937389346204557342>");
-    // });
+    cron.schedule('0 13 * * 0', function () {
+        sendNewEvent(eventChannel, "sunday-funday", "<@&937389346204557342>");
+    });
 });
 
 module.exports = client;
