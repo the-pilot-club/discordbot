@@ -23,7 +23,7 @@ module.exports = {
                 .addComponents(
                     new ButtonBuilder()
                         .setLabel('Get a Call Sign Here!')
-                        .setURL("https://callsigns.thepilotlcub.org")
+                        .setURL("https://callsigns.thepilotclub.org/")
                         .setStyle(ButtonStyle.Link))
             message.reply({embeds: [embed], components: [row]})
         }
