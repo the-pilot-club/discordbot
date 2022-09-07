@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b8d3ab61-5183-4eaf-bc36-d69ab4452e29" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bot.js" beforeDir="false" afterPath="$PROJECT_DIR$/bot.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/events/tpc-callsign.js" beforeDir="false" afterPath="$PROJECT_DIR$/events/tpc-callsign.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +114,8 @@
       <workItem from="1662169846909" duration="118000" />
       <workItem from="1662171115894" duration="23000" />
       <workItem from="1662350706575" duration="311000" />
-      <workItem from="1662487346716" duration="38000" />
+      <workItem from="1662487346716" duration="115000" />
+      <workItem from="1662579786642" duration="1964000" />
     </task>
     <servers />
   </component>
