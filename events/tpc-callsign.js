@@ -23,7 +23,7 @@ module.exports = {
                 .addComponents(
                     new ButtonBuilder()
                         .setLabel('Get a Call Sign Here!')
-                        .setURL("https://support.thepilotclub.org/pages/tpc-callsign-request")
+                        .setURL("https://callsigns.thepilotlcub.org")
                         .setStyle(ButtonStyle.Link))
             message.reply({embeds: [embed], components: [row]})
         }
