@@ -10,6 +10,9 @@ module.exports = {
         const response = await fetch(`https://callsigns.thepilotclub.org/DiscordOperations/GetVatsimRatingInfo?Discordid=${interaction.user.id}`, {
             method: 'POST'})
         let body = await response.json()
+        await interaction.deferReply().catch(error =>
+            console.error`Sync Failed at the defer response stage`)
+    setTimeout(function (){
         if (body === "{Not Found}") {
             const row = new ActionRowBuilder()
                     .addComponents(
@@ -18,7 +21,7 @@ module.exports = {
                             .setURL(`https://callsigns.thepilotclub.org/sendauthentication.aspx?id=${interaction.user.id}`)
                             .setStyle(ButtonStyle.Link),
                     );
-            await interaction.reply({content: `Please connect your VATSIM account to the TPC Discord!`,components: [row], ephemeral: true}).catch(error =>
+            interaction.editReply({content: `Please connect your VATSIM account to the TPC Discord!`,components: [row], ephemeral: true}).catch(error =>
                 console.error`Sync failed at the database connection stage`)
         } else {
             let data = JSON.parse(body)
@@ -93,12 +96,9 @@ module.exports = {
                 .setColor('#37B6FF')
                 .setFooter({text: "Made for The Pilot Club" , iconURL: `https://static1.squarespace.com/static/614689d3918044012d2ac1b4/t/616ff36761fabc72642806e3/1634726781251/TPC_FullColor_TransparentBg_1280x1024_72dpi.png`})
                 .setTimestamp()
-            interaction.deferReply().catch(error =>
-                console.error`Sync Failed at the defer response stage`)
-            setTimeout(function (){
                 interaction.editReply({embeds: [embed]}).catch(error =>
                     console.error`I failed at the edit reply stage`);
-            },3000)
-        }
+            }
+        },3000)
     }
 }
