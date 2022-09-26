@@ -10,9 +10,6 @@ module.exports = {
         const response = await fetch(`https://callsigns.thepilotclub.org/DiscordOperations/GetVatsimRatingInfo?Discordid=${interaction.user.id}`, {
             method: 'POST'})
         let body = await response.json()
-        await interaction.deferReply().catch(error =>
-            console.error`Sync Failed at the defer response stage`)
-    setTimeout(function (){
         if (body === "{Not Found}") {
             const row = new ActionRowBuilder()
                     .addComponents(
@@ -21,9 +18,12 @@ module.exports = {
                             .setURL(`https://callsigns.thepilotclub.org/sendauthentication.aspx?id=${interaction.user.id}`)
                             .setStyle(ButtonStyle.Link),
                     );
-            interaction.editReply({content: `Please connect your VATSIM account to the TPC Discord!`,components: [row], ephemeral: true}).catch(error =>
+            interaction.reply({content: `Please connect your VATSIM account to the TPC Discord!`,components: [row], ephemeral: true}).catch(error =>
                 console.error`Sync failed at the database connection stage`)
         } else {
+            await interaction.deferReply().catch(error =>
+                console.error`Sync Failed at the defer response stage`)
+            setTimeout(function (){
             let data = JSON.parse(body)
             let rating = data.rating
             let pilotrating = data.pilotrating
@@ -98,7 +98,7 @@ module.exports = {
                 .setTimestamp()
                 interaction.editReply({embeds: [embed]}).catch(error =>
                     console.error`I failed at the edit reply stage`);
-            }
-        },3000)
+            },3000)
+        }
     }
 }
