@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b8d3ab61-5183-4eaf-bc36-d69ab4452e29" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/commands/sync.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/sync.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bot.js" beforeDir="false" afterPath="$PROJECT_DIR$/bot.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +136,8 @@
       <workItem from="1663387635255" duration="113000" />
       <workItem from="1663390825035" duration="2618000" />
       <workItem from="1663746550343" duration="523000" />
-      <workItem from="1664007105629" duration="218000" />
+      <workItem from="1664007105629" duration="475000" />
+      <workItem from="1665029138977" duration="384000" />
     </task>
     <servers />
   </component>
