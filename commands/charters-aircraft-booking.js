@@ -20,7 +20,7 @@ module.exports = {
                         {name: 'N4741N', value: 'N4741N'},
                         {name: 'N7999F', value: 'N7999F'},
                         {name: 'N3934A', value: 'N3934A'},
-                        {name: 'N9549A', value: 'N9549H'},
+                        {name: 'N9549H', value: 'N9549H'},
                         {name: 'N2070R', value: 'N2070R'},
                         {name:'N8554U', value:'N8554U'})
             ).addStringOption(option =>
