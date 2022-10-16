@@ -75,64 +75,10 @@ module.exports = {
         if (interaction.member.roles.cache.some(role => role.name === 'TPC Charters')) {
             if (comments !== null) {
                 switch (tail) {
-                    case "N2052D":
-                        airchannel.send({embeds: [commentembed]})
-                            break
-                    case "n2052d":
-                        airchannel.send({embeds: [commentembed]})
-                        break
-                    case "N1551J":
-                        airchannel.send({embeds: [commentembed]})
-                            break
-                    case "n1551j":
-                        airchannel.send({embeds: [commentembed]})
-                        break
-                    case "N9155K":
-                        airchannel.send({embeds: [commentembed]})
-                            break
-                    case "n9155k":
-                        airchannel.send({embeds: [commentembed]})
-                        break
-                    case "N2467G":
-                        airchannel.send({embeds: [commentembed]})
-                            break
-                    case "n2467g":
-                        airchannel.send({embeds: [commentembed]})
-                        break
                     case "N1890C":
                         airchannel.send({embeds: [commentembed]})
                             break
                     case "n1890c":
-                        airchannel.send({embeds: [commentembed]})
-                        break
-                    case "N3123F":
-                        airchannel.send({embeds: [commentembed]})
-                            break
-                    case "n3123f":
-                        airchannel.send({embeds: [commentembed]})
-                        break
-                    case "N7780T":
-                        airchannel.send({embeds: [commentembed]})
-                            break
-                    case "n7780t":
-                        airchannel.send({embeds: [commentembed]})
-                        break
-                    case "N4741N":
-                        airchannel.send({embeds:[commentembed]})
-                            break
-                    case "n4741n":
-                        airchannel.send({embeds: [commentembed]})
-                        break
-                    case "N7999F":
-                        airchannel.send({embeds: [commentembed]})
-                        break
-                    case "n7999f":
-                        airchannel.send({embeds: [commentembed]})
-                        break
-                    case "N3934A":
-                        airchannel.send({embeds: [commentembed]})
-                        break
-                    case "n3934a":
                         airchannel.send({embeds: [commentembed]})
                         break
                     case "N9549H":
@@ -145,12 +91,6 @@ module.exports = {
                         airchannel.send({embeds: [commentembed]})
                         break
                     case "n2070r":
-                        airchannel.send({embeds: [commentembed]})
-                        break
-                    case'N8554U':
-                        airchannel.send({embeds: [commentembed]})
-                        break
-                    case'n8554u':
                         airchannel.send({embeds: [commentembed]})
                         break
                     default:
@@ -159,64 +99,10 @@ module.exports = {
                     }
             } else {
                 switch (tail) {
-                    case "N2052D":
-                        airchannel.send({embeds: [nocommentembed]})
-                        break
-                    case "n2052d":
-                        airchannel.send({embeds: [nocommentembed]})
-                        break
-                    case "N1551J":
-                        airchannel.send({embeds: [nocommentembed]})
-                        break
-                    case "n1551j":
-                        airchannel.send({embeds: [nocommentembed]})
-                        break
-                    case "N9155K":
-                        airchannel.send({embeds: [nocommentembed]})
-                        break
-                    case "n9155k":
-                        airchannel.send({embeds: [nocommentembed]})
-                        break
-                    case "N2467G":
-                        airchannel.send({embeds: [nocommentembed]})
-                        break
-                    case "n2467g":
-                        airchannel.send({embeds: [nocommentembed]})
-                        break
                     case "N1890C":
                         airchannel.send({embeds: [nocommentembed]})
                         break
                     case "n1890c":
-                        airchannel.send({embeds: [nocommentembed]})
-                        break
-                    case "N3123F":
-                        airchannel.send({embeds: [nocommentembed]})
-                        break
-                    case "n3123f":
-                        airchannel.send({embeds: [nocommentembed]})
-                        break
-                    case "N7780T":
-                        airchannel.send({embeds: [nocommentembed]})
-                        break
-                    case "n7780t":
-                        airchannel.send({embeds: [nocommentembed]})
-                        break
-                    case "N4741N":
-                        airchannel.send({embeds:[nocommentembed]})
-                        break
-                    case "n4741n":
-                        airchannel.send({embeds: [nocommentembed]})
-                        break
-                    case "N7999F":
-                        airchannel.send({embeds: [nocommentembed]})
-                        break
-                    case "n7999f":
-                        airchannel.send({embeds: [nocommentembed]})
-                        break
-                    case "N3934A":
-                        airchannel.send({embeds: [nocommentembed]})
-                        break
-                    case "n3934a":
                         airchannel.send({embeds: [nocommentembed]})
                         break
                     case "N9549H":
@@ -229,12 +115,6 @@ module.exports = {
                         airchannel.send({embeds: [nocommentembed]})
                         break
                     case "n2070r":
-                        airchannel.send({embeds: [nocommentembed]})
-                        break
-                    case'N8554U':
-                        airchannel.send({embeds: [nocommentembed]})
-                        break
-                    case'n8554u':
                         airchannel.send({embeds: [nocommentembed]})
                         break
                     default:
