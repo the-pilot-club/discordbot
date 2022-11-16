@@ -34,7 +34,7 @@ module.exports = {
         const comments = interaction.options.getString('comments')
         const aircraft = []
         const channel = []
-        if (interaction.member.roles.cache.some(role => role.name === 'TPC Charters')) {
+        if (interaction.member.roles.cache.some(role => role.name === 'Charters Pilots')) {
             if (comments !== null) {
                 switch(tail) {
                     case "N1890C":
@@ -93,7 +93,7 @@ module.exports = {
             await interaction.reply({content: `Your Booking has been submitted! Thank you!`, ephemeral: true})
         } else {
             interaction.reply({
-                content: `You do not have the TPC Charters Role! Go to #about-and-sop to learn more!`,
+                content: `You do not have the Charters Pilots Role! Go to #about-and-sop to learn more!`,
                 ephemeral: true
             })
         }
