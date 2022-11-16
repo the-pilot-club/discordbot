@@ -43,7 +43,7 @@ module.exports = {
                 value: `**TPC Charters User:** ${interaction.user} \n**Airline Code:** ${airline.toUpperCase()} \n**Aircraft Type:** ${type.toUpperCase()} \n**Seating Configuration:** ${seating} \n**Starting Location:** ${start.toUpperCase()}`
             })
             .setFooter({text: 'Made by The Pilot Club For TPC Charters'});
-        if (interaction.member.roles.cache.some(role => role.name === 'TPC Charters')) {
+        if (interaction.member.roles.cache.some(role => role.name === 'Charters Pilots')) {
             if (tail !== null) {
                 channel.send({content: `<@&910012872246046730>`, embeds: [tailembed]})
             } else {
@@ -55,7 +55,7 @@ module.exports = {
             })
         } else {
             interaction.reply({
-                content: `You do not have the TPC Charters Role! Go to #about-and-sop to learn more!`,
+                content: `You do not have the Charters Pilots Role! Go to #about-and-sop to learn more!`,
                 ephemeral: true
             })
         }

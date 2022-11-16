@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b8d3ab61-5183-4eaf-bc36-d69ab4452e29" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/sync.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/sync.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +45,18 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\erics\Desktop\TPC Discord Bot\discordbot\commands" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="devStart" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="devStart" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -143,7 +154,8 @@
       <workItem from="1665850295960" duration="160000" />
       <workItem from="1665866275415" duration="388000" />
       <workItem from="1665905411131" duration="234000" />
-      <workItem from="1668274580175" duration="349000" />
+      <workItem from="1668274580175" duration="1154000" />
+      <workItem from="1668464845661" duration="3834000" />
     </task>
     <servers />
   </component>
@@ -160,5 +172,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/commands/charters role.js</url>
+          <line>42</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
