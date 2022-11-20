@@ -10,7 +10,7 @@ module.exports = {
                 let result = members.filter(m => m.roles.cache.find(role => role.id === process.env.GIVEAWAY_ROLE));
                 let tags = result.map(m => m.user.toString());
                 let winner = tags[Math.floor(Math.random() * tags.length)]
-                const winnere = new EmbedBuilder()
+                const winnerEmbed = new EmbedBuilder()
                     .setDescription(`And the winner is ${winner} Congratulations!`)
                     .setAuthor({
                         name: `The Pilot Club`,
@@ -22,7 +22,7 @@ module.exports = {
 
                  interaction.deferReply()
                  setTimeout(function (){
-                     interaction.editReply({embeds:[winnere]});
+                     interaction.editReply({embeds:[winnerEmbed]});
                  },3000)
 
             })
