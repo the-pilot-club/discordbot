@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b8d3ab61-5183-4eaf-bc36-d69ab4452e29" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/events/ferry request submit.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/ferry.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/ferry.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/giveaway.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/giveaway.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/hours.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/hours.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/membercount.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/membercount.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/top30sim.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/update-ratings.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/user.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/winners.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/deploy-commands.js" beforeDir="false" afterPath="$PROJECT_DIR$/deploy-commands.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,16 +174,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/commands/charters role.js</url>
-          <line>42</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
