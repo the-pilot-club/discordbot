@@ -30,47 +30,59 @@ module.exports = {
             let pilotrating = data.pilotrating
             let roles = []
             const MANAGED_ROLES = ["ATC", "S1", "S2", "S3", "C1", "C3", "I1", "I3", "Network Supervisor", "Network Administrator", "P0", "P1", "P2", "P3", "P4"];
-            if (rating === 2) { //S1
-                roles.push("ATC")
-                roles.push("S1")
-            } else if (rating === 3) {  //S2
-                roles.push("ATC")
-                roles.push("S2")
-            } else if (rating === 4) {  //S3
+            switch(rating){
+                case 2: //S1
+                    roles.push("ATC")
+                    roles.push("S1")
+                    break
+                case 3: //S2
+                    roles.push("ATC")
+                    roles.push("S2")
+                    break
+                case 4:  //S3
                 roles.push("ATC")
                 roles.push("S3")
-            } else if (rating === 5) {  //C1
+                    break
+                case 5:  //C1
                 roles.push("ATC")
                 roles.push("C1")
-            } else if (rating === 6) {  //C2
-                roles.push("ATC")
-            } else if (rating === 7) {  //C3
+                    break
+                case 7:  //C3
                 roles.push("ATC")
                 roles.push("C3")
-            } else if (rating === 8) { //I1
+                    break
+                case 8:  //I1
                 roles.push("ATC")
                 roles.push("I1")
-            } else if (rating === 9) {  //I2
-                roles.push("ATC")
-            } else if (rating === 10) {  //I3
+                    break
+                case 10: //I3
                 roles.push("ATC")
                 roles.push("I3")
-            } else if (rating === 11) {  //SUP
+                    break
+                case 11: //SUP
                 roles.push("Network Supervisor")
                 roles.push("ATC")
-            } else if (rating === 12) {  //ADM
+                    break
+                case 12: //ADM
                 roles.push("Network Administrator")
             }
-            if (pilotrating === 0) {
+            switch (pilotrating) {
+
+                case 0:
                 roles.push("P0")
-            } else if (pilotrating === 1) {
+                    break
+                case 1:
                 roles.push("P1")
-            } else if (pilotrating === 3) {
+                    break
+                case 3:
                 roles.push("P2")
-            } else if (pilotrating === 7) {
+                    break
+                case 7:
                 roles.push("P3")
-            } else if (pilotrating === 15) {
+                    break
+                case 15:
                 roles.push("P4")
+                    break
             }
         let joinRoles = roles.join(', ')
             const embed = new EmbedBuilder()

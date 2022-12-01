@@ -62,30 +62,26 @@ for (const file of eventFiles) {
 //Role congrats and Charters DM
 client.on('guildMemberUpdate', async (oldMember, newMember) => {
     const channel = client.channels.cache.find(channel => channel.name === "crew-chat");
-    if (oldMember.roles.cache.has(process.env.COMMUTER_ROLE)) return;
-    if (newMember.roles.cache.has(process.env.COMMUTER_ROLE)) {
+    if (newMember.roles.cache.some(r => r.name === "Commuter")) {
         channel.send({
             content: `Join us in congratulating ${oldMember} with achieving <@&930863426224410684> status at TPC!`,
             files: [{attachment: `./pics/congrats.png`, name: 'file.png'}]})
     }})
 client.on('guildMemberUpdate', async (oldMember, newMember) => {
     const channel = client.channels.cache.find(channel => channel.name === "crew-chat");
-    if (oldMember.roles.cache.has(process.env.FREQUENTFLIER_ROLE)) return;
-    if (newMember.roles.cache.has(process.env.FREQUENTFLIER_ROLE)) {
+    if (newMember.roles.cache.some(r => r.name === "Frequent Flyer")) {
         channel.send({
             content: `Join us in congratulating ${oldMember} with achieving <@&855253377209204750> status at TPC!`,
             files: [{attachment: `./pics/congrats.png`, name: 'file.png'}]})
     }})
 client.on('guildMemberUpdate', async (oldMember, newMember) => {
     const channel = client.channels.cache.find(channel => channel.name === "crew-chat");
-    if (oldMember.roles.cache.has(process.env.VIP_ROLE)) return;
-    if (newMember.roles.cache.has(process.env.VIP_ROLE)) {
+    if (newMember.roles.cache.some(r => r.name === "VIP")) {
         channel.send({
             content: `Join us in congratulating ${oldMember} with achieving <@&930863007372836876> status at TPC!`,
             files: [{attachment: `./pics/congrats.png`, name: 'file.png'}]})
     }
-    if (oldMember.roles.cache.has(process.env.BOOSTER_ROLE)) return;
-    if (newMember.roles.cache.has(process.env.BOOSTER_ROLE)) {
+    if (newMember.roles.cache.some(r => r.name === "Booster")) {
         channel.send(`${oldMember} Thank you for boosting the club!`);}
  })
 
@@ -125,9 +121,8 @@ let index = randomNum(0, questions.length - 1);
 let question = questions[index];
 
 client.on('ready', async function () {
-    const channel = await client.channels.fetch(process.env.QANDA_CHANNEL_ID);
-    const eventChannel = await client.channels.fetch(process.env.EVENT_CHANNEL);
-    //const testChannel = await client.channels.fetch(process.env.TEST_CHANNEL); //correct id: 864834861603487754
+    const channel = await client.channels.cache.find(channel => channel.name === "aviation-quiz");
+    const eventChannel = await client.channels.cache.find(channel => channel.name === "crew-chat");
 //Getting random question every day:  0 57 22 * * *
     cron.schedule('0 00 08 * * *', function () { //Correct time is 0 00 08 * * *
         sendNewQuestion(channel);
@@ -142,7 +137,7 @@ client.on('ready', async function () {
         sendNewEvent(eventChannel, "ga-tuesday", "<@&937389346204557342> <@&898240224189120532>");
     });
     // Bush Wednesday
-    cron.schedule('0 18 * * 3', function () {
+    cron.schedule('08 22 * * 3', function () {
         sendNewEvent(eventChannel, "bush-wednesday", "<@&937389346204557342> <@&898240224189120532>");
     })
     // // Fly In Thursday

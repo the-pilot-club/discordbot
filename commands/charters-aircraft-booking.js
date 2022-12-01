@@ -14,9 +14,9 @@ module.exports = {
                         {name: 'N2070R', value: 'N2070R'},
                         {name:'N9549H', value:'N9549H'})
             ).addStringOption(option =>
-                option.setName('starting-icao').setDescription('Where will you start this flight?').setRequired(true)
+                option.setName('starting-icao').setDescription('Where will you start this flight?').setRequired(true).setMaxLength(4)
             ).addStringOption(option =>
-                option.setName('ending-icao').setDescription('Where will you end this flight?').setRequired(true)
+                option.setName('ending-icao').setDescription('Where will you end this flight?').setRequired(true).setMaxLength(4)
             ).addIntegerOption(option =>
                 option.setName('booking-begins').setDescription('When would you like to start? Aircraft can be reserved up to 3 hours before ETD. All times in Zulu.').setRequired(true)
             ).addIntegerOption(option =>
@@ -33,21 +33,21 @@ module.exports = {
         const etdends = interaction.options.getInteger('booking-ends')
         const comments = interaction.options.getString('comments')
         const aircraft = []
-        const channel = []
+        const channels = []
         if (interaction.member.roles.cache.some(role => role.name === 'Charters Pilots')) {
             if (comments !== null) {
                 switch(tail) {
                     case "N1890C":
                         aircraft.push('B737')
-                        channel.push(process.env.N1890C_CHANNEL)
+                        channels.push("N1890C - B737")
                         break
                     case "N9549H":
                         aircraft.push('A320')
-                        channel.push(process.env.N9545H_CHANNEL)
+                        channels.push("N9549H - A320")
                         break
                     case "N2070R":
                         aircraft.push('A320Neo')
-                        channel.push(process.env.N2070R_CHANNEL)
+                        channels.push("N2070R - A320Neo")
                         break
                 }
                 const commentemebed = new EmbedBuilder()
@@ -60,21 +60,21 @@ module.exports = {
                     .setTimestamp()
                     .setFooter({text: 'Made by The Pilot Club For TPC Charters'})
 
-                interaction.guild.client.channels.cache.get(`${channel}`).send({embeds: [commentemebed]}).catch(error =>
+                interaction.guild.client.channels.cache.find(channel => channel.name ===`${channels}`).send({embeds: [commentemebed]}).catch(error =>
                     console.log(error))
             } else {
                 switch(tail) {
                     case "N1890C":
                         aircraft.push('B737')
-                        channel.push(process.env.N1890C_CHANNEL)
+                        channels.push("N1890C - B737")
                         break
                     case "N9549H":
                         aircraft.push('A320')
-                        channel.push(process.env.N9545H_CHANNEL)
+                        channels.push("N9549H - A320")
                         break
                     case "N2070R":
                         aircraft.push('A320Neo')
-                        channel.push(process.env.N2070R_CHANNEL)
+                        channels.push("N2070R - A320Neo")
                         break
                 }
                 const nocommentemebed = new EmbedBuilder()
@@ -87,7 +87,7 @@ module.exports = {
                     .setTimestamp()
                     .setFooter({text: 'Made by The Pilot Club For TPC Charters'})
 
-                interaction.guild.client.channels.cache.get(`${channel}`).send({embeds: [nocommentemebed]}).catch(error =>
+                interaction.guild.client.channels.cache.find(channel => channel.name ===`${channels}`).send({embeds: [nocommentemebed]}).catch(error =>
                     console.log(error))
             }
             await interaction.reply({content: `Your Booking has been submitted! Thank you!`, ephemeral: true})

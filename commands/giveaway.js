@@ -7,9 +7,10 @@ module.exports = {
     async execute(interaction) {
         if (interaction.member.roles.cache.some(role => role.name === 'Staff') || interaction.member.roles.cache.some(role => role.name === 'Air Marshals')) {
             interaction.guild.members.fetch().then(members => {
-                let result = members.filter(m => m.roles.cache.find(role => role.id === process.env.GIVEAWAY_ROLE));
+                let result = members.filter(m => m.roles.cache.find(role => role.name === "Giveaway"));
                 let tags = result.map(m => m.user.toString());
                 let winner = tags[Math.floor(Math.random() * tags.length)]
+                if (winner !== undefined) {
                 const winnerEmbed = new EmbedBuilder()
                     .setDescription(`And the winner is ${winner} Congratulations!`)
                     .setAuthor({
@@ -23,7 +24,7 @@ module.exports = {
                  interaction.deferReply()
                  setTimeout(function (){
                      interaction.editReply({embeds:[winnerEmbed]});
-                 },3000)
+                 },3000)}else { interaction.reply('No one has this role.')}
 
             })
         } else {

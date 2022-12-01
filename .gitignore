@@ -1,8 +1,9 @@
 .env
-config.json
 node_modules
 oldData.json
 vatsimData.json
 questions.json
 workspace.xml
 /commands/charters role.js
+.dockerignore
+Dockerfile

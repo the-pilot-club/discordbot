@@ -17,7 +17,7 @@ module.exports = {
             option.setName('aircraft-tail-number').setDescription('What is the tail number of the aircraft you would like?').setRequired(false)
         ),
     async execute(interaction) {
-        const channel = interaction.guild.client.channels.cache.get(process.env.CHARTERS_REQUEST_CHANNEL)
+        const channel = interaction.guild.client.channels.cache.find(channel => channel.name === "charters-requests")
         const airline = interaction.options.getString('airline-code')
         const type = interaction.options.getString('aircraft-type')
         const seating = interaction.options.getString('seating-config')
@@ -27,7 +27,7 @@ module.exports = {
             .setAuthor({name: `${interaction.member.displayName}`, iconURL: `${interaction.user.displayAvatarURL()}`})
             .setTitle('New Aircraft Request')
             .setDescription('A member of TPC has submitted a request for an aircraft for use in OnAir.')
-            .setColor('0X37B6FF')
+            .setColor('#37B6FF')
             .addFields({
                 name: 'Aircraft Details',
                 value: `**TPC Charters User:** ${interaction.user} \n**Airline Code:** ${airline.toUpperCase()} \n**Aircraft Type:** ${type.toUpperCase()} \n**Tail Number:** ${tail} \n**Seating Configuration:** ${seating} \n**Starting Location:** ${start.toUpperCase()}`
@@ -37,7 +37,7 @@ module.exports = {
             .setAuthor({name: `${interaction.member.displayName}`, iconURL: `${interaction.user.displayAvatarURL()}`})
             .setTitle('New Aircraft Request')
             .setDescription('A member of TPC has submitted a request for an aircraft for use in OnAir.')
-            .setColor('0X37B6FF')
+            .setColor('#37B6FF')
             .addFields({
                 name: 'Aircraft Details',
                 value: `**TPC Charters User:** ${interaction.user} \n**Airline Code:** ${airline.toUpperCase()} \n**Aircraft Type:** ${type.toUpperCase()} \n**Seating Configuration:** ${seating} \n**Starting Location:** ${start.toUpperCase()}`

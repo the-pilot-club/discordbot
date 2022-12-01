@@ -4,7 +4,7 @@ module.exports = {
     once: false,
     async execute(interaction) {
         if (interaction.customId === 'join-charters') {
-            const channel = interaction.guild.client.channels.cache.get(process.env.CHARTERS_REQUEST_CHANNEL)
+            const channel = interaction.guild.client.channels.cache.find(channel => channel.name === "charters-requests")
             const airline = interaction.fields.getTextInputValue('airlinecode')
             const type = interaction.fields.getTextInputValue('aircraft')
             const seating = interaction.fields.getTextInputValue('seating')
