@@ -5,24 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8d3ab61-5183-4eaf-bc36-d69ab4452e29" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bot.js" beforeDir="false" afterPath="$PROJECT_DIR$/bot.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/airport.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/airport.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/charters-aircraft-booking.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/charters-aircraft-booking.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/charters-aircraft-request.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/charters-aircraft-request.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/giveaway.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/giveaway.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/perks-giveaway.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/perks-giveaway.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/sync.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/sync.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/deploy-commands.js" beforeDir="false" afterPath="$PROJECT_DIR$/deploy-commands.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/events/ferry request submit.js" beforeDir="false" afterPath="$PROJECT_DIR$/events/ferry request submit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/events/joinchrtssubmit.js" beforeDir="false" afterPath="$PROJECT_DIR$/events/joinchrtssubmit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/events/ready.js" beforeDir="false" afterPath="$PROJECT_DIR$/events/ready.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/events/roles.js" beforeDir="false" afterPath="$PROJECT_DIR$/events/roles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example-config.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example.env" beforeDir="false" afterPath="$PROJECT_DIR$/example.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -214,7 +199,7 @@
       <workItem from="1669788749805" duration="108000" />
       <workItem from="1669854936117" duration="186000" />
       <workItem from="1669855131850" duration="5165000" />
-      <workItem from="1669872836582" duration="4318000" />
+      <workItem from="1669872836582" duration="5236000" />
     </task>
     <servers />
   </component>
@@ -231,16 +216,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/events/roles.js</url>
-          <line>4</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

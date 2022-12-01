@@ -62,26 +62,26 @@ for (const file of eventFiles) {
 //Role congrats and Charters DM
 client.on('guildMemberUpdate', async (oldMember, newMember) => {
     const channel = client.channels.cache.find(channel => channel.name === "crew-chat");
-    if (newMember.roles.cache.some(r => r.name === "Commuter")) {
+    if (newMember.roles.cache.has(process.env.COMMUTER_ROLE)) {
         channel.send({
             content: `Join us in congratulating ${oldMember} with achieving <@&930863426224410684> status at TPC!`,
             files: [{attachment: `./pics/congrats.png`, name: 'file.png'}]})
     }})
 client.on('guildMemberUpdate', async (oldMember, newMember) => {
     const channel = client.channels.cache.find(channel => channel.name === "crew-chat");
-    if (newMember.roles.cache.some(r => r.name === "Frequent Flyer")) {
+    if (newMember.roles.cache.has(process.env.FREQUENTFLIER_ROLE)) {
         channel.send({
             content: `Join us in congratulating ${oldMember} with achieving <@&855253377209204750> status at TPC!`,
             files: [{attachment: `./pics/congrats.png`, name: 'file.png'}]})
     }})
 client.on('guildMemberUpdate', async (oldMember, newMember) => {
     const channel = client.channels.cache.find(channel => channel.name === "crew-chat");
-    if (newMember.roles.cache.some(r => r.name === "VIP")) {
+    if (newMember.roles.cache.has(process.env.VIP_ROLE)) {
         channel.send({
             content: `Join us in congratulating ${oldMember} with achieving <@&930863007372836876> status at TPC!`,
             files: [{attachment: `./pics/congrats.png`, name: 'file.png'}]})
     }
-    if (newMember.roles.cache.some(r => r.name === "Booster")) {
+    if (newMember.roles.cache.has(process.env.BOOSTER_ROLE)) {
         channel.send(`${oldMember} Thank you for boosting the club!`);}
  })
 
