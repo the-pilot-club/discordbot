@@ -141,7 +141,7 @@ client.on('ready', async function () {
         sendNewEvent(eventChannel, "ga-tuesday", "<@&937389346204557342> <@&898240224189120532>");
     });
     // Bush Wednesday
-    cron.schedule('08 22 * * 3', function () {
+    cron.schedule('0 18 * * 3', function () {
         sendNewEvent(eventChannel, "bush-wednesday", "<@&937389346204557342> <@&898240224189120532>");
     })
     // // Fly In Thursday
