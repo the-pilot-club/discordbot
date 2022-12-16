@@ -27,15 +27,13 @@ module.exports = {
 
         if (users.length === 0) {
             await interaction.reply({
-                content: `No one is online :(`,
-                ephemeral: true
+                content: `No one is online :(`
             }).catch(error =>
                 console.error(error))
         }
 
         await interaction.reply({
-            embeds: [embed],
-            ephemeral: true
+            embeds: [embed]
         }).catch(error =>
             console.error(error))
     }
