@@ -6,7 +6,7 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('top5')
         .setDescription('Posts the leaderboard top 5 members!'),
-    async execute(interaction, client) {
+    async execute(interaction) {
         //get MEE6 leaderboard and send it to the event channel
         Mee6LevelsApi.getLeaderboardPage(guildId).then(leaderboard => {
             //get the top 5 users
@@ -24,10 +24,10 @@ module.exports = {
                 formatted += `\n${i + 1}. ` + ("<@" + list[i] + ">")
             }
             interaction.reply({
-                content: `Our **Top 5** this week: \n${formatted}\n \nSee all rankings here:`,
+                content: `**Top 5 TPC Pilots:** \n${formatted}\n \nSee all rankings here:`,
                 components: [row]
             })
-        }).catch(err => {
+        }).catch(err => { console.log(err)
         });
     }
 };
