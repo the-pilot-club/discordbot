@@ -25,7 +25,7 @@ module.exports = {
             const embed = new EmbedBuilder()
                 .setAuthor({name: `${interaction.member.displayName} - ${data.id}`, iconURL: `${interaction.user.displayAvatarURL()}`})
                 .setTitle('Your Hours On VATSIM!')
-                .addFields({name:'Pilot Hours:',value: `${data.pilot}`, inline: true},
+                .addFields({name: 'Pilot Hours:', value: `${data.pilot}`, inline: true},
                                 {name: 'ATC Hours:', value: `${data.atc}`})
                 .setColor('#37B6FF')
                 .setFooter({text: "Made for The Pilot Club" , iconURL: `https://static1.squarespace.com/static/614689d3918044012d2ac1b4/t/616ff36761fabc72642806e3/1634726781251/TPC_FullColor_TransparentBg_1280x1024_72dpi.png`})
@@ -49,7 +49,7 @@ module.exports = {
             if (data.adm !== 0){
                 embed.addFields({name: "Administrator Hours:", value: `${data.adm}`})}
             }
-            await interaction.reply({embeds:[embed],  ephemeral: true})
+            await interaction.reply({embeds: [embed],  ephemeral: true})
         }
     }
 }
