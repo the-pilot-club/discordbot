@@ -28,7 +28,7 @@ module.exports = {
                         content: `Please connect your VATSIM account to the TPC Discord!`,
                         components: [row],
                         ephemeral: true
-                    })
+                    }).catch(err => { console.log(err)})
             } else {
             const ratingResponse = await fetch(`https://api.vatsim.net/api/ratings/${cid}`)
             if (!ratingResponse || ratingResponse.status !== 200) {
@@ -105,7 +105,7 @@ module.exports = {
                         iconURL: `https://static1.squarespace.com/static/614689d3918044012d2ac1b4/t/616ff36761fabc72642806e3/1634726781251/TPC_FullColor_TransparentBg_1280x1024_72dpi.png`
                     })
                     .setTimestamp()
-                await interaction.reply({embeds: [embed]})
+                await interaction.reply({embeds: [embed]}).catch(err => { console.log(err)})
 
                 for (const role of MANAGED_ROLES) {
                     const discordRole = interaction.member.guild.roles.cache.find(r => r.name === role);
