@@ -57,7 +57,7 @@ for (const file of eventFiles) {
     } else {
         client.on(event.name, (...args) => event.execute(...args));
     }
-};
+}
 
 //Role congrats and Charters DM
 client.on('guildMemberUpdate', async (oldMember, newMember) => {
@@ -140,10 +140,10 @@ client.on('ready', async function () {
     cron.schedule('0 18 * * 2', function () {
         sendNewEvent(eventChannel, "ga-tuesday", "<@&937389346204557342> <@&898240224189120532>");
     });
-    // Bush Wednesday
-    cron.schedule('0 18 * * 3', function () {
-        sendNewEvent(eventChannel, "bush-wednesday", "<@&937389346204557342> <@&898240224189120532>");
-    })
+    // Bush Wednesday - Disabled for FEB.
+    // cron.schedule('0 18 * * 3', function () {
+    //     sendNewEvent(eventChannel, "bush-wednesday", "<@&937389346204557342> <@&898240224189120532>");
+    // })
     // // Fly In Thursday
     cron.schedule('0 18 * * 4', function () {
         sendNewEvent(eventChannel, "sbr-tpc-fly-in-thursday", "<@&937389346204557342>");
