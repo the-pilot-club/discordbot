@@ -6,34 +6,35 @@ module.exports = {
         .setName('get-online-members')
         .setDescription('Gets the members who are online'), async execute(interaction) {
         const remarksUsers = []
-        const websiteUsers = []
+        const callsignUsers = []
         const livemembersResponse = await fetch(`https://data.vatsim.net/v3/vatsim-data.json`);
         const liveMembers = await livemembersResponse.json()
         const tpcPilots = liveMembers.pilots
         //getting remarks with OPERATED BY THEPILOTCLUB.ORG
         const remakrsFiltered = tpcPilots.filter(tpcPilots => tpcPilots.flight_plan?.remarks.toUpperCase().indexOf("OPERATED BY THEPILOTCLUB.ORG") > -1)
-        const websiteFiltered = tpcPilots.filter(tpcPilots => tpcPilots.flight_plan?.remarks.toUpperCase().indexOf("THEPILOTCLUB.ORG") > -1)
+        const callsignFiltered = tpcPilots.filter(tpcPilots => tpcPilots.callsign.indexOf("TPC") > -1)
         //callsign's loop through each array
-        if (remakrsFiltered.length === 0 && websiteFiltered.length === 0) {
-            await interaction.reply({
-                content: `No one is online :(`
-            }).catch(error => console.error(error))
-        } else if (remakrsFiltered.length !== 0) {
+        if (remakrsFiltered.length === 0) {
+            remarksUsers.push('No one has their remarks set correctly')
+        }
+        if (remakrsFiltered.length !== 0) {
             for (let i = 0; i < remakrsFiltered.length; i++) {
                 let remarkObj = remakrsFiltered[i];
-                console.log(remarkObj.callsign)
                 remarksUsers.push(remarkObj.callsign, ' - ', remarkObj.name, " - ", remarkObj.cid, '\n');
             }
-        } else if (websiteFiltered.length !== 0) {
-            for (let i = 0; i < websiteFiltered.length; i++) {
-                let websiteObj = websiteFiltered[i]
-                console.log("wesbite only users", websiteObj.callsign)
-                websiteUsers.push(websiteObj.callsign, ' - ', websiteObj.name, ' - ', websiteObj.cid, '\n')
+        }
+        if (callsignFiltered === 0) {
+            callsignUsers.push('No one is flying with a TPC callsign')
+        }
+        if (callsignFiltered !== 0) {
+            for (let i = 0; i < callsignFiltered.length; i++) {
+                let callsignObj = callsignFiltered[i]
+                callsignUsers.push(callsignObj.callsign, ' - ', callsignObj.name, ' - ', callsignObj.cid, '\n')
             }
         }
         const embed = new EmbedBuilder()
             .setTitle('Current Online TPC Members')
-            .setDescription(`Correct Remarks: \n${remarksUsers.join('')}\n Website Only:\n ${websiteUsers.join('')}`)
+            .setDescription(`Correct Remarks: \n${remarksUsers.join('')}\n Callsign Only:\n ${callsignUsers.join('')}`)
             .setColor(`#37B6FF`)
             .setFooter({
                 text: `Made for The Pilot Club`,
