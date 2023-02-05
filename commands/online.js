@@ -34,7 +34,7 @@ module.exports = {
         }
         const embed = new EmbedBuilder()
             .setTitle('Current Online TPC Members')
-            .setDescription(`Correct Remarks: \n${remarksUsers.join('')}\n Callsign Only:\n ${callsignUsers.join('')}`)
+            .setDescription(`Correct Remarks: \n${remarksUsers.join('')}\n No Remarkss:\n ${callsignUsers.join('')}`)
             .setColor(`#37B6FF`)
             .setFooter({
                 text: `Made for The Pilot Club`,
