@@ -18,12 +18,12 @@ module.exports = {
                         iconURL: `https://static1.squarespace.com/static/614689d3918044012d2ac1b4/t/616ff36761fabc72642806e3/1634726781251/TPC_FullColor_TransparentBg_1280x1024_72dpi.png`
                     })
                     .setColor('#37B6FF')
-                    .setFooter({text:"Made For The Pilot Club Giveaways"})
+                    .setFooter({text:"Made by TPC Dev Team"})
                     .setTimestamp()
 
                  interaction.deferReply()
                  setTimeout(function (){
-                     interaction.editReply({embeds:[winnerEmbed]});
+                     interaction.editReply({content: `Congrats ${winner}!` , embeds:[winnerEmbed]});
                  },3000)}else { interaction.reply('No one has this role.')}
 
             })

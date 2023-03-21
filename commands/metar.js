@@ -18,12 +18,11 @@ module.exports = {
                 .setDescription(`${airport.toUpperCase()}`)
                 .setColor(`#37B6FF`)
                 .addFields({name: 'METAR', value: `${body}` || `Not Available`})
-                .setFooter({text:`Made by The Pilot Club` ,iconURL: `https://static1.squarespace.com/static/614689d3918044012d2ac1b4/t/616ff36761fabc72642806e3/1634726781251/TPC_FullColor_TransparentBg_1280x1024_72dpi.png`})
+                .setFooter({text:`Made by TPC Dev Team` ,iconURL: `https://static1.squarespace.com/static/614689d3918044012d2ac1b4/t/616ff36761fabc72642806e3/1634726781251/TPC_FullColor_TransparentBg_1280x1024_72dpi.png`})
                 .setTimestamp()
             interaction.reply({embeds: [metarEmbed]})
         } else {
             interaction.reply("METAR isn't posted for: " + airport.toUpperCase())
         }
-        ;
     },
 };

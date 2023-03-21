@@ -19,7 +19,7 @@ module.exports = {
                     name: '\u200b',
                     value: `**TPC Charters User:** ${interaction.user} \n**Registration Number:** ${tail.toUpperCase()} \n**Starting Location:** ${start.toUpperCase()} \n**Ending Location** ${end.toUpperCase()}`
                 })
-                .setFooter({text: 'Made by The Pilot Club For TPC Charters'});
+                .setFooter({text: 'Made by TPC Dev Team'});
             if (interaction.member.roles.cache.some(role => role.name === 'Charters Pilots')) {
                 channel.send({content: `<@&910012872246046730>`, embeds: [embed]})
                 await interaction.reply({
