@@ -28,7 +28,7 @@ module.exports = {
                 .addFields({name: 'Pilot Hours:', value: `${data.pilot}`, inline: true},
                                 {name: 'ATC Hours:', value: `${data.atc}`})
                 .setColor('#37B6FF')
-                .setFooter({text: 'Made for The Pilot Club', iconURL: `https://static1.squarespace.com/static/614689d3918044012d2ac1b4/t/616ff36761fabc72642806e3/1634726781251/TPC_FullColor_TransparentBg_1280x1024_72dpi.png`})
+                .setFooter({text: 'Made by TPC Dev Team', iconURL: `https://static1.squarespace.com/static/614689d3918044012d2ac1b4/t/616ff36761fabc72642806e3/1634726781251/TPC_FullColor_TransparentBg_1280x1024_72dpi.png`})
                 .setTimestamp()
             if (data.s1 !== 0) {
                 embed.addFields({name: 'S1 Hours:', value: `${data.s1}`})}

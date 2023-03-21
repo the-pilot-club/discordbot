@@ -32,7 +32,7 @@ module.exports = {
                 name: 'Aircraft Details',
                 value: `**TPC Charters User:** ${interaction.user} \n**Airline Code:** ${airline.toUpperCase()} \n**Aircraft Type:** ${type.toUpperCase()} \n**Tail Number:** ${tail} \n**Seating Configuration:** ${seating} \n**Starting Location:** ${start.toUpperCase()}`
             })
-            .setFooter({text: 'Made by The Pilot Club For TPC Charters'});
+            .setFooter({text: 'Made by TPC Dev Team'});
         const notailembed = new EmbedBuilder()
             .setAuthor({name: `${interaction.member.displayName}`, iconURL: `${interaction.user.displayAvatarURL()}`})
             .setTitle('New Aircraft Request')
@@ -42,7 +42,7 @@ module.exports = {
                 name: 'Aircraft Details',
                 value: `**TPC Charters User:** ${interaction.user} \n**Airline Code:** ${airline.toUpperCase()} \n**Aircraft Type:** ${type.toUpperCase()} \n**Seating Configuration:** ${seating} \n**Starting Location:** ${start.toUpperCase()}`
             })
-            .setFooter({text: 'Made by The Pilot Club For TPC Charters'});
+            .setFooter({text: 'Made by TPC Dev Team'});
         if (interaction.member.roles.cache.some(role => role.name === 'Charters Pilots')) {
             if (tail !== null) {
                 channel.send({content: `<@&910012872246046730>`, embeds: [tailembed]})

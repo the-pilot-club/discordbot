@@ -28,7 +28,7 @@ module.exports = {
                 name: `Suggestion Details:`,
                 value: `**Username of Idea Author:** ${user} \n **Users Idea:** ${idea}`
             })
-            .setFooter({text: 'Made by The Pilot Club For Administration'});
+            .setFooter({text: 'Made by TPC Dev Team'});
         if (interaction.member.roles.cache.some(role => role.name === 'Air Marshals')) {
             if (reason !== null) {
                 noreasonembed.addFields({name: `Reason Given`, value: `${reason}`})
