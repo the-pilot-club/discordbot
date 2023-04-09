@@ -70,7 +70,7 @@ client.on('guildMemberUpdate', async (oldMember, newMember) => {
     if (oldMember.roles.cache.has(process.env.COMMUTER_ROLE)) return;
     if (newMember.roles.cache.has(process.env.COMMUTER_ROLE)) {
         channel.send({
-            content: `Join us in congratulating ${oldMember} with achieving <@&930863426224410684> status at TPC!`,
+            content: `Join us in congratulating ${oldMember} with achieving <@&930863426224410684> status at TPC! You are now part of the TPC **COMPANY PERKS** Program!`,
             files: [{attachment: `./pics/congrats.png`, name: 'file.png'}]
         })
     }
@@ -80,7 +80,7 @@ client.on('guildMemberUpdate', async (oldMember, newMember) => {
     if (oldMember.roles.cache.has(process.env.FREQUENTFLIER_ROLE)) return;
     if (newMember.roles.cache.has(process.env.FREQUENTFLIER_ROLE)) {
         channel.send({
-            content: `Join us in congratulating ${oldMember} with achieving <@&855253377209204750> status at TPC!`,
+            content: `Join us in congratulating ${oldMember} with achieving <@&855253377209204750> status at TPC! You are now part of the TPC **COMPANY PERKS** Program!`,
             files: [{attachment: `./pics/congrats.png`, name: 'file.png'}]
         })
     }
@@ -90,7 +90,7 @@ client.on('guildMemberUpdate', async (oldMember, newMember) => {
     if (oldMember.roles.cache.has(process.env.VIP_ROLE)) return;
     if (newMember.roles.cache.has(process.env.VIP_ROLE)) {
         channel.send({
-            content: `Join us in congratulating ${oldMember} with achieving <@&930863007372836876> status at TPC!`,
+            content: `Join us in congratulating ${oldMember} with achieving <@&930863007372836876> status at TPC! You are now part of the TPC **COMPANY PERKS** Program!`,
             files: [{attachment: `./pics/congrats.png`, name: 'file.png'}]
         })
     }
