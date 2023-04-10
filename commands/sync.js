@@ -15,7 +15,7 @@ module.exports = {
             return
         }
         let body = await response.json()
-        let cid = body.CID
+        let cid = body.cid
         if (cid === "0"){
             const row = new ActionRowBuilder()
                         .addComponents(
