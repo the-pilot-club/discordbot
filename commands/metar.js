@@ -6,7 +6,7 @@ module.exports = {
         .setName('metar')
         .setDescription('Gives METAR for a Specific Airport').addStringOption(option =>
             option.setName('icao')
-                .setDescription('The input to echo back')
+                .setDescription('ICAO of airport')
                 .setRequired(true)),
     async execute(interaction) {
         const airport = interaction.options.getString('icao')
@@ -22,7 +22,7 @@ module.exports = {
                 .setTimestamp()
             interaction.reply({embeds: [metarEmbed]})
         } else {
-            interaction.reply("METAR isn't posted for: " + airport.toUpperCase())
+            interaction.reply("A METAR isn't posted for: " + airport.toUpperCase())
         }
     },
 };
