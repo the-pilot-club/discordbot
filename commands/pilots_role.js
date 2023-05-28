@@ -3,7 +3,7 @@ const {SlashCommandBuilder} = require('discord.js');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('pilots-role')
-        .setDescription('Assigns All Member the pilots role :)'),
+        .setDescription('Assigns all members the pilots role :)'),
     async execute(interaction) {
         const guild = interaction.client.guilds.cache.get(process.env.TPC_DEV_ID);
         const members = await interaction.guild.members.fetch();
