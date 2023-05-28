@@ -14,7 +14,7 @@ module.exports = {
                     {name: '🟡', value: '🟡'},
                     {name: '🔴', value: '🔴'},)
         ).addStringOption(option =>
-                option.setName('description-1').setDescription('What is the Description of the Status?').setRequired(true)
+                option.setName('description-1').setDescription('What is the description of the status?').setRequired(true)
         ).addStringOption(option =>
             option.setName('status-color-2').setDescription('What is the status of the websites?').setRequired(false)
                 .addChoices(
@@ -22,7 +22,7 @@ module.exports = {
                     {name: '🟡', value: '🟡'},
                     {name: '🔴', value: '🔴'},)
         ).addStringOption(option =>
-            option.setName('description-2').setDescription('What is the Description of the Status?').setRequired(false)
+            option.setName('description-2').setDescription('What is the description of the status?').setRequired(false)
         ).addStringOption(option =>
             option.setName('status-color-3').setDescription('What is the status of the websites?').setRequired(false)
                 .addChoices(
@@ -30,7 +30,7 @@ module.exports = {
                     {name: '🟡', value: '🟡'},
                     {name: '🔴', value: '🔴'},)
         ).addStringOption(option =>
-            option.setName('description-3').setDescription('What is the Description of the Status?').setRequired(false)
+            option.setName('description-3').setDescription('What is the description of the status?').setRequired(false)
         ),
     async execute(interaction) {
         const subject = interaction.options.getString('subject')
