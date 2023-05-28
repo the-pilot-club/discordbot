@@ -119,15 +119,16 @@ module.exports = {
             .setColor('#37B6FF')
             .setTimestamp();
 
-        if (desc2 == null){
-            notam.send({embeds: [embed1]})
-        }
-        if( desc2 !== null && desc3 == null) {
-            notam.send({embeds:[embed2]})
-        }
-        if(desc2 !== null && desc3 !== null) {
-            notam.send({embeds: [embed3]})
-        }
+           if (desc2 == null) {
+        await message.edit({ embeds: [embed] });
+      }
+      if (desc2 !== null && desc3 == null) {
+        await message.edit({ embeds: [embed2] });
+      }
+      if (desc2 !== null && desc3 !== null) {
+        await message.edit({ embeds: [embed3] });
+      }
+      
         await interaction.reply({content :'Done!' , ephemeral: true});
     }
 }
