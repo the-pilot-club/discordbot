@@ -6,8 +6,8 @@ module.exports = {
     .setName('update-status')
     .setDescription('Update the status message')
     .addStringOption(option =>
-      option.setName('subject')
-        .setDescription('What is the subject of the web service issue?')
+      option.setName('message-id')
+        .setDescription('What is the ID of the status message?')
         .setRequired(true)
     )
     .addStringOption(option =>
@@ -22,7 +22,7 @@ module.exports = {
     )
     .addStringOption(option =>
       option.setName('description-1')
-        .setDescription('What is the Description of the Status?')
+        .setDescription('What is the description of the status?')
         .setRequired(true)
     )
     .addStringOption(option =>
@@ -37,7 +37,7 @@ module.exports = {
     )
     .addStringOption(option =>
       option.setName('description-2')
-        .setDescription('What is the Description of the Status?')
+        .setDescription('What is the description of the status?')
         .setRequired(false)
     )
     .addStringOption(option =>
@@ -58,7 +58,7 @@ module.exports = {
 
   async execute(interaction) {
     const messageId = interaction.options.getString('message_id');
-    const subject = interaction.options.getString('subject');
+    const subject = message.embeds[0].title;
     const color1 = interaction.options.getString('status-color-1');
     const desc1 = interaction.options.getString('description-1');
     const color2 = interaction.options.getString('status-color-2');
@@ -73,8 +73,7 @@ module.exports = {
       return interaction.reply('Unable to find the specified channel.');
     }
 
-    const messages = await channel.messages.fetch({ limit: 1 });
-    const message = messages.first();
+    const message = await channel.messages.fetch(messageId);
 
     if (!message) {
       return interaction.reply('No messages found in the specified channel.');
