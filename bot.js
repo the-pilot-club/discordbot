@@ -22,6 +22,7 @@ let monthNames = [
     "nov",
     "dec"
 ];
+//test
 client.commands = new Collection();
 const commandsPath = path.join(__dirname, 'commands');
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
