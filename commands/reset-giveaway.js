@@ -7,7 +7,7 @@ module.exports = {
     },
     async execute(interaction) {
         const giveawayMessageId = '848245312815497237';
-        const giveawayChannel = interaction.client.channels.cache.get(interaction.channelId);
+        const giveawayChannel = interaction.client.channels.cache.get('833198809701679124');
         const giveawayMessage = await giveawayChannel.messages.fetch(giveawayMessageId);
 
         const giveawayEmojiId = '895480872243978280';
