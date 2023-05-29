@@ -83,8 +83,7 @@ module.exports = {
         .setTitle(subject)
         .setAuthor({
           name: 'The Pilot Club',
-          iconURL:
-            'iconURL: `https://static1.squarespace.com/static/614689d3918044012d2ac1b4/t/616ff36761fabc72642806e3/1634726781251/TPC_FullColor_TransparentBg_1280x1024_72dpi.png`',
+          iconURL: `https://static1.squarespace.com/static/614689d3918044012d2ac1b4/t/616ff36761fabc72642806e3/1634726781251/TPC_FullColor_TransparentBg_1280x1024_72dpi.png`,
                 url: `https://thepilotclub.org`
             })
             .addFields({
