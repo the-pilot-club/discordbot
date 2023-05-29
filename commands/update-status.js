@@ -6,11 +6,6 @@ module.exports = {
     .setName('update-status')
     .setDescription('Update the status message')
     .addStringOption(option =>
-      option.setName('message_id')
-        .setDescription('The ID of the message to update')
-        .setRequired(true)
-    )
-    .addStringOption(option =>
       option.setName('subject')
         .setDescription('What is the subject of the web service issue?')
         .setRequired(true)
@@ -71,13 +66,19 @@ module.exports = {
     const color3 = interaction.options.getString('status-color-3');
     const desc3 = interaction.options.getString('description-3');
 
-    try {
-      const channel = interaction.channel;
-      const message = await channel.messages.fetch(messageId);
+   
+  try {
+    const channel = interaction.guild.channels.cache.get('830202868892041226');
+    if (!channel) {
+      return interaction.reply('Unable to find the specified channel.');
+    }
 
-      if (!message) {
-        return interaction.reply('Unable to find the specified message.');
-      }
+    const messages = await channel.messages.fetch({ limit: 1 });
+    const message = messages.first();
+
+    if (!message) {
+      return interaction.reply('No messages found in the specified channel.');
+    }
 
       const embed = new EmbedBuilder()
         .setTitle(subject)
