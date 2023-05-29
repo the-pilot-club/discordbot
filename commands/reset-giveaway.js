@@ -1,13 +1,12 @@
 const { SlashCommandBuilder, Util } = require('discord.js');
 
 module.exports = {
-    data: {
-        name: 'reset-giveaway',
-        description: 'Reset the giveaway by removing reactions and role',
-    },
+    data: new SlashCommandBuilder()
+        .setName('reset-giveaway')
+        .setDescription('Reset the giveaway by removing reactions and role'),
     async execute(interaction) {
-        const giveawayMessageId = '848245312815497237';
-        const giveawayChannel = interaction.client.channels.cache.get('833198809701679124');
+        const giveawayMessageId = process.env.GIVEAWAY_MESSAGE;
+        const giveawayChannel = interaction.client.channels.cache.get(process.env.ABOUTANDSOP);
         const giveawayMessage = await giveawayChannel.messages.fetch(giveawayMessageId);
 
         const giveawayEmojiId = '895480872243978280';
