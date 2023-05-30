@@ -13,7 +13,7 @@ module.exports = {
 
         giveawayMessage.reactions.cache.get(giveawayEmoji.id).remove();
 
-        const giveawayRoleId = '860938566426558505';
+        const giveawayRoleId = process.env.GIVEAWAY_ROLE;
         const giveawayRole = interaction.guild.roles.cache.get(giveawayRoleId);
         giveawayRole.members.forEach((member) => {
             member.roles.remove(giveawayRole);
