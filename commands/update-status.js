@@ -68,7 +68,7 @@ module.exports = {
 
    
   try {
-    const channel = interaction.guild.channels.cache.get('830202868892041226');
+    const channel = interaction.guild.client.channels.cache.find(channel => channel.name === "club-notams")
     if (!channel) {
       return interaction.reply('Unable to find the specified channel.');
     }
