@@ -9,18 +9,20 @@ module.exports = {
         const giveawayChannel = interaction.client.channels.cache.get(process.env.ABOUTANDSOP);
         const giveawayMessage = await giveawayChannel.messages.fetch(giveawayMessageId);
 
-        const giveawayEmojiId = '895480872243978280';
+        const giveawayEmojiId = '8954808722439782801';
 
-        const reaction = giveawayMessage.reactions.cache.get(giveawayEmojiId).remove();
+        const giveawayReaction = giveawayMessage.reactions.cache.get(giveawayEmojiId);
+        if (giveawayReaction) {
+            giveawayReaction.remove();
+        }
+
 
         const giveawayRoleId = process.env.GIVEAWAY_ROLE;
         const giveawayRole = interaction.guild.roles.cache.get(giveawayRoleId);
-        giveawayRole.members.forEach((member) => {
-            member.roles.remove(giveawayRole);
-        });
-
+   const members = await interaction.guild.members.fetch();
+        members.forEach(members => members.roles.remove(giveawayRole));
         giveawayMessage.react(giveawayEmojiId);
 
-        await interaction.reply('I have reset the giveaway role and message!');
+        await interaction.reply('**I have reset the giveaway role and message!**');
     },
 };
