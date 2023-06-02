@@ -57,8 +57,7 @@ module.exports = {
     ),
 
   async execute(interaction) {
-    const messageId = interaction.options.getString('message_id');
-    const subject = message.embeds[0].title;
+    const messageId = interaction.options.getString('message-id');
     const color1 = interaction.options.getString('status-color-1');
     const desc1 = interaction.options.getString('description-1');
     const color2 = interaction.options.getString('status-color-2');
@@ -78,7 +77,7 @@ module.exports = {
     if (!message) {
       return interaction.reply('No messages found in the specified channel.');
     }
-
+    const subject = message.embeds[0].title;
       const embed = new EmbedBuilder()
         .setTitle(subject)
         .setAuthor({
