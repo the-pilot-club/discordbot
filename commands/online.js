@@ -15,7 +15,7 @@ module.exports = {
         const callsignFiltered = tpcPilots.filter(tpcPilots => tpcPilots.callsign.indexOf("TPC") > -1)
         //callsign's loop through each array
         if (remakrsFiltered.length === 0) {
-            remarksUsers.push('No one has their remarks set correctly')
+            remarksUsers.push('No one has their remarks set correctly.')
         }
         if (remakrsFiltered.length !== 0) {
             for (let i = 0; i < remakrsFiltered.length; i++) {
@@ -34,7 +34,7 @@ module.exports = {
         }
         const embed = new EmbedBuilder()
             .setTitle('Current Online TPC Members')
-            .setDescription(`Correct Remarks: \n${remarksUsers.join('')}\n No Remarkss:\n ${callsignUsers.join('')}`)
+            .setDescription(`Correct Remarks: \n${remarksUsers.join('')}\n No Remarks:\n ${callsignUsers.join('')}`)
             .setColor(`#37B6FF`)
             .setFooter({
                 text: `Made by TPC Dev Team`,

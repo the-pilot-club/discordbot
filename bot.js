@@ -14,7 +14,7 @@ let monthNames = [
     "mar",
     "apr",
     "may",
-    "june",
+    "jun",
     "jul",
     "aug",
     "sep",

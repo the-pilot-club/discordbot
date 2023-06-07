@@ -102,7 +102,7 @@ module.exports = {
             let joinRoles = roles.join(', ')
                 const embed = new EmbedBuilder()
                     .setAuthor({name: `${interaction.member.displayName}`, iconURL: `${interaction.user.displayAvatarURL()}`})
-                    .setTitle('Your Roles have been assigned!')
+                    .setTitle('Your roles have been assigned!')
                     .setDescription(`${joinRoles}`)
                     .setColor('#37B6FF')
                     .setFooter({

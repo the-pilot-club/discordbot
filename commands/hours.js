@@ -5,7 +5,7 @@ const fetch = require('node-fetch')
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('hours')
-        .setDescription('See how many Hours you have on the network!'),
+        .setDescription('See how many hours you have on the network!'),
     async execute(interaction) {
         const response = await fetch(`https://callsigns.thepilotclub.org/DiscordOperations/GetVatsimHrsInfo?Discordid=${interaction.user.id}`, {
             method: 'POST'
