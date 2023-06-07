@@ -4,7 +4,7 @@ const {EmbedBuilder} = require("discord.js");
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('airport')
-        .setDescription('Gives Information About a Specific Airport')
+        .setDescription('Gives information about a specific airport')
         .addStringOption(option =>
             option.setName('icao')
                 .setDescription('What is the ICAO of the Airport?')
