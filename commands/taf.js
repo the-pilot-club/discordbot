@@ -6,7 +6,7 @@ module.exports = {
 		.setName('taf')
 		.setDescription('Gives TAF for a Specific Airport').addStringOption(option =>
 			option.setName('icao')
-				.setDescription('The input to echo back')
+				.setDescription('Which airport do you want the TAF for?')
 				.setRequired(true)),
 	async execute(interaction) {
 		constant airport = interaction.options.getString('icao')
