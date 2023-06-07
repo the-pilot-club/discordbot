@@ -14,7 +14,10 @@ module.exports = {
         const airport = interaction.options.getString('icao')
         const response = await fetch(`https://metar.vatsim.net/metar.php?id=${airport}`);
         const body = await response.text();
-
+  if (!body) {
+            interaction.reply(`${airport} does not exist!`);
+            return;
+        }
         let airportEmbed = new EmbedBuilder()
             .setTitle('Airport')
             .setDescription(`Information about ${airport.toUpperCase()}`)
