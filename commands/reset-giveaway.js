@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, Util } = require('discord.js');
+const {SlashCommandBuilder, Util} = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -19,9 +19,9 @@ module.exports = {
 
         const giveawayRoleId = process.env.GIVEAWAY_ROLE;
         const giveawayRole = interaction.guild.roles.cache.get(giveawayRoleId);
-   const members = await interaction.guild.members.fetch();
+        const members = await interaction.guild.members.fetch();
         members.forEach(members => members.roles.remove(giveawayRole));
-        giveawayMessage.react(giveawayEmojiId);
+        giveawayMessage.react(giveawayEmojiId).catch(err => console.log(err));
 
         await interaction.reply('**I have reset the giveaway role and message!**');
     },
