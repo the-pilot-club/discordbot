@@ -27,7 +27,7 @@ module.exports = {
         const row = new ActionRowBuilder()
             .addComponents(
                 new ButtonBuilder()
-                    .setLabel("More TPC Group Flight's")
+                    .setLabel("More TPC Group Flights")
                     .setURL("https://thepilotclub.org/dispatch")
                     .setStyle(ButtonStyle.Link),
             );

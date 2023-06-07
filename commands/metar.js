@@ -6,7 +6,7 @@ module.exports = {
         .setName('metar')
         .setDescription('Gives METAR for a Specific Airport').addStringOption(option =>
             option.setName('icao')
-                .setDescription('The input to echo back')
+                .setDescription('The ICAO of the airport')
                 .setRequired(true)),
     async execute(interaction) {
         const airport = interaction.options.getString('icao')
