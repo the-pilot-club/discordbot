@@ -13,8 +13,9 @@ module.exports = {
                     {name: '🟢', value: '🟢'},
                     {name: '🟡', value: '🟡'},
                     {name: '🔴', value: '🔴'},)
+                    
         ).addStringOption(option =>
-                option.setName('description-1').setDescription('What is the description of the status?').setRequired(true)
+                option.setName('description-1').setDescription('What is the description of the status?').setRequired(true).setMaxLength(100)
         ).addStringOption(option =>
             option.setName('status-color-2').setDescription('What is the status of the websites?').setRequired(false)
                 .addChoices(
@@ -22,7 +23,7 @@ module.exports = {
                     {name: '🟡', value: '🟡'},
                     {name: '🔴', value: '🔴'},)
         ).addStringOption(option =>
-            option.setName('description-2').setDescription('What is the description of the status?').setRequired(false)
+            option.setName('description-2').setDescription('What is the description of the status?').setRequired(false).setMaxLength(100)
         ).addStringOption(option =>
             option.setName('status-color-3').setDescription('What is the status of the websites?').setRequired(false)
                 .addChoices(
@@ -30,7 +31,7 @@ module.exports = {
                     {name: '🟡', value: '🟡'},
                     {name: '🔴', value: '🔴'},)
         ).addStringOption(option =>
-            option.setName('description-3').setDescription('What is the description of the status?').setRequired(false)
+            option.setName('description-3').setDescription('What is the description of the status?').setRequired(false).setMaxLength(100)
         ),
     async execute(interaction) {
         const subject = interaction.options.getString('subject')

@@ -8,7 +8,8 @@ module.exports = {
         .addStringOption(option =>
             option.setName('icao')
                 .setDescription('The input to echo back')
-                .setRequired(true)),
+                .setRequired(true)
+                .setMaxLength(4)),
     async execute(interaction) {
         const airport = interaction.options.getString('icao')
         const response = await fetch(`https://metar.vatsim.net/metar.php?id=${airport}`);

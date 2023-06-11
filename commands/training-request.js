@@ -4,11 +4,11 @@ const { ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle } = req
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('training-request')
-        .setDescription('Use this command if you would like to Request Training!'),
+        .setDescription('Use this command if you would like to request training!'),
     async execute(interaction) {
         const modal  = new ModalBuilder()
             .setCustomId('training-request')
-            .setTitle('Request A Training Session')
+            .setTitle('Request a training session')
         const name = new TextInputBuilder()
             .setCustomId('name')
             .setLabel('What is your Full Name?')
@@ -19,7 +19,7 @@ module.exports = {
             .setStyle(TextInputStyle.Short)
         const course = new TextInputBuilder()
             .setCustomId('course')
-            .setLabel('What is the course you are taking?')
+            .setLabel('What course are you taking?')
             .setStyle(TextInputStyle.Short)
         const time = new TextInputBuilder()
             .setCustomId('time')
