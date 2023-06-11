@@ -1,5 +1,5 @@
-const {SlashCommandBuilder} = require{'discord.js'}
-const {EmbedBuilder} = require{"discord.js"}
+const {SlashCommandBuilder} = require('discord.js')
+const {EmbedBuilder} = require("discord.js")
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -9,8 +9,8 @@ module.exports = {
 				.setDescription('Which airport do you want the TAF for?')
 				.setRequired(true)),
 	async execute(interaction) {
-		constant airport = interaction.options.getString('icao')
-		constant response = await fetch(`https://www.aviationweather.gov/taf/data?ids=${airport}`);
+		const airport = interaction.options.getString('icao')
+		const response = await fetch(`https://www.aviationweather.gov/taf/data?ids=${airport}`);
 		const body = await response.text();
 		if (body !== undefined && body !== '') {
             let metarEmbed = new EmbedBuilder()
