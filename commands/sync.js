@@ -39,7 +39,7 @@ module.exports = {
             let rating = ratingBody.rating
                 let pilotrating = ratingBody.pilotrating
                 let roles = []
-                const MANAGED_ROLES = ["ATC", "S1", "S2", "S3", "C1", "C3", "I1", "I3", "Network Supervisor", "Network Administrator", "P0", "P1", "P2", "P3", "P4", "Flight Instructor", "Flight Examiner"];
+                const MANAGED_ROLES = ["ATC", "S1", "S2", "S3", "C1", "C3", "I1", "I3", "Network Supervisor", "Network Administrator", "P0", "P1", "P2", "P3", "P4", "P5", "P6"];
                 switch(rating){
                     case 2: //S1
                         roles.push("ATC")
@@ -94,10 +94,10 @@ module.exports = {
                     roles.push("P4")
                         break
                     case 31:
-                        roles.push("Flight Instructor")
+                        roles.push("P5")
                         break
                     case 63:
-                        roles.push('Flight Examiner')
+                        roles.push("P6")
                 }
             let joinRoles = roles.join(', ')
                 const embed = new EmbedBuilder()
