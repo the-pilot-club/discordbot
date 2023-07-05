@@ -7,7 +7,7 @@ module.exports = {
         .setName('sync')
         .setDescription('Sync your VATSIM Ratings for TPC!'),
     async execute(interaction) {
-        const response = await fetch(`https://api.vatsim.net/v2/members/discord/1`, {
+        const response = await fetch(`https://api.vatsim.net/v2/members/discord/${interaction.user.id}`, {
             method: 'GET'
         })
         if (!response) {
