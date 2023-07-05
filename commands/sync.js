@@ -16,7 +16,6 @@ module.exports = {
             return
         }
         let body = await response.json()
-        console.log(body)
         let notFound = body.detail
         let cid = body.user_id
         if (notFound === 'Not Found'){
