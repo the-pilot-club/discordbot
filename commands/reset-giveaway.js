@@ -1,4 +1,4 @@
-const {SlashCommandBuilder, Util} = require('discord.js');
+const {SlashCommandBuilder} = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -9,7 +9,7 @@ module.exports = {
         const giveawayChannel = interaction.client.channels.cache.get(process.env.ABOUTANDSOP);
         const giveawayMessage = await giveawayChannel.messages.fetch(giveawayMessageId);
 
-        const giveawayEmojiId = '8954808722439782801';
+        const giveawayEmojiId = ':giveaway:895480872243978280';
 
         const giveawayReaction = giveawayMessage.reactions.cache.get(giveawayEmojiId);
         if (giveawayReaction) {
