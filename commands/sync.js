@@ -7,15 +7,16 @@ module.exports = {
         .setName('sync')
         .setDescription('Sync your VATSIM Ratings for TPC!'),
     async execute(interaction) {
-        const response = await fetch(`https://api.vatsim.net/v2/members/discord/${interaction.user.id}`, {
+        const response = await fetch(`https://api.vatsim.net/v2/members/discord/1`, {
             method: 'GET'
         })
-        if (!response || response.status !== 200) {
+        if (!response) {
             console.log(`The Response could not be completed as dialed for ${interaction.member.displayName}`)
             interaction.reply({content: 'This Function could not be completed as dialed. Please try again later', ephemeral:true})
             return
         }
         let body = await response.json()
+        console.log(body)
         let notFound = body.detail
         let cid = body.user_id
         if (notFound === 'Not Found'){
