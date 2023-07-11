@@ -156,10 +156,20 @@ client.on('ready', async function () {
     cron.schedule('0 18 * * 2', function () {
         sendNewEvent(eventChannel, "ga-tuesday", "<@&937389346204557342> <@&898240224189120532>");
     });
-    // Bush Wednesday - Disabled for FEB.
-    // cron.schedule('0 18 * * 3', function () {
-    //     sendNewEvent(eventChannel, "bush-wednesday", "<@&937389346204557342> <@&898240224189120532>");
-    // })
+    // Bush Wednesday
+    cron.schedule('0 19 22-28 * * [ date +\%u = 3 ]', function () {
+    sendNewEvent(eventChannel, "bush-wednesday", "<@&937389346204557342> <@&898240224189120532>");
+    });
+
+    // Challenge Flight 
+    cron.schedule('0 19 8-14 * * [ `date +\\%u` = 6 ]', function () {
+        sendNewEvent(
+          eventChannel,
+          'challenge-flight',
+          '<@&937389346204557342>'
+        );
+      });
+      
     // // Fly In Thursday
     cron.schedule('0 18 * * 4', function () {
         sendNewEvent(eventChannel, "sbr-tpc-fly-in-thursday", "<@&937389346204557342>");
