@@ -7,3 +7,4 @@ workspace.xml
 /commands/charters role.js
 .dockerignore
 Dockerfile
+.idea
