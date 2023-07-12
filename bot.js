@@ -163,11 +163,7 @@ client.on('ready', async function () {
 
     // Challenge Flight 
     cron.schedule('0 19 8-14 * * [ `date +\\%u` = 6 ]', function () {
-        sendNewEvent(
-          eventChannel,
-          'challenge-flight',
-          '<@&937389346204557342>'
-        );
+        sendNewEvent(eventChannel,'challenge-flight','<@&937389346204557342>');
       });
       
     // // Fly In Thursday
