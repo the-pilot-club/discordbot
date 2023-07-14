@@ -102,25 +102,7 @@ client.on('guildMemberUpdate', async (oldMember, newMember) => {
 
 // Cron Jobs for the quiz and the event postings
 
-const file = require("./questions.json")
 const cron = require('node-cron');
-
-function randomNum(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min) + min)
-}
-
-function sendNewQuestion(channel) {
-    let generatedNum = randomNum(0, questions.length)
-    channel.send(questions[generatedNum][0]).then(message => {
-        message.react('🇦');
-        message.react('🇧');
-        message.react('🇨');
-    });
-    file.latestQuestion = generatedNum
-    fs.writeFileSync("questions.json", JSON.stringify(file, null, 2));
-}
 
 function sendNewEvent(channel, flight, ping) {
     const today = new Date();
@@ -133,22 +115,56 @@ function sendNewEvent(channel, flight, ping) {
     })
 }
 
-function sendNewAnswer(channel) {
-    channel.send(questions[file.latestQuestion][1]);
+async function sendNewQuestion(channel) {
+    const apiUrl = process.env.API_URL
+    const question = await fetch(apiUrl)
+    const questionBody = await question.json()
+    channel.send(`<:training_team:895480894901592074> ${questionBody.question}\n\n🇦 ${questionBody.optionA}\n🇧 ${questionBody.optionB}\n🇨 ${questionBody.optionC}`)
+        .then(message => {
+        message.react('🇦');
+        message.react('🇧');
+        message.react('🇨');
+    });
+}
+async function sendNewAnswer(channel) {
+    const apiUrl = process.env.API_URL
+    const answer = await fetch(apiUrl)
+    const answerBody = await answer.json()
+    switch (answerBody.correctAnswer){
+        case 'A':
+            channel.send(`<:training_team:895480894901592074> The correct answer is 🇦 ${answerBody.optionA}`)
+            break
+        case 'B':
+            channel.send(`<:training_team:895480894901592074> The correct answer is 🇧 ${answerBody.optionB}`)
+            break
+        case 'C':
+            channel.send(`<:training_team:895480894901592074> The correct answer is 🇨 ${answerBody.optionC}`)
+            break
+    }
 }
 
-//Parsing questions
-let questions = file.questions;
+async function updateQuestion(){
+    const apiUrl = process.env.NEW_QUESTION_URL
+    const response = await fetch(apiUrl)
+    const body = await response.json()
+    console.log(body)
+}
 
 client.on('ready', async function () {
     const channel = await client.channels.cache.find(channel => channel.name === "aviation-quiz");
     const eventChannel = await client.channels.cache.find(channel => channel.name === "crew-chat");
-//Getting random question every day:  0 57 22 * * *
-    cron.schedule('0 00 08 * * *', function () { //Correct time is 0 00 08 * * *
-        sendNewQuestion(channel);
-    });
+    //Getting random question every day:  0 57 22 * * *
+        //Sends Answer to current Question
     cron.schedule('0 52 07 * * *', function () { // Correct time is 0 52 07 * * *
         sendNewAnswer(channel);
+    });
+        //Sends an API Call to change the current question
+    cron.schedule('0 58 07 * * *', function () { // Correct time is 0 58 07 * * *
+        updateQuestion()
+    });
+        //Sends the new question.
+    cron.schedule('0 00 08 * * *', function () { //Correct time is 0 00 08 * * *
+        sendNewQuestion(channel);
     });
 
 //EVENTS:
