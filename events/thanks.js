@@ -3,7 +3,7 @@ module.exports = {
     name: 'messageCreate',
     once: false,
     execute(message) {
-        if (message.content.toLowerCase() === "thanks tpc") {
+        if (message.content.toLowerCase().includes("thanks tpc")) {
             const embed = new EmbedBuilder()
                 .setAuthor({
                     name: `The Pilot Club`,
