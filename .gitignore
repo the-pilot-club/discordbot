@@ -5,5 +5,5 @@ vatsimData.json
 questions.json
 workspace.xml
 /commands/charters role.js
-.dockerignore
-Dockerfile
+.idea
+tpc_discord_bot

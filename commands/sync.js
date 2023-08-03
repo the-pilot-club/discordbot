@@ -7,30 +7,32 @@ module.exports = {
         .setName('sync')
         .setDescription('Sync your VATSIM Ratings for TPC!'),
     async execute(interaction) {
-        const response = await fetch(`https://callsigns.thepilotclub.org/DiscordOperations/GetVatsimId?DiscordId=${interaction.user.id}`, {
-            method: 'POST'
+        const response = await fetch(`https://api.vatsim.net/v2/members/discord/${interaction.user.id}`, {
+            method: 'GET'
         })
-        if (!response || response.status !== 200) {
+        if (!response) {
             console.log(`The Response could not be completed as dialed for ${interaction.member.displayName}`)
+            interaction.reply({content: 'This Function could not be completed as dialed. Please try again later', ephemeral:true})
             return
         }
         let body = await response.json()
-        let cid = body.cid
-        if (cid === "0"){
+        let notFound = body.detail
+        let cid = body.user_id
+        if (notFound === 'Not Found'){
             const row = new ActionRowBuilder()
                         .addComponents(
                             new ButtonBuilder()
                                 .setLabel('Connect my account!')
-                                .setURL(`https://callsigns.thepilotclub.org/sendauthentication.aspx?id=${interaction.user.id}`)
+                                .setURL(`https://community.vatsim.net`)
                                 .setStyle(ButtonStyle.Link),
                         );
                     await interaction.reply({
-                        content: `Please connect your VATSIM account to the TPC Discord!`,
+                        content: `Please connect your VATSIM account to the VATSIM Community Hub!`,
                         components: [row],
                         ephemeral: true
                     }).catch(err => { console.log(err)})
             } else {
-            const ratingResponse = await fetch(`https://api.vatsim.net/api/ratings/${cid}`)
+            const ratingResponse = await fetch(`https://api.vatsim.net/v2/members/${cid}`)
             if (!ratingResponse || ratingResponse.status !== 200) {
                 console.log(`The ratingResponse could not be completed as dialed for ${interaction.member.displayName}`)
                 return
@@ -39,7 +41,7 @@ module.exports = {
             let rating = ratingBody.rating
                 let pilotrating = ratingBody.pilotrating
                 let roles = []
-                const MANAGED_ROLES = ["ATC", "S1", "S2", "S3", "C1", "C3", "I1", "I3", "Network Supervisor", "Network Administrator", "P0", "P1", "P2", "P3", "P4", "Flight Instructor", "Flight Examiner"];
+                const MANAGED_ROLES = ["ATC", "S1", "S2", "S3", "C1", "C3", "I1", "I3", "Network Supervisor", "Network Administrator", "P0", "P1", "P2", "P3", "P4", "P5", "P6"];
                 switch(rating){
                     case 2: //S1
                         roles.push("ATC")
@@ -94,10 +96,10 @@ module.exports = {
                     roles.push("P4")
                         break
                     case 31:
-                        roles.push("Flight Instructor")
+                        roles.push("P5")
                         break
                     case 63:
-                        roles.push('Flight Examiner')
+                        roles.push("P6")
                 }
             let joinRoles = roles.join(', ')
                 const embed = new EmbedBuilder()
