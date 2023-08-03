@@ -7,7 +7,9 @@ module.exports = {
         .setDescription('The link to find out our next flight!'),
     async execute(interaction) {
 
-        const event = (await interaction.guild.scheduledEvents.fetch()).first()
+        const events = await interaction.guild.scheduledEvents.fetch();
+        const sortedEvents = events.sort((a, b) => a.scheduledStartAt - b.scheduledStartAt);
+        const event = sortedEvents.first();
         const embed = new EmbedBuilder()
             .setAuthor({name: `${event.name}`})
             .setDescription(`${event.description}`)
