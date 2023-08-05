@@ -12,10 +12,10 @@ module.exports = {
         const event = sortedEvents.first();
         const embed = new EmbedBuilder()
             .setAuthor({name: `${event.name}`})
-            .setDescription(`${event.description}` || 'Not included')
+            .setDescription(`${event.description}` ?? 'Not included')
             .addFields({name: 'Event Start Time:', value: `${event.scheduledStartAt}`}, {
                 name: 'Voice Channel:',
-                value: `<#${event.channelId}>` || 'Not included'
+                value: event.channelId ?  `<#${event.channelId}>` :'Not Included'
             })
             .setColor('#37B6FF')
             .setImage(event.coverImageURL())
