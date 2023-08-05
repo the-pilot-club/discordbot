@@ -14,15 +14,17 @@ module.exports = {
         if (event === undefined) {
             interaction.reply('No events :(')
         } else {
-
-
+interaction.deferReply();
+let eventTime = Date.parse(event.scheduledstartat) / 1000;
+let timestamp = `<t:${futureTime}:t>`;
             const embed = new EmbedBuilder()
                 .setAuthor({name: `${event.name ? event.name: 'Not included'}`})
                 .setDescription(`${event.description ? event.description : 'Not Included'}`)
                 .addFields({name: 'Event Start Time:', value: `${event.scheduledStartAt}`}, {
                     name: 'Voice Channel:',
-                    value: event.channelId ? `<#${event.channelId}>` : 'Not Included'
-                })
+                    value: event.channelId ? `<#${event.channelId}>` : 'Not Included',
+                },
+                {name: 'Local Start Time:', value: `${timestamp}}
                 .setColor('#37B6FF')
                 .setImage(event.coverImageURL({size: 4096}))
                 .setTimestamp()
