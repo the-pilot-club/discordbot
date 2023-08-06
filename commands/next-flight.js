@@ -6,20 +6,19 @@ module.exports = {
     .setName('next-flight')
     .setDescription('The link to find out our next flight!'),
   async execute (interaction) {
-    interaction.deferReply()
     const events = await interaction.guild.scheduledEvents.fetch()
     const sortedEvents = events.sort((a, b) => a.scheduledStartAt - b.scheduledStartAt)
     const event = sortedEvents.first()
 
     if (event === undefined) {
-      await interaction.editReply('No events :(')
+      await interaction.reply('No events :(')
     } else {
       const eventTime = Date.parse(event.scheduledStartAt) / 1000
       const timestamp = `<t:${eventTime}:F>`
       const embed = new EmbedBuilder()
         .setAuthor({ name: `${event.name ? event.name : 'Not included'}` })
         .setDescription(`${event.description ? event.description : 'Not Included'}`)
-        .addFields({ name: 'Event Start Time:', value: `${timestamp ? timestamp : 'Not Included'}` }, {
+        .addFields({ name: 'Event Start Time:', value: `${timestamp || 'Not Included'}` }, {
           name: 'Voice Channel:',
           value: event.channelId ? `<#${event.channelId}>` : 'Not Included'
         })
@@ -39,7 +38,7 @@ module.exports = {
             .setURL('https://thepilotclub.org/dispatch')
             .setStyle(ButtonStyle.Link)
         )
-      await interaction.editReply({ content: 'Next TPC Group Flight:', embeds: [embed], components: [row] })
+      await interaction.reply({ content: 'Next TPC Group Flight:', embeds: [embed], components: [row] })
     }
   }
 }
