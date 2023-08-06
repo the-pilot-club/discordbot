@@ -19,7 +19,7 @@ module.exports = {
       const embed = new EmbedBuilder()
         .setAuthor({ name: `${event.name ? event.name : 'Not included'}` })
         .setDescription(`${event.description ? event.description : 'Not Included'}`)
-        .addFields({ name: 'Event Start Time:', value: `${timestamp}` }, {
+        .addFields({ name: 'Event Start Time:', value: `${timestamp ? timestamp : 'Not Included'}` }, {
           name: 'Voice Channel:',
           value: event.channelId ? `<#${event.channelId}>` : 'Not Included'
         })
