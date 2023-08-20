@@ -187,9 +187,9 @@ client.on('ready', async function () {
         sendNewEvent(eventChannel, "sbr-tpc-fly-in-thursday", "<@&937389346204557342>");
     });
     // //Sunday Funday
-    cron.schedule('0 13 * * 0', function () {
-        sendNewEvent(eventChannel, "sunday-funday", "<@&937389346204557342>");
-    });
+    // cron.schedule('0 13 * * 0', function () {
+    //     sendNewEvent(eventChannel, "sunday-funday", "<@&937389346204557342>");
+    // });
 });
 
 module.exports = client;
