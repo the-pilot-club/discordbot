@@ -4,8 +4,8 @@ module.exports = {
   execute (message) {
     if (message.content.toLowerCase() === 'bump wars') {
       message.reply('**BUMP WARS** \n \n' +
-                '__Team 1:__\n\n- Dylan | TPC1496 | DELA\n- Serge | TPC6\n- Kelvin | TPC1992 | SBxx' +
-                '\n\n__Team 2:__\n\n- Caleb Y | TPC452 | 787\n- Rich P | N7RP\n- Chris | TPC139 | KUHC' +
+                '__Team 1: Law and Order__\n\n- Dylan | TPC1496 | DELA\n- Serge | TPC6\n- Kelvin | TPC1992 | SBxx' +
+                '\n\n__Team 2: Angry Monkeys__\n\n- Caleb Y | TPC452 | 787\n- Rich P | N7RP\n- Chris | TPC139 | KUHC' +
                 ' \n \n__Rules:__ \n' +
                 '1: type `/bump` to bump the server on Disboard \n' +
                 '2: Bumps are only possible once every 2 hours \n' +
