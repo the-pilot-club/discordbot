@@ -45,7 +45,7 @@ client.on('interactionCreate', async interaction => {
     console.error(error)
     await interaction.reply({
       content: 'There was an error while executing this command! Please let Eric | ZSE | TPC76 know ASAP so that a fix can occur!' +
-                '\n \nIf this is the booking or PIREP Command, please un-archive the channel as this is the reason you are getting this error',
+        '\n \nIf this is the booking or PIREP Command, please un-archive the channel as this is the reason you are getting this error',
       ephemeral: true
     }).catch(err => (console.log(err)))
   }
@@ -126,6 +126,7 @@ async function sendNewQuestion (channel) {
       message.react('🇨')
     })
 }
+
 async function sendNewAnswer (channel) {
   const apiUrl = process.env.API_URL
   const answer = await fetch(apiUrl)

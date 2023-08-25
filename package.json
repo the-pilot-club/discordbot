@@ -4,7 +4,8 @@
   "description": "",
   "scripts": {
     "start": "node bot.js",
-    "devStart": "nodemon bot.js"
+    "devStart": "nodemon bot.js",
+    "lint:fix": "eslint --fix --ext .js ./** -c .eslintrc.json"
   },
   "dependencies": {
     "@discordjs/rest": "^0.4.1",
@@ -24,11 +25,15 @@
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-import": "^2.28.0",
     "eslint-plugin-n": "^16.0.1",
-    "eslint-plugin-promise": "^6.1.1"
+    "eslint-plugin-promise": "^6.1.1",
+    "pre-commit": "^1.2.2"
   },
   "nodemonConfig": {
     "ignore": [
       "*.json"
     ]
-  }
+  },
+  "pre-commit": [
+    "lint:fix"
+  ]
 }
