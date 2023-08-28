@@ -23,7 +23,7 @@ module.exports = {
         content: `Thank you for submitting an Ad Hoc training request for ${time}. Please note, requests may or may not be honored, and are deleted every 24h.`,
         ephemeral: true
       })
-      channel.send({ embeds: [trainEmbed] })
+      channel.send({ content: '<@&945775006175076492>', embeds: [trainEmbed] })
     }
   }
 }
