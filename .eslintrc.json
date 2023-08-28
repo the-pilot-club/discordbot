@@ -9,5 +9,7 @@
         "sourceType": "module"
     },
     "rules": {
-    }
+        "camelcase": "off"
+    },
+    "ignorePatterns": ["Dockerfile", "*.png", "*.json", "*.env", "*.md"]
 }
