@@ -3,7 +3,7 @@ module.exports = {
   once: false,
   execute (message) {
     if (message.content.toLowerCase() === 'bump wars') {
-      message.reply('**BUMP WARS** \n \n' +
+      message.reply('**[BUMP WARS](https://discord.com/channels/830201397974663229/958549204073087086)** \n \n' +
                 '__Team 1: Law and Order__\n\n- Dylan | TPC1496 | DELA\n- Serge | TPC6\n- Kelvin | TPC1992 | SBxx' +
                 '\n\n__Team 2: Angry Monkeys__\n\n- Caleb Y | TPC452 | 787\n- Rich P | N7RP\n- Chris | TPC139 | KUHC' +
                 ' \n \n__Rules:__ \n' +
