@@ -1,5 +1,5 @@
-const { ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js')
-module.exports = {
+import { ActionRowBuilder, ButtonBuilder, ButtonStyle } from 'discord.js'
+export default {
   name: 'messageCreate',
   once: false,
   execute (message) {

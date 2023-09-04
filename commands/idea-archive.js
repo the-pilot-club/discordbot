@@ -1,7 +1,6 @@
-const { SlashCommandBuilder } = require('discord.js')
-const { EmbedBuilder } = require('discord.js')
+import { SlashCommandBuilder, EmbedBuilder } from 'discord.js'
 
-module.exports = {
+export default {
   data: new SlashCommandBuilder()
     .setName('idea-archive')
     .setDescription('This command is for the Admin team to process archives for ideas that have been put in the idea box.'
@@ -31,11 +30,9 @@ module.exports = {
       .setFooter({ text: 'Made by TPC Dev Team' })
     if (interaction.member.roles.cache.some(role => role.name === 'Air Marshals')) {
       if (reason !== null) {
-        noreasonembed.addFields({ name: 'Reason Given', value: `${reason}` })
-        channel.send({ embeds: [noreasonembed] })
-      } else {
-        channel.send({ embeds: [noreasonembed] })
+        noreasonembed.addFields({name: 'Reason Given', value: `${reason}`})
       }
+      channel.send({ embeds: [noreasonembed] })
       await interaction.reply({ content: 'The idea has been posted in the archive channel', ephemeral: true })
     } else {
       interaction.reply({
@@ -44,5 +41,4 @@ module.exports = {
       })
     }
   }
-
 }

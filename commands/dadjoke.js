@@ -1,6 +1,6 @@
-const { SlashCommandBuilder } = require('discord.js')
+import { SlashCommandBuilder } from 'discord.js'
 
-module.exports = {
+export default {
   data: new SlashCommandBuilder()
     .setName('dad-joke')
     .setDescription('Tells you a dad joke!'),
@@ -16,6 +16,5 @@ module.exports = {
     } else {
       interaction.reply('I could not get a dad joke for you :( ')
     }
-    ;
   }
 }

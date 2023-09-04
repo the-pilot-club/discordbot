@@ -1,8 +1,6 @@
-const { SlashCommandBuilder } = require('discord.js')
-const { ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js')
-const { EmbedBuilder } = require('discord.js')
-const fetch = require('node-fetch')
-module.exports = {
+import { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } from 'discord.js'
+import fetch from 'node-fetch'
+export default {
   data: new SlashCommandBuilder()
     .setName('hours')
     .setDescription('See how many hours you have on the network!'),

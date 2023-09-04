@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   name: 'guildMemberUpdate',
   once: false,
   execute (oldMember, newMember) {

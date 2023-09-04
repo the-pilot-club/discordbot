@@ -1,7 +1,6 @@
-const { SlashCommandBuilder } = require('discord.js')
-const { ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js')
+import { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } from 'discord.js'
 
-module.exports = {
+export default {
   data: new SlashCommandBuilder()
     .setName('server-commands')
     .setDescription('The link to get a list of server commands!'),

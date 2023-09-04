@@ -2,13 +2,16 @@
   "name": "discord-bot",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "scripts": {
     "start": "node bot.js",
-    "devStart": "nodemon bot.js",
-    "lint:fix": "eslint --fix --ext .js ./** -c .eslintrc.json"
+    "start:dev": "nodemon bot.js",
+    "lint:fix": "eslint --fix --ext .js ./events ./commands bot.js deploy-commands.js -c .eslintrc.json"
   },
   "dependencies": {
     "@discordjs/rest": "^0.4.1",
+    "@sentry/node": "^7.66.0",
+    "@sentry/profiling-node": "^1.2.0",
     "discord-api-types": "^0.32.1",
     "discord.js": "^14.7.1",
     "dotenv": "^16.0.0",

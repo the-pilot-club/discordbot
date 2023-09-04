@@ -1,14 +1,12 @@
-const { SlashCommandBuilder } = require('discord.js')
-const { ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle } = require('discord.js')
+import { ActionRowBuilder, ModalBuilder, SlashCommandBuilder, TextInputBuilder, TextInputStyle } from 'discord.js'
 
-module.exports = {
+export default {
   data: new SlashCommandBuilder()
     .setName('training-request')
     .setDescription('Use this command if you would like to request training!'),
   async execute (interaction) {
     const modal = new ModalBuilder()
       .setCustomId('training-request')
-      .setTitle('Request a training session')
     const name = new TextInputBuilder()
       .setCustomId('name')
       .setLabel('What is your Full Name?')

@@ -1,7 +1,6 @@
-const { SlashCommandBuilder } = require('discord.js')
-const { EmbedBuilder } = require('discord.js')
+import { SlashCommandBuilder, EmbedBuilder } from 'discord.js'
 
-module.exports = {
+export default {
   data: new SlashCommandBuilder()
     .setName('charters-booking')
     .setDescription('Use this command to book an aircraft in OnAir.'

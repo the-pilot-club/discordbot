@@ -1,7 +1,6 @@
-const { EmbedBuilder } = require('discord.js')
-const { ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js')
+import { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } from 'discord.js'
 
-module.exports = {
+export default {
   name: 'messageCreate',
   once: false,
   execute (message) {

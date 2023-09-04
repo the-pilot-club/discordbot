@@ -1,34 +1,47 @@
-require('dotenv').config()
-const { Client, Collection, GatewayIntentBits } = require('discord.js')
-const client = new Client({
+import dotenv from 'dotenv'
+import Sentry from '@sentry/node'
+import { ProfilingIntegration } from '@sentry/profiling-node'
+import { Client, Collection, GatewayIntentBits } from 'discord.js'
+import { schedule } from 'node-cron'
+import commands from './commands/index.js'
+import events from './events/index.js'
+import eventsCrons from "./eventsCrons.js";
+
+dotenv.config()
+
+let  guildConstants;
+
+guildConstants = import("./env-constants/dev_constants.js").default
+
+if (process.env.NODE_ENV !== "dev") {
+  guildConstants = import("./env-constants/prod_constants.js").default
+}
+
+Sentry.init({
+  dsn: 'https://cca48e5c953b5ff7a895fbb6d8caaa5c@o4505802902863872.ingest.sentry.io/4505813582807040',
+  integrations: [
+    new ProfilingIntegration()
+  ],
+  // Performance Monitoring
+  tracesSampleRate: 1.0, // Capture 100% of the transactions, reduce in production!
+  // Set sampling rate for profiling - this is relative to tracesSampleRate
+  profilesSampleRate: 1.0 // Capture 100% of the transactions, reduce in production!
+})
+
+export const client = new Client({
   intents: [
     GatewayIntentBits.Guilds, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMessages, GatewayIntentBits.DirectMessages,
     GatewayIntentBits.DirectMessageReactions, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildScheduledEvents]
 })
-const fs = require('node:fs')
-const path = require('node:path')
-client.setMaxListeners(0)
-const monthNames = [
-  'jan',
-  'feb',
-  'mar',
-  'apr',
-  'may',
-  'jun',
-  'jul',
-  'aug',
-  'sep',
-  'oct',
-  'nov',
-  'dec'
-]
-client.commands = new Collection()
-const commandsPath = path.join(__dirname, 'commands')
-const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'))
 
-for (const file of commandFiles) {
-  const filePath = path.join(commandsPath, file)
-  const command = require(filePath)
+client.setMaxListeners(0)
+
+client.commands = new Collection()
+
+/** @type {Object<string, Command>} */
+for (const commandName in commands) {
+  /** @type Command */
+  const command = commands[commandName]
   client.commands.set(command.data.name, command)
 }
 
@@ -51,22 +64,20 @@ client.on('interactionCreate', async interaction => {
   }
 })
 
-const eventsPath = path.join(__dirname, 'events')
-const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'))
-
-for (const file of eventFiles) {
-  const filePath = path.join(eventsPath, file)
-  const event = require(filePath)
-  if (event.once) {
-    client.once(event.name, (...args) => event.execute(...args))
-  } else {
+/** @type import('./events/index.js').default */
+for (const eventName in events) {
+  const event = events[eventName]
+  if (!event.once) {
     client.on(event.name, (...args) => event.execute(...args))
+    continue
   }
+
+  client.once(event.name, (...args) => event.execute(...args))
 }
 
 // Role congrats and Charters DM
 client.on('guildMemberUpdate', async (oldMember, newMember) => {
-  const channel = client.channels.cache.find(channel => channel.name === 'crew-chat')
+  const channel = client.channels.
   if (oldMember.roles.cache.has(process.env.COMMUTER_ROLE)) return
   if (newMember.roles.cache.has(process.env.COMMUTER_ROLE)) {
     channel.send({
@@ -101,16 +112,9 @@ client.on('guildMemberUpdate', async (oldMember, newMember) => {
 })
 
 // Cron Jobs for the quiz and the event postings
-
-const cron = require('node-cron')
-
 function sendNewEvent (channel, flight, ping) {
-  const today = new Date()
-  const day = today.getDate() // 24
-  const month = monthNames[today.getMonth()] // may
-  const year = today.getFullYear() // 2020
   channel.send({
-    content: ping + ` One hour until the flight briefing. Head to the airport soon to start setting up! See you there! https://www.thepilotclub.org/dispatch/${flight}-${day}${month}${year}`,
+    content: ping + ` One hour until the flight briefing. Head to the airport soon to start setting up! See you there! https://www.thepilotclub.org/dispatch/${flight}-${new Date().toLocaleDateString('en-GB').replaceAll("/", "")}`,
     files: [{ attachment: `./pics/${flight}.png`, name: 'file.png' }]
   })
 }
@@ -152,46 +156,27 @@ async function updateQuestion () {
 }
 
 client.on('ready', async function () {
-  const channel = await client.channels.cache.find(channel => channel.name === 'aviation-quiz')
+  const channel = await client.channels.get(guildConstants)
   const eventChannel = await client.channels.cache.find(channel => channel.name === 'crew-chat')
   // Getting random question every day:  0 57 22 * * *
   // Sends Answer to current Question
-  cron.schedule('0 52 12 * * *', function () { // Correct time is 0 52 07 * * *
+  schedule('0 52 12 * * *', function () { // Correct time is 0 52 07 * * *
     sendNewAnswer(channel)
   })
   // Sends an API Call to change the current question
-  cron.schedule('0 58 12 * * *', function () { // Correct time is 0 58 07 * * *
+  schedule('0 58 12 * * *', function () { // Correct time is 0 58 07 * * *
     updateQuestion()
   })
   // Sends the new question.
-  cron.schedule('0 00 13 * * *', function () { // Correct time is 0 00 08 * * *
+  schedule('0 00 13 * * *', function () { // Correct time is 0 00 08 * * *
     sendNewQuestion(channel)
   })
 
   // EVENTS:
-  // GA Tuesday
-  cron.schedule('0 23 * * 2', function () {
-    sendNewEvent(eventChannel, 'ga-tuesday', '<@&937389346204557342> <@&898240224189120532>')
-  })
-  // Bush Wednesday
-  cron.schedule('0 23 22-28 * 3', function () {
-    sendNewEvent(eventChannel, 'bush-wednesday', '<@&937389346204557342> <@&898240224189120532>')
-  })
-
-  // Challenge Flight
-  cron.schedule('0 23 8-14 * 6', function () {
-    sendNewEvent(eventChannel, 'challenge-flight', '<@&937389346204557342>')
-  })
-
-  // // Fly In Thursday
-  cron.schedule('0 23 * * 4', function () {
-    sendNewEvent(eventChannel, 'sbr-tpc-fly-in-thursday', '<@&937389346204557342>')
-  })
-  // //Sunday Funday
-  // cron.schedule('0 18 * * 0', function () {
-  //     sendNewEvent(eventChannel, "sunday-funday", "<@&937389346204557342>");
-  // });
-})
-
-module.exports = client
+ for (const event of eventsCrons) {
+  schedule(event.schedule, function() {
+    sendNewEvent(eventChannel, event.flightName, event.ping);
+  });
+ }
+});
 client.login(process.env.BOT_TOKEN).catch(err => (console.log(err)))
