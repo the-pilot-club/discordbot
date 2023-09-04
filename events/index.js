@@ -18,6 +18,7 @@ import tpclivery from './tpclivery.js'
 import trainrequestsubmit from './trainrequestsubmit.js'
 import vatsim from './vatsim.js'
 import worldTour from './world-tour.js'
+import interaction from './interaction.js'
 
 /**
  * @typedef {Object} DiscordEvent
@@ -50,7 +51,8 @@ const events = {
   inviteLink1,
   inviteLink2,
   fno,
-  ferryRequestSubmitEvent
+  ferryRequestSubmitEvent,
+  interaction
 }
 
 export default events

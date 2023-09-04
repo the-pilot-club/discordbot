@@ -1,14 +1,14 @@
+import roleNotification from '../utils/role_notification.js'
+import { client, guildConstants } from '../bot.js'
+
 export default {
   name: 'guildMemberUpdate',
   once: false,
-  execute (oldMember, newMember) {
-    if (oldMember.roles.cache.has(process.env.CHARTERS_ROLE)) return
-    if (newMember.roles.cache.has(process.env.CHARTERS_ROLE)) {
-      newMember.user.send('Welcome to TPC Charters, we look forward to having you fly with us. Please read https://www.thepilotclub.org/s/TPC_Charters_-_pilots_guide_v10.pdf.' +
-        '  We hope this will answer most of your questions.  If you still have questions after having read this, then ask away.'
-      ).catch(error => {
-        console.error(`I could not DM this member :(: ${error}`)
-      })
-    }
+  async execute (oldMember, newMember) {
+    const channel = await client.channels.fetch(guildConstants.CREW_CHAT_CHANNEL_ID)
+    roleNotification(oldMember, newMember, channel, process.env.COMMUTER_ROLE, 'commuterRole')
+    roleNotification(oldMember, newMember, channel, process.env.FREQUENTFLIER_ROLE, 'frequentFlyerRole')
+    roleNotification(oldMember, newMember, channel, process.env.VIP_ROLE, 'vipRole')
+    roleNotification(oldMember, newMember, channel, process.env.CHARTERS_ROLE, 'chartersRole')
   }
 }

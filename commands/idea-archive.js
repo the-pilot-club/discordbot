@@ -30,7 +30,7 @@ export default {
       .setFooter({ text: 'Made by TPC Dev Team' })
     if (interaction.member.roles.cache.some(role => role.name === 'Air Marshals')) {
       if (reason !== null) {
-        noreasonembed.addFields({name: 'Reason Given', value: `${reason}`})
+        noreasonembed.addFields({ name: 'Reason Given', value: `${reason}` })
       }
       channel.send({ embeds: [noreasonembed] })
       await interaction.reply({ content: 'The idea has been posted in the archive channel', ephemeral: true })
