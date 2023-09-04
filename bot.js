@@ -5,16 +5,18 @@ import { Client, Collection, GatewayIntentBits } from 'discord.js'
 import { schedule } from 'node-cron'
 import commands from './commands/index.js'
 import events from './events/index.js'
-import eventsCrons from "./eventsCrons.js";
+import eventsCrons from './eventsCrons.js'
+import dev_constants from './env-constants/dev_constants.js'
+import prod_constants from './env-constants/prod_constants.js'
 
 dotenv.config()
 
-let  guildConstants;
+let guildConstants
 
-guildConstants = import("./env-constants/dev_constants.js").default
+guildConstants = dev_constants
 
-if (process.env.NODE_ENV !== "dev") {
-  guildConstants = import("./env-constants/prod_constants.js").default
+if (process.env.NODE_ENV !== 'dev') {
+  guildConstants = prod_constants
 }
 
 Sentry.init({
@@ -77,7 +79,7 @@ for (const eventName in events) {
 
 // Role congrats and Charters DM
 client.on('guildMemberUpdate', async (oldMember, newMember) => {
-  const channel = client.channels.
+  const channel = client.channels.cache.find(channel => channel.name === 'crew-chat')
   if (oldMember.roles.cache.has(process.env.COMMUTER_ROLE)) return
   if (newMember.roles.cache.has(process.env.COMMUTER_ROLE)) {
     channel.send({
@@ -114,7 +116,7 @@ client.on('guildMemberUpdate', async (oldMember, newMember) => {
 // Cron Jobs for the quiz and the event postings
 function sendNewEvent (channel, flight, ping) {
   channel.send({
-    content: ping + ` One hour until the flight briefing. Head to the airport soon to start setting up! See you there! https://www.thepilotclub.org/dispatch/${flight}-${new Date().toLocaleDateString('en-GB').replaceAll("/", "")}`,
+    content: ping + ` One hour until the flight briefing. Head to the airport soon to start setting up! See you there! https://www.thepilotclub.org/dispatch/${flight}-${new Date().toLocaleDateString('en-GB').replaceAll('/', '')}`,
     files: [{ attachment: `./pics/${flight}.png`, name: 'file.png' }]
   })
 }
@@ -156,7 +158,7 @@ async function updateQuestion () {
 }
 
 client.on('ready', async function () {
-  const channel = await client.channels.get(guildConstants)
+  const channel = await client.channels.fetch(guildConstants.CREW_CHAT_CHANNEL_ID)
   const eventChannel = await client.channels.cache.find(channel => channel.name === 'crew-chat')
   // Getting random question every day:  0 57 22 * * *
   // Sends Answer to current Question
@@ -173,10 +175,10 @@ client.on('ready', async function () {
   })
 
   // EVENTS:
- for (const event of eventsCrons) {
-  schedule(event.schedule, function() {
-    sendNewEvent(eventChannel, event.flightName, event.ping);
-  });
- }
-});
+  for (const event of eventsCrons) {
+    schedule(event.schedule, function () {
+      sendNewEvent(eventChannel, event.flightName, event.ping)
+    })
+  }
+})
 client.login(process.env.BOT_TOKEN).catch(err => (console.log(err)))
