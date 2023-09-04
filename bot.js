@@ -183,14 +183,14 @@ client.on('ready', async function () {
     sendNewEvent(eventChannel, 'challenge-flight', '<@&937389346204557342>')
   })
 
-  // // Fly In Thursday
+  // Fly In Thursday
   cron.schedule('0 23 * * 4', function () {
     sendNewEvent(eventChannel, 'sbr-tpc-fly-in-thursday', '<@&937389346204557342>')
   })
-  // //Sunday Funday
-  // cron.schedule('0 18 * * 0', function () {
-  //     sendNewEvent(eventChannel, "sunday-funday", "<@&937389346204557342>");
-  // });
+  // Sunday Funday
+  cron.schedule('0 18 * * 0', function () {
+    sendNewEvent(eventChannel, 'sunday-funday', '<@&937389346204557342>')
+  })
 })
 
 module.exports = client
