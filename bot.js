@@ -22,7 +22,7 @@ if (process.env.NODE_ENV === 'prod' || process.env.NODE_ENV === 'production') {
   guildConstants = prod_constants
 
   Sentry.init({
-    dsn: 'https://cca48e5c953b5ff7a895fbb6d8caaa5c@o4505802902863872.ingest.sentry.io/4505813582807040',
+    dsn: process.env.SENTRY_DSN,
     integrations: [
       new ProfilingIntegration()
     ],
