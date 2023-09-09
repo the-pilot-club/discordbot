@@ -26,6 +26,7 @@ import tafCommand from './taf.js'
 import top5Command from './top5.js'
 import trainingCommand from './training.js'
 import trainingRequestCommand from './training-request.js'
+import { Collection } from 'discord.js'
 
 /**
  * @typedef {Object} Command
@@ -67,4 +68,6 @@ const commands = {
   trainingRequestCommand
 }
 
-export default commands
+const allCommands = new Collection(new Array(Object.keys(commands).map(key => [key, commands[key]])))
+
+export default allCommands
