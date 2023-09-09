@@ -1,4 +1,7 @@
-import {ActionRow, ActionRowBuilder, ModalBuilder, TextInputBuilder} from "discord.js";
+import {Message, ActionRowBuilder, ModalBuilder, TextInputBuilder} from "discord.js";
+import {
+    bumpWarsContent,
+} from './eventContent.js'
 
 /** @typedef {Object} TextInputObject
  * @property {string} custom_id
@@ -25,4 +28,54 @@ export function addComponentsToModal(modal, textInputs) {
             )
         )
     }
+}
+
+/**
+ *
+ * @param {Message} message
+ */
+
+export function handleMessageCreateEvent(message) {
+    /**
+     * @typedef {Object<string, () => void>} SearchCases
+     */
+
+    /**
+     *
+     * @type SearchCases
+     */
+
+    const exactSearchCases = {
+        "bump wars": () => bumpWarsContent(message),
+        "what is fno?": () => fnoContent(message),
+        "invite link": () => inviteLinkContent(message),
+        "invite link mrs bot":() => inviteLinkTwoContent(message),
+        "moderator": () => moderatorContent(message),
+        "msfs2020 help": () => msfs2020HelpContent(message),
+        "rules":() => rulesContent(message) ,
+        "support": () => supportContent(message),
+        "tpc callsign": () => tpcCallsignContent(message),
+        "tpc livery": () => tpcLiveryContent(message),
+        "world tour": () => worldTourContent(message)
+    }
+
+    if (exactSearchCases[message.content.toLowerCase()] === undefined) {
+        if (message.content.toLowerCase().includes('join vatsim')) {
+            return joinVatsimContent(message);
+        } else if (message.content.includes('what server')) {
+            return whatServerContent(message);
+        } else if (message.content.toLowerCase().includes('thanks tpc')) {
+            return thanksTpcContent(message);
+        } else if (message.content.toLowerCase().includes('what is vatsim?')) {
+            return whatIsVatsimContent(message);
+        } else {
+            throw Error(`unsupported message content found: ${message.content}`);
+        }
+    } else {
+        return exactSearchCases[message.content.toLowerCase()]()
+    }
+}
+
+export function handleInteractionCreateEvent(interaction) {
+
 }

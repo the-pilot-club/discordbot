@@ -1,14 +1,13 @@
 import dotenv from 'dotenv'
 import Sentry from '@sentry/node'
 import { ProfilingIntegration } from '@sentry/profiling-node'
-import { Client, Collection, GatewayIntentBits } from 'discord.js'
+import { Client, Collection, Events, GatewayIntentBits } from 'discord.js'
 import { schedule } from 'node-cron'
 import commands from './commands/index.js'
-import events from './events/index.js'
 import eventsCrons from './eventsCrons.js'
 import dev_constants from './env-constants/dev_constants.js'
 import prod_constants from './env-constants/prod_constants.js'
-import roleNotification from './utils/role_notification.js'
+import { handleMessageCreateEvent } from './utils.js'
 
 dotenv.config()
 
@@ -48,16 +47,7 @@ for (const commandName in commands) {
   client.commands.set(command.data.name, command)
 }
 
-/** @type import('./events/index.js').default */
-for (const eventName in events) {
-  const event = events[eventName]
-  if (!event.once) {
-    client.on(event.name, (...args) => event.execute(...args))
-    continue
-  }
-
-  client.once(event.name, (...args) => event.execute(...args))
-}
+client.on(Events.MessageCreate, handleMessageCreateEvent)
 
 // Cron Jobs for the quiz and the event postings
 function sendNewEvent (channel, flight, ping) {

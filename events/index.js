@@ -1,4 +1,3 @@
-import bumpWarsEvent from './bump-wars.js'
 import ferryRequestSubmitEvent from './ferry request submit.js'
 import fno from './fno.js'
 import inviteLink1 from './invite-link1.js'
@@ -32,7 +31,6 @@ import interaction from './interaction.js'
  */
 
 const events = {
-  bumpWarsEvent,
   worldTour,
   trainrequestsubmit,
   tpclivery,
