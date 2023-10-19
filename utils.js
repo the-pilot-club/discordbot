@@ -3,10 +3,19 @@ import {
   fnoContent,
   inviteLinkContent,
   inviteLinkTwoContent,
-  moderatorContent
+  joinVatsimContent,
+  moderatorContent,
+  msfs2020HelpContent,
+  rulesContent,
+  supportContent,
+  thanksTpcContent,
+  tpcCallsignContent,
+  tpcLiveryContent,
+  whatIsVatsimContent,
+  whatServerContent,
+  worldTourContent
 } from './messageEventContent.js'
 import Sentry from '@sentry/node'
-import { guildConstants } from './bot.js'
 
 /** @typedef {Object} TextInputObject
  * @property {string} custom_id
@@ -28,13 +37,12 @@ import { guildConstants } from './bot.js'
 
 export function handleMessageCreateEvent (message) {
   /**
-     * @typedef {Object<string, () => void>} SearchCases
-     */
+   * @typedef {Object<string, () => void>} SearchCases
+   */
 
   /**
-     *
-     * @type SearchCases
-     */
+   * @type SearchCases
+   */
 
   const exactSearchCases = {
     'bump wars': () => bumpWarsContent(message),

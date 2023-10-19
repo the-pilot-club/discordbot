@@ -7,3 +7,4 @@ workspace.xml
 /commands/charters role.js
 .idea
 tpc_discord_bot
+scripts/early-adpoters.js

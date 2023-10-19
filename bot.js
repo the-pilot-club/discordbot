@@ -5,7 +5,7 @@ import { ActivityType, Client, Events, GatewayIntentBits } from 'discord.js'
 import eventsCrons from './eventsCrons.js'
 import dev_constants from './env-constants/dev_constants.js'
 import prod_constants from './env-constants/prod_constants.js'
-import { handleMessageCreateEvent, sendErrorToSentry } from './utils.js'
+import { handleInteractionCreateEvent, handleMessageCreateEvent, sendErrorToSentry } from './utils.js'
 import {
   scheduleGroupFlightEventCrons,
   scheduleQuizEventCrons
@@ -35,8 +35,14 @@ if (process.env.NODE_ENV === 'prod' || process.env.NODE_ENV === 'production') {
 
 export const client = new Client({
   intents: [
-    GatewayIntentBits.Guilds, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMessages, GatewayIntentBits.DirectMessages,
-    GatewayIntentBits.DirectMessageReactions, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildScheduledEvents]
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.MessageContent,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.DirectMessages,
+    GatewayIntentBits.DirectMessageReactions,
+    GatewayIntentBits.GuildMembers,
+    GatewayIntentBits.GuildScheduledEvents
+  ]
 })
 
 client.setMaxListeners(1)
@@ -44,8 +50,9 @@ client.setMaxListeners(1)
 client.commands = allCommands
 
 client.on(Events.MessageCreate, handleMessageCreateEvent)
+client.on(Events.InteractionCreate, handleInteractionCreateEvent)
 
-client.on('ready', function () {
+client.on(Events.ClientReady, function () {
   client.channels.fetch(guildConstants.AVIATION_CHANNEL_ID).then(
     /** @param {import('discord.js').TextChannel} channel */
     function (channel) {
