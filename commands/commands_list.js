@@ -243,7 +243,7 @@ const commandsList = {
     name: 'sync',
     description: 'Sync your VATSIM Ratings for TPC!',
     options: []
-  },
+  }
 }
 
 export default commands_list
