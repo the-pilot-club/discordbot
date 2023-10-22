@@ -78,6 +78,7 @@ export function handleInteractionCreateEvent (interaction) {
 }
 
 export function sendErrorToSentry (error, commandName) {
+  console.error(error)
   Sentry.withScope(function (scope) {
     scope.setFingerprint([commandName, error.type])
     Sentry.captureException(error)

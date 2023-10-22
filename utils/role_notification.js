@@ -1,7 +1,8 @@
 const roleMessages = {
   commuterRole: (oldMember) => {
     return {
-      content: `Join us in congratulating ${oldMember} with achieving <@&${process.env.COMMUTER_ROLE}> status at TPC! You are now part of the TPC **COMPANY PERKS** Program!`,
+      content: `Join us in congratulating ${oldMember} with achieving <@&${process.env
+        .COMMUTER_ROLE}> status at TPC! You are now part of the TPC **COMPANY PERKS** Program!`,
       files: [{ attachment: './pics/congrats.png', name: 'file.png' }]
     }
   },

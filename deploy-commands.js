@@ -17,10 +17,10 @@ for (const file of commandFiles) {
 const rest = new REST({ version: '10' }).setToken(process.env.BOT_TOKEN)
 
 rest.put(Routes.applicationGuildCommands(process.env.CLIENT_ID, process.env.GUILD_ID), { body: [] })
-  .then(() => console.log('Successfully deleted all guild commands.'))
+  .then(() => console.log('Successfully deleted all guild commands_list.'))
   .catch(console.error)
 
 rest.put(Routes.applicationCommands(process.env.CLIENT_ID),
   { body: commands })
-  .then(() => console.log('Successfully registered global commands.'))
+  .then(() => console.log('Successfully registered global commands_list.'))
   .catch(console.error)
