@@ -3,7 +3,7 @@ module.exports = {
   once: false,
   execute (message) {
     if (message.content.toLowerCase() === 'bump wars') {
-      message.reply('**[BUMP WARS](https://discord.com/channels/830201397974663229/958549204073087086)** \n \n' +
+      message.reply('**BUMP WARS** \n \n' +
         '__Team 1: Hot Dogs__\n\n- <@130510720763822080>\n- <@715881255027081238>\n- <@796121185825062963>' +
         '\n\n__Team 2: Big Guns__\n\n- <@524567291128709140>\n- <@628118960637870090>\n- <@601567349669363722>' +
                 ' \n \n__Rules:__ \n' +
