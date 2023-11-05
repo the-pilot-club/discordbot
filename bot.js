@@ -156,39 +156,39 @@ client.on('ready', async function () {
   const eventChannel = await client.channels.cache.find(channel => channel.name === 'crew-chat')
   // Getting random question every day:  0 57 22 * * *
   // Sends Answer to current Question
-  cron.schedule('0 52 12 * * *', function () { // Correct time is 0 52 07 * * *
+  cron.schedule('0 52 13 * * *', function () { // Correct time is 0 52 07 * * *
     sendNewAnswer(channel)
   })
   // Sends an API Call to change the current question
-  cron.schedule('0 58 12 * * *', function () { // Correct time is 0 58 07 * * *
+  cron.schedule('0 58 13 * * *', function () { // Correct time is 0 58 07 * * *
     updateQuestion()
   })
   // Sends the new question.
-  cron.schedule('0 00 13 * * *', function () { // Correct time is 0 00 08 * * *
+  cron.schedule('0 00 14 * * *', function () { // Correct time is 0 00 08 * * *
     sendNewQuestion(channel)
   })
 
   // EVENTS:
   // GA Tuesday
-  cron.schedule('0 23 * * 2', function () {
+  cron.schedule('0 0 * * 2', function () {
     sendNewEvent(eventChannel, 'ga-tuesday', '<@&937389346204557342> <@&898240224189120532>')
   })
   // Bush Wednesday
-  cron.schedule('0 23 22-28 * 3', function () {
+  cron.schedule('0 0 22-28 * 3', function () {
     sendNewEvent(eventChannel, 'bush-wednesday', '<@&937389346204557342> <@&898240224189120532>')
   })
 
   // Challenge Flight
-  cron.schedule('0 23 8-14 * 6', function () {
+  cron.schedule('0 0 8-14 * 6', function () {
     sendNewEvent(eventChannel, 'challenge-flight', '<@&937389346204557342>')
   })
 
   // Fly In Thursday
-  cron.schedule('0 23 * * 4', function () {
+  cron.schedule('0 0 * * 4', function () {
     sendNewEvent(eventChannel, 'sbr-tpc-fly-in-thursday', '<@&937389346204557342>')
   })
   // Sunday Funday
-  cron.schedule('0 18 * * 0', function () {
+  cron.schedule('0 19 * * 0', function () {
     sendNewEvent(eventChannel, 'sunday-funday', '<@&937389346204557342>')
   })
 })
