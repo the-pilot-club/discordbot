@@ -10,7 +10,7 @@ module.exports = {
         .setRequired(true)),
   async execute (interaction) {
     const airport = interaction.options.getString('icao')
-    const response = await fetch(`https://beta.aviationweather.gov/cgi-bin/data/taf.php?ids=${airport}`)
+    const response = await fetch(`https://aviationweather.gov/api/data/taf?ids=${airport}`)
     const body = await response.text()
     if (body !== undefined && body !== '') {
       const metarEmbed = new EmbedBuilder()
