@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: discordbot
+  namespace: discordbot
+  labels:
+    app.kubernetes.io/name: discord-bot
+    app.kubernetes.io/component: bot
+    app.kubernetes.io/part-of: discord-bot
+spec:
+  selector:
+    matchLabels:
+      app: discordbot
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: discordbot
+    spec:
+      containers:
+        - name: discordbot
+          image: registry.digitalocean.com/tpc-master/discordbot:main
+          imagePullPolicy: Always
+          envFrom:
+            - secretRef:
+                name: discord-bot-env
