@@ -9,7 +9,7 @@ module.exports = {
                 ' \n \n__Rules:__ \n' +
                 '1: type `/bump` to bump the server on Disboard \n' +
                 '2: Bumps are only possible once every 2 hours \n' +
-                '3: If your bump is successful you must post the current score under your bump. Others can forfeit the point (nobody gets a point) if you don't post it until next bump. \n' +
+                "3: If your bump is successful you must post the current score under your bump. Others can forfeit the point (nobody gets a point) if you don't post it until next bump. \n" +
                 '4: Have fun! \n' +
                 '5: This war starts on 11/02 0400z (00:00 ET) and ends on 12/01 0359z (11/30 23:59 ET) \n' + 
                 '\nImportant info: \n' +
