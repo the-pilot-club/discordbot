@@ -57,33 +57,24 @@ module.exports = {
         .setFooter({ text: 'Made by TPC Dev Team', iconURL: 'https://static1.squarespace.com/static/614689d3918044012d2ac1b4/t/616ff36761fabc72642806e3/1634726781251/TPC_FullColor_TransparentBg_1280x1024_72dpi.png' })
         .setTimestamp();
 
-      if (hoursData.s1 !== 0) {
-        embed.addFields({ name: 'S1 Hours:', value: `${hoursData.s1}` });
-      }
-      if (hoursData.s2 !== 0) {
-        embed.addFields({ name: 'S2 Hours:', value: `${hoursData.s2}` });
-      }
-      if (hoursData.s3 !== 0) {
-        embed.addFields({ name: 'S3 Hours:', value: `${hoursData.s3}` });
-      }
-      if (hoursData.c1 !== 0) {
-        embed.addFields({ name: 'C1 Hours:', value: `${hoursData.c1}` });
-      }
-      if (hoursData.c3 !== 0) {
-        embed.addFields({ name: 'C3 Hours:', value: `${hoursData.c3}` });
-      }
-      if (hoursData.i1 !== 0) {
-        embed.addFields({ name: 'I1 Hours:', value: `${hoursData.i1}` });
-      }
-      if (hoursData.i3 !== 0) {
-        embed.addFields({ name: 'I3 Hours:', value: `${hoursData.i3}` });
-      }
-      if (hoursData.sup !== 0) {
-        embed.addFields({ name: 'Supervisor Hours:', value: `${hoursData.sup}` });
-      }
-      if (hoursData.adm !== 0) {
-        embed.addFields({ name: 'Administrator Hours:', value: `${hoursData.adm}` });
-      }
+        const labels = {
+          s1: 'S1 Hours',
+          s2: 'S2 Hours',
+          s3: 'S3 Hours',
+          c1: 'C1 Hours',
+          c3: 'C3 Hours',
+          i1: 'I1 Hours',
+          i3: 'I3 Hours',
+          sup: 'Supervisor Hours',
+          adm: 'Administrator Hours',
+        };
+        
+        for (const key in hoursData) {
+          if (hoursData[key] !== 0) {
+            embed.addFields({ name: labels[key], value: `${hoursData[key]}` });
+          }
+        }
+        
       await interaction.reply({ embeds: [embed], ephemeral: true });
     }
   },
