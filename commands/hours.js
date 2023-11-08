@@ -45,7 +45,8 @@ module.exports = {
         return;
       }
 
-      const hoursData = await hoursResponse.json();
+      const data = await hoursResponse.json();
+      const hoursData = JSON.parse(data)
 
       const embed = new EmbedBuilder()
         .setAuthor({ name: `${interaction.member.displayName} - ${cid}`, iconURL: `${interaction.user.displayAvatarURL()}` })
