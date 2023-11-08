@@ -46,11 +46,10 @@ module.exports = {
         return;
       }
 
-      const data = await hoursResponse.json();
-      const hoursData = JSON.parse(data)
+      const hoursData = await hoursResponse.json();
 
       const embed = new EmbedBuilder()
-        .setAuthor({ name: `${interaction.member.displayName} - ${cid}`, iconURL: `${interaction.user.displayAvatarURL()}` })
+        .setAuthor({ name: `${interaction.member.displayName} - ${hoursData.id}`, iconURL: `${interaction.user.displayAvatarURL()}` })
         .setTitle('Your Hours On VATSIM!')
         .addFields({ name: 'Pilot Hours:', value: `${hoursData.pilot}`, inline: true },
           { name: 'ATC Hours:', value: `${hoursData.atc}` })
@@ -71,7 +70,7 @@ module.exports = {
         };
         
         for (const key in hoursData) {
-          if (hoursData[key] !== 0) {
+          if (hoursData[key] !== 0 && labels[key] !== undefined) {
             embed.addFields({ name: labels[key], value: `${hoursData[key]}` });
           }
         }
