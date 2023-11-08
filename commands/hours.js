@@ -42,6 +42,7 @@ module.exports = {
 
       if (!hoursResponse || hoursResponse.status !== 200) {
         console.log(`The hoursResponse could not be completed as dialed for ${interaction.member.displayName}`);
+        interaction.reply({ content: 'The stats function could not be completed as dialed. Please try again later', ephemeral: true });
         return;
       }
 
