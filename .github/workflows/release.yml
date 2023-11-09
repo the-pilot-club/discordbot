@@ -1,28 +1,18 @@
 name: Docker
 
 on:
-  push:
-    # Publish `master` as Docker `latest` image.
+  release:
+    types: [ published ]
     branches:
       - main
-
-    # Publish `v1.2.3` tags as releases.
-    tags:
-      - v*
-
-  # Run tests for any PRs.
-  pull_request:
-
 env:
   IMAGE_NAME: discordbot
 
 jobs:
   # Push image to GitHub Packages.
   # See also https://docs.docker.com/docker-hub/builds/
-  push:
+  push_image:
     runs-on: ubuntu-latest
-    if: github.event_name == 'push'
-
     steps:
       - uses: actions/checkout@v2
 
@@ -30,7 +20,7 @@ jobs:
         run: echo "${{ secrets.DO_REGISTRY_USERNAME }}" | docker login registry.digitalocean.com -u ${{ secrets.DO_REGISTRY_USERNAME }} --password-stdin
 
       - name: Build image
-        run: docker build . --file Dockerfile --tag image
+        run: docker build --file Dockerfile --tag registry.digitalocean.com/tpc-master/$(echo $IMAGE_NAME)
 
       - name: Push image
         run: |
