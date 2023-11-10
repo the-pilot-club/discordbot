@@ -155,7 +155,6 @@ async function updateQuestion () {
 client.on('ready', async function () {
   const channel = await client.channels.cache.find(channel => channel.name === 'aviation-quiz')
   const eventChannel = await client.channels.cache.find(channel => channel.name === 'crew-chat')
-  sendNewEvent(eventChannel, 'sbr-tpc-fly-in-thursday', '<@&937389346204557342>')
   // Getting random question every day:  0 57 22 * * *
   // Sends Answer to current Question
   cron.schedule('0 52 13 * * *', function () { // Correct time is 0 52 13 * * *
