@@ -106,7 +106,7 @@ const cron = require('node-cron')
 
 function sendNewEvent (channel, flight, ping) {
   const today = new Date()
-  const day = today.getDate() // 24
+  const day = today.getDate()-1 // Day (21) Need to remove -1 when DST ends.
   const month = monthNames[today.getMonth()] // may
   const year = today.getFullYear() // 2020
   channel.send({
@@ -114,6 +114,7 @@ function sendNewEvent (channel, flight, ping) {
     files: [{ attachment: `./pics/${flight}.png`, name: 'file.png' }]
   })
 }
+
 
 async function sendNewQuestion (channel) {
   const apiUrl = process.env.API_URL
