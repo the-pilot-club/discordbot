@@ -116,13 +116,13 @@ function sendNewEvent(channel, pings) {
       const nextEvent = events.at(0)
       const now = new Date()
 
-      // if (Math.abs(nextEvent.scheduledStartAt - now) <= 60 * 60 *1000) {
-      const day = nextEvent.scheduledStartAt.getDay()
-      channel.send({
-        content: pings[day] + " " + nextEvent.description,
-        attachment: {url: nextEvent.coverImageURL({size: 4096})}
-      })
-      // }
+      if (Math.abs(nextEvent.scheduledStartAt - now) <= 60 * 60 * 1000) {
+        const day = nextEvent.scheduledStartAt.getDay()
+        channel.send({
+          content: pings[day] + " " + nextEvent.description,
+          attachment: {url: nextEvent.coverImageURL({size: 4096})}
+        })
+      }
     })
   }
 }
