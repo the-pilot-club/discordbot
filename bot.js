@@ -22,6 +22,8 @@ const monthNames = [
   'nov',
   'dec'
 ]
+
+client.eventReminders = [];
 client.commands = new Collection()
 const commandsPath = path.join(__dirname, 'commands')
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'))
@@ -116,12 +118,14 @@ function sendNewEvent(channel, pings) {
       const nextEvent = events.at(0)
       const now = new Date()
 
-      if (Math.abs(nextEvent.scheduledStartAt - now) <= 60 * 60 * 1000) {
+      if (Math.abs(nextEvent.scheduledStartAt - now) <= 60 * 60 * 1000 && !channel.client.eventReminders.includes(nextEvent.id)) {
         const day = nextEvent.scheduledStartAt.getDay()
         channel.send({
           content: pings[day] + " " + nextEvent.description,
           attachment: {url: nextEvent.coverImageURL({size: 4096})}
         })
+
+        channel.client.eventReminders.push(nextEvent.id)
       }
     })
   }
