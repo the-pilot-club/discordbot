@@ -1,5 +1,5 @@
 require('dotenv').config()
-const { Client, Collection, GatewayIntentBits } = require('discord.js')
+const { Client, Collection, GatewayIntentBits, AttachmentBuilder } = require('discord.js')
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMessages, GatewayIntentBits.DirectMessages,
@@ -120,11 +120,11 @@ function sendNewEvent(channel, pings) {
 
       if (Math.abs(nextEvent.scheduledStartAt - now) <= 60 * 60 * 1000 && !channel.client.eventReminders.includes(nextEvent.id)) {
         const day = nextEvent.scheduledStartAt.getDay()
+      const image = new AttachmentBuilder( nextEvent.coverImageURL({size: 4096, extension: "jpeg"}), 'event-banner.jpeg')
         channel.send({
-          content: pings[day] + " " + nextEvent.description,
-          attachment: {url: nextEvent.coverImageURL({size: 4096})}
+          content: pings[day] + "\n" + nextEvent.description,
+          files: [image]
         })
-
         channel.client.eventReminders.push(nextEvent.id)
       }
     })
