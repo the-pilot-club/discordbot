@@ -121,10 +121,17 @@ function sendNewEvent(channel, pings) {
       if (Math.abs(nextEvent.scheduledStartAt - now) <= 60 * 60 * 1000 && !channel.client.eventReminders.includes(nextEvent.id)) {
         const day = nextEvent.scheduledStartAt.getDay()
       const image = new AttachmentBuilder( nextEvent.coverImageURL({size: 4096, extension: "jpeg"}), 'event-banner.jpeg')
-        channel.send({
-          content: pings[day] + "\n" + nextEvent.description,
-          files: [image]
-        })
+        if(nextEvent.image !== null){
+          channel.send({
+            content: pings[day] + "\n" + nextEvent.description,
+            files: [image]
+          })
+        } else {
+          channel.send({
+            content: pings[day] + "\n" + nextEvent.description,
+          })
+        }
+
         channel.client.eventReminders.push(nextEvent.id)
       }
     })
