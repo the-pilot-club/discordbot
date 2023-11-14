@@ -24,7 +24,7 @@ module.exports = {
       for (let i = 0; i < list.length; i++) {
         interaction.guild.members.fetch(list[i])
         .then(member => {
-          formatted += `\n${i + 1}. ` + member.displayName
+          formatted += `\n${i + 1}. ` + member.nickname
         })
         .catch(console.error); // Error handling for fetching member
       }
