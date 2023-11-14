@@ -12,6 +12,7 @@ module.exports = {
       // get the top 5 users
       const top5 = leaderboard.slice(0, 5)
       const list = top5.map(user => user.id)
+      
       const row = new ActionRowBuilder()
         .addComponents(
           new ButtonBuilder()
@@ -21,7 +22,11 @@ module.exports = {
         )
       let formatted = ''
       for (let i = 0; i < list.length; i++) {
-        formatted += `\n${i + 1}. ` + ('<@' + list[i] + '>')
+        interaction.guild.members.fetch(list[i])
+        .then(member => {
+          formatted += `\n${i + 1}. ` + member.displayName
+        })
+        .catch(console.error); // Error handling for fetching member
       }
       interaction.reply({
         content: `**Top 5 TPC Pilots:** \n${formatted}\n \nSee all rankings here:`,
