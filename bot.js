@@ -1,5 +1,5 @@
 require('dotenv').config()
-const { Client, Collection, GatewayIntentBits } = require('discord.js')
+const { Client, Collection, GatewayIntentBits, AttachmentBuilder } = require('discord.js')
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMessages, GatewayIntentBits.DirectMessages,
@@ -22,6 +22,8 @@ const monthNames = [
   'nov',
   'dec'
 ]
+
+client.eventReminders = [];
 client.commands = new Collection()
 const commandsPath = path.join(__dirname, 'commands')
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'))
@@ -103,16 +105,37 @@ client.on('guildMemberUpdate', async (oldMember, newMember) => {
 // Cron Jobs for the quiz and the event postings
 
 const cron = require('node-cron')
+const {regexpToText} = require("nodemon/lib/utils");
 
-function sendNewEvent (channel, flight, ping) {
-  const today = new Date()
-  const day = today.getDate()-1 // Day (21) Need to remove -1 when DST ends.
-  const month = monthNames[today.getMonth()] // may
-  const year = today.getFullYear() // 2020
-  channel.send({
-    content: ping + ` One hour until the flight briefing. Head to the airport soon to start setting up! See you there! https://www.thepilotclub.org/dispatch/${flight}-${day}${month}${year}`,
-    files: [{ attachment: `./pics/${flight}.png`, name: 'file.png' }]
-  })
+function sendNewEvent(channel, pings) {
+  const guild = channel.client.guilds.cache.find(guild => guild.id === process.env.GUILD_ID)
+  if (guild !== undefined) {
+    guild.scheduledEvents.fetch().then(events => {
+      if (events.size === 0) {
+        return
+      }
+
+      const nextEvent = events.at(0)
+      const now = new Date()
+
+      if (Math.abs(nextEvent.scheduledStartAt - now) <= 60 * 60 * 1000 && !channel.client.eventReminders.includes(nextEvent.id)) {
+        const day = nextEvent.scheduledStartAt.getDay()
+      const image = new AttachmentBuilder( nextEvent.coverImageURL({size: 4096, extension: "jpeg"}), 'event-banner.jpeg')
+        if(nextEvent.image !== null){
+          channel.send({
+            content: pings[day] + "\n" + nextEvent.description,
+            files: [image]
+          })
+        } else {
+          channel.send({
+            content: pings[day] + "\n" + nextEvent.description,
+          })
+        }
+
+        channel.client.eventReminders.push(nextEvent.id)
+      }
+    })
+  }
 }
 
 
@@ -152,6 +175,14 @@ async function updateQuestion () {
   console.log(body)
 }
 
+const weeklyPings = {
+  2: '<@&937389346204557342> <@&898240224189120532>',
+  3: '<@&937389346204557342> <@&898240224189120532>',
+  0: '<@&937389346204557342>',
+  4: '<@&937389346204557342>',
+  6: '<@&937389346204557342>'
+}
+
 client.on('ready', async function () {
   const channel = await client.channels.cache.find(channel => channel.name === 'aviation-quiz')
   const eventChannel = await client.channels.cache.find(channel => channel.name === 'crew-chat')
@@ -169,28 +200,8 @@ client.on('ready', async function () {
     sendNewQuestion(channel)
   })
 
-  // EVENTS:
-  // GA Tuesday
-  cron.schedule('0 0 * * 3', function () {
-    sendNewEvent(eventChannel, 'ga-tuesday', '<@&937389346204557342> <@&898240224189120532>')
-  })
-  // Bush Wednesday
-  cron.schedule('0 0 22-28 * 4', function () {
-    sendNewEvent(eventChannel, 'bush-wednesday', '<@&937389346204557342> <@&898240224189120532>')
-  })
-
-  // Challenge Flight
-  cron.schedule('0 0 8-14 * 7', function () {
-    sendNewEvent(eventChannel, 'challenge-flight', '<@&937389346204557342>')
-  })
-
-  // Fly In Thursday
-  cron.schedule('0 0 * * 5', function () {
-    sendNewEvent(eventChannel, 'sbr-tpc-fly-in-thursday', '<@&937389346204557342>')
-  })
-  // Sunday Funday
-  cron.schedule('0 19 * * 0', function () {
-    sendNewEvent(eventChannel, 'sunday-funday', '<@&937389346204557342>')
+  cron.schedule('* * * * *', function () {
+    sendNewEvent(eventChannel, weeklyPings)
   })
 })
 
