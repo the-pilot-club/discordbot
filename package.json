@@ -5,6 +5,7 @@
   "scripts": {
     "start": "node bot.js",
     "devStart": "nodemon bot.js",
+    "start:dev:wsl": "nodemon -L bot.js",
     "lint:fix": "eslint --fix --ext .js ./** -c .eslintrc.json",
     "test": "jest"
   },
