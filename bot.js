@@ -1,5 +1,6 @@
 require('dotenv').config()
 const { Client, Collection, GatewayIntentBits, AttachmentBuilder } = require('discord.js')
+const Sentry = require("@sentry/node")
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMessages, GatewayIntentBits.DirectMessages,
@@ -7,6 +8,12 @@ const client = new Client({
 })
 const fs = require('node:fs')
 const path = require('node:path')
+
+Sentry.init({
+  dsn: process.env.SENTRY_DSN,
+  tracesSampleRate: 1.0,
+});
+
 client.setMaxListeners(0)
 const monthNames = [
   'jan',
@@ -106,35 +113,46 @@ client.on('guildMemberUpdate', async (oldMember, newMember) => {
 
 const cron = require('node-cron')
 const {regexpToText} = require("nodemon/lib/utils");
+const {sendToSentry} = require("./utils");
 
 async function sendNewEvent(channel, pings) {
-  const guild = await channel.client.guilds.fetch(process.env.TPC_GUILD_ID)
-  if (guild !== undefined) {
-    guild.scheduledEvents.fetch().then(events => {
-      if (events.size === 0) {
-        return
-      }
-
-      const nextEvent = events.at(0)
-      const now = new Date()
-
-      if (Math.abs(nextEvent.scheduledStartAt - now) <= 60 * 60 * 1000 && !channel.client.eventReminders.includes(nextEvent.id)) {
-        const day = nextEvent.scheduledStartAt.getDay()
-        const image = new AttachmentBuilder( nextEvent.coverImageURL({size: 4096, extension: "jpeg"}), 'event-banner.jpeg')
-        if(nextEvent.image !== null){
-          channel.send({
-            content: pings[day] + "\n" + nextEvent.description,
-            files: [image]
-          })
-        } else {
-          channel.send({
-            content: pings[day] + "\n" + nextEvent.description,
-          })
+  try {
+    const guild = await channel.client.guilds.fetch(process.env.TPC_GUILD_ID)
+    if (guild !== undefined) {
+      guild.scheduledEvents.fetch().then(events => {
+        if (events.size === 0) {
+          return
         }
 
-        channel.client.eventReminders.push(nextEvent.id)
-      }
-    })
+        const nextEvent = events.at(0)
+        const now = new Date()
+
+        if (Math.abs(nextEvent.scheduledStartAt - now) <= 60 * 60 * 1000 && !channel.client.eventReminders.includes(nextEvent.id)) {
+          const day = nextEvent.scheduledStartAt.getDay()
+          const image = new AttachmentBuilder(nextEvent.coverImageURL({
+            size: 4096,
+            extension: "jpeg"
+          }), 'event-banner.jpeg')
+          if (nextEvent.image !== null) {
+            channel.send({
+              content: pings[day] + "\n" + nextEvent.description,
+              files: [image]
+            })
+          } else {
+            channel.send({
+              content: pings[day] + "\n" + nextEvent.description,
+            })
+          }
+
+          channel.client.eventReminders.push(nextEvent.id)
+        }
+      })
+    } else {
+      throw new Error("guild is undefined")
+    }
+  } catch (error) {
+    console.error(error)
+    sendToSentry(error, 'event-ping')
   }
 }
 
