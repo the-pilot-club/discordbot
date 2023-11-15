@@ -107,8 +107,8 @@ client.on('guildMemberUpdate', async (oldMember, newMember) => {
 const cron = require('node-cron')
 const {regexpToText} = require("nodemon/lib/utils");
 
-function sendNewEvent(channel, pings) {
-  const guild = channel.client.guilds.cache.find(guild => guild.id === process.env.GUILD_ID)
+async function sendNewEvent(channel, pings) {
+  const guild = await channel.client.guilds.fetch(process.env.TPC_GUILD_ID)
   if (guild !== undefined) {
     guild.scheduledEvents.fetch().then(events => {
       if (events.size === 0) {
@@ -120,7 +120,7 @@ function sendNewEvent(channel, pings) {
 
       if (Math.abs(nextEvent.scheduledStartAt - now) <= 60 * 60 * 1000 && !channel.client.eventReminders.includes(nextEvent.id)) {
         const day = nextEvent.scheduledStartAt.getDay()
-      const image = new AttachmentBuilder( nextEvent.coverImageURL({size: 4096, extension: "jpeg"}), 'event-banner.jpeg')
+        const image = new AttachmentBuilder( nextEvent.coverImageURL({size: 4096, extension: "jpeg"}), 'event-banner.jpeg')
         if(nextEvent.image !== null){
           channel.send({
             content: pings[day] + "\n" + nextEvent.description,
