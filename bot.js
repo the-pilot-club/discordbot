@@ -105,36 +105,46 @@ client.on('guildMemberUpdate', async (oldMember, newMember) => {
 // Cron Jobs for the quiz and the event postings
 
 const cron = require('node-cron')
-const {regexpToText} = require("nodemon/lib/utils");
+const {sendToSentry} = require("./utils");
 
-function sendNewEvent(channel, pings) {
-  const guild = channel.client.guilds.cache.find(guild => guild.id === process.env.GUILD_ID)
-  if (guild !== undefined) {
-    guild.scheduledEvents.fetch().then(events => {
-      if (events.size === 0) {
-        return
-      }
-
-      const nextEvent = events.at(0)
-      const now = new Date()
-
-      if (Math.abs(nextEvent.scheduledStartAt - now) <= 60 * 60 * 1000 && !channel.client.eventReminders.includes(nextEvent.id)) {
-        const day = nextEvent.scheduledStartAt.getDay()
-      const image = new AttachmentBuilder( nextEvent.coverImageURL({size: 4096, extension: "jpeg"}), 'event-banner.jpeg')
-        if(nextEvent.image !== null){
-          channel.send({
-            content: pings[day] + "\n" + nextEvent.description,
-            files: [image]
-          })
-        } else {
-          channel.send({
-            content: pings[day] + "\n" + nextEvent.description,
-          })
-        }
-
-        channel.client.eventReminders.push(nextEvent.id)
-      }
+async function sendNewEvent(channel, pings) {
+  try {
+    const guild = channel.client.guilds.cache.find(guild => {
+      return guild.id === process.env.GUILD_ID
     })
+
+    if (guild === undefined) {
+      throw new Error(`guild not found in cache for guild id "${process.env.GUILD_ID}"`)
+    }
+
+    const events = await guild.scheduledEvents.fetch()
+
+    if (events.size === 0) {
+      throw new Error(`failed to fetch scheduled events for guild id "${process.env.GUILD_ID}"`)
+    }
+    
+    const sortedEvents = events.sort((a, b) => a.scheduledStartAt - b.scheduledStartAt)
+    const nextEvent = sortedEvents.first()
+    const now = new Date()
+    if (Math.abs(nextEvent.scheduledStartAt - now) <= 60 * 60 * 1000 && !channel.client.eventReminders.includes(nextEvent.id)) {
+      const day = nextEvent.scheduledStartAt.getDay()
+      const image = new AttachmentBuilder( nextEvent.coverImageURL({size: 4096, extension: "jpeg"}), 'event-banner.jpeg')
+      if (nextEvent.image !== null) {
+        channel.send({
+          content: pings[day] + "\n" + nextEvent.description,
+          files: [image]
+        })
+      } else {
+        channel.send({
+          content: pings[day] + "\n" + nextEvent.description,
+        })
+      }
+
+      channel.client.eventReminders.push(nextEvent.id)
+    }
+  } catch (error) {
+    console.log(error)
+    sendToSentry(error, 'event-ping')
   }
 }
 
@@ -176,11 +186,12 @@ async function updateQuestion () {
 }
 
 const weeklyPings = {
-  2: '<@&937389346204557342> <@&898240224189120532>',
-  3: '<@&937389346204557342> <@&898240224189120532>',
-  0: '<@&937389346204557342>',
-  4: '<@&937389346204557342>',
-  6: '<@&937389346204557342>'
+  2: '<@&937389346204557342> <@&898240224189120532>', //Tuesday
+  3: '<@&937389346204557342> <@&898240224189120532>', // Wednesday
+  0: '<@&937389346204557342>', //Sunday
+  4: '<@&937389346204557342>', //Thursday
+  5: '<@&937389346204557342>', //Friday
+  6: '<@&937389346204557342>'  //Saturday
 }
 
 client.on('ready', async function () {

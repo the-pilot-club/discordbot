@@ -25,7 +25,6 @@ module.exports = {
       let formatted = ''
       for (let i = 0; i < list.length; i++) {
         const member = await interaction.guild.members.fetch(list[i])
-        console.log(member)
         formatted += `\n${i + 1}. ${member.nickname}`
       }
       interaction.reply({
