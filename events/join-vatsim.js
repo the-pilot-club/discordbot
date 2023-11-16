@@ -4,7 +4,7 @@ module.exports = {
   name: 'messageCreate',
   once: false,
   execute (message) {
-    if (message.content.includes('join vatsim')) {
+    if (message.content.toLowerCase().includes('join vatsim')) {
       const row = new ActionRowBuilder()
         .addComponents(
           new ButtonBuilder()
