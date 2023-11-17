@@ -131,12 +131,12 @@ async function sendNewEvent(channel, pings) {
       const image = new AttachmentBuilder( nextEvent.coverImageURL({size: 4096, extension: "jpeg"}), 'event-banner.jpeg')
       if (nextEvent.image !== null) {
         channel.send({
-          content: pings[day] + "\n" + nextEvent.description,
+          content: pings[day] + "**The event is starting in 1 hour. See you there!**\n" + nextEvent.description,
           files: [image]
         })
       } else {
         channel.send({
-          content: pings[day] + "\n" + nextEvent.description,
+          content: pings[day] + "\n" + "**The event is starting in 1 hour.**\n" + nextEvent.description,
         })
       }
 
