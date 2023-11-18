@@ -11,5 +11,5 @@
     "rules": {
         "camelcase": "off"
     },
-    "ignorePatterns": ["Dockerfile", "*.png", "*.json", "*.env", "*.md"]
+    "ignorePatterns": ["Dockerfile", "*.png", "*.json", "*.env", "*.md", "*.yml", "yarn.lock"]
 }
