@@ -9,7 +9,7 @@ module.exports = {
         .addComponents(
           new ButtonBuilder()
             .setLabel('Joining VATSIM')
-            .setURL('https://my.vatsim.net/')
+            .setURL('https://www.thepilotclub.org/resources#VATSIM')
             .setStyle(ButtonStyle.Link)
         )
       message.reply({
