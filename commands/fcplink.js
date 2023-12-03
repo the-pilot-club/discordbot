@@ -3,7 +3,7 @@ const { ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js')
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName('fcplink')
+    .setName('flight-crew-portal')
     .setDescription('The link to the Flight Crew Portal'),
   async execute (interaction) {
     const row = new ActionRowBuilder()
@@ -13,6 +13,6 @@ module.exports = {
           .setURL('https://flightcrew.thepilotclub.org/')
           .setStyle(ButtonStyle.Link)
       )
-    await interaction.reply({ content: 'Here is the link to the FCP:', components: [row] })
+    await interaction.reply({ content: 'Here is a link to the Flight Crew Portal:', components: [row] })
   }
 }
