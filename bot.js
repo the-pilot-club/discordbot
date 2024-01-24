@@ -122,7 +122,7 @@ async function sendNewEvent(channel, pings) {
     if (events.size === 0) {
       throw new Error(`failed to fetch scheduled events for guild id "${process.env.GUILD_ID}"`)
     }
-    
+
     const sortedEvents = events.sort((a, b) => a.scheduledStartAt - b.scheduledStartAt)
     const nextEvent = sortedEvents.first()
     const now = new Date()
