@@ -3,6 +3,10 @@ module.exports = {
     once: false,
     execute (message) {
       try {
+        if (message.channel.type === 1) {
+          return
+        }
+
         if (message.channel.id === '830210202464813056' || (message.channel.name.startsWith('SCREENSHOT CONTEST') && message.channel.parentId === '830210202464813056')) {
           const image = message.attachments.find(attachment => attachment.contentType?.startsWith('image/'));
           if (image) {
