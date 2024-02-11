@@ -70,5 +70,4 @@ export async function trainingRequest(interaction) {
         content: `Thank you for submitting an Ad Hoc training request for ${time}. Please note, requests may or may not be honored, and are deleted every 24h.`,
         ephemeral: true
     })
-
 }

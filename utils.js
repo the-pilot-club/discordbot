@@ -12,6 +12,7 @@ import {
     worldTour
 } from "./events/messageCreate.js";
 import {ferryRequest, joinCharters, trainingRequest} from "./events/interactionCreate.js";
+import {client} from "./bot.js";
 
 export function sendToSentry(err, locationLabel) {
     Sentry.withScope(function (scope) {
@@ -59,10 +60,27 @@ export function handleMessageCreateEvent (message) {
     }
 }
 
-export function handleInteractionCreateEvent (interaction) {
+export async function handleInteractionCreateEvent (interaction) {
     switch (interaction.customId) {
         case 'charter-ferry' : return ferryRequest(interaction)
         case 'join-charters' : return joinCharters(interaction)
         case 'trainging-request' : return trainingRequest(interaction)
+    }
+
+    if (!interaction.isChatInputCommand()) return
+
+    const command = client.commands.get(interaction.commandName)
+
+    if (!command) return
+
+    try {
+        await command.execute(interaction)
+    } catch (error) {
+        console.error(error)
+        await interaction.reply({
+            content: 'There was an error while executing this command! Please let Eric | ZSE | TPC76 know ASAP so that a fix can occur!' +
+                '\n \nIf this is the booking or PIREP Command, please un-archive the channel as this is the reason you are getting this error',
+            ephemeral: true
+        }).catch(err => (console.log(err)))
     }
 }
