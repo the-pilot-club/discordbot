@@ -1,71 +1,61 @@
-require('dotenv').config()
-const { Client, Collection, GatewayIntentBits, AttachmentBuilder } = require('discord.js')
+import {config} from "dotenv";
+config()
+import {Client, Collection, GatewayIntentBits, AttachmentBuilder, Events} from 'discord.js'
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMessages, GatewayIntentBits.DirectMessages,
     GatewayIntentBits.DirectMessageReactions, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildScheduledEvents]
 })
-const fs = require('node:fs')
-const path = require('node:path')
+import fs from 'node:fs'
+import path from 'node:path'
 client.setMaxListeners(0)
-const monthNames = [
-  'jan',
-  'feb',
-  'mar',
-  'apr',
-  'may',
-  'jun',
-  'jul',
-  'aug',
-  'sep',
-  'oct',
-  'nov',
-  'dec'
-]
 
 client.eventReminders = [];
-client.commands = new Collection()
-const commandsPath = path.join(__dirname, 'commands')
-const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'))
+// client.commands = new Collection()
+// const commandsPath = path.join(__dirname, 'commands')
+// const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'))
+//
+// for (const file of commandFiles) {
+//   const filePath = path.join(commandsPath, file)
+//   const command = require(filePath)
+//   client.commands.set(command.data.name, command)
+// }
+//
+// client.on('interactionCreate', async interaction => {
+//   if (!interaction.isChatInputCommand()) return
+//
+//   const command = client.commands.get(interaction.commandName)
+//
+//   if (!command) return
+//
+//   try {
+//     await command.execute(interaction)
+//   } catch (error) {
+//     console.error(error)
+//     await interaction.reply({
+//       content: 'There was an error while executing this command! Please let Eric | ZSE | TPC76 know ASAP so that a fix can occur!' +
+//         '\n \nIf this is the booking or PIREP Command, please un-archive the channel as this is the reason you are getting this error',
+//       ephemeral: true
+//     }).catch(err => (console.log(err)))
+//   }
+// })
 
-for (const file of commandFiles) {
-  const filePath = path.join(commandsPath, file)
-  const command = require(filePath)
-  client.commands.set(command.data.name, command)
-}
+// const eventsPath = path.join(__dirname, 'events')
+// const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'))
+//
+// for (const file of eventFiles) {
+//   const filePath = path.join(eventsPath, file)
+//   const event = require(filePath)
+//   if (event.once) {
+//     client.once(event.name, (...args) => event.execute(...args))
+//   } else {
+//     client.on(event.name, (...args) => event.execute(...args))
+//   }
+// }
 
-client.on('interactionCreate', async interaction => {
-  if (!interaction.isChatInputCommand()) return
-
-  const command = client.commands.get(interaction.commandName)
-
-  if (!command) return
-
-  try {
-    await command.execute(interaction)
-  } catch (error) {
-    console.error(error)
-    await interaction.reply({
-      content: 'There was an error while executing this command! Please let Eric | ZSE | TPC76 know ASAP so that a fix can occur!' +
-        '\n \nIf this is the booking or PIREP Command, please un-archive the channel as this is the reason you are getting this error',
-      ephemeral: true
-    }).catch(err => (console.log(err)))
-  }
-})
-
-const eventsPath = path.join(__dirname, 'events')
-const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'))
-
-for (const file of eventFiles) {
-  const filePath = path.join(eventsPath, file)
-  const event = require(filePath)
-  if (event.once) {
-    client.once(event.name, (...args) => event.execute(...args))
-  } else {
-    client.on(event.name, (...args) => event.execute(...args))
-  }
-}
-
+client.on(Events.MessageCreate, handleMessageCreateEvent)
+client.on(Events.InteractionCreate, handleInteractionCreateEvent)
+client.on(Events.ClientReady, imReady)
 // Role congrats and Charters DM
 client.on('guildMemberUpdate', async (oldMember, newMember) => {
   const channel = client.channels.cache.find(channel => channel.name === 'crew-chat')
@@ -77,7 +67,7 @@ client.on('guildMemberUpdate', async (oldMember, newMember) => {
     })
   }
 })
-client.on('guildMemberUpdate', async (oldMember, newMember) => {
+client.on(Events.GuildMemberUpdate, async (oldMember, newMember) => {
   const channel = client.channels.cache.find(channel => channel.name === 'crew-chat')
   if (oldMember.roles.cache.has(process.env.FREQUENTFLIER_ROLE)) return
   if (newMember.roles.cache.has(process.env.FREQUENTFLIER_ROLE)) {
@@ -87,7 +77,7 @@ client.on('guildMemberUpdate', async (oldMember, newMember) => {
     })
   }
 })
-client.on('guildMemberUpdate', async (oldMember, newMember) => {
+client.on(Events.GuildMemberUpdate, async (oldMember, newMember) => {
   const channel = client.channels.cache.find(channel => channel.name === 'crew-chat')
   if (oldMember.roles.cache.has(process.env.VIP_ROLE)) return
   if (newMember.roles.cache.has(process.env.VIP_ROLE)) {
@@ -104,8 +94,9 @@ client.on('guildMemberUpdate', async (oldMember, newMember) => {
 
 // Cron Jobs for the quiz and the event postings
 
-const cron = require('node-cron')
-const {sendToSentry} = require("./utils");
+import cron from 'node-cron'
+import {handleInteractionCreateEvent, handleMessageCreateEvent, sendToSentry} from "./utils.js";
+import {imReady} from "./events/ready.js";
 
 async function sendNewEvent(channel, pings) {
   try {
@@ -194,10 +185,10 @@ const weeklyPings = {
   6: '<@&937389346204557342>'  //Saturday
 }
 
-client.on('ready', async function () {
+client.on(Events.ClientReady, async function () {
   const channel = await client.channels.cache.find(channel => channel.name === 'aviation-quiz')
   const eventChannel = await client.channels.cache.find(channel => channel.name === 'crew-chat')
-  // Getting random question every day:  0 57 22 * * *
+  // Getting random question every day: 0 57 22 * * *
   // Sends Answer to current Question
   cron.schedule('0 52 13 * * *', function () { // Correct time is 0 52 13 * * *
     sendNewAnswer(channel)
@@ -215,6 +206,4 @@ client.on('ready', async function () {
     sendNewEvent(eventChannel, weeklyPings)
   })
 })
-
-module.exports = client
 client.login(process.env.BOT_TOKEN).catch(err => (console.log(err)))
