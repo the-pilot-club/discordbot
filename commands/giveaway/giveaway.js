@@ -1,6 +1,5 @@
-const { SlashCommandBuilder } = require('discord.js')
-const { EmbedBuilder } = require('discord.js')
-module.exports = {
+import { SlashCommandBuilder, EmbedBuilder } from 'discord.js';
+export default {
   data: new SlashCommandBuilder()
     .setName('giveaway')
     .setDescription('Picks a random user with giveaway role.'),

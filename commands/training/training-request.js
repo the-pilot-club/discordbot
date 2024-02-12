@@ -1,7 +1,6 @@
-const { SlashCommandBuilder } = require('discord.js')
-const { ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle } = require('discord.js')
+import { SlashCommandBuilder, ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle } from 'discord.js';
 
-module.exports = {
+export default {
   data: new SlashCommandBuilder()
     .setName('training-request')
     .setDescription('Use this command if you would like to request training!'),

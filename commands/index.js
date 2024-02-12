@@ -15,7 +15,6 @@ import metarCommand from './util/metar.js'
 import nextFlightCommand from './general/next-flight.js'
 import onlineCommand from './vatsim/online.js'
 import perksGiveawayCommand from './giveaway/perks-giveaway.js'
-import pilotsRoleCommand from './admin/pilots_role.js'
 import pingCommand from './fun/ping.js'
 import pollCommand from './admin/poll.js'
 import reportCommand from './admin/report.js'
@@ -26,6 +25,9 @@ import tafCommand from './util/taf.js'
 import top5Command from './general/top5.js'
 import trainingCommand from './training/training.js'
 import trainingRequestCommand from './training/training-request.js'
+import fcplinkCommand from "./fcp/fcplink.js";
+import getCallsignCommand from "./fcp/getCallsign.js"
+import userInfoCommand from "./fcp/userInfo.js"
 import { Collection } from 'discord.js'
 
 /**
@@ -37,7 +39,7 @@ import { Collection } from 'discord.js'
 /**
  * @type {Object<string, Command>} CommandsList
  */
-const commands = {
+export const commands = {
     airportCommand,
     chartersBookingCommand,
     chartersRequestCommand,
@@ -55,7 +57,6 @@ const commands = {
     nextFlightCommand,
     onlineCommand,
     perksGiveawayCommand,
-    pilotsRoleCommand,
     pingCommand,
     pollCommand,
     reportCommand,
@@ -65,9 +66,11 @@ const commands = {
     tafCommand,
     top5Command,
     trainingCommand,
-    trainingRequestCommand
+    trainingRequestCommand,
+    fcplinkCommand,
+    getCallsignCommand,
+    userInfoCommand
 }
 
-const allCommands = new Collection(new Array(Object.keys(commands).map(key => [key, commands[key]])))
-
-export default allCommand
+export const allCommands = new Collection(Object.keys(commands).map(key => [commands[key].data.name, commands[key]]))
+export const list = Object.keys(commands).map(key => [commands[key]])

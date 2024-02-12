@@ -1,7 +1,6 @@
-const { SlashCommandBuilder } = require('discord.js')
-const { EmbedBuilder } = require('discord.js')
+import { SlashCommandBuilder , EmbedBuilder } from 'discord.js'
 
-module.exports = {
+export default {
   data: new SlashCommandBuilder()
     .setName('denied-archive')
     .setDescription('This command is for the Admin team to process archives for ideas that have been put in the idea box.'
@@ -44,5 +43,4 @@ module.exports = {
       })
     }
   }
-
 }

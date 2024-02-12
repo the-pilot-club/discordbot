@@ -115,7 +115,7 @@ export function tpcCallsign(message) {
         .setColor('#37B6FF')
         .addFields({
             name: 'How to get a TPC Callsign',
-            value: 'When flying group flights you get an extra 250xp points for using a TPC callsign during the flight.'
+            value: 'When flying group flights you get an extra 1000xp points for using a TPC callsign during the flight.'
         })
         .addFields({
             name: '\u200b',
@@ -162,4 +162,17 @@ export function worldTour (message) {
         content: 'Want to join the World Tour Flight? Proceed to this message and click the World Tour Logo!',
         components: [row]
     })
+}
+
+export function tpcReaction (message) {
+        const image = message.attachments.find(attachment => attachment.contentType?.startsWith('image/'));
+        if (image) {
+           return message.react(':tpc:845075689241051138').catch(err => console.error(err));
+        }
+
+}
+
+export async function boosterMessage(message) {
+    const channel = await message.client.channels.cache.find(channel => channel.name === 'crew-chat')
+    channel.send(`${message.member.displayName} Thank you for boosting the club!`)
 }

@@ -1,7 +1,6 @@
-const { SlashCommandBuilder } = require('discord.js')
-const { ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js')
+import { SlashCommandBuilder,ActionRowBuilder, ButtonBuilder, ButtonStyle } from 'discord.js'
 
-module.exports = {
+export default {
   data: new SlashCommandBuilder()
     .setName('flight-crew-portal')
     .setDescription('The link to the Flight Crew Portal'),

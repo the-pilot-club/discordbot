@@ -1,8 +1,7 @@
-const { SlashCommandBuilder } = require('discord.js')
-const Mee6LevelsApi = require('mee6-levels-api')
+import { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } from 'discord.js';
+import Mee6LevelsApi from 'mee6-levels-api'
 const guildId = process.env.TPC_GUILD_ID
-const { ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js')
-module.exports = {
+export default {
   data: new SlashCommandBuilder()
     .setName('top5')
     .setDescription('Posts the leaderboard top 5 members!'),

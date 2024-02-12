@@ -1,7 +1,6 @@
-const { SlashCommandBuilder } = require('discord.js')
-const { EmbedBuilder } = require('discord.js')
+import { SlashCommandBuilder , EmbedBuilder } from 'discord.js';
 
-module.exports = {
+export default {
   data: new SlashCommandBuilder()
     .setName('report')
     .setDescription('Use this command to report a user.')

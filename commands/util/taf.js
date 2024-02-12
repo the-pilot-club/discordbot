@@ -1,7 +1,5 @@
-const { SlashCommandBuilder } = require('discord.js')
-const { EmbedBuilder } = require('discord.js')
-
-module.exports = {
+import { SlashCommandBuilder, EmbedBuilder } from 'discord.js';
+export default {
   data: new SlashCommandBuilder()
     .setName('taf')
     .setDescription('Gives TAF for a Specific Airport').addStringOption(option =>

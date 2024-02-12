@@ -1,5 +1,6 @@
 import Sentry from "@sentry/node"
 import {
+    boosterMessage,
     bumpWars,
     fno,
     inviteLink, joinVatsim,
@@ -8,11 +9,10 @@ import {
     rulesContent,
     supportContent, thanksTpc,
     tpcCallsign,
-    tpcLivery, whatIsVatsimContent, whatServer,
+    tpcLivery, tpcReaction, whatIsVatsimContent, whatServer,
     worldTour
 } from "./events/messageCreate.js";
 import {ferryRequest, joinCharters, trainingRequest} from "./events/interactionCreate.js";
-import {client} from "./bot.js";
 
 export function sendToSentry(err, locationLabel) {
     Sentry.withScope(function (scope) {
@@ -58,26 +58,37 @@ export function handleMessageCreateEvent (message) {
     } else {
         return exactSearchCases[message.content.toLowerCase()]()
     }
+    if (message.type === 8 || message.type === 9 ||message.type === 10 ||message.type === 11) {
+        return boosterMessage(message)
+    }
+
+    if (!message.channel.type === 1) {
+        if (message.channel.id === '830210202464813056' || (message.channel.name.startsWith('SCREENSHOT CONTEST') && message.channel.parentId === '830210202464813056')){
+            return tpcReaction(message)
+        }
+    }
+
+
+
 }
 
 export async function handleInteractionCreateEvent (interaction) {
     switch (interaction.customId) {
         case 'charter-ferry' : return ferryRequest(interaction)
         case 'join-charters' : return joinCharters(interaction)
-        case 'trainging-request' : return trainingRequest(interaction)
+        case 'training-request' : return trainingRequest(interaction)
     }
 
     if (!interaction.isChatInputCommand()) return
 
-    const command = client.commands.get(interaction.commandName)
-
+    const command = interaction.client.commands.get(interaction.commandName)
     if (!command) return
 
     try {
-        await command.execute(interaction)
+        return await command.execute(interaction)
     } catch (error) {
         console.error(error)
-        await interaction.reply({
+        return await interaction.reply({
             content: 'There was an error while executing this command! Please let Eric | ZSE | TPC76 know ASAP so that a fix can occur!' +
                 '\n \nIf this is the booking or PIREP Command, please un-archive the channel as this is the reason you are getting this error',
             ephemeral: true
