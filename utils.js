@@ -62,7 +62,7 @@ export function handleMessageCreateEvent (message) {
         return boosterMessage(message)
     }
 
-    if (!message.channel.type === 1) {
+    if (message.channel.type !== 1) {
         if (message.channel.id === '830210202464813056' || (message.channel.name.startsWith('SCREENSHOT CONTEST') && message.channel.parentId === '830210202464813056')){
             return tpcReaction(message)
         }
