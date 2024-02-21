@@ -7,14 +7,14 @@ export default {
             option.setName('user')
                 .setDescription('The user to get the information of')
                 .setRequired(true)),
-    async execute(interaction , client) {
+    async execute(interaction) {
         const user = interaction.options.getMember('user');
         const response = await fetch(`https://flightcrew.thepilotclub.org/api/users/find/${user.id}`, {
             method: 'GET',
         });
 
 
-        if (response.status == 404) {
+        if (response.status === 404) {
             console.log(`${user.displayName} does not have a FCP account.`);
             interaction.reply({ content: `${user.displayName} does not have a FCP account.`, ephemeral: true });
             return;
@@ -27,7 +27,7 @@ export default {
         }
 
         const body = await response.json();
-        const { discordUsername, callsign, vatsimCid, homeAirport, chartersCode, bio, aircraftHangar } = body;
+        const { callsign, vatsimCid, homeAirport, chartersCode, bio, aircraftHangar } = body;
         const notFound = body.detail;
         const aircraftDetails = aircraftHangar.map(({ aircraftName }) => `- ${aircraftName}`);
 

@@ -1,4 +1,6 @@
 import { SlashCommandBuilder, EmbedBuilder } from 'discord.js';
+import {Config} from "../../config/config.js";
+const config = new Config()
 
 export default {
   data: new SlashCommandBuilder()
@@ -16,7 +18,7 @@ export default {
     const airportResponse = await fetch(`https://api.api-ninjas.com/v1/airports?icao=${airport}`, {
       method: 'GET',
       headers: {
-        'X-Api-Key': process.env.NINJA_API_KEY
+        'X-Api-Key': config.ninjaApiKey()
       }
     })
     const airportBody = await airportResponse.json()

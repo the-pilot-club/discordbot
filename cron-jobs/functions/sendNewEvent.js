@@ -1,20 +1,22 @@
 import {AttachmentBuilder} from "discord.js";
 import {sendToSentry} from "../../utils.js";
+import {Config} from "../../config/config.js";
+const config = new Config()
 
 export async function sendNewEvent(channel, pings) {
     try {
         const guild = channel.client.guilds.cache.find(guild => {
-            return guild.id === process.env.GUILD_ID
+            return guild.id === config.guild()
         })
 
         if (guild === undefined) {
-            throw new Error(`guild not found in cache for guild id "${process.env.GUILD_ID}"`)
+            throw new Error(`guild not found in cache for guild id "${config.guild()}"`)
         }
 
         const events = await guild.scheduledEvents.fetch()
 
         if (events.size === 0) {
-            throw new Error(`failed to fetch scheduled events for guild id "${process.env.GUILD_ID}"`)
+            throw new Error(`failed to fetch scheduled events for guild id "${config.guild()}"`)
         }
 
         const sortedEvents = events.sort((a, b) => a.scheduledStartAt - b.scheduledStartAt)

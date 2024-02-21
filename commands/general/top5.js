@@ -1,6 +1,7 @@
 import { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } from 'discord.js';
 import Mee6LevelsApi from 'mee6-levels-api'
-const guildId = process.env.TPC_GUILD_ID
+import {Config} from "../../config/config.js";
+const guildId = new Config().tpcGuild()
 export default {
   data: new SlashCommandBuilder()
     .setName('top5')

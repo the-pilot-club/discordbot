@@ -1,12 +1,13 @@
 import { SlashCommandBuilder } from 'discord.js';
-
+import {Config} from "../../config/config.js";
+const config = new Config()
 export default {
   data: new SlashCommandBuilder()
     .setName('reset-giveaway')
     .setDescription('Reset the giveaway by removing reactions and role'),
   async execute (interaction) {
-    const giveawayMessageId = process.env.GIVEAWAY_MESSAGE
-    const giveawayChannel = interaction.client.channels.cache.get(process.env.ABOUTANDSOP)
+    const giveawayMessageId = config.giveawayMessage()
+    const giveawayChannel = interaction.client.channels.cache.get(config.aboutAndSop())
     const giveawayMessage = await giveawayChannel.messages.fetch(giveawayMessageId)
 
     const giveawayEmojiId = ':giveaway:895480872243978280'
@@ -16,7 +17,7 @@ export default {
       giveawayReaction.remove()
     }
 
-    const giveawayRoleId = process.env.GIVEAWAY_ROLE
+    const giveawayRoleId = config.giveawayRole()
     const giveawayRole = interaction.guild.roles.cache.get(giveawayRoleId)
     const members = await interaction.guild.members.fetch()
     members.forEach(members => members.roles.remove(giveawayRole))

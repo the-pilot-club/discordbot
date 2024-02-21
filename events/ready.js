@@ -1,14 +1,16 @@
-import {config} from "dotenv";
-config()
+// import {config} from "dotenv";
+// config()
 import {ActivityType, Routes} from "discord.js";
 import {list} from "../commands/index.js";
 import {REST} from "@discordjs/rest";
+import {Config} from "../config/config.js";
+const config = new Config()
 
 export function imReady(client) {
   const gitchannel = client.channels.cache.find(channel => channel.name === 'github-notifications')
   console.log(`Logged in as ${client.user.tag}`)
   client.user.setActivity('XPlane 11', { type: ActivityType.Playing })
-  if (process.env.NODE_ENV === "prod"){
+  if (new Config().env() === "prod"){
     const commands = []
 
 
@@ -18,9 +20,9 @@ export function imReady(client) {
       }
     }
 
-    const rest = new REST({version: '10'}).setToken(process.env.BOT_TOKEN)
+    const rest = new REST({version: '10'}).setToken(config.token())
 
-    rest.put(Routes.applicationCommands(process.env.CLIENT_ID),
+    rest.put(Routes.applicationCommands(config.clientId()),
         {body: commands})
         .then(() => console.log('Successfully registered global commands.'))
         .catch(console.error)

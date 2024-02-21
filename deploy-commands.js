@@ -1,5 +1,5 @@
-import {config} from "dotenv";
-config()
+import {Config} from "./config/config.js";
+const config = new Config()
 import {REST} from '@discordjs/rest';
 import {Routes} from 'discord.js';
 import {list} from "./commands/index.js";
@@ -14,9 +14,9 @@ for (const command of list) {
     }
 }
 
-const rest = new REST({version: '10'}).setToken(process.env.BOT_TOKEN)
+const rest = new REST({version: '10'}).setToken(config.token())
 
-rest.put(Routes.applicationCommands(process.env.CLIENT_ID),
+rest.put(Routes.applicationCommands(config.clientId()),
     {body: commands})
     .then(() => console.log('Successfully registered global commands.'))
     .catch(console.error)

@@ -1,5 +1,7 @@
+import {Config} from "../../config/config.js";
+const config = new Config()
 export async function sendNewAnswer(channel) {
-    const apiUrl = process.env.API_URL
+    const apiUrl = config.questionsApiUrl()
     const answer = await fetch(apiUrl)
     const answerBody = await answer.json()
     switch (answerBody.correctAnswer) {
