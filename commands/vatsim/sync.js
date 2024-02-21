@@ -1,5 +1,6 @@
 import { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } from 'discord.js';
 import fetch from 'node-fetch';
+import {sendToSentry} from "../../utils.js";
 export default {
   data: new SlashCommandBuilder()
     .setName('sync')
@@ -28,7 +29,7 @@ export default {
         content: 'Please connect your VATSIM account to the VATSIM Community Hub!',
         components: [row],
         ephemeral: true
-      }).catch(err => { console.log(err) })
+      }).catch(err => {  sendToSentry(err, "Sync Command") })
     } else {
       const ratingResponse = await fetch(`https://api.vatsim.net/v2/members/${cid}`)
       if (!ratingResponse || ratingResponse.status !== 200) {
@@ -109,17 +110,17 @@ export default {
           iconURL: 'https://static1.squarespace.com/static/614689d3918044012d2ac1b4/t/616ff36761fabc72642806e3/1634726781251/TPC_FullColor_TransparentBg_1280x1024_72dpi.png'
         })
         .setTimestamp()
-      await interaction.reply({ embeds: [embed] }).catch(err => { console.log(err) })
+      await interaction.reply({ embeds: [embed] }).catch(err => {  sendToSentry(err, "Sync Command") })
 
       for (const role of MANAGED_ROLES) {
         const discordRole = interaction.member.guild.roles.cache.find(r => r.name === role)
         if (roles.includes(role)) {
           if (!interaction.member.roles.cache.some(r => r.name === role)) {
-            interaction.member.roles.add(discordRole).catch(e => console.log(e))
+            interaction.member.roles.add(discordRole).catch(e => sendToSentry(e, "Sync Command"))
           }
         } else {
           if (interaction.member.roles.cache.some(r => r.name === role)) {
-            interaction.member.roles.remove(discordRole).catch(e => console.log(e))
+            interaction.member.roles.remove(discordRole).catch(e => sendToSentry(e, "Sync Command"))
           }
         }
       }

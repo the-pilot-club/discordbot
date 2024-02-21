@@ -692,45 +692,44 @@
   resolved "https://registry.npmjs.org/@sapphire/snowflake/-/snowflake-3.4.0.tgz"
   integrity sha512-zZxymtVO6zeXVMPds+6d7gv/OfnCc25M1Z+7ZLB0oPmeMTPeRWVPQSS16oDJy5ZsyCOLj7M6mbZml5gWXcVRNw==
 
-"@sentry-internal/tracing@7.80.1":
-  version "7.80.1"
-  resolved "https://registry.npmjs.org/@sentry-internal/tracing/-/tracing-7.80.1.tgz"
-  integrity sha512-5gZ4LPIj2vpQl2/dHBM4uXMi9OI5E0VlOhJQt0foiuN6JJeiOjdpJFcfVqJk69wrc0deVENTtgKKktxqMwVeWQ==
+"@sentry-internal/tracing@7.102.0":
+  version "7.102.0"
+  resolved "https://registry.npmjs.org/@sentry-internal/tracing/-/tracing-7.102.0.tgz"
+  integrity sha512-BlE33HWL1IzkGa0W+pwTiyu01MUIfYf+WnO9UC8qkDW3jxVvg2zhoSjXSxikT+KPCOgoZpQHspaTzwjnI1LCvw==
   dependencies:
-    "@sentry/core" "7.80.1"
-    "@sentry/types" "7.80.1"
-    "@sentry/utils" "7.80.1"
+    "@sentry/core" "7.102.0"
+    "@sentry/types" "7.102.0"
+    "@sentry/utils" "7.102.0"
 
-"@sentry/core@7.80.1":
-  version "7.80.1"
-  resolved "https://registry.npmjs.org/@sentry/core/-/core-7.80.1.tgz"
-  integrity sha512-3Yh+O9Q86MxwIuJFYtuSSoUCpdx99P1xDAqL0FIPTJ+ekaVMiUJq9NmyaNh9uN2myPSmxvEXW6q3z37zta9ZHg==
+"@sentry/core@7.102.0":
+  version "7.102.0"
+  resolved "https://registry.npmjs.org/@sentry/core/-/core-7.102.0.tgz"
+  integrity sha512-GO9eLOSBK1waW4AD0wDXAreaNqXFQ1MPQZrkKcN+GJYEFhJK1+u+MSV7vO5Fs/rIfaTZIZ2jtEkxSSAOucE8EQ==
   dependencies:
-    "@sentry/types" "7.80.1"
-    "@sentry/utils" "7.80.1"
+    "@sentry/types" "7.102.0"
+    "@sentry/utils" "7.102.0"
 
-"@sentry/node@^7.80.1":
-  version "7.80.1"
-  resolved "https://registry.npmjs.org/@sentry/node/-/node-7.80.1.tgz"
-  integrity sha512-0NWfcZMlyQphKWsvyzfhGm2dCBk5DUPqOGW/vGx18G4tCCYtFcAIj/mCp/4XOEcZRPQgb9vkm+sidGD6DnwWlA==
+"@sentry/node@^7.102.0":
+  version "7.102.0"
+  resolved "https://registry.npmjs.org/@sentry/node/-/node-7.102.0.tgz"
+  integrity sha512-ZS1s2uO/+K4rHkmWjyqm5Jtl6dT7klbZSMvn4tfIpkfWuqrs7pP0jaATyvmF+96z3lpq6fRAJliV5tRqPy7w5Q==
   dependencies:
-    "@sentry-internal/tracing" "7.80.1"
-    "@sentry/core" "7.80.1"
-    "@sentry/types" "7.80.1"
-    "@sentry/utils" "7.80.1"
-    https-proxy-agent "^5.0.0"
+    "@sentry-internal/tracing" "7.102.0"
+    "@sentry/core" "7.102.0"
+    "@sentry/types" "7.102.0"
+    "@sentry/utils" "7.102.0"
 
-"@sentry/types@7.80.1":
-  version "7.80.1"
-  resolved "https://registry.npmjs.org/@sentry/types/-/types-7.80.1.tgz"
-  integrity sha512-CVu4uPVTOI3U9kYiOdA085R7jX5H1oVODbs9y+A8opJ0dtJTMueCXgZyE8oXQ0NjGVs6HEeaLkOuiV0mj8X3yw==
+"@sentry/types@7.102.0":
+  version "7.102.0"
+  resolved "https://registry.npmjs.org/@sentry/types/-/types-7.102.0.tgz"
+  integrity sha512-FPfFBP0x3LkPARw1/6cWySLq1djIo8ao3Qo2KNBeE9CHdq8bsS1a8zzjJLuWG4Ww+wieLP8/lY3WTgrCz4jowg==
 
-"@sentry/utils@7.80.1":
-  version "7.80.1"
-  resolved "https://registry.npmjs.org/@sentry/utils/-/utils-7.80.1.tgz"
-  integrity sha512-bfFm2e/nEn+b9++QwjNEYCbS7EqmteT8uf0XUs7PljusSimIqqxDtK1pfD9zjynPgC8kW/fVBKv0pe2LufomeA==
+"@sentry/utils@7.102.0":
+  version "7.102.0"
+  resolved "https://registry.npmjs.org/@sentry/utils/-/utils-7.102.0.tgz"
+  integrity sha512-cp5KCRe0slOVMwG4iP2Z4UajQkjryRTiFskZ5H7Q3X9R5voM8+DAhiDcIW88GL9NxqyUrAJOjmKdeLK2vM+bdA==
   dependencies:
-    "@sentry/types" "7.80.1"
+    "@sentry/types" "7.102.0"
 
 "@sinclair/typebox@^0.27.8":
   version "0.27.8"
@@ -978,13 +977,6 @@ acorn-jsx@^5.3.2:
   version "8.10.0"
   resolved "https://registry.npmjs.org/acorn/-/acorn-8.10.0.tgz"
   integrity sha512-F0SAmZ8iUtS//m8DmCTA0jlh6TDKkHQyK6xc6V4KDTyZKA9dnvX9/3sRTVQrWm79glUAZbnmmNcdYwUIHWVybw==
-
-agent-base@6:
-  version "6.0.2"
-  resolved "https://registry.npmjs.org/agent-base/-/agent-base-6.0.2.tgz"
-  integrity sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==
-  dependencies:
-    debug "4"
 
 ajv@^6.12.4:
   version "6.12.6"
@@ -1577,13 +1569,6 @@ debug@2.6.9:
   integrity sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==
   dependencies:
     ms "2.0.0"
-
-debug@4:
-  version "4.3.4"
-  resolved "https://registry.npmjs.org/debug/-/debug-4.3.4.tgz"
-  integrity sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==
-  dependencies:
-    ms "2.1.2"
 
 decompress-response@^6.0.0:
   version "6.0.0"
@@ -2216,9 +2201,9 @@ flatted@^3.1.0:
   integrity sha512-5nqDSxl8nn5BSNxyR3n4I6eDmbolI6WT+QqR547RwxQapgjQBmtktdP+HTBb/a/zLsbzERTONyUB5pefh5TtjQ==
 
 follow-redirects@^1.14.4:
-  version "1.15.2"
-  resolved "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.15.2.tgz"
-  integrity sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==
+  version "1.15.5"
+  resolved "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.15.5.tgz"
+  integrity sha512-vSFWUON1B+yAw1VN4xMfxgn5fTUiaOzAJCKBwIIgT/+7CuGy9+r+5gITvP62j3RmaD5Ph65UaERdOSRGUzZtgw==
 
 for-each@^0.3.3:
   version "0.3.3"
@@ -2490,14 +2475,6 @@ http2-wrapper@^1.0.0-beta.5.2:
   dependencies:
     quick-lru "^5.1.1"
     resolve-alpn "^1.0.0"
-
-https-proxy-agent@^5.0.0:
-  version "5.0.1"
-  resolved "https://registry.npmjs.org/https-proxy-agent/-/https-proxy-agent-5.0.1.tgz"
-  integrity sha512-dFcAjpTQFgoLMzC2VwU+C/CbS7uRL0lWmxDITmqm7C+7F0Odmj6s9l6alZc6AELXhrnggM2CeWSXHGOdX2YtwA==
-  dependencies:
-    agent-base "6"
-    debug "4"
 
 human-signals@^2.1.0:
   version "2.1.0"
@@ -4430,9 +4407,9 @@ undefsafe@^2.0.5:
   integrity sha512-WxONCrssBM8TSPRqN5EmsjVrsv4A8X12J4ArBiiayv3DyyG3ZlIg6yysuuSYdZsVz3TKcTg2fd//Ujd4CHV1iA==
 
 undici@^5.13.0:
-  version "5.27.0"
-  resolved "https://registry.npmjs.org/undici/-/undici-5.27.0.tgz"
-  integrity sha512-l3ydWhlhOJzMVOYkymLykcRRXqbUaQriERtR70B9LzNkZ4bX52Fc8wbTDneMiwo8T+AemZXvXaTx+9o5ROxrXg==
+  version "5.28.3"
+  resolved "https://registry.npmjs.org/undici/-/undici-5.28.3.tgz"
+  integrity sha512-3ItfzbrhDlINjaP0duwnNsKpDQk3acHI3gVJ1z4fmwMK31k5G9OVIAMLSIaP6w4FaGkaAkN6zaQO9LUvZ1t7VA==
   dependencies:
     "@fastify/busboy" "^2.0.0"
 

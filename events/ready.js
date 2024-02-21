@@ -4,6 +4,7 @@ import {ActivityType, Routes} from "discord.js";
 import {list} from "../commands/index.js";
 import {REST} from "@discordjs/rest";
 import {Config} from "../config/config.js";
+import {sendToSentry} from "../utils.js";
 const config = new Config()
 
 export function imReady(client) {
@@ -25,7 +26,7 @@ export function imReady(client) {
     rest.put(Routes.applicationCommands(config.clientId()),
         {body: commands})
         .then(() => console.log('Successfully registered global commands.'))
-        .catch(console.error)
+        .catch(error => sendToSentry(error, "Sync Command"))
   }
   return gitchannel.send('https://tenor.com/view/hiding-under-covers-tired-sleepy-hiding-under-blanket-good-night-gif-19864771')
 }

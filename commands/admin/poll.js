@@ -1,4 +1,5 @@
 import { SlashCommandBuilder } from 'discord.js';
+import {sendToSentry} from "../../utils.js";
 
 export default {
   data: new SlashCommandBuilder()
@@ -62,7 +63,7 @@ export default {
             message.react('🇪')
           }
         })
-        .catch(error => console.error('One of the emojis failed to react:', error))
+        .catch(error => sendToSentry(error, "Poll"))
     } else {
       await interaction.reply('You need to be staff to use /poll!')
     }

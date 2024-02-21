@@ -1,4 +1,5 @@
 import { SlashCommandBuilder , EmbedBuilder } from 'discord.js';
+import {sendToSentry} from "../../utils.js";
 
 export default {
   data: new SlashCommandBuilder()
@@ -60,7 +61,7 @@ export default {
           .setFooter({ text: 'Made by The Pilot Club For TPC Charters' })
 
         interaction.guild.client.channels.cache.find(channel => channel.name === `${channels}`).send({ embeds: [commentemebed] }).catch(error =>
-          console.log(error))
+          sendToSentry(error, "Charters Aircraft Booking"))
       } else {
         switch (tail) {
           case 'N1890C':
@@ -87,7 +88,7 @@ export default {
           .setFooter({ text: 'Made by The Pilot Club For TPC Charters' })
 
         interaction.guild.client.channels.cache.find(channel => channel.name === `${channels}`).send({ embeds: [nocommentemebed] }).catch(error =>
-          console.log(error))
+            sendToSentry(error, "Charters Aircraft Booking"))
       }
       await interaction.reply({ content: 'Your Booking has been submitted! Thank you!', ephemeral: true })
     } else {

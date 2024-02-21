@@ -16,6 +16,5 @@ export default {
     } else {
       interaction.reply('I could not get a dad joke for you :( ')
     }
-    ;
   }
 }

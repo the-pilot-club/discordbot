@@ -1,5 +1,6 @@
 import { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } from 'discord.js';
 import fetch from 'node-fetch';
+import {sendToSentry} from "../../utils.js";
 
 export default {
   data: new SlashCommandBuilder()
@@ -33,7 +34,7 @@ export default {
         components: [row],
         ephemeral: true,
       }).catch(err => {
-        console.log(err);
+        sendToSentry(err, "VATSIM Hours Command");
       });
     } else {
       const hoursResponse = await fetch(`https://api.vatsim.net/v2/members/${cid}/stats`);
@@ -66,13 +67,13 @@ export default {
           sup: 'Supervisor Hours',
           adm: 'Administrator Hours',
         };
-        
+
         for (const key in hoursData) {
           if (hoursData[key] !== 0 && labels[key] !== undefined) {
             embed.addFields({ name: labels[key], value: `${hoursData[key]}` });
           }
         }
-        
+
       await interaction.reply({ embeds: [embed], ephemeral: true });
     }
   },

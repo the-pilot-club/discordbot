@@ -1,5 +1,6 @@
 import { SlashCommandBuilder, EmbedBuilder } from 'discord.js'
 import fetch from 'node-fetch'
+import {sendToSentry} from "../../utils.js";
 export default {
     data: new SlashCommandBuilder()
         .setName('user-info')
@@ -36,7 +37,7 @@ export default {
                 content: `A FCP account was not found for ${user}.`,
                 ephemeral: true,
             }).catch(err => {
-                console.log(err);
+                sendToSentry(err, "FCP User Info");
             });
         } else {
             const successEmbed = new EmbedBuilder()

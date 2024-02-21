@@ -1,6 +1,7 @@
 import { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } from 'discord.js';
 import Mee6LevelsApi from 'mee6-levels-api'
 import {Config} from "../../config/config.js";
+import {sendToSentry} from "../../utils.js";
 const guildId = new Config().tpcGuild()
 export default {
   data: new SlashCommandBuilder()
@@ -32,7 +33,7 @@ export default {
         components: [row]
       })
     } catch (error) {
-      console.error(error)
+      sendToSentry(error, "Top 5 Command")
     }
   },
 }

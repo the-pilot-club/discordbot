@@ -1,4 +1,5 @@
 import { SlashCommandBuilder, EmbedBuilder } from 'discord.js';
+import {sendToSentry} from "../../utils.js";
 export default {
   data: new SlashCommandBuilder()
     .setName('get-online-members')
@@ -48,6 +49,6 @@ export default {
       })
       .setTimestamp()
 
-    await interaction.reply({ embeds: [embed] }).catch((error) => console.error(error))
+    await interaction.reply({ embeds: [embed] }).catch((error) =>  sendToSentry(error, "Online Pilots Command"))
   }
 }

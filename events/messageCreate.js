@@ -1,4 +1,5 @@
 import {ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder} from "discord.js";
+import {sendToSentry} from "../utils.js";
 
 export function bumpWars(message) {
     return message.reply('**[BUMP WARS:](<discord://-/channels/830201397974663229/958549204073087086>)** \n \n' +
@@ -167,7 +168,7 @@ export function worldTour (message) {
 export function tpcReaction (message) {
         const image = message.attachments.find(attachment => attachment.contentType?.startsWith('image/'));
         if (image) {
-           return message.react(':tpc:845075689241051138').catch(err => console.error(err));
+           return message.react(':tpc:845075689241051138').catch(err => sendToSentry(err, "TPC Reaction Function"));
         }
 
 }
