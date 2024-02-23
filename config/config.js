@@ -178,6 +178,28 @@ export class Config {
         }
     }
 
+    chartersManagersRole(){
+        if(this.env() === "dev"){
+            return "1148307481328623736"
+        }
+        else if (this.env() === "prod"){
+            return "910012872246046730"
+        } else {
+            return null
+        }
+    }
+
+    flightInsRole(){
+        if(this.env() === "dev"){
+            return "1148307481328623745"
+        }
+        else if (this.env() === "prod"){
+            return "945775006175076492"
+        } else {
+            return null
+        }
+    }
+
 
 
 
