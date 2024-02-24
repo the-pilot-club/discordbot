@@ -200,6 +200,14 @@ export class Config {
         }
     }
 
+    fcpBaseUrl(){
+        if(process.env.FCP_BASE_URL !== undefined){
+            return process.env.FCP_BASE_URL
+        } else {
+            return "https://flightcrew.thepilotclub.org"
+        }
+    }
+
 
 
 
