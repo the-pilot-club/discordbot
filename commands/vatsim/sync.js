@@ -31,7 +31,7 @@ export default {
         ephemeral: true
       }).catch(err => {  sendToSentry(err, "Sync Command") })
     } else {
-      const ratingResponse = await fetch(`https://api.vatsim.net/v2/members/${cid}`)
+      const ratingResponse = await fetch(`https://api.vatsim.net/v2/members/${cid}`).catch(error => sendToSentry(error, 'Sync v2 /members'))
       if (!ratingResponse || ratingResponse.status !== 200) {
         console.log(`The ratingResponse could not be completed as dialed for ${interaction.member.displayName}`)
         return
@@ -114,13 +114,12 @@ export default {
 
       for (const role of MANAGED_ROLES) {
         const discordRole = interaction.member.guild.roles.cache.find(r => r.name === role)
+        if (interaction.member.roles.cache.some(r => r.name === role)) {
+          await interaction.member.roles.remove(discordRole).catch(e => sendToSentry(e, "Sync Command"))
+        }
         if (roles.includes(role)) {
           if (!interaction.member.roles.cache.some(r => r.name === role)) {
-            interaction.member.roles.add(discordRole).catch(e => sendToSentry(e, "Sync Command"))
-          }
-        } else {
-          if (interaction.member.roles.cache.some(r => r.name === role)) {
-            interaction.member.roles.remove(discordRole).catch(e => sendToSentry(e, "Sync Command"))
+            await interaction.member.roles.add(discordRole).catch(e => sendToSentry(e, "Sync Command"))
           }
         }
       }
