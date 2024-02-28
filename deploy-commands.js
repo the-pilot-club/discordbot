@@ -1,26 +1,22 @@
-require('dotenv').config()
-const fs = require('node:fs')
-const path = require('node:path')
-const { REST } = require('@discordjs/rest')
-const { Routes } = require('discord.js')
+import {Config} from "./config/config.js";
+const config = new Config()
+import {REST} from '@discordjs/rest';
+import {Routes} from 'discord.js';
+import {list} from "./commands/index.js";
+
 
 const commands = []
-const commandsPath = path.join(__dirname, 'commands')
-const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'))
 
-for (const file of commandFiles) {
-  const filePath = path.join(commandsPath, file)
-  const command = require(filePath)
-  commands.push(command.data.toJSON())
+
+for (const command of list) {
+    for (const cmds of command){
+        commands.push(cmds.data)
+    }
 }
 
-const rest = new REST({ version: '10' }).setToken(process.env.BOT_TOKEN)
+const rest = new REST({version: '10'}).setToken(config.token())
 
-rest.put(Routes.applicationGuildCommands(process.env.CLIENT_ID, process.env.GUILD_ID), { body: [] })
-  .then(() => console.log('Successfully deleted all guild commands.'))
-  .catch(console.error)
-
-rest.put(Routes.applicationCommands(process.env.CLIENT_ID),
-  { body: commands })
-  .then(() => console.log('Successfully registered global commands.'))
-  .catch(console.error)
+rest.put(Routes.applicationCommands(config.clientId()),
+    {body: commands})
+    .then(() => console.log('Successfully registered global commands.'))
+    .catch(console.error)
