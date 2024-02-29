@@ -1,7 +1,4 @@
 import { SlashCommandBuilder, EmbedBuilder } from 'discord.js';
-import {Config} from "../../config/config.js";
-import {sendToSentry} from "../../utils.js";
-const config = new Config()
 
 export default {
   data: new SlashCommandBuilder()
@@ -64,7 +61,11 @@ export default {
     // console.log(stationsParse)
     // return
     if(stationsResponse.status === 200 && stationsParse.length !== 0){
-      const stationMap = stationsParse.map(({name, callsign, frequency, ctaf}) => `- ${name} (${callsign})\n  - ${frequency} is CTAF: `+ ctaf)
+      const stationMap = stationsParse.map(function(station) {
+        station.ctaf === true ? station.ctaf = 'CTAF Frequency:' : station.ctaf = ' '
+
+        return `- ${station.name} (${station.callsign}): **${station.ctaf}**\n  - ${station.frequency}`
+      })
       airportEmbed.addFields({name: 'Frequencies', value: stationMap.length > 0 ? stationMap.join('\n') : 'Not Set'})
     }
 
