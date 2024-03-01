@@ -40,7 +40,7 @@ export default {
       return
     }
     if (airportResponse.status !== 200) {
-      await interaction.editReply(`${airport.toUpperCase()} has no airport information provided by VATSIM. AirNav May be able to provide more information: https://www.airnav.com/airport/${airport}`)
+      await interaction.editReply(`${airport.toUpperCase()} has no airport information provided by VATSIM. AirNav may be able to provide more information: https://www.airnav.com/airport/${airport}`)
       return
     }
     const airportEmbed = new EmbedBuilder()
