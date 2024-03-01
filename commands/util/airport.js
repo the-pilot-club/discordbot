@@ -1,4 +1,5 @@
 import { SlashCommandBuilder, EmbedBuilder } from 'discord.js';
+import {sendToSentry} from "../../utils.js";
 
 export default {
   data: new SlashCommandBuilder()
@@ -16,20 +17,20 @@ export default {
       headers: {
         'User-Agent': 'TPCDiscordBot'
       }
-    })
+    }).catch(error => sendToSentry(error, 'Metar Airport Command'))
     const body = await response.text()
     const airportResponse = await fetch(`https://my.vatsim.net/api/v2/aip/airports/${airport}`, {
       method: 'GET',
       headers: {
         'User-Agent': 'TPCDiscordBot'
       }
-    })
+    }).catch(error => sendToSentry(error, 'Airport Info Airport Command'))
     const stationsResponse = await fetch(`https://my.vatsim.net/api/v2/aip/airports/${airport}/stations`, {
       method: 'GET',
       headers: {
         'User-Agent': 'TPCDiscordBot'
       }
-    })
+    }).catch(error => sendToSentry(error, '/Stations Airport Command'))
     const airportBody = await airportResponse.json()
     const airportParse = airportBody.data
     const stationsBody = await stationsResponse.json()
