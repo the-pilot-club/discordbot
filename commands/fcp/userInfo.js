@@ -1,6 +1,9 @@
 import { SlashCommandBuilder, EmbedBuilder } from 'discord.js'
 import fetch from 'node-fetch'
 import {sendToSentry} from "../../utils.js";
+import {Config} from "../../config/config.js";
+const config = new Config()
+
 export default {
     data: new SlashCommandBuilder()
         .setName('user-info')
@@ -10,7 +13,7 @@ export default {
                 .setRequired(true)),
     async execute(interaction) {
         const user = interaction.options.getMember('user');
-        const response = await fetch(`https://flightcrew.thepilotclub.org/api/users/find/${user.id}`, {
+        const response = await fetch(`${config.fcpBaseUrl()}/api/users/find/${user.id}`, {
             method: 'GET',
         });
 
