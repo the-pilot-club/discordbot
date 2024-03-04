@@ -175,5 +175,5 @@ export function tpcReaction (message) {
 
 export async function boosterMessage(message) {
     const channel = await message.client.channels.cache.find(channel => channel.name === 'crew-chat')
-    channel.send(`${message.member.displayName} Thank you for boosting the club!`)
+    channel.send(`<@${message.author.id}> Thank you for boosting the club!`)
 }

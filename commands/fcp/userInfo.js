@@ -6,13 +6,13 @@ const config = new Config()
 
 export default {
     data: new SlashCommandBuilder()
-        .setName('user-info')
+        .setName('member-info')
         .setDescription('Get a member\'s FCP Info').addUserOption(option =>
-            option.setName('user')
-                .setDescription('The user to get the information of')
+            option.setName('member')
+                .setDescription('The member to get the information of')
                 .setRequired(true)),
     async execute(interaction) {
-        const user = interaction.options.getMember('user');
+        const user = interaction.options.getMember('member');
         const response = await fetch(`${config.fcpBaseUrl()}/api/users/find/${user.id}`, {
             method: 'GET',
         });
