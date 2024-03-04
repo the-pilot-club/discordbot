@@ -1,11 +1,11 @@
-FROM oven/bun:1 as base
+FROM node:alpine3.17
 
 WORKDIR /usr/src/app
 
 COPY package*json ./
 
-RUN bun install
+RUN npm install
 
 COPY . .
 
-CMD ["bun", "start"]
+CMD ["node", "bot.js"]
