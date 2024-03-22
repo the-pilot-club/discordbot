@@ -29,12 +29,11 @@ export default {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Accept': 'application/json', // Set Accept header to application/json
-            'Authorization': `Bearer TOKEN`
-            // TODO: Add FCP_TOKEN as a env variable
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${process.env.FCP_TOKEN}`
         },
         body: JSON.stringify({
-            submitter: interaction.user.id,
+            staffId: interaction.user.id,
             log: logReason,
         }),
     });
