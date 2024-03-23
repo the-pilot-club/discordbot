@@ -114,12 +114,13 @@ export default {
 
       for (const role of MANAGED_ROLES) {
         const discordRole = interaction.member.guild.roles.cache.find(r => r.name === role)
-        if (interaction.member.roles.cache.some(r => r.name === role)) {
-          await interaction.member.roles.remove(discordRole).catch(e => sendToSentry(e, "Sync Command"))
-        }
         if (roles.includes(role)) {
           if (!interaction.member.roles.cache.some(r => r.name === role)) {
             await interaction.member.roles.add(discordRole).catch(e => sendToSentry(e, "Sync Command"))
+          }
+        } else {
+          if (interaction.member.roles.cache.some(r => r.name !== role)) {
+            await interaction.member.roles.remove(discordRole).catch(e => sendToSentry(e, "Sync Command"))
           }
         }
       }
