@@ -16,7 +16,7 @@ import {
         .setColor('0xff0000')
         .setTitle("Onboarding Required")
         .setDescription(
-          `To join Charters, you have to be onboarded into the club. Please read our SOP and click the button at the end to onboard, and then run this command again.`,
+          `You must be onboarded to join TPC Charters. Please review the club SOP to complete this requirement. Once you complete the onboarding process, you may run this command again to join TPC Charters.`,
         );
       const modal = new ModalBuilder()
         .setCustomId("join-charters")
