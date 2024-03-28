@@ -26,8 +26,8 @@ import top5Command from './general/top5.js'
 import trainingCommand from './training/training.js'
 import trainingRequestCommand from './training/training-request.js'
 import fcplinkCommand from "./fcp/fcplink.js";
-import getCallsignCommand from "./fcp/getCallsign.js"
-import userInfoCommand from "./fcp/userInfo.js"
+import getCallsignCommand from "./fcp/getcallsign.js"
+import userInfoCommand from "./fcp/userinfo.js"
 import { Collection } from 'discord.js'
 
 /**

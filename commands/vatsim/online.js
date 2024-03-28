@@ -7,6 +7,7 @@ export default {
   async execute (interaction) {
     const remarksUsers = []
     const callsignUsers = []
+    const noFlightPlanUsers = []
     const livemembersResponse = await fetch('https://data.vatsim.net/v3/vatsim-data.json')
     const liveMembers = await livemembersResponse.json()
     const tpcPilots = liveMembers.pilots
@@ -39,16 +40,30 @@ export default {
       }
     }
 
-    const embed = new EmbedBuilder()
-      .setTitle('Current Online TPC Members')
-      .setDescription(`Correct Remarks:\n${remarksUsers.join('')}\nNo Remarks:\n${callsignUsers.join('')}`)
-      .setColor('#37B6FF')
-      .setFooter({
-        text: 'Made by TPC Dev Team',
-        iconURL: 'https://static1.squarespace.com/static/614689d3918044012d2ac1b4/t/616ff36761fabc72642806e3/1634726781251/TPC_FullColor_TransparentBg_1280x1024_72dpi.png'
-      })
-      .setTimestamp()
+    const noFlightPlanFiltered = tpcPilots.filter(
+        (pilot) =>
+          !pilot.flight_plan && pilot.callsign.toUpperCase().includes('TPC')
+      );
+    
+      if (noFlightPlanFiltered.length === 0) {
+        noFlightPlanUsers.push('No one is flying without a flight plan.');
+      } else {
+        for (let i = 0; i < noFlightPlanFiltered.length; i++) {
+          const noPlanObj = noFlightPlanFiltered[i];
+          noFlightPlanUsers.push(`${noPlanObj.callsign} - ${noPlanObj.name} - ${noPlanObj.cid}\n`);
+        }
+      }
 
-    await interaction.reply({ embeds: [embed] }).catch((error) =>  sendToSentry(error, "Online Pilots Command"))
+      const embed = new EmbedBuilder()
+        .setTitle('Current Online TPC Members')
+        .setDescription(`**Correct Remarks:**\n${remarksUsers.join('')}\n**Incorrect Remarks:**\n${callsignUsers.join('')}\n**No Flight Plan:**\n${noFlightPlanUsers.join('')}`)
+        .setColor('#37B6FF')
+        .setFooter({
+          text: 'Made by TPC Dev Team',
+          iconURL: 'https://static1.squarespace.com/static/614689d3918044012d2ac1b4/t/616ff36761fabc72642806e3/1634726781251/TPC_FullColor_TransparentBg_1280x1024_72dpi.png'
+        })
+        .setTimestamp();
+
+      await interaction.reply({ embeds: [embed] }).catch((error) => sendToSentry(error, "Online Pilots Command"));
   }
 }
