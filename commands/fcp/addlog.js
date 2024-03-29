@@ -26,7 +26,7 @@ export default {
       const user = interaction.options.getUser("user");
       const logReason = interaction.options.getString("log-reason");
 
-      const response = await fetch(`https://flightcrew-beta.thepilotcub.org/api/users/find/${user.id}/audit-logs/new`, {
+      const response = await fetch(`${config.fcpBaseUrl()}/api/users/find/${user.id}/audit-logs/new`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

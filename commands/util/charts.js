@@ -1,15 +1,13 @@
 import { SlashCommandBuilder, EmbedBuilder } from 'discord.js';
-import axios from 'axios';
 import cheerio from 'cheerio';
-
 
 // const fetchCurrentCycle = async () => {
 //   try {
 //     const response = await axios.get(`${baseUrl}`);
 //     const $ = cheerio.load(response.data);
-//     console.log('Successfully fetched the current cycle.');
 //     return $('select#cycle > option:contains(Current)').val();
 //   } catch (error) {
+//     sendToSentry(error, 'Charts Command');
 //     console.error('Error fetching the current cycle:', error);
 //     throw error;
 //   }
@@ -19,10 +17,12 @@ const listOne = async (icao, chartType) => {
   try {
     const searchCycle = '2403'
     const url = `https://www.faa.gov/air_traffic/flight_info/aeronav/digital_products/dtpp/search/results/?cycle=${searchCycle}&ident=${icao}&sort=type&dir=asc`;
-    const response = await axios.get(url);
-    console.log(`Successfully fetched diagrams for ${icao}.`);
-    return parse(response.data, chartType);
+    const response = await fetch(url);
+    const html = await response.text();
+    const $ = cheerio.load(html);
+    return parse(html, chartType);
   } catch (error) {
+    sendToSentry(error, 'Charts Command');
     console.error(`Error fetching diagrams for ${icao}:`, error);
     throw error;
   }
@@ -43,8 +43,6 @@ const parse = (html, chartType) => {
     .filter(row => isDiagramRow($(row), chartType))
     .map(row => extractRow($(row)))
     .filter(x => !!x);
-
-  console.log('Successfully parsed diagram data.');
   return results;
 };
 
@@ -84,17 +82,18 @@ const isDiagramRow = ($row, chartType) => {
   return text($row, 7) === chartType;
 };
 
-const airportDiagrams = async (icaos, chartType, options = {}) => {
+async function airportDiagrams(icaos, chartType = {}) {
   try {
     if (Array.isArray(icaos)) {
       return Promise.all(icaos.map(icao => listOne(icao, chartType)));
     }
     return listOne(icaos, chartType);
   } catch (error) {
+    sendToSentry(error, 'Charts Command');
     console.error('Error fetching airport diagrams:', error);
     throw error;
   }
-};
+}
 
 export default {
   data: new SlashCommandBuilder()
@@ -123,7 +122,6 @@ export default {
     try {
       const icaoCode = interaction.options.getString('icao').toUpperCase();
       const chartType = interaction.options.getString('charttype')?.toUpperCase();
-      console.log(`Executing command for ICAO code: ${icaoCode}`);
             const diagrams = await airportDiagrams(icaoCode, chartType);
 
             if (diagrams && diagrams.length > 0) {
@@ -143,9 +141,9 @@ export default {
               await interaction.editReply(`${icaoCode.toUpperCase()} has no available charts online. [SkyVector may be able to provide more information.](https://skyvector.com/api/airportSearch?query=${icaoCode})`);
             }
           } catch (error) {
+            sendToSentry(error, 'Charts Command');
             console.error('Error executing the command:', error);
             await interaction.editReply(`${icaoCode.toUpperCase()} has no available charts online. [SkyVector may be able to provide more information.](https://skyvector.com/api/airportSearch?query=${icaoCode})`);
           }
         },
       };
-
