@@ -1,5 +1,5 @@
 import {Client, GatewayIntentBits, Events} from 'discord.js'
-import {handleInteractionCreateEvent, handleMessageCreateEvent, sendToSentry} from "./utils.js";
+import {handleInteractionCreateEvent, handleMessageCreateEvent, sendToSentry, handleGuildMemberRemove} from "./utils.js";
 import {imReady} from "./events/ready.js";
 import roleNotification from "./events/roles.js";
 import {allCommands} from "./commands/index.js";
@@ -38,4 +38,5 @@ client.on(Events.InteractionCreate, handleInteractionCreateEvent)
 client.on(Events.ClientReady, imReady)
 client.on(Events.GuildMemberUpdate, roleNotification)
 client.on(Events.ClientReady, cronJobs)
+client.on(Events.GuildMemberRemove, handleGuildMemberRemove)
 client.login(config.token()).catch(err => (sendToSentry(err, "Bot Login")))
