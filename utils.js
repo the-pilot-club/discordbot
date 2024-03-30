@@ -22,6 +22,8 @@ import {
   joinCharters,
   trainingRequest,
 } from "./events/interactionCreate.js";
+import { Config } from "../../config/config.js";
+const config = new Config();
 
 export function sendToSentry(err, locationLabel) {
   Sentry.withScope(function (scope) {
@@ -120,7 +122,7 @@ export async function handleInteractionCreateEvent(interaction) {
 
 export async function handleGuildMemberRemove(member) {
     try {
-      const url = `https://flightcrew-beta.thepilotclub.org/api/users/find/${member.id}/delete`;
+      const url = `${config.fcpBaseUrl()}/api/users/find/${member.id}/delete`;
 
       const response = await fetch(url, {
           method: 'DELETE',
