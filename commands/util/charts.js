@@ -1,27 +1,20 @@
 import { SlashCommandBuilder, EmbedBuilder } from 'discord.js';
 import cheerio from 'cheerio';
-
-// const fetchCurrentCycle = async () => {
-//   try {
-//     const response = await axios.get(`${baseUrl}`);
-//     const $ = cheerio.load(response.data);
-//     return $('select#cycle > option:contains(Current)').val();
-//   } catch (error) {
-//     sendToSentry(error, 'Charts Command');
-//     console.error('Error fetching the current cycle:', error);
-//     throw error;
-//   }
-// };
+import airac from "airac-cc";
+import {sendToSentry} from "../../utils.js";
 
 const listOne = async (icao, chartType) => {
   try {
-    const searchCycle = '2403'
+    const searchCycle = await airac.Cycle.fromDate(new Date()).identifier;
+    console.log(new Date())
+    console.log(searchCycle)
     const url = `https://www.faa.gov/air_traffic/flight_info/aeronav/digital_products/dtpp/search/results/?cycle=${searchCycle}&ident=${icao}&sort=type&dir=asc`;
     const response = await fetch(url);
     const html = await response.text();
     const $ = cheerio.load(html);
     return parse(html, chartType);
   } catch (error) {
+    console.log(error)
     sendToSentry(error, 'Charts Command');
     console.error(`Error fetching diagrams for ${icao}:`, error);
     throw error;
