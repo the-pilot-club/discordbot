@@ -8,7 +8,7 @@ import ferryCommand from './charters/ferry.js'
 import giveawayCommand from './giveaway/giveaway.js'
 import hoursCommand from './vatsim/hours.js'
 import ideaArchiveCommand from './admin/idea-archive.js'
-import joinChartersCommand from './charters/join-charters.js'
+import joinChartersCommand from './charters/charters-join.js'
 import leaderboardCommand from './general/leaderboard.js'
 import memberCountCommand from './general/membercount.js'
 import metarCommand from './util/metar.js'
@@ -69,7 +69,8 @@ export const commands = {
     trainingRequestCommand,
     fcplinkCommand,
     getCallsignCommand,
-    userInfoCommand
+    userInfoCommand,
+    addLogCommand
 }
 
 export const allCommands = new Collection(Object.keys(commands).map(key => [commands[key].data.name, commands[key]]))
