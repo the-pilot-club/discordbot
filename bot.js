@@ -1,17 +1,19 @@
-import {Client, GatewayIntentBits, Events} from 'discord.js'
-import {handleInteractionCreateEvent, handleMessageCreateEvent, sendToSentry, handleGuildMemberRemove} from "./utils.js";
+import {Client, GatewayIntentBits, Events,  Partials} from 'discord.js'
+import {handleInteractionCreateEvent, handleMessageCreateEvent, sendToSentry} from "./utils.js";
 import {imReady} from "./events/ready.js";
 import roleNotification from "./events/roles.js";
 import {allCommands} from "./commands/index.js";
 import {cronJobs} from "./cron-jobs/index.js";
 import {Config} from "./config/config.js";
+import { guildMemberAdd, guildMemberRemove, guildBanAdd, guildBanRemove, guildMemberUpdate } from "./logs.js";
 const config = new Config()
 import * as Sentry from "@sentry/node";
 
 const client = new Client({
     intents: [
         GatewayIntentBits.Guilds, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMessages, GatewayIntentBits.DirectMessages,
-        GatewayIntentBits.DirectMessageReactions, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildScheduledEvents]
+        GatewayIntentBits.DirectMessageReactions, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildScheduledEvents, GatewayIntentBits.GuildBans],
+    partials: [ Partials.GuildMember ]
 })
 
 
@@ -38,5 +40,9 @@ client.on(Events.InteractionCreate, handleInteractionCreateEvent)
 client.on(Events.ClientReady, imReady)
 client.on(Events.GuildMemberUpdate, roleNotification)
 client.on(Events.ClientReady, cronJobs)
-client.on(Events.GuildMemberRemove, handleGuildMemberRemove)
+client.on(Events.GuildBanAdd, guildBanAdd)
+client.on(Events.GuildBanRemove, guildBanRemove)
+client.on(Events.GuildMemberAdd, guildMemberAdd)
+client.on(Events.GuildMemberRemove, guildMemberRemove)
+client.on(Events.GuildMemberUpdate, guildMemberUpdate)
 client.login(config.token()).catch(err => (sendToSentry(err, "Bot Login")))
