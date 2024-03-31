@@ -69,8 +69,7 @@ export const commands = {
     trainingRequestCommand,
     fcplinkCommand,
     getCallsignCommand,
-    userInfoCommand,
-    addLogCommand
+    userInfoCommand
 }
 
 export const allCommands = new Collection(Object.keys(commands).map(key => [commands[key].data.name, commands[key]]))
