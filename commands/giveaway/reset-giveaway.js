@@ -11,7 +11,7 @@ export default {
     const giveawayChannel = interaction.client.channels.cache.get(config.aboutAndSop())
     const giveawayMessage = await giveawayChannel.messages.fetch(giveawayMessageId)
 
-    const giveawayEmojiId = ':giveaway:895480872243978280'
+    const giveawayEmojiId = '895480872243978280'
 
     const giveawayReaction = giveawayMessage.reactions.cache.get(giveawayEmojiId)
     if (giveawayReaction) {
