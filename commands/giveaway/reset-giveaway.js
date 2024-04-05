@@ -7,6 +7,7 @@ export default {
     .setName('reset-giveaway')
     .setDescription('Reset the giveaway by removing reactions and role'),
   async execute (interaction) {
+    if (interaction.member.roles.cache.some(role => role.name === 'Staff') || interaction.member.roles.cache.some(role => role.name === 'Air Marshals')) {
     const giveawayMessageId = config.giveawayMessage()
     const giveawayChannel = interaction.client.channels.cache.get(config.aboutAndSop())
     const giveawayMessage = await giveawayChannel.messages.fetch(giveawayMessageId)
@@ -25,5 +26,6 @@ export default {
     giveawayMessage.react(giveawayEmojiId).catch(err =>  sendToSentry(err, "Reset Giveaway"))
 
     await interaction.reply('**I have reset the giveaway role and message!**')
+   }
   }
 }
