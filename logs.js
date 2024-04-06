@@ -109,11 +109,21 @@ try {
 
 export async function guildMemberUpdate(oldMember, newMember) {
   try {
-    console.log('test')
-    const addedRoles = newMember.roles.cache.filter(role => !oldMember.roles.cache.has(role.id));
-    const removedRoles = oldMember.roles.cache.filter(role => !newMember.roles.cache.has(role.id));
-    console.log(oldMember.nickname)
-    console.log(newMember.nickname)
+      if (oldMember.partial) {
+          const embed = new EmbedBuilder()
+              .setAuthor({name: `${newMember.user.username}`, iconURL: `${newMember.user.displayAvatarURL()}`})
+              .setTitle('Log Error')
+              .setDescription(`${newMember.user} has been updated, however due to Discord limitations, I cannot provide the full log.\nThe user either:\n- Had their nickname changed\n- Had a role added\n- Had a role removed.`)
+              .setColor("#FF0000")
+              .setFooter({
+                  text: `ID: ${newMember.user.id}`,
+              })
+              .setTimestamp();
+          newMember.guild.channels.cache.find(channel => channel.name === 'bot-dump-channel').send({embeds: [embed]});
+          return;
+      }
+      const addedRoles = newMember.roles.cache.filter(role => !oldMember.roles.cache.has(role.id));
+      const removedRoles = oldMember.roles.cache.filter(role => !newMember.roles.cache.has(role.id));
     if (oldMember.nickname !== newMember.nickname) {
       const embed = new EmbedBuilder()
         .setAuthor({ name: `${newMember.user.username}`, iconURL: `${newMember.user.displayAvatarURL()}` })
@@ -125,9 +135,8 @@ export async function guildMemberUpdate(oldMember, newMember) {
         })
         .setTimestamp();
       newMember.guild.channels.cache.find(channel => channel.name === 'bot-dump-channel').send({ embeds: [embed] });
-      return;
     }
-    
+
     if (addedRoles.size > 0) {
       const addedRoleMentions = addedRoles.map(role => role.toString()).join(', ');
       const embed = new EmbedBuilder()

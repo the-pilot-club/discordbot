@@ -1,6 +1,5 @@
 import cron from "node-cron";
 import {sendNewAnswer} from "./functions/sendNewAnswer.js";
-import {updateQuestion} from "./functions/updateQuestion.js";
 import {sendNewQuestion} from "./functions/sendNewQuestion.js";
 import {sendNewEvent} from "./functions/sendNewEvent.js";
 export async function cronJobs(client){
