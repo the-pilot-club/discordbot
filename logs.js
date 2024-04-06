@@ -3,6 +3,18 @@ import {Config} from "./config/config.js";
 const config = new Config()
 import {sendToSentry} from "./utils.js";
 
+let logChannel;
+
+export async function init(client) {
+    try {
+        logChannel = client.channels.cache.find(channel => channel.name === 'bot-dump-channel')
+        if (!logChannel) {
+            console.error(`Couldn't find the logging channel'`);
+        }
+    } catch (error) {
+        console.error(`Error getting log channel: ${error}`);
+    }
+}
 export async function guildBanAdd(ban) {
 try {
       const embed = new EmbedBuilder()
@@ -14,7 +26,7 @@ try {
         text: `ID: ${ban.user.id}`,
       })
       .setTimestamp();
-          ban.client.channels.cache.find(channel => channel.name === 'bot-dump-channel').send({embeds: [embed]})
+          logChannel.send({embeds: [embed]})
   } catch (error) {
           sendToSentry(error, "Guild ban add log")
   }
@@ -31,7 +43,7 @@ try {
         text: `ID: ${ban.user.id}`,
       })
       .setTimestamp();
-          ban.client.channels.cache.find(channel => channel.name === 'bot-dump-channel').send({embeds: [embed]})
+    logChannel.send({embeds: [embed]})
   } catch (error) {
           sendToSentry(error, "Guild ban remove log")
   }
@@ -48,7 +60,7 @@ try {
         text: `ID: ${member.id}`,
       })
       .setTimestamp();
-          member.client.channels.cache.find(channel => channel.name === 'bot-dump-channel').send({embeds: [embed]})
+       logChannel.send({embeds: [embed]})
       await member.roles.add(member.guild.roles.cache.find(role => role.name === 'Pilots'))
   } catch (error) {
           sendToSentry(error, "Guild member add log")
@@ -84,7 +96,7 @@ try {
         text: `ID: ${member.id}`,
       })
       .setTimestamp();
-          member.client.channels.cache.find(channel => channel.name === 'bot-dump-channel').send({embeds: [successEmbed]})
+      logChannel.send({embeds: [successEmbed]})
 
         } else if (response.status === 404) {
     const noFCPEmbed = new EmbedBuilder()
@@ -96,7 +108,7 @@ try {
       text: `ID: ${member.id}`,
     })
     .setTimestamp();
-    member.client.channels.cache.find(channel => channel.name === 'bot-dump-channel').send({embeds: [noFCPEmbed]})
+      logChannel.send({embeds: [noFCPEmbed]})
             console.log(`User ${member.id} doesn't have an FCP account.`);
         } else {
             console.error(`Error removing user from FCP. Status code: ${response.status}`);
@@ -119,7 +131,7 @@ export async function guildMemberUpdate(oldMember, newMember) {
                   text: `ID: ${newMember.user.id}`,
               })
               .setTimestamp();
-          newMember.guild.channels.cache.find(channel => channel.name === 'bot-dump-channel').send({embeds: [embed]});
+          logChannel.send({embeds: [embed]});
           return;
       }
       const addedRoles = newMember.roles.cache.filter(role => !oldMember.roles.cache.has(role.id));
@@ -134,7 +146,7 @@ export async function guildMemberUpdate(oldMember, newMember) {
           text: `ID: ${newMember.user.id}`,
         })
         .setTimestamp();
-      newMember.guild.channels.cache.find(channel => channel.name === 'bot-dump-channel').send({ embeds: [embed] });
+        logChannel.send({ embeds: [embed] });
     }
 
     if (addedRoles.size > 0) {
@@ -148,7 +160,7 @@ export async function guildMemberUpdate(oldMember, newMember) {
           text: `ID: ${newMember.user.id}`,
         })
         .setTimestamp();
-      newMember.guild.channels.cache.find(channel => channel.name === 'bot-dump-channel').send({ embeds: [embed] });
+        logChannel.send({ embeds: [embed] });
     }
 
     if (removedRoles.size > 0) {
@@ -162,7 +174,7 @@ export async function guildMemberUpdate(oldMember, newMember) {
           text: `ID: ${newMember.user.id}`,
         })
         .setTimestamp();
-      newMember.guild.channels.cache.find(channel => channel.name === 'bot-dump-channel').send({ embeds: [embed] });
+        logChannel.send({ embeds: [embed] });
     }
   } catch (error) {
     console.log(error);

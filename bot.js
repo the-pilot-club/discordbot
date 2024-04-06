@@ -5,7 +5,7 @@ import roleNotification from "./events/roles.js";
 import {allCommands} from "./commands/index.js";
 import {cronJobs} from "./cron-jobs/index.js";
 import {Config} from "./config/config.js";
-import { guildMemberAdd, guildMemberRemove, guildBanAdd, guildBanRemove, guildMemberUpdate } from "./logs.js";
+import { guildMemberAdd, guildMemberRemove, guildBanAdd, guildBanRemove, guildMemberUpdate, init } from "./logs.js";
 const config = new Config()
 import * as Sentry from "@sentry/node";
 
@@ -38,6 +38,7 @@ client.commands = allCommands
 client.on(Events.MessageCreate, handleMessageCreateEvent)
 client.on(Events.InteractionCreate, handleInteractionCreateEvent)
 client.on(Events.ClientReady, imReady)
+client.on(Events.ClientReady, init)
 client.on(Events.GuildMemberUpdate, roleNotification)
 client.on(Events.ClientReady, cronJobs)
 client.on(Events.GuildBanAdd, guildBanAdd)
