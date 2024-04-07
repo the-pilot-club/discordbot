@@ -5,7 +5,7 @@ import {sendToSentry} from "../../utils.js";
 
 const listOne = async (icao, chartType) => {
   try {
-    const searchCycle = await airac.Cycle.fromDate(new Date()).identifier;
+    const searchCycle = airac.Cycle.fromDate(new Date()).identifier;
     console.log(new Date())
     console.log(searchCycle)
     const url = `https://www.faa.gov/air_traffic/flight_info/aeronav/digital_products/dtpp/search/results/?cycle=${searchCycle}&ident=${icao}&sort=type&dir=asc`;
