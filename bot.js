@@ -1,4 +1,4 @@
-import {Client, GatewayIntentBits, Events,  Partials} from 'discord.js'
+import {Client, GatewayIntentBits, Events} from 'discord.js'
 import {handleInteractionCreateEvent, handleMessageCreateEvent, sendToSentry} from "./utils.js";
 import {imReady} from "./events/ready.js";
 import roleNotification from "./events/roles.js";
@@ -12,8 +12,7 @@ import * as Sentry from "@sentry/node";
 const client = new Client({
     intents: [
         GatewayIntentBits.Guilds, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMessages, GatewayIntentBits.DirectMessages,
-        GatewayIntentBits.DirectMessageReactions, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildScheduledEvents, GatewayIntentBits.GuildBans],
-    partials: [ Partials.GuildMember ]
+        GatewayIntentBits.DirectMessageReactions, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildScheduledEvents, GatewayIntentBits.GuildBans]
 })
 
 
