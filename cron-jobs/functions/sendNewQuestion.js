@@ -3,7 +3,7 @@ const config = new Config();
 
 export async function sendNewQuestion(channel) {
   const question = await fetch(`${config.quizBaseUrl()}/api/quiz/next`, {
-    method: 'POST',
+    method: 'GET',
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',

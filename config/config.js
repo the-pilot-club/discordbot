@@ -181,7 +181,7 @@ export class Config {
     if (process.env.FCP_BASE_URL !== undefined) {
       return process.env.FCP_BASE_URL;
     } else {
-      return "https://flightcrew.thepilotclub.org";
+      return "https://flightcrew-beta.thepilotclub.org";
     }
   }
 

@@ -34,8 +34,9 @@ export default {
           'Authorization': `Bearer ${process.env.FCP_TOKEN}`
         },
         body: JSON.stringify({
+          userId: user.id,
           staffId: interaction.user.id,
-          log: logReason,
+          text: logReason,
         }),
       });
 

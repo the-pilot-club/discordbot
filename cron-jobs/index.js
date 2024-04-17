@@ -18,10 +18,6 @@ export async function cronJobs(client){
     cron.schedule('0 52 12 * * *', function () { // Correct time is 0 52 13 * * *
         sendNewAnswer(channel)
     })
-// Sends an API Call to change the current question
-    cron.schedule('0 58 12 * * *', function () { // Correct time is 0 58 13 * * *
-        updateQuestion()
-    })
 // Sends the new question.
     cron.schedule('0 00 13 * * *', function () { // Correct time is 0 00 14 * * *
         sendNewQuestion(channel)
