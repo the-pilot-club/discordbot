@@ -1,7 +1,7 @@
 import { SlashCommandBuilder } from 'discord.js';
 import {Config} from "../../config/config.js";
 import {sendToSentry} from "../../utils.js";
-const config = new Config()
+const config = Config
 export default {
   data: new SlashCommandBuilder()
     .setName('reset-giveaway')

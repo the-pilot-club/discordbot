@@ -1,7 +1,7 @@
 import {AttachmentBuilder} from "discord.js";
 import {sendToSentry} from "../../utils.js";
 import {Config} from "../../config/config.js";
-const config = new Config()
+const config = Config
 
 export async function sendNewEvent(channel, pings) {
     try {

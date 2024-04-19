@@ -5,7 +5,7 @@ import {list} from "../commands/index.js";
 import {REST} from "@discordjs/rest";
 import {Config} from "../config/config.js";
 import {sendToSentry} from "../utils.js";
-const config = new Config()
+const config = Config
 
 export function imReady(client) {
   const gitchannel = client.channels.cache.find(channel => channel.name === 'github-notifications')

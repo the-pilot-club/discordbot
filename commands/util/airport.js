@@ -1,7 +1,6 @@
-import { SlashCommandBuilder, EmbedBuilder } from 'discord.js';
+import {EmbedBuilder, SlashCommandBuilder} from 'discord.js';
 import {sendToSentry} from "../../utils.js";
 import {Config} from "../../config/config.js";
-const config = new Config()
 
 export default {
   data: new SlashCommandBuilder()
@@ -29,7 +28,7 @@ export default {
       method: 'GET',
       headers: {
         'User-Agent': 'TPCDiscordBot',
-        'X-Api-Key': config.ninjaApiKey()
+        'X-Api-Key': Config.ninjaApiKey()
       }
     }).catch(error => sendToSentry(error, 'Airport Info Airport Command'))
 

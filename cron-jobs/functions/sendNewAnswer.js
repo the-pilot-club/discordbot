@@ -1,5 +1,5 @@
 import { Config } from "../../config/config.js";
-const config = new Config();
+const config = Config;
 export async function sendNewAnswer(channel) {
   const answer = await fetch(`${config.quizBaseUrl()}/api/quiz/current`)
   const answerBody = await answer.json();

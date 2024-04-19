@@ -6,7 +6,7 @@ import {allCommands} from "./commands/index.js";
 import {cronJobs} from "./cron-jobs/index.js";
 import {Config} from "./config/config.js";
 import { guildMemberAdd, guildMemberRemove, guildBanAdd, guildBanRemove, guildMemberUpdate, init } from "./logs.js";
-const config = new Config()
+const config = Config
 import * as Sentry from "@sentry/node";
 
 const client = new Client({
@@ -29,7 +29,6 @@ if(config.env() === "prod"){
 
 // this is to verify the env is set correctly on startup
 config.env()
-
 client.setMaxListeners(0)
 
 client.eventReminders = [];

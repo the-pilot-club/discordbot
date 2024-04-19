@@ -1,5 +1,5 @@
 import {Config} from "../config/config.js";
-const config = new Config()
+const config = Config
 export default function roleNotification(oldMember, newMember) {
   const channel = newMember.client.channels.cache.find(channel => channel.name === 'crew-chat')
   if (!oldMember.roles.cache.has(config.chartersRole()) && newMember.roles.cache.has(config.chartersRole())) {

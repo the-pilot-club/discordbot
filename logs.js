@@ -1,6 +1,6 @@
 import { EmbedBuilder } from 'discord.js';
 import {Config} from "./config/config.js";
-const config = new Config()
+const config = Config
 import {sendToSentry} from "./utils.js";
 
 let logChannel;

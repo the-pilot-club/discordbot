@@ -1,8 +1,8 @@
 import { config } from "dotenv";
 
 config();
-export class Config {
-  constructor() {}
+export const Config = {
+
 
   env() {
     if (process.env.NODE_ENV !== undefined) {
@@ -20,7 +20,7 @@ export class Config {
         "Incorrect Environment Set. Please either set 'prod' or 'dev'.",
       );
     }
-  }
+  },
 
   token() {
     if (process.env.BOT_TOKEN !== undefined) {
@@ -30,7 +30,7 @@ export class Config {
         "You must provide a Bot Token with BOT_TOKEN set in .env file",
       );
     }
-  }
+  },
 
   clientId() {
     if (process.env.CLIENT_ID !== undefined) {
@@ -40,7 +40,7 @@ export class Config {
         "You must provide a Client Id with CLIENT_ID set in .env file",
       );
     }
-  }
+  },
 
   guild() {
     if (process.env.NODE_ENV !== undefined) {
@@ -54,11 +54,11 @@ export class Config {
         "Incorrect Environment Set. Please either set 'prod' or 'dev'.",
       );
     }
-  }
+  },
 
   tpcGuild() {
     return "830201397974663229";
-  }
+  },
 
   aboutAndSop() {
     if (this.env() === "dev") {
@@ -67,7 +67,7 @@ export class Config {
     if (this.env() === "prod") {
       return "833198809701679124";
     }
-  }
+  },
 
   giveawayMessage() {
     if (this.env() === "dev") {
@@ -77,7 +77,7 @@ export class Config {
     } else {
       return null;
     }
-  }
+  },
 
   commuterRole() {
     if (this.env() === "dev") {
@@ -87,7 +87,7 @@ export class Config {
     } else {
       return null;
     }
-  }
+  },
 
   ffRole() {
     if (this.env() === "dev") {
@@ -97,7 +97,7 @@ export class Config {
     } else {
       return null;
     }
-  }
+  },
 
   vipRole() {
     if (this.env() === "dev") {
@@ -107,7 +107,7 @@ export class Config {
     } else {
       return null;
     }
-  }
+  },
 
   // may be used later but right now this is there as a backup
   // boosterRole(){
@@ -129,7 +129,7 @@ export class Config {
     } else {
       return null;
     }
-  }
+  },
 
   giveawayRole() {
     if (this.env() === "dev") {
@@ -139,7 +139,7 @@ export class Config {
     } else {
       return null;
     }
-  }
+  },
 
   ninjaApiKey() {
     if (process.env.NINJA_API_KEY !== undefined) {
@@ -147,7 +147,7 @@ export class Config {
     } else {
       throw new Error("You must provide a Ninja API Key");
     }
-  }
+  },
 
   sentryDsn() {
     if (process.env.SENTRY_DSN !== undefined) {
@@ -155,7 +155,7 @@ export class Config {
     } else {
       throw new Error("You must provide a Sentry DSN");
     }
-  }
+  },
 
   chartersManagersRole() {
     if (this.env() === "dev") {
@@ -165,7 +165,7 @@ export class Config {
     } else {
       return null;
     }
-  }
+  },
 
   flightInsRole() {
     if (this.env() === "dev") {
@@ -175,7 +175,7 @@ export class Config {
     } else {
       return null;
     }
-  }
+  },
 
   fcpBaseUrl() {
     if (process.env.FCP_BASE_URL !== undefined) {
@@ -183,7 +183,7 @@ export class Config {
     } else {
       return "https://flightcrew-beta.thepilotclub.org";
     }
-  }
+  },
 
   quizBaseUrl() {
     if (process.env.QUIZ_BASE_URL !== undefined) {

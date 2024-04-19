@@ -1,6 +1,6 @@
 import {EmbedBuilder} from "discord.js";
 import {Config} from "../config/config.js";
-const config = new Config()
+const config = Config
 
 export async function ferryRequest (interaction) {
     const channel = interaction.guild.client.channels.cache.find(channel => channel.name === 'charters-requests')
