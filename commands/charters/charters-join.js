@@ -14,7 +14,7 @@ export default {
   async execute(interaction) {
     const sopChannel = await interaction.guild.channels.cache.find(channel => channel.name === 'about-and-sop');
     const notOnboarded = new EmbedBuilder()
-      .setColor('0xff0000')
+      .setColor('#ff0000')
       .setTitle("Onboarding Required")
       .setDescription(
         `You must be onboarded to join TPC Charters. Please review the club SOP in <#${sopChannel.id}> to complete this requirement. Once you complete the onboarding process, you may run this command again to join TPC Charters.`,

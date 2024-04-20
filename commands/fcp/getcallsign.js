@@ -12,6 +12,7 @@ export default {
                 .setRequired(true)),
     async execute(interaction) {
         const user = interaction.options.getUser('user');
+        const member = interaction.guild.members.cache.get(user.id);
         const response = await fetch(`${Config.fcpBaseUrl()}/api/users/find/${user.id}/callsign`, {
             method: 'GET',
         });
@@ -35,8 +36,8 @@ export default {
             });
         } else {
             const successEmbed = new EmbedBuilder()
-                .setAuthor({ name: `${interaction.member.displayName}`, iconURL: `${interaction.user.displayAvatarURL()}` })
-                .setDescription(`TPC Callsign: ${callsign}`)
+                .setAuthor({ name: `${member.displayName}`, iconURL: `${user.displayAvatarURL()}` })
+                .setDescription(`TPC Callsign: ${callsign ? callsign: "Not Set"}`)
                 .setColor('#37B6FF')
                 .setFooter({
                     text: 'Made by TPC Dev Team',
