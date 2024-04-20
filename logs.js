@@ -137,11 +137,13 @@ export async function guildMemberUpdate(oldMember, newMember) {
       // }
       const addedRoles = newMember.roles.cache.filter(role => !oldMember.roles.cache.has(role.id));
       const removedRoles = oldMember.roles.cache.filter(role => !newMember.roles.cache.has(role.id));
+      const oldName = oldMember.nickname || oldMember.user.username;
+      const newName = newMember.nickname || newMember.user.username;
     if (oldMember.nickname !== newMember.nickname) {
       const embed = new EmbedBuilder()
-        .setAuthor({ name: `${newMember.user.username}`, iconURL: `${newMember.user.displayAvatarURL()}` })
+        .setAuthor({ name: newName, iconURL: `${newMember.user.displayAvatarURL()}` })
         .setTitle('Name change')
-        .setDescription(`**Before:** ${oldMember.nickname}\n**+After:** ${newMember.nickname}`)
+        .setDescription(`**Before:** ${oldName}\n**+After:** ${newName}`)
         .setColor("#5A82EF")
         .setFooter({
           text: `ID: ${newMember.user.id}`,
