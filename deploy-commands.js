@@ -1,5 +1,5 @@
 import {Config} from "./config/config.js";
-const config = new Config()
+const config = Config
 import {REST} from '@discordjs/rest';
 import {Routes} from 'discord.js';
 import {list} from "./commands/index.js";

@@ -1,7 +1,7 @@
 {
   "name": "discord-bot",
-  "version": "2.0.3",
-  "description": "",
+  "version": "2.1.0",
+  "description": "A discord bot for TPC",
   "type": "module",
   "scripts": {
     "start": "node bot.js",
@@ -11,17 +11,15 @@
     "test": "jest"
   },
   "dependencies": {
-    "@discordjs/rest": "^0.4.1",
     "@sentry/node": "^7.102.0",
-    "discord-api-types": "^0.32.1",
-    "discord.js": "^14.7.1",
+    "airac-cc": "^1.0.6",
+    "cheerio": "^1.0.0-rc.12",
+    "discord.js": "^14.12.1",
     "dotenv": "^16.0.0",
-    "express": "^4.18.2",
     "mee6-levels-api": "^1.3.1",
     "node-cron": "^3.0.0",
     "node-fetch": "^2.6.7",
-    "nodemon": "^3.0.1",
-    "onair-api": "^1.1.0"
+    "nodemon": "^3.0.1"
   },
   "devDependencies": {
     "concurrently": "^7.1.0",

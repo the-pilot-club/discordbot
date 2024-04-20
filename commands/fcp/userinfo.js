@@ -1,8 +1,7 @@
-import { SlashCommandBuilder, EmbedBuilder } from 'discord.js'
+import {EmbedBuilder, SlashCommandBuilder} from 'discord.js'
 import fetch from 'node-fetch'
 import {sendToSentry} from "../../utils.js";
 import {Config} from "../../config/config.js";
-const config = new Config()
 
 export default {
     data: new SlashCommandBuilder()
@@ -13,7 +12,7 @@ export default {
                 .setRequired(true)),
     async execute(interaction) {
         const user = interaction.options.getMember('member');
-        const response = await fetch(`${config.fcpBaseUrl()}/api/users/find/${user.id}`, {
+        const response = await fetch(`${Config.fcpBaseUrl()}/api/users/find/${user.id}`, {
             method: 'GET',
         });
 

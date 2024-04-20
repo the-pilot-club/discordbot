@@ -1,7 +1,7 @@
 import {AttachmentBuilder} from "discord.js";
 import {sendToSentry} from "../../utils.js";
 import {Config} from "../../config/config.js";
-const config = new Config()
+const config = Config
 
 export async function sendNewEvent(channel, pings) {
     try {
@@ -30,12 +30,12 @@ export async function sendNewEvent(channel, pings) {
             }), 'event-banner.jpeg')
             if (nextEvent.image !== null) {
                 channel.send({
-                    content: pings[day] + "\n **The event is starting in 1 hour. See you there!**\n" + nextEvent.description + `\n\n Hosted by ${nextEvent.creator} \n`,
+                    content: pings[day] + "\n **The event is starting in 1 hour. See you there!**\n" + nextEvent.description + `\n\nHosted by ${nextEvent.creator}\n${nextEvent.url}`,
                     files: [image]
                 })
             } else {
                 channel.send({
-                    content: pings[day] + "\n" + "**The event is starting in 1 hour.**\n" + nextEvent.description + `\n\n Hosted by ${nextEvent.creator} \n`,
+                    content: pings[day] + "\n" + "**The event is starting in 1 hour.**\n" + nextEvent.description + `\n\nHosted by ${nextEvent.creator}\n${nextEvent.url}`,
                 })
             }
 

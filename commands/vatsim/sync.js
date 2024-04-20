@@ -43,36 +43,28 @@ export default {
       const MANAGED_ROLES = ['ATC', 'S1', 'S2', 'S3', 'C1', 'C3', 'I1', 'I3', 'Network Supervisor', 'Network Administrator', 'P0', 'P1', 'P2', 'P3', 'P4', 'P5', 'P6']
       switch (rating) {
         case 2: // S1
-          roles.push('ATC')
-          roles.push('S1')
+          roles.push('ATC','S1')
           break
         case 3: // S2
-          roles.push('ATC')
-          roles.push('S2')
+          roles.push('ATC','S2')
           break
         case 4: // S3
-          roles.push('ATC')
-          roles.push('S3')
+          roles.push('ATC','S3')
           break
         case 5: // C1
-          roles.push('ATC')
-          roles.push('C1')
+          roles.push('ATC','C1')
           break
         case 7: // C3
-          roles.push('ATC')
-          roles.push('C3')
+          roles.push('ATC','C3')
           break
         case 8: // I1
-          roles.push('ATC')
-          roles.push('I1')
+          roles.push('ATC','I1')
           break
         case 10: // I3
-          roles.push('ATC')
-          roles.push('I3')
+          roles.push('ATC','I3')
           break
         case 11: // SUP
-          roles.push('Network Supervisor')
-          roles.push('ATC')
+          roles.push('Network Supervisor','ATC')
           break
         case 12: // ADM
           roles.push('Network Administrator')
@@ -114,12 +106,13 @@ export default {
 
       for (const role of MANAGED_ROLES) {
         const discordRole = interaction.member.guild.roles.cache.find(r => r.name === role)
-        if (interaction.member.roles.cache.some(r => r.name === role)) {
-          await interaction.member.roles.remove(discordRole).catch(e => sendToSentry(e, "Sync Command"))
-        }
         if (roles.includes(role)) {
           if (!interaction.member.roles.cache.some(r => r.name === role)) {
             await interaction.member.roles.add(discordRole).catch(e => sendToSentry(e, "Sync Command"))
+          }
+        } else {
+          if (interaction.member.roles.cache.some(r => r.name !== role)) {
+            await interaction.member.roles.remove(discordRole).catch(e => sendToSentry(e, "Sync Command"))
           }
         }
       }

@@ -1,8 +1,8 @@
-import { SlashCommandBuilder, EmbedBuilder } from 'discord.js'
+import {EmbedBuilder, SlashCommandBuilder} from 'discord.js'
 import fetch from 'node-fetch'
 import {Config} from "../../config/config.js";
 import {sendToSentry} from "../../utils.js";
-const config = new Config();
+
 export default {
     data: new SlashCommandBuilder()
         .setName('get-callsign')
@@ -12,7 +12,8 @@ export default {
                 .setRequired(true)),
     async execute(interaction) {
         const user = interaction.options.getUser('user');
-        const response = await fetch(`${config.fcpBaseUrl()}/api/users/find/${user.id}/callsign`, {
+        const member = interaction.guild.members.cache.get(user.id);
+        const response = await fetch(`${Config.fcpBaseUrl()}/api/users/find/${user.id}/callsign`, {
             method: 'GET',
         });
 
@@ -35,8 +36,8 @@ export default {
             });
         } else {
             const successEmbed = new EmbedBuilder()
-                .setAuthor({ name: `${interaction.member.displayName}`, iconURL: `${interaction.user.displayAvatarURL()}` })
-                .setDescription(`TPC Callsign: ${callsign}`)
+                .setAuthor({ name: `${member.displayName}`, iconURL: `${user.displayAvatarURL()}` })
+                .setDescription(`TPC Callsign: ${callsign ? callsign: "Not Set"}`)
                 .setColor('#37B6FF')
                 .setFooter({
                     text: 'Made by TPC Dev Team',

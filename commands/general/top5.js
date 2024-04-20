@@ -2,7 +2,7 @@ import { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } fro
 import Mee6LevelsApi from 'mee6-levels-api'
 import {Config} from "../../config/config.js";
 import {sendToSentry} from "../../utils.js";
-const guildId = new Config().tpcGuild()
+const guildId = Config.tpcGuild()
 export default {
   data: new SlashCommandBuilder()
     .setName('top5')

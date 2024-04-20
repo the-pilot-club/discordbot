@@ -8,7 +8,7 @@ import ferryCommand from './charters/ferry.js'
 import giveawayCommand from './giveaway/giveaway.js'
 import hoursCommand from './vatsim/hours.js'
 import ideaArchiveCommand from './admin/idea-archive.js'
-import joinChartersCommand from './charters/join-charters.js'
+import joinChartersCommand from './charters/charters-join.js'
 import leaderboardCommand from './general/leaderboard.js'
 import memberCountCommand from './general/membercount.js'
 import metarCommand from './util/metar.js'
@@ -18,7 +18,6 @@ import perksGiveawayCommand from './giveaway/perks-giveaway.js'
 import pingCommand from './fun/ping.js'
 import pollCommand from './admin/poll.js'
 import reportCommand from './admin/report.js'
-import resetGiveawayCommand from './giveaway/reset-giveaway.js'
 import helpCommand from './general/server-commands.js'
 import syncCommand from './vatsim/sync.js'
 import tafCommand from './util/taf.js'
@@ -26,8 +25,9 @@ import top5Command from './general/top5.js'
 import trainingCommand from './training/training.js'
 import trainingRequestCommand from './training/training-request.js'
 import fcplinkCommand from "./fcp/fcplink.js";
-import getCallsignCommand from "./fcp/getCallsign.js"
-import userInfoCommand from "./fcp/userInfo.js"
+import getCallsignCommand from "./fcp/getcallsign.js"
+import userInfoCommand from "./fcp/userinfo.js"
+//import addLogCommand from "./fcp/addlog.js"
 import { Collection } from 'discord.js'
 
 /**
@@ -60,7 +60,6 @@ export const commands = {
     pingCommand,
     pollCommand,
     reportCommand,
-    resetGiveawayCommand,
     helpCommand,
     syncCommand,
     tafCommand,
@@ -69,7 +68,8 @@ export const commands = {
     trainingRequestCommand,
     fcplinkCommand,
     getCallsignCommand,
-    userInfoCommand
+    userInfoCommand,
+  //  addLogCommand
 }
 
 export const allCommands = new Collection(Object.keys(commands).map(key => [commands[key].data.name, commands[key]]))
