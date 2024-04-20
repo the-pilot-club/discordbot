@@ -1,69 +1,56 @@
 import { SlashCommandBuilder, EmbedBuilder } from 'discord.js';
-import {sendToSentry} from "../../utils.js";
+import { sendToSentry } from "../../utils.js";
+
 export default {
   data: new SlashCommandBuilder()
-    .setName('get-online-members')
-    .setDescription('Gets the members who are online'),
-  async execute (interaction) {
-    const remarksUsers = []
-    const callsignUsers = []
-    const noFlightPlanUsers = []
-    const livemembersResponse = await fetch('https://data.vatsim.net/v3/vatsim-data.json')
-    const liveMembers = await livemembersResponse.json()
-    const tpcPilots = liveMembers.pilots
+      .setName('get-online-members')
+      .setDescription('Gets the members who are online'),
+  async execute(interaction) {
+    const livemembersResponse = await fetch('https://data.vatsim.net/v3/vatsim-data.json');
+    const liveMembers = await livemembersResponse.json();
+    const tpcPilots = liveMembers.pilots;
 
-    const remarksFiltered = tpcPilots.filter(
-      (pilot) => pilot.flight_plan?.remarks?.toUpperCase().includes('OPERATED BY THEPILOTCLUB.ORG')
-    )
+    const remarksUsers = [];
+    const callsignUsers = [];
+    const noFlightPlanUsers = [];
 
-    const callsignFiltered = tpcPilots.filter(
-      (pilot) =>
-        pilot.callsign.toUpperCase().includes('TPC') &&
-        !pilot.flight_plan?.remarks?.toUpperCase().includes('OPERATED BY THEPILOTCLUB.ORG')
-    )
+    tpcPilots.forEach(pilot => {
+      const isOperatedByTPC = pilot.flight_plan?.remarks?.toUpperCase().includes('OPERATED BY THEPILOTCLUB.ORG');
+      const hasTPCCallsign = pilot.callsign.toUpperCase().includes('TPC');
+      const pilotInfo = `${pilot.callsign} - ${pilot.name} - ${pilot.cid}\n`;
 
-    if (remarksFiltered.length === 0) {
-      remarksUsers.push('No one has their remarks set correctly.')
+      if (!pilot.flight_plan && hasTPCCallsign) {
+        noFlightPlanUsers.push(pilotInfo);
+      }
+      if (isOperatedByTPC) {
+        remarksUsers.push(pilotInfo);
+      } else if (hasTPCCallsign) {
+        callsignUsers.push(pilotInfo);
+      }
+    });
+
+    if (!remarksUsers.length && !callsignUsers.length && !noFlightPlanUsers.length) {
+      const emptyEmbed = new EmbedBuilder()
+          .setTitle('Current Online TPC Members')
+          .setDescription('No members are currently online.')
+          .setColor('#37B6FF')
+          .setFooter({
+            text: 'Made by TPC Dev Team',
+            iconURL: 'https://static1.squarespace.com/static/614689d3918044012d2ac1b4/t/616ff36761fabc72642806e3/1634726781251/TPC_FullColor_TransparentBg_1280x1024_72dpi.png'
+          })
+          .setTimestamp();
+      await interaction.reply({ embeds: [emptyEmbed] }).catch(error => sendToSentry(error, "Online Pilots Command"));
     } else {
-      for (let i = 0; i < remarksFiltered.length; i++) {
-        const remarkObj = remarksFiltered[i]
-        remarksUsers.push(`${remarkObj.callsign} - ${remarkObj.name} - ${remarkObj.cid}\n`)
-      }
-    }
-
-    if (callsignFiltered.length === 0) {
-      callsignUsers.push('Nobody is flying with a TPC callsign and incorrect remarks.')
-    } else {
-      for (let i = 0; i < callsignFiltered.length; i++) {
-        const callsignObj = callsignFiltered[i]
-        callsignUsers.push(`${callsignObj.callsign} - ${callsignObj.name} - ${callsignObj.cid}\n`)
-      }
-    }
-
-    const noFlightPlanFiltered = tpcPilots.filter(
-        (pilot) =>
-          !pilot.flight_plan && pilot.callsign.toUpperCase().includes('TPC')
-      );
-    
-      if (noFlightPlanFiltered.length === 0) {
-        noFlightPlanUsers.push('No one is flying without a flight plan.');
-      } else {
-        for (let i = 0; i < noFlightPlanFiltered.length; i++) {
-          const noPlanObj = noFlightPlanFiltered[i];
-          noFlightPlanUsers.push(`${noPlanObj.callsign} - ${noPlanObj.name} - ${noPlanObj.cid}\n`);
-        }
-      }
-
       const embed = new EmbedBuilder()
-        .setTitle('Current Online TPC Members')
-        .setDescription(`**Correct Remarks:**\n${remarksUsers.join('')}\n**Incorrect Remarks:**\n${callsignUsers.join('')}\n**No Flight Plan:**\n${noFlightPlanUsers.join('')}`)
-        .setColor('#37B6FF')
-        .setFooter({
-          text: 'Made by TPC Dev Team',
-          iconURL: 'https://static1.squarespace.com/static/614689d3918044012d2ac1b4/t/616ff36761fabc72642806e3/1634726781251/TPC_FullColor_TransparentBg_1280x1024_72dpi.png'
-        })
-        .setTimestamp();
-
-      await interaction.reply({ embeds: [embed] }).catch((error) => sendToSentry(error, "Online Pilots Command"));
+          .setTitle('Current Online TPC Members')
+          .setDescription(`**Correct Remarks:**\n${remarksUsers.join('') || 'None'}\n**Incorrect Remarks:**\n${callsignUsers.join('') || 'None'}\n**No Flight Plan:**\n${noFlightPlanUsers.join('') || 'None'}`)
+          .setColor('#37B6FF')
+          .setFooter({
+            text: 'Made by TPC Dev Team',
+            iconURL: 'https://static1.squarespace.com/static/614689d3918044012d2ac1b4/t/616ff36761fabc72642806e3/1634726781251/TPC_FullColor_TransparentBg_1280x1024_72dpi.png'
+          })
+          .setTimestamp();
+      await interaction.reply({ embeds: [embed] }).catch(error => sendToSentry(error, "Online Pilots Command"));
+    }
   }
 }

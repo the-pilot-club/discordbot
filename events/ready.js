@@ -11,7 +11,7 @@ export function imReady(client) {
   const gitchannel = client.channels.cache.find(channel => channel.name === 'github-notifications')
   console.log(`Logged in as ${client.user.tag}`)
   client.user.setActivity('XPlane 11', { type: ActivityType.Playing })
-  if (new Config().env() === "prod"){
+  if (Config.env() === "prod") {
     const commands = []
 
 
