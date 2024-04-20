@@ -110,6 +110,7 @@ try {
     .setTimestamp();
       logChannel.send({embeds: [noFCPEmbed]})
             console.log(`User ${member.id} doesn't have an FCP account.`);
+      //test push
         // } else {
         //     console.error(`Error removing user from FCP. Status code: ${response.status}`);
         //     sendToSentry(error, "FCP Removal")
