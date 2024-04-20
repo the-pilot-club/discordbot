@@ -59,7 +59,6 @@ export default {
         await interaction.reply({ embeds: [successEmbed] });
       }
     } catch (error) {
-      console.error('Failed to add log:', error);
       interaction.reply({
         content: "There was an error while attempting to add the log. Please try again later.",
         ephemeral: true,
