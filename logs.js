@@ -78,27 +78,27 @@ try {
   const url = `${config.fcpBaseUrl()}/api/users/find/${member.id}/delete`;
 
 
-  const response = await fetch(url, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Authorization': `Bearer ${process.env.FCP_TOKEN}`
-      },
-  });
-  if (response.status === 200) {
-      const successEmbed = new EmbedBuilder()
-      .setAuthor({ name: `${member.displayName}`, iconURL: `${member.displayAvatarURL()}` })
-      .setTitle('Member left')
-      .setDescription(`<@${member.id}> joined <t:${Math.round(member.joinedTimestamp / 1000)}:R>\n**Roles:** ${formattedRoles}\n\nThis user has been removed from FCP.`)
-      .setColor("#FBF7B4")
-      .setFooter({
-        text: `ID: ${member.id}`,
-      })
-      .setTimestamp();
-      logChannel.send({embeds: [successEmbed]})
-
-        } else if (response.status === 404) {
+  // const response = await fetch(url, {
+  //     method: 'DELETE',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'Accept': 'application/json',
+  //       'Authorization': `Bearer ${process.env.FCP_TOKEN}`
+  //     },
+  // });
+  // if (response.status === 200) {
+  //     const successEmbed = new EmbedBuilder()
+  //     .setAuthor({ name: `${member.displayName}`, iconURL: `${member.displayAvatarURL()}` })
+  //     .setTitle('Member left')
+  //     .setDescription(`<@${member.id}> joined <t:${Math.round(member.joinedTimestamp / 1000)}:R>\n**Roles:** ${formattedRoles}\n\nThis user has been removed from FCP.`)
+  //     .setColor("#FBF7B4")
+  //     .setFooter({
+  //       text: `ID: ${member.id}`,
+  //     })
+  //     .setTimestamp();
+  //     logChannel.send({embeds: [successEmbed]})
+  //
+  //       } else if (response.status === 404) {
     const noFCPEmbed = new EmbedBuilder()
     .setAuthor({ name: `${member.displayName}`, iconURL: `${member.displayAvatarURL()}` })
     .setTitle('Member left')
@@ -110,10 +110,10 @@ try {
     .setTimestamp();
       logChannel.send({embeds: [noFCPEmbed]})
             console.log(`User ${member.id} doesn't have an FCP account.`);
-        } else {
-            console.error(`Error removing user from FCP. Status code: ${response.status}`);
-            sendToSentry(error, "FCP Removal")
-        }
+        // } else {
+        //     console.error(`Error removing user from FCP. Status code: ${response.status}`);
+        //     sendToSentry(error, "FCP Removal")
+        // }
     } catch (error) {
             sendToSentry(error, "FCP Removal")
     }
