@@ -69,16 +69,6 @@ export const Config = {
     }
   },
 
-  giveawayMessage() {
-    if (this.env() === "dev") {
-      return null;
-    } else if (this.env() === "prod") {
-      return "848245312815497237";
-    } else {
-      return null;
-    }
-  },
-
   commuterRole() {
     if (this.env() === "dev") {
       return "1148307481290866803";
@@ -126,16 +116,6 @@ export const Config = {
       return "1148307481290866801";
     } else if (this.env() === "prod") {
       return "897118707988451339";
-    } else {
-      return null;
-    }
-  },
-
-  giveawayRole() {
-    if (this.env() === "dev") {
-      return "1148307481227964436";
-    } else if (this.env() === "prod") {
-      return "860938566426558505";
     } else {
       return null;
     }

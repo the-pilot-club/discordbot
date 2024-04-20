@@ -18,7 +18,6 @@ import perksGiveawayCommand from './giveaway/perks-giveaway.js'
 import pingCommand from './fun/ping.js'
 import pollCommand from './admin/poll.js'
 import reportCommand from './admin/report.js'
-import resetGiveawayCommand from './giveaway/reset-giveaway.js'
 import helpCommand from './general/server-commands.js'
 import syncCommand from './vatsim/sync.js'
 import tafCommand from './util/taf.js'
@@ -61,7 +60,6 @@ export const commands = {
     pingCommand,
     pollCommand,
     reportCommand,
-    resetGiveawayCommand,
     helpCommand,
     syncCommand,
     tafCommand,
