@@ -171,5 +171,26 @@ export const Config = {
     } else {
       return "https://api.thepilotclub.org";
     }
-  }
+  },
+
+  giveawayMessage() {
+    if (this.env() === "dev") {
+      return "1225559530167992320";
+    } else if (this.env() === "prod") {
+      return "848245312815497237";
+    } else {
+      return null;
+    }
+  },
+
+  emojiId() {
+    if (this.env() === "dev") {
+      return "1225560451279097926";
+    } else if (this.env() === "prod") {
+      return "895480872243978280";
+    } else {
+      return null;
+    }
+  },
+
 }
