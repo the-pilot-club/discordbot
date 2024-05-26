@@ -170,7 +170,7 @@ export async function guildMemberUpdate(oldMember, newMember) {
         .setAuthor({ name: `${newMember.user.username}`, iconURL: `${newMember.user.displayAvatarURL()}` })
         .setTitle('Role Removed')
         .setDescription(removedRoleMentions)
-        .setColor("#FBF7B4")
+        .setColor("#999999")
         .setFooter({
           text: `ID: ${newMember.user.id}`,
         })
