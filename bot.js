@@ -8,11 +8,12 @@ import {Config} from "./config/config.js";
 import { guildMemberAdd, guildMemberRemove, guildBanAdd, guildBanRemove, guildMemberUpdate, init } from "./logs.js";
 const config = Config
 import * as Sentry from "@sentry/node";
+import {autoMod} from "./events/automod.js";
 
 const client = new Client({
     intents: [
         GatewayIntentBits.Guilds, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMessages, GatewayIntentBits.DirectMessages,
-        GatewayIntentBits.DirectMessageReactions, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildScheduledEvents, GatewayIntentBits.GuildBans]
+        GatewayIntentBits.DirectMessageReactions, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildScheduledEvents, GatewayIntentBits.GuildBans , GatewayIntentBits.AutoModerationExecution,]
 })
 
 
@@ -44,4 +45,5 @@ client.on(Events.GuildBanRemove, guildBanRemove)
 client.on(Events.GuildMemberAdd, guildMemberAdd)
 client.on(Events.GuildMemberRemove, guildMemberRemove)
 client.on(Events.GuildMemberUpdate, guildMemberUpdate)
+client.on(Events.AutoModerationActionExecution, autoMod)
 client.login(config.token()).catch(err => (sendToSentry(err, "Bot Login")))
