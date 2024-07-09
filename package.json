@@ -7,7 +7,7 @@
     "start": "node bot.js",
     "start:dev": "nodemon bot.js",
     "start:dev:wsl": "nodemon -L bot.js",
-    "lint:fix": "eslint --fix --ext .js ./** -c .eslintrc.json",
+    "lint:fix": "eslint --fix --ext .js -c .eslintrc.json",
     "test": "jest"
   },
   "dependencies": {
