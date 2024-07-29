@@ -11,13 +11,13 @@ export default function roleNotification(oldMember, newMember) {
   }
   if (!oldMember.roles.cache.has(config.vipRole()) && newMember.roles.cache.has(config.vipRole())) {
     channel.send({
-      content: `Join us in congratulating ${oldMember} with achieving <@&${config.vipRole()}> status at TPC! You are now part of the TPC **COMPANY PERKS** Program!`,
+      content: `Join us in congratulating ${oldMember} with achieving <@&${config.vipRole()}> status at TPC!`,
       files: [{attachment: './pics/congrats.png', name: 'file.png'}]
     })
   }
   if (!oldMember.roles.cache.has(config.ffRole()) && newMember.roles.cache.has(config.ffRole())) {
     channel.send({
-      content: `Join us in congratulating ${oldMember} with achieving <@&${config.ffRole()}> status at TPC! You are now part of the TPC **COMPANY PERKS** Program!`,
+      content: `Join us in congratulating ${oldMember} with achieving <@&${config.ffRole()}> status at TPC!`,
       files: [{ attachment: './pics/congrats.png', name: 'file.png' }]
     })
   }
