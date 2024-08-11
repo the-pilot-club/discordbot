@@ -5,14 +5,14 @@ import {sendToSentry} from "../../utils.js";
 const guildId = Config.tpcGuild()
 export default {
   data: new SlashCommandBuilder()
-    .setName('top5')
+    .setName('top10')
     .setDescription('Posts the leaderboard top 5 members!'),
   async execute(interaction) {
     try {
       // get MEE6 leaderboard and send it to the event channel
       const leaderboard = await Mee6LevelsApi.getLeaderboardPage(guildId)
       // get the top 5 users
-      const top5 = leaderboard.slice(0, 5)
+      const top5 = leaderboard.slice(0, 10)
       const list = top5.map(user => user.id)
 
       const row = new ActionRowBuilder()
@@ -29,11 +29,11 @@ export default {
         formatted += `\n${i + 1}. ${member.nickname}`
       }
       interaction.reply({
-        content: `**Top 5 TPC Pilots:** \n${formatted}\n \nSee all rankings here:`,
+        content: `**Top 10 TPC Pilots:** \n${formatted}\n \nSee all rankings here:`,
         components: [row]
       })
     } catch (error) {
-      sendToSentry(error, "Top 5 Command")
+      sendToSentry(error, "Top 10 Command")
     }
   },
 }
