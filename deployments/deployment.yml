@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: discordbot
-          image: registry.digitalocean.com/tpc-master/discordbot:2.1.3
+          image: registry.digitalocean.com/tpc-master/discordbot:2.1.7
           imagePullPolicy: Always
           envFrom:
             - secretRef:
