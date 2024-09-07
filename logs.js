@@ -62,62 +62,95 @@ try {
       .setTimestamp();
        logChannel.send({embeds: [embed]})
       await member.roles.add(member.guild.roles.cache.find(role => role.name === 'Pilots'))
+      await addUserToFCP(member);
+
   } catch (error) {
           sendToSentry(error, "Guild member add log")
   }
 }
 
+// 286 - Add member to TPC Portal - JP
+// Seperate function to catch this error seperate from the 
+// logging funtion above.
+async function addUserToFCP(member)
+{
+  try{
+    // 286 - Add member to the TPC Portal - JP
+    const url = `${config.fcpBaseUrl()}/api/users/new`;
+    const response = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${process.env.FCP_TOKEN}`
+            },
+            body: JSON.stringify(
+              {
+                'id': `'${member.id}'`
+              }
+            )
+    });
+    if (response.status != 200) {
+      sendToSentry(`Received ${response.status} when adding user ${member.id}`,  "Adding user to FCP via Discord") 
+    }
+
+  } catch(error) {
+    sendToSentry(error, "Adding user to FCP via Discord")
+  }
+  return;
+}
+
 
 export async function guildMemberRemove(member) {
-try {
-  const formattedRoles = member.roles.cache
-  .filter(role => role.id !== member.guild.id)
-  .map(role => role.toString())
-  .join(', ');
+  try {
+    const formattedRoles = member.roles.cache
+    .filter(role => role.id !== member.guild.id)
+    .map(role => role.toString())
+    .join(', ');
 
-  const url = `${config.fcpBaseUrl()}/api/users/find/${member.id}/delete`;
-
-
-  // const response = await fetch(url, {
-  //     method: 'DELETE',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       'Accept': 'application/json',
-  //       'Authorization': `Bearer ${process.env.FCP_TOKEN}`
-  //     },
-  // });
-  // if (response.status === 200) {
-  //     const successEmbed = new EmbedBuilder()
-  //     .setAuthor({ name: `${member.displayName}`, iconURL: `${member.displayAvatarURL()}` })
-  //     .setTitle('Member left')
-  //     .setDescription(`<@${member.id}> joined <t:${Math.round(member.joinedTimestamp / 1000)}:R>\n**Roles:** ${formattedRoles}\n\nThis user has been removed from FCP.`)
-  //     .setColor("#FBF7B4")
-  //     .setFooter({
-  //       text: `ID: ${member.id}`,
-  //     })
-  //     .setTimestamp();
-  //     logChannel.send({embeds: [successEmbed]})
-  //
-  //       } else if (response.status === 404) {
+    await removeUserFromFCP(member);
     const noFCPEmbed = new EmbedBuilder()
-    .setAuthor({ name: `${member.displayName}`, iconURL: `${member.displayAvatarURL()}` })
-    .setTitle('Member left')
-    .setDescription(`<@${member.id}> joined <t:${Math.round(member.joinedTimestamp / 1000)}:R>\n**Roles:** ${formattedRoles}`)
-    .setColor("#FBF7B4")
-    .setFooter({
-      text: `ID: ${member.id}`,
-    })
-    .setTimestamp();
-      logChannel.send({embeds: [noFCPEmbed]})
-            console.log(`User ${member.id} doesn't have an FCP account.`);
-      //test push
-        // } else {
-        //     console.error(`Error removing user from FCP. Status code: ${response.status}`);
-        //     sendToSentry(error, "FCP Removal")
-        // }
-    } catch (error) {
-            sendToSentry(error, "FCP Removal")
+      .setAuthor({ name: `${member.displayName}`, iconURL: `${member.displayAvatarURL()}` })
+      .setTitle('Member left')
+      .setDescription(`<@${member.id}> joined <t:${Math.round(member.joinedTimestamp / 1000)}:R>\n**Roles:** ${formattedRoles}`)
+      .setColor("#FBF7B4")
+      .setFooter({
+        text: `ID: ${member.id}`,
+      })
+      .setTimestamp();
+    logChannel.send({embeds: [noFCPEmbed]})
+    console.log(`User ${member.id} doesn't have an FCP account.`);
+      
+  } catch (error) {
+          sendToSentry(error, "FCP Removal")
+  }
+}
+
+// 286 - Remove member to TPC Portal - JP
+// Seperate function to catch this error seperate from the 
+// logging funtion above.
+async function removeUserFromFCP(member)
+{
+  try{
+    // 286 - Remove member to the TPC Portal - JP
+    const url = `${config.fcpBaseUrl()}/api/users/find/${member.id}/delete`;
+
+    const response = await fetch(url, {
+           method: 'DELETE',
+           headers: {
+             'Content-Type': 'application/json',
+             'Accept': 'application/json',
+             'Authorization': `Bearer ${process.env.FCP_TOKEN}`
+           },
+      });
+    if (response.status != 200) {
+      sendToSentry(`Received ${response.status} when removing user ${member.id}`,  "Removing user to FCP via Discord") 
     }
+
+  } catch(error) {
+    sendToSentry(error, "Removing user to FCP via Discord")
+  }
+  return;
 }
 
 export async function guildMemberUpdate(oldMember, newMember) {
