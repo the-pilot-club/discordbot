@@ -1,5 +1,4 @@
 import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
-import fetch from 'node-fetch';
 import { Config } from '../../config/config.js';
 import { sendToSentry } from '../../utils.js';
 
@@ -35,6 +34,7 @@ export default {
           return await fetch(addLogUrl, {
             method: 'POST',
             headers: {
+              'User-Agent': 'AddLog command',
               'Content-Type': 'application/json',
               'Accept': 'application/json',
               'Authorization': `Bearer ${process.env.FCP_TOKEN}`,
@@ -56,6 +56,7 @@ export default {
           const createUserResponse = await fetch(createUserUrl, {
             method: 'POST',
             headers: {
+              'User-Agent': 'AddLog command',
               'Content-Type': 'application/json',
               'Accept': 'application/json',
               'Authorization': `Bearer ${process.env.FCP_TOKEN}`,
@@ -67,25 +68,31 @@ export default {
 
           if (!createUserResponse.ok) {
             const errorText = await createUserResponse.text();
-            throw new Error(`Failed to create FCP account. Status: ${createUserResponse.status}, Response: ${errorText}`);
+            const error = new Error(`Failed to create FCP account. Status: ${createUserResponse.status}, Response: ${errorText}`);
+            await sendToSentry(error, "Audit log command - Create User");
+            return;
           }
           response = await addAuditLog();
 
           if (response.status === 422) {
-            throw new Error(`Failed to add audit log after creating user. Status: ${response.status}`);
+            const error = new Error(`Failed to add audit log after creating user. Status: ${response.status}`);
+            await sendToSentry(error, "Audit log command - Add Audit Log After User Creation");
+            return;
           }
         }
 
         if (!response.ok) {
           const errorText = await response.text();
-          throw new Error(`HTTP error. Status: ${response.status}, Response: ${errorText}`);
+          const error = new Error(`HTTP error. Status: ${response.status}, Response: ${errorText}`);
+          await sendToSentry(error, "Audit log command - HTTP Error");
+          return;
         }
         const successEmbed = new EmbedBuilder()
             .setAuthor({
               name: `${interaction.member.displayName}`,
               iconURL: `${interaction.user.displayAvatarURL()}`,
             })
-            .setDescription(`✅ Successfully created a new audit log for ${user}.`)
+            .setDescription(`Successfully created a new audit log for ${user}.`)
             .setColor("#22bb33")
             .setFooter({
               text: "Made by TPC Dev Team",
@@ -99,14 +106,14 @@ export default {
         });
       } catch (error) {
         await interaction.reply({
-          content: "❌ There was an error while attempting to add the log. Please try again later.",
+          content: "There was an error while attempting to add the log. Please try again later.",
           ephemeral: true,
         });
         sendToSentry(error, "Audit log command");
       }
     } else {
       await interaction.reply({
-        content: "🚫 You don't have permission to use this command.",
+        content: "You don't have permission to use this command.",
         ephemeral: true,
       });
     }
