@@ -27,7 +27,7 @@ import trainingRequestCommand from './training/training-request.js'
 import fcplinkCommand from "./fcp/fcplink.js";
 import getCallsignCommand from "./fcp/getcallsign.js"
 import userInfoCommand from "./fcp/userinfo.js"
-//import addLogCommand from "./fcp/addlog.js"
+import addLogCommand from "./fcp/addlog.js"
 import { Collection } from 'discord.js'
 
 /**
@@ -69,7 +69,7 @@ export const commands = {
     fcplinkCommand,
     getCallsignCommand,
     userInfoCommand,
-  //  addLogCommand
+    addLogCommand
 }
 
 export const allCommands = new Collection(Object.keys(commands).map(key => [commands[key].data.name, commands[key]]))
