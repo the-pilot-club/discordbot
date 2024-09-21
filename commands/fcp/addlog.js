@@ -93,7 +93,10 @@ export default {
             })
             .setTimestamp();
 
-        await interaction.reply({ embeds: [successEmbed] });
+        await interaction.reply({
+          embeds: [successEmbed] ,
+          ephemeral: true,
+        });
       } catch (error) {
         await interaction.reply({
           content: "❌ There was an error while attempting to add the log. Please try again later.",
