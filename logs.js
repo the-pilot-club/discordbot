@@ -180,14 +180,14 @@ async function removeUserFromFCP(member)
         return true;
       case 401:
         // user was already found, so did not add, logging to sentry
-        sendToSentry(`Received 401 when adding user ${member.id} - Unauthorized.`,  "Removing user to FCP via Discord");
+        sendToSentry(`Received 401 when removing user ${member.id} - Unauthorized.`,  "Removing user to FCP via Discord");
         return false;
       case 404:
         // user was already found, so did not add, logging to sentry
         sendToSentry(`Received 404 when removing user ${member.id} - User ID not found.`,  "Removing user to FCP via Discord");
         return false;
       default: // any other response (ie 500)
-        sendToSentry(`Received ${response.status} when adding user ${member.id}`,  "Removing user to FCP via Discord");
+        sendToSentry(`Received ${response.status} when removing user ${member.id}`,  "Removing user to FCP via Discord");
         return false;
     }
   } catch(error) { // any other error
