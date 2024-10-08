@@ -34,7 +34,7 @@ export default {
           return await fetch(addLogUrl, {
             method: 'POST',
             headers: {
-              'User-Agent': 'AddLog command',
+              'User-Agent': 'TPCDiscordBot',
               'Content-Type': 'application/json',
               'Accept': 'application/json',
               'Authorization': `Bearer ${process.env.FCP_TOKEN}`,
