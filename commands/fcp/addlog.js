@@ -56,7 +56,7 @@ export default {
           const createUserResponse = await fetch(createUserUrl, {
             method: 'POST',
             headers: {
-              'User-Agent': 'AddLog command',
+              'User-Agent': 'TPCDiscordBot',
               'Content-Type': 'application/json',
               'Accept': 'application/json',
               'Authorization': `Bearer ${process.env.FCP_TOKEN}`,
