@@ -60,64 +60,140 @@ try {
         text: `ID: ${member.id}`,
       })
       .setTimestamp();
-       logChannel.send({embeds: [embed]})
+      logChannel.send({embeds: [embed]})
       await member.roles.add(member.guild.roles.cache.find(role => role.name === 'Pilots'))
+      await addUserToFCP(member);
+
   } catch (error) {
           sendToSentry(error, "Guild member add log")
   }
 }
 
+// 286 - Add member to TPC Portal - JP
+// Seperate function to catch this error seperate from the 
+// logging funtion above.
+async function addUserToFCP(member)
+{
+  try{
+    // 286 - Add member to the TPC Portal - JP
+    const url = `${config.fcpBaseUrl()}/api/users/new`;
+    const response = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${process.env.FCP_TOKEN}`
+            },
+            body: JSON.stringify(
+              {
+                'id': `${member.id}`
+              }
+            )
+    });
+
+    // Added response status codes from documentation
+    // https://docs.thepilotclub.org/docs/api/fcp-api/add-user/
+    // Only responses recorded are 200, and 208 from the endpoint
+    // everything else would be a server level response.
+    switch(response.status)
+    {
+      case 200:
+        // positive response just ignore
+        break;
+      case 208:
+        // user was already found, so did not add, logging to sentry
+        sendToSentry(`Received 208 when adding user ${member.id} User already exists.`,  "Adding user to FCP via Discord");
+        break;
+      case 401:
+        // user was already found, so did not add, logging to sentry
+        sendToSentry(`Received 401 when adding user ${member.id} - Unauthorized.`,  "Adding user to FCP via Discord");
+        break;
+      case 422:
+        // user was already found, so did not add, logging to sentry
+        sendToSentry(`Received 422 when adding user ${member.id} - User ID not found in Discord.`,  "Adding user to FCP via Discord");
+        break;
+      default: // any other response (ie 404, or 500)
+        sendToSentry(`Received ${response.status} when adding user ${member.id}`,  "Adding user to FCP via Discord");
+        break; 
+    }
+    
+  } catch(error) { // some other error
+    sendToSentry(error, "Adding user to FCP via Discord")
+  }
+  return;
+}
+
 
 export async function guildMemberRemove(member) {
-try {
-  const formattedRoles = member.roles.cache
-  .filter(role => role.id !== member.guild.id)
-  .map(role => role.toString())
-  .join(', ');
+  try {
 
-  const url = `${config.fcpBaseUrl()}/api/users/find/${member.id}/delete`;
+    let removed = await removeUserFromFCP(member);
+    if(removed) // successfully removed 
+    {
+      const formattedRoles = member.roles.cache
+      .filter(role => role.id !== member.guild.id)
+      .map(role => role.toString())
+      .join(', ');
 
-
-  // const response = await fetch(url, {
-  //     method: 'DELETE',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       'Accept': 'application/json',
-  //       'Authorization': `Bearer ${process.env.FCP_TOKEN}`
-  //     },
-  // });
-  // if (response.status === 200) {
-  //     const successEmbed = new EmbedBuilder()
-  //     .setAuthor({ name: `${member.displayName}`, iconURL: `${member.displayAvatarURL()}` })
-  //     .setTitle('Member left')
-  //     .setDescription(`<@${member.id}> joined <t:${Math.round(member.joinedTimestamp / 1000)}:R>\n**Roles:** ${formattedRoles}\n\nThis user has been removed from FCP.`)
-  //     .setColor("#FBF7B4")
-  //     .setFooter({
-  //       text: `ID: ${member.id}`,
-  //     })
-  //     .setTimestamp();
-  //     logChannel.send({embeds: [successEmbed]})
-  //
-  //       } else if (response.status === 404) {
-    const noFCPEmbed = new EmbedBuilder()
-    .setAuthor({ name: `${member.displayName}`, iconURL: `${member.displayAvatarURL()}` })
-    .setTitle('Member left')
-    .setDescription(`<@${member.id}> joined <t:${Math.round(member.joinedTimestamp / 1000)}:R>\n**Roles:** ${formattedRoles}`)
-    .setColor("#FBF7B4")
-    .setFooter({
-      text: `ID: ${member.id}`,
-    })
-    .setTimestamp();
+      const noFCPEmbed = new EmbedBuilder()
+        .setAuthor({ name: `${member.displayName}`, iconURL: `${member.displayAvatarURL()}` })
+        .setTitle('Member left')
+        .setDescription(`<@${member.id}> joined <t:${Math.round(member.joinedTimestamp / 1000)}:R>\n**Roles:** ${formattedRoles}`)
+        .setColor("#FBF7B4")
+        .setFooter({
+          text: `ID: ${member.id}`,
+        })
+        .setTimestamp();
       logChannel.send({embeds: [noFCPEmbed]})
-            console.log(`User ${member.id} doesn't have an FCP account.`);
-      //test push
-        // } else {
-        //     console.error(`Error removing user from FCP. Status code: ${response.status}`);
-        //     sendToSentry(error, "FCP Removal")
-        // }
-    } catch (error) {
-            sendToSentry(error, "FCP Removal")
+      console.log(`User ${member.id} doesn't have an FCP account.`);
+    }  
+  } catch (error) {
+          sendToSentry(error, "FCP Removal")
+  }
+}
+
+// 286 - Remove member to TPC Portal - JP
+// Seperate function to catch this error seperate from the 
+// logging funtion above.
+async function removeUserFromFCP(member) 
+{
+  try{
+    // 286 - Remove member to the TPC Portal - JP
+    const url = `${config.fcpBaseUrl()}/api/users/find/${member.id}/delete`;
+
+    const response = await fetch(url, {
+           method: 'DELETE',
+           headers: {
+             'Content-Type': 'application/json',
+             'Accept': 'application/json',
+             'Authorization': `Bearer ${process.env.FCP_TOKEN}`
+           },
+      });
+
+    // Added response status codes from documentation
+    // https://docs.thepilotclub.org/docs/api/fcp-api/delete-user
+    // Only responses recorded are 200, 401, 404 from the endpoint
+    // everything else would be a server level response.
+    switch(response.status)
+    {
+      case 200:
+        return true;
+      case 401:
+        // user was already found, so did not add, logging to sentry
+        sendToSentry(`Received 401 when removing user ${member.id} - Unauthorized.`,  "Removing user to FCP via Discord");
+        return false;
+      case 404:
+        // user was already found, so did not add, logging to sentry
+        sendToSentry(`Received 404 when removing user ${member.id} - User ID not found.`,  "Removing user to FCP via Discord");
+        return false;
+      default: // any other response (ie 500)
+        sendToSentry(`Received ${response.status} when removing user ${member.id}`,  "Removing user to FCP via Discord");
+        return false;
     }
+  } catch(error) { // any other error
+    sendToSentry(error, "Removing user to FCP via Discord");
+    return false;
+  }
 }
 
 export async function guildMemberUpdate(oldMember, newMember) {
