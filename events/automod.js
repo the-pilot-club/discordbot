@@ -79,6 +79,7 @@ export async function autoMod(action) {
     await thread.send(message);
     await thread.setLocked(true);
 
+    // Return early if the matched keyword is 'game' to prevent posting the log. 'Game' isn't malicious so no need to log
     if (action.matchedKeyword === 'game') {
         return;
     }
@@ -87,7 +88,7 @@ export async function autoMod(action) {
     const response = await fetch(url, {
         method: 'POST',
         headers: {
-            'User-Agent': 'Automod audit log creation',
+            'User-Agent': 'TPCDiscordBot',
             'Content-Type': 'application/json',
             Accept: 'application/json',
             Authorization: `Bearer ${process.env.FCP_TOKEN}`,
