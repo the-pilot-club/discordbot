@@ -9,6 +9,7 @@ const config = Config
 
 export function imReady(client) {
   const gitchannel = client.channels.cache.find(channel => channel.name === 'github-notifications')
+  
   console.log(`Logged in as ${client.user.tag}`)
   client.user.setActivity('XPlane 11', { type: ActivityType.Playing })
   if (Config.env() === "prod") {
@@ -28,5 +29,13 @@ export function imReady(client) {
         .then(() => console.log('Successfully registered global commands.'))
         .catch(error => sendToSentry(error, "Sync Command"))
   }
+
+  // load member cache
+  const guild = client.guilds.cache.get(Config.guild());
+  if (!guild) return;
+  guild.members.fetch()
+    .then(() => console.log('guild members fetched'))
+    .catch(error => sendToSentry(error, "Loading member Cache"));
+
   return gitchannel.send('https://tenor.com/view/hiding-under-covers-tired-sleepy-hiding-under-blanket-good-night-gif-19864771')
 }

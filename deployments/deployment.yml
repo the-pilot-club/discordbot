@@ -6,6 +6,7 @@ metadata:
   labels:
     app.kubernetes.io/name: discord-bot
     app.kubernetes.io/component: bot
+    app.kubernetes.io/instance: discord-bot
     app.kubernetes.io/part-of: discord-bot
 spec:
   selector:
@@ -23,4 +24,4 @@ spec:
           imagePullPolicy: Always
           envFrom:
             - secretRef:
-                name: discord-bot-env
+                name: discordbot-env
