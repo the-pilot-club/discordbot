@@ -82,7 +82,7 @@ async function addUserToFCP(member)
           headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
-            'Authorization': `Bearer ${process.env.FCP_TOKEN}`
+            'Authorization': `Bearer ${config.fcpToken()}`
             },
             body: JSON.stringify(
               {
@@ -166,7 +166,7 @@ async function removeUserFromFCP(member)
            headers: {
              'Content-Type': 'application/json',
              'Accept': 'application/json',
-             'Authorization': `Bearer ${process.env.FCP_TOKEN}`
+             'Authorization': `Bearer ${config.fcpToken()}`
            },
       });
 
