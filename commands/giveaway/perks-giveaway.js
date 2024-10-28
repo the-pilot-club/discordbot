@@ -9,29 +9,19 @@ export default {
       interaction.deferReply()
       interaction.guild.members.fetch().then(members => {
         const entries = []
-        const vip = members.filter(m => m.roles.cache.find(role => role.name === 'VIP')).map(m => m.user.toString())
-        for (const vipEntry of vip){
-          entries.push(vipEntry)
-          entries.push(vipEntry)
-          entries.push(vipEntry)
-        }
-        const frequentFliers = members.filter(m => m.roles.cache.find(role => role.name === 'Frequent Flyer')).map(m => m.user.toString())
-        for (const ffEntry of frequentFliers){
-          entries.push(ffEntry)
-          entries.push(ffEntry)
-        }
-        const commuters = members.filter(m => m.roles.cache.find(role => role.name === 'Commuter')).map(m => m.user.toString())
-        for (const entry of commuters){
-          entries.push(entry)
-        }
-        const ea = members.filter(m => m.roles.cache.find(role => role.name === 'Early Adopters')).map(m => m.user.toString())
-        for (const entry of ea){
-          entries.push(entry)
-        }
-        const topGun = members.filter(m => m.roles.cache.find(role => role.name === 'Charters Top Gun')).map(m => m.user.toString())
-        for (const entry of topGun){
-          entries.push(entry)
-        }
+        members.forEach(member => {
+          if(member.roles.cache.find(role => role.name === 'VIP')){
+            entries.push(member.user.toString())
+            entries.push(member.user.toString())
+            entries.push(member.user.toString())
+          } else if(member.roles.cache.find(role => role.name === 'Frequent Flyer')){
+            entries.push(member.user.toString())
+            entries.push(member.user.toString())
+          } else if(member.roles.cache.find(role => role.name === 'Commuter') || member.roles.cache.find(role => role.name === 'Early Adopters')|| member.roles.cache.find(role => role.name === 'Charters Top Gun')){
+            entries.push(member.user.toString())
+          }
+        })
+        console.log(entries)
         const winner = entries[Math.floor(Math.random() * entries.length)]
         if (winner !== undefined) {
           const winnere = new EmbedBuilder()
