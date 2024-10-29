@@ -6,9 +6,9 @@ export default {
     .setDescription('Picks random user with company perks role(s)'),
   async execute (interaction) {
     if (interaction.member.roles.cache.some(role => role.name === 'Staff') || interaction.member.roles.cache.some(role => role.name === 'Air Marshals')) {
-      interaction.deferReply()
+      await interaction.deferReply()
+      const entries = []
       interaction.guild.members.fetch().then(members => {
-        const entries = []
         members.forEach(member => {
           if(member.roles.cache.find(role => role.name === 'VIP')){
             entries.push(member.user.toString())
@@ -21,24 +21,25 @@ export default {
             entries.push(member.user.toString())
           }
         })
-        console.log(entries)
+        if(entries.length === 0){
+          interaction.editReply({content: 'No one has any of these roles for some reason'})
+          return
+        }
         const winner = entries[Math.floor(Math.random() * entries.length)]
-        if (winner !== undefined) {
-          const winnere = new EmbedBuilder()
-            .setDescription(`And the winner is ${winner} Congratulations!`)
-            .setAuthor({
-              name: 'The Pilot Club',
-              iconURL: 'https://static1.squarespace.com/static/614689d3918044012d2ac1b4/t/616ff36761fabc72642806e3/1634726781251/TPC_FullColor_TransparentBg_1280x1024_72dpi.png'
-            })
-            .setColor('#37B6FF')
-            .setFooter({ text: 'Made by TPC Dev Team' })
-            .setTimestamp()
+        const winnere = new EmbedBuilder()
+          .setDescription(`And the winner is ${winner} Congratulations!`)
+          .setAuthor({
+            name: 'The Pilot Club',
+            iconURL: 'https://static1.squarespace.com/static/614689d3918044012d2ac1b4/t/616ff36761fabc72642806e3/1634726781251/TPC_FullColor_TransparentBg_1280x1024_72dpi.png'
+          })
+          .setColor('#37B6FF')
+          .setFooter({ text: 'Made by TPC Dev Team' })
+          .setTimestamp()
 
 
-          setTimeout(function () {
-            interaction.editReply({ content: `Congrats ${winner}!`, embeds: [winnere] })
-          }, 3000)
-        } else { interaction.reply('No one has any of these roles for some reason') }
+        setTimeout(function () {
+          interaction.editReply({ content: `Congrats ${winner}!`, embeds: [winnere] })
+        }, 3000)
       })
     }
   }
