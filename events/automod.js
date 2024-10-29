@@ -91,7 +91,7 @@ export async function autoMod(action) {
             'User-Agent': 'TPCDiscordBot',
             'Content-Type': 'application/json',
             Accept: 'application/json',
-            Authorization: `Bearer ${process.env.FCP_TOKEN}`,
+            Authorization: `Bearer ${config.fcpToken()}`,
         },
         body: JSON.stringify({
             user_id: action.user.id,

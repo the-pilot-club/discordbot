@@ -171,5 +171,13 @@ export const Config = {
     } else {
       return "https://api.thepilotclub.org";
     }
+  },
+
+  fcpToken() {
+    if (process.env.FCP_TOKEN !== undefined) {
+      return process.env.FCP_TOKEN;
+    } else {
+      throw new Error("You must provide a FCP Token");
+    }
   }
 }

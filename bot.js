@@ -34,7 +34,7 @@ client.setMaxListeners(0)
 
 client.eventReminders = [];
 client.commands = allCommands
-client.on(Events.MessageCreate, handleMessageCreateEvent)
+// client.on(Events.MessageCreate, handleMessageCreateEvent)
 client.on(Events.InteractionCreate, handleInteractionCreateEvent)
 client.on(Events.ClientReady, imReady)
 client.on(Events.ClientReady, init)
