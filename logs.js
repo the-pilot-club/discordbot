@@ -177,14 +177,13 @@ async function removeUserFromFCP(member)
     switch(response.status)
     {
       case 200:
+      case 201:
+      case 204:
+      case 404: // acceptable but ignore
         return true;
       case 401:
-        // user was already found, so did not add, logging to sentry
+        // unauthorized to make the call  
         sendToSentry(`Received 401 when removing user ${member.id} - Unauthorized.`,  "Removing user to FCP via Discord");
-        return false;
-      case 404:
-        // user was already found, so did not add, logging to sentry
-        sendToSentry(`Received 404 when removing user ${member.id} - User ID not found.`,  "Removing user to FCP via Discord");
         return false;
       default: // any other response (ie 500)
         sendToSentry(`Received ${response.status} when removing user ${member.id}`,  "Removing user to FCP via Discord");
