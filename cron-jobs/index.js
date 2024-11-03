@@ -15,11 +15,11 @@ export async function cronJobs(client){
     }
 // Getting random question every day: 0 57 22 * * *
 // Sends Answer to current Question
-    cron.schedule('0 52 12 * * *', function () { // Correct time is 0 52 13 * * *
+    cron.schedule('0 52 11 * * *', function () { // Correct time is 0 52 13 * * *
         sendNewAnswer(channel)
     })
 // Sends the new question.
-    cron.schedule('0 00 13 * * *', function () { // Correct time is 0 00 14 * * *
+    cron.schedule('0 00 12 * * *', function () { // Correct time is 0 00 14 * * *
         sendNewQuestion(channel)
     })
 
