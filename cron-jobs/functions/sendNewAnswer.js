@@ -1,7 +1,7 @@
 import { Config } from "../../config/config.js";
 const config = Config;
 export async function sendNewAnswer(channel) {
-  const answer = await fetch(`${config.quizBaseUrl()}/api/quiz/current`)
+  const answer = await fetch(`${config.quizBaseUrl()}/quiz/current`)
   const answerBody = await answer.json();
   switch (answerBody.correctAnswer) {
     case "A":
