@@ -173,6 +173,15 @@ export const Config = {
     }
   },
 
+  quizToken() {
+    if (process.env.QUIZ_TOKEN !== undefined) {
+      return process.env.QUIZ_TOKEN;
+    } else {
+      return null;
+    }
+  },
+
+
   fcpToken() {
     if (process.env.FCP_TOKEN !== undefined) {
       return process.env.FCP_TOKEN;
