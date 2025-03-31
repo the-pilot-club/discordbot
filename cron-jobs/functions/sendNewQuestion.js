@@ -7,7 +7,7 @@ export async function sendNewQuestion(channel) {
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
-      'Authorization': config.quizToken(),
+      'X-Api-Key': config.quizToken(),
     },
   });
   const questionBody = await question.json();

@@ -19,7 +19,7 @@ export async function cronJobs(client) {
         sendNewAnswer(channel)
     })
     // Sends the new question.
-    cron.schedule('0 00 13 * * *', function() { // Correct time is 0 00 14 * * *
+    cron.schedule('0 00 15 * * *', function() { // Correct time is 0 00 14 * * *
         sendNewQuestion(channel)
     })
 
