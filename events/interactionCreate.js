@@ -67,7 +67,7 @@ export async function trainingRequest(interaction) {
         })
         .setFooter({ text: 'Made by TPC Dev Team' })
         .setTimestamp()
-    channel.send({ content: `<@&${config.flightInsRole()}>`, embeds: [trainEmbed] })
+    channel.send({ embeds: [trainEmbed] })
     return await interaction.reply({
         content: `Thank you for submitting an Ad Hoc training request for ${time}. Please note, requests may or may not be honored, and are deleted every 24h.`,
         ephemeral: true
