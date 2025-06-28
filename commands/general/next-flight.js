@@ -5,13 +5,27 @@ export default {
     .setName('next-flight')
     .setDescription('The link to find out our next flight!'),
   async execute (interaction) {
+      interaction.deferReply();
     const events = await interaction.guild.scheduledEvents.fetch()
+    if (events.size === 0)
+    {
+      interaction.editReply({
+        content: "There is no events posted. Please post an event and run this command again.",
+      })
+      return
+    }
     const sortedEvents = events.sort((a, b) => a.scheduledStartAt - b.scheduledStartAt)
     const event = sortedEvents.first()
 
     if (event === undefined) {
-      await interaction.reply('No events :(')
+      await interaction.editReply({content: 'No events :('})
     } else {
+      let image
+      if (event.coverImageURL() === null) {
+        image = "https://cdn.thepilotclub.org/discord-bot/tpc-logo.png"
+      } else {
+        image = event.coverImageURL()
+      }
       const eventTime = Date.parse(event.scheduledStartAt) / 1000
       const timestamp = `<t:${eventTime}:F>`
       const embed = new EmbedBuilder()
@@ -22,7 +36,7 @@ export default {
           value: event.channelId ? `<#${event.channelId}>` : 'Not Included'
         })
         .setColor('#37B6FF')
-        .setImage(event.coverImageURL({ size: 4096 }))
+        .setImage(image)
         .setTimestamp()
 
         .setFooter({
@@ -37,7 +51,7 @@ export default {
             .setURL('https://thepilotclub.org/dispatch')
             .setStyle(ButtonStyle.Link)
         )
-      await interaction.reply({ content: 'Next TPC Group Flight:', embeds: [embed], components: [row] })
+      await interaction.editReply({ content: 'Next TPC Group Flight:', embeds: [embed], components: [row] })
     }
   }
 }
