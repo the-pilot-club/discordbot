@@ -84,7 +84,7 @@ export async function autoMod(action) {
         return;
     }
 
-    const url = `${config.fcpBaseUrl()}/api/users/find/${action.user.id}/audit-logs/new`;
+    const url = `${config.fcpBaseUrl()}/api/users/audit-logs/new`;
     const response = await fetch(url, {
         method: 'POST',
         headers: {
