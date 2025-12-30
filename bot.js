@@ -9,6 +9,7 @@ import { guildMemberAdd, guildMemberRemove, guildBanAdd, guildBanRemove, guildMe
 const config = Config
 import * as Sentry from "@sentry/node";
 import {autoMod} from "./events/automod.js";
+import { initRedis, getAllEventReminders } from "./redisStore.js";
 
 const client = new Client({
     intents: [
@@ -46,4 +47,19 @@ client.on(Events.GuildMemberAdd, guildMemberAdd)
 client.on(Events.GuildMemberRemove, guildMemberRemove)
 client.on(Events.GuildMemberUpdate, guildMemberUpdate)
 client.on(Events.AutoModerationActionExecution, autoMod)
-client.login(config.token()).catch(err => (sendToSentry(err, "Bot Login")))
+
+(async () => {
+  try {
+    await initRedis();
+
+    const reminders = await getAllEventReminders();
+    if (Array.isArray(reminders)) {
+      client.eventReminders = reminders;
+      console.log(`Loaded ${reminders.length} eventReminders from Redis`);
+    }
+  } catch (err) {
+    console.error("redis load failed ur dumb:", err);
+  }
+
+  client.login(config.token()).catch((err) => sendToSentry(err, "Bot Login"));
+})();

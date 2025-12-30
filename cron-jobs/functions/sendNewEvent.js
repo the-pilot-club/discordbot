@@ -1,6 +1,8 @@
 import {AttachmentBuilder} from "discord.js";
 import {sendToSentry} from "../../utils.js";
 import {Config} from "../../config/config.js";
+import { hasEventReminder, addEventReminder } from "../../redisStore.js";
+
 const config = Config
 
 export async function sendNewEvent(channel, pings) {
@@ -22,12 +24,19 @@ export async function sendNewEvent(channel, pings) {
         const sortedEvents = events.sort((a, b) => a.scheduledStartAt - b.scheduledStartAt)
         const nextEvent = sortedEvents.first()
         const now = new Date()
-        if (Math.abs(nextEvent.scheduledStartAt - now) <= 60 * 60 * 1000 && !channel.client.eventReminders.includes(nextEvent.id)) {
+
+        const withinOneHour = Math.abs(nextEvent.scheduledStartAt - now) <= 60 * 60 * 1000
+
+        if (withinOneHour) {
+            const seenInRedis = await hasEventReminder(nextEvent.id)
+            if (seenInRedis === true) return
+            if (seenInRedis === null && channel.client.eventReminders.includes(nextEvent.id)) return
             const day = nextEvent.scheduledStartAt.getDay()
             const image = new AttachmentBuilder(nextEvent.coverImageURL({
                 size: 4096,
                 extension: "jpeg"
             }), 'event-banner.jpeg')
+
             if (nextEvent.image !== null) {
                 channel.send({
                     content: pings[day] + "\n**The event is starting in 1 hour. See you there!**\n" + nextEvent.description + `\n\nHosted by ${nextEvent.creator}\n\n${nextEvent.url}`,
@@ -39,7 +48,11 @@ export async function sendNewEvent(channel, pings) {
                 })
             }
 
-            channel.client.eventReminders.push(nextEvent.id)
+            await addEventReminder(nextEvent.id)
+
+            if (!channel.client.eventReminders.includes(nextEvent.id)) {
+                channel.client.eventReminders.push(nextEvent.id)
+            }
         }
     } catch (error) {
         console.log(error)
