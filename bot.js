@@ -58,7 +58,7 @@ client.on(Events.AutoModerationActionExecution, autoMod)
       console.log(`Loaded ${reminders.length} eventReminders from Redis`);
     }
   } catch (err) {
-    console.error("redis load failed ur dumb:", err);
+    console.error("Redis Load failed:", err);
   }
 
   client.login(config.token()).catch((err) => sendToSentry(err, "Bot Login"));
