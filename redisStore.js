@@ -43,7 +43,7 @@ export async function hasEventReminder(eventId) {
 
   try {
     const res = await r.sIsMember(EVENT_REMINDERS_KEY, eventId);
-    return res === 1;
+    return res;
   } catch (err) {
     console.error("Redis sIsMember failed:", err);
     return null;
