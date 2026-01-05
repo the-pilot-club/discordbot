@@ -39,7 +39,7 @@ export async function initRedis() {
 
 export async function hasEventReminder(eventId) {
   const r = await initRedis();
-  if (!r) return null;
+  if (!r) return null; // redis not configured
 
   try {
     const res = await r.sIsMember(EVENT_REMINDERS_KEY, eventId);
