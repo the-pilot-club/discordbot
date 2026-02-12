@@ -2,6 +2,7 @@ import cron from "node-cron";
 import { sendNewAnswer } from "./functions/sendNewAnswer.js";
 import { sendNewQuestion } from "./functions/sendNewQuestion.js";
 import { sendNewEvent } from "./functions/sendNewEvent.js";
+import { clearEventReminders } from "../redisStore.js";
 export async function cronJobs(client) {
     const channel = await client.channels.cache.find(channel => channel.name === 'aviation-quiz')
     const eventChannel = await client.channels.cache.find(channel => channel.name === 'crew-chat')
@@ -26,4 +27,12 @@ export async function cronJobs(client) {
     cron.schedule('* * * * *', function() {
         sendNewEvent(eventChannel, weeklyPings)
     })
+    cron.schedule('0 5 * * 1', async function () {
+    try {
+      await clearEventReminders();
+      console.log('Redis eventReminders cleared, btw the time is 12am on Monday');
+    } catch (err) {
+      console.error('Failed to clear Redis eventReminders:', err);
+    }
+    });
 }

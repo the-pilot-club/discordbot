@@ -5,6 +5,13 @@ let connecting = null;
 
 const EVENT_REMINDERS_KEY = "tpc:discordbot:eventReminders";
 
+export async function clearEventReminders() {
+  const r = await initRedis();
+  if (!r) return false;
+  await r.del(EVENT_REMINDERS_KEY);
+  return true;
+}
+
 export async function initRedis() {
   const url = process.env.REDIS_URL;
   if (!url) return null;
