@@ -21,7 +21,7 @@ export async function initRedis() {
 
   connecting = (async () => {
     try {
-      const client = createClient({ url });
+      const client = createClient({ url:url, database: process.env.REDIS_DB });
 
       client.on("error", (err) => {
         console.error("Redis error:", err);
